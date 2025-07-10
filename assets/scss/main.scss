@@ -1,0 +1,399 @@
+// CSS Animation Builder Styles
+// Variables
+:root {
+  --cab-primary-color: #007cba;
+  --cab-secondary-color: #6c757d;
+  --cab-success-color: #28a745;
+  --cab-danger-color: #dc3545;
+  --cab-warning-color: #ffc107;
+  --cab-info-color: #17a2b8;
+  --cab-light-color: #f8f9fa;
+  --cab-dark-color: #343a40;
+  --cab-white: #ffffff;
+  --cab-gray-100: #f8f9fa;
+  --cab-gray-200: #e9ecef;
+  --cab-gray-300: #dee2e6;
+  --cab-gray-400: #ced4da;
+  --cab-gray-500: #adb5bd;
+  --cab-gray-600: #6c757d;
+  --cab-gray-700: #495057;
+  --cab-gray-800: #343a40;
+  --cab-gray-900: #212529;
+  --cab-border-radius: 0.375rem;
+  --cab-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  --cab-transition: all 0.15s ease-in-out;
+}
+
+// Base styles
+.css-animation-builder {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--cab-dark-color);
+  background-color: var(--cab-white);
+  border: 1px solid var(--cab-gray-300);
+  border-radius: var(--cab-border-radius);
+  box-shadow: var(--cab-box-shadow);
+  max-width: 100%;
+  overflow: hidden;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  // Header
+  .cab-header {
+    background-color: var(--cab-primary-color);
+    color: var(--cab-white);
+    padding: 1rem;
+    margin: 0;
+
+    h2 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+  }
+
+  // Content
+  .cab-content {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  // Controls
+  .cab-controls {
+    .cab-section {
+      margin-bottom: 1rem;
+
+      h3 {
+        margin: 0 0 0.5rem 0;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--cab-gray-700);
+      }
+    }
+
+    .cab-actions {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+  }
+
+  // Form elements
+  .cab-select,
+  .cab-input,
+  .cab-textarea {
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--cab-gray-700);
+    background-color: var(--cab-white);
+    border: 1px solid var(--cab-gray-400);
+    border-radius: var(--cab-border-radius);
+    transition: var(--cab-transition);
+
+    &:focus {
+      outline: none;
+      border-color: var(--cab-primary-color);
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+  }
+
+  .cab-slider {
+    width: 100%;
+    height: 0.5rem;
+    border-radius: var(--cab-border-radius);
+    background: var(--cab-gray-300);
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      background: var(--cab-primary-color);
+      cursor: pointer;
+    }
+
+    &::-moz-range-thumb {
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      background: var(--cab-primary-color);
+      cursor: pointer;
+      border: none;
+    }
+  }
+
+  .cab-textarea {
+    min-height: 120px;
+    resize: vertical;
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+  }
+
+  // Buttons
+  .cab-btn {
+    display: inline-block;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: var(--cab-border-radius);
+    transition: var(--cab-transition);
+    user-select: none;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+
+    &:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+  }
+
+  .cab-btn-primary {
+    color: var(--cab-white);
+    background-color: var(--cab-primary-color);
+    border-color: var(--cab-primary-color);
+
+    &:hover {
+      background-color: darken(var(--cab-primary-color), 7.5%);
+      border-color: darken(var(--cab-primary-color), 10%);
+    }
+  }
+
+  .cab-btn-secondary {
+    color: var(--cab-white);
+    background-color: var(--cab-secondary-color);
+    border-color: var(--cab-secondary-color);
+
+    &:hover {
+      background-color: darken(var(--cab-secondary-color), 7.5%);
+      border-color: darken(var(--cab-secondary-color), 10%);
+    }
+  }
+
+  // Preview
+  .cab-preview {
+    h3 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--cab-gray-700);
+    }
+
+    .cab-preview-container {
+      background-color: var(--cab-gray-100);
+      border: 1px solid var(--cab-gray-300);
+      border-radius: var(--cab-border-radius);
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cab-preview-element {
+      background-color: var(--cab-primary-color);
+      color: var(--cab-white);
+      padding: 1rem;
+      border-radius: var(--cab-border-radius);
+      min-width: 120px;
+      text-align: center;
+      font-weight: 600;
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  // Code section
+  .cab-code {
+    grid-column: 1 / -1;
+
+    h3 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--cab-gray-700);
+    }
+
+    .cab-textarea {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  // Themes
+  &.theme-dark {
+    --cab-primary-color: #0d6efd;
+    --cab-secondary-color: #6c757d;
+    --cab-white: #212529;
+    --cab-dark-color: #ffffff;
+    --cab-gray-100: #343a40;
+    --cab-gray-200: #495057;
+    --cab-gray-300: #6c757d;
+    --cab-gray-400: #adb5bd;
+    --cab-gray-700: #ffffff;
+
+    background-color: var(--cab-white);
+    color: var(--cab-dark-color);
+
+    .cab-select,
+    .cab-input,
+    .cab-textarea {
+      background-color: var(--cab-gray-100);
+      color: var(--cab-dark-color);
+      border-color: var(--cab-gray-300);
+    }
+
+    .cab-preview-container {
+      background-color: var(--cab-gray-100);
+      border-color: var(--cab-gray-300);
+    }
+  }
+
+  &.theme-minimal {
+    border: none;
+    box-shadow: none;
+
+    .cab-header {
+      background-color: transparent;
+      color: var(--cab-dark-color);
+      border-bottom: 1px solid var(--cab-gray-300);
+    }
+
+    .cab-select,
+    .cab-input,
+    .cab-textarea {
+      border: none;
+      border-bottom: 1px solid var(--cab-gray-400);
+      border-radius: 0;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .cab-btn {
+      border-radius: 0;
+    }
+
+    .cab-preview-container {
+      border: none;
+      background-color: transparent;
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 576px) {
+  .css-animation-builder {
+    .cab-content {
+      padding: 0.5rem;
+    }
+
+    .cab-header {
+      padding: 0.5rem;
+    }
+
+    .cab-actions {
+      flex-direction: column;
+
+      .cab-btn {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// Utility classes
+.cab-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Animation helpers
+.cab-fade-in {
+  opacity: 0;
+  animation: cabFadeIn 0.3s ease-in-out forwards;
+}
+
+@keyframes cabFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.cab-slide-in {
+  transform: translateY(20px);
+  opacity: 0;
+  animation: cabSlideIn 0.3s ease-out forwards;
+}
+
+@keyframes cabSlideIn {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+  .css-animation-builder {
+    border-width: 2px;
+    
+    .cab-select,
+    .cab-input,
+    .cab-textarea {
+      border-width: 2px;
+    }
+    
+    .cab-btn {
+      border-width: 2px;
+    }
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .css-animation-builder {
+    --cab-transition: none;
+    
+    .cab-fade-in,
+    .cab-slide-in {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+}

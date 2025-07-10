@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Animation Builder - Enhanced Standalone Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .reia-animation-generator {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .generator-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .generator-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            background: linear-gradient(45deg, #007cba, #00a0d2);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .generator-wrapper {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .animation-controls,
+        .preview-area,
+        .css-output {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .css-output {
+            grid-column: 1 / -1;
+        }
+
+        .control-tabs {
+            display: flex;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #eee;
+        }
+
+        .tab-button {
+            background: none;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .tab-button:hover {
+            background: #f8f9fa;
+        }
+
+        .tab-button.active {
+            border-bottom-color: #007cba;
+            color: #007cba;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .control-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .control-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .control-group input,
+        .control-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .control-group input:focus,
+        .control-group select:focus {
+            outline: none;
+            border-color: #007cba;
+        }
+
+        .control-group input[type='range'] {
+            width: calc(100% - 60px);
+            margin-right: 10px;
+        }
+
+        .value-display {
+            display: inline-block;
+            min-width: 50px;
+            font-weight: 600;
+            color: #007cba;
+        }
+
+        .preset-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+        }
+
+        .preset-button {
+            background: linear-gradient(45deg, #007cba, #00a0d2);
+            color: white;
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .preset-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,124,186,0.3);
+        }
+
+        .preview-area {
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .preview-element {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            font-size: 0.9rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .control-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .control-buttons button {
+            flex: 1;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .play-btn {
+            background: linear-gradient(45deg, #28a745, #20c997);
+            color: white;
+        }
+
+        .play-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(40,167,69,0.3);
+        }
+
+        .reset-btn {
+            background: #6c757d;
+            color: white;
+        }
+
+        .reset-btn:hover {
+            background: #5a6268;
+        }
+
+        .code-section {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .code-tabs {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .code-tab {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 0.5rem 1rem;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .code-tab.active {
+            background: #007cba;
+            color: white;
+            border-color: #007cba;
+        }
+
+        .code-container {
+            flex: 1;
+            position: relative;
+        }
+
+        .code-container pre {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            min-height: 200px;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #007cba;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: #005a8b;
+        }
+
+        .copy-btn.copied {
+            background: #28a745;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .generator-wrapper {
+                grid-template-columns: 1fr;
+            }
+            
+            .control-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .tab-button {
+                flex: 1;
+                min-width: 80px;
+            }
+        }
+
+        /* Animation Keyframes */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        @keyframes slideInLeft {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        @keyframes slideInUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        @keyframes slideInDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+
+        @keyframes zoomOut {
+            from { transform: scale(1); }
+            to { transform: scale(0); }
+        }
+
+        @keyframes bounceIn {
+            0%, 20%, 40%, 60%, 80%, 100% { animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); }
+            0% { opacity: 0; transform: scale3d(.3, .3, .3); }
+            20% { transform: scale3d(1.1, 1.1, 1.1); }
+            40% { transform: scale3d(.9, .9, .9); }
+            60% { opacity: 1; transform: scale3d(1.03, 1.03, 1.03); }
+            80% { transform: scale3d(.97, .97, .97); }
+            100% { opacity: 1; transform: scale3d(1, 1, 1); }
+        }
+
+        @keyframes rotateIn {
+            from { transform: rotate(-360deg); opacity: 0; }
+            to { transform: rotate(0deg); opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+            20%, 40%, 60%, 80% { transform: translateX(10px); }
+        }
+
+        @keyframes wobble {
+            0%, 100% { transform: translateX(0%); }
+            15% { transform: translateX(-25%) rotate(-5deg); }
+            30% { transform: translateX(20%) rotate(3deg); }
+            45% { transform: translateX(-15%) rotate(-3deg); }
+            60% { transform: translateX(10%) rotate(2deg); }
+            75% { transform: translateX(-5%) rotate(-1deg); }
+        }
+
+        @keyframes swing {
+            0%, 100% { transform: rotate(0deg); }
+            20% { transform: rotate(15deg); }
+            40% { transform: rotate(-10deg); }
+            60% { transform: rotate(5deg); }
+            80% { transform: rotate(-5deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="reia-animation-generator">
+        <header class="generator-header">
+            <h1>CSS Animation Builder</h1>
+            <p>Create beautiful CSS animations with our interactive builder. Generate the code and copy it for use in your projects.</p>
+        </header>
+
+        <div class="generator-wrapper">
+            <!-- Animation Controls -->
+            <div class="animation-controls">
+                <div class="control-tabs">
+                    <button class="tab-button active" data-tab="basic">Basic</button>
+                    <button class="tab-button" data-tab="advanced">Advanced</button>
+                    <button class="tab-button" data-tab="presets">Presets</button>
+                </div>
+
+                <!-- Basic Controls -->
+                <div class="tab-content active" id="basic-tab">
+                    <div class="control-group">
+                        <label for="animation-type">Animation Type:</label>
+                        <select id="animation-type">
+                            <option value="fadeIn">Fade In</option>
+                            <option value="fadeOut">Fade Out</option>
+                            <option value="slideInLeft">Slide In Left</option>
+                            <option value="slideInRight">Slide In Right</option>
+                            <option value="slideInUp">Slide In Up</option>
+                            <option value="slideInDown">Slide In Down</option>
+                            <option value="zoomIn">Zoom In</option>
+                            <option value="zoomOut">Zoom Out</option>
+                            <option value="bounceIn">Bounce In</option>
+                            <option value="rotateIn">Rotate In</option>
+                            <option value="pulse">Pulse</option>
+                            <option value="shake">Shake</option>
+                            <option value="wobble">Wobble</option>
+                            <option value="swing">Swing</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="duration">Duration (seconds):</label>
+                        <input type="range" id="duration" min="0.1" max="5" step="0.1" value="1">
+                        <span class="value-display" id="duration-value">1.0s</span>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="delay">Delay (seconds):</label>
+                        <input type="range" id="delay" min="0" max="3" step="0.1" value="0">
+                        <span class="value-display" id="delay-value">0.0s</span>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="timing-function">Timing Function:</label>
+                        <select id="timing-function">
+                            <option value="ease">Ease</option>
+                            <option value="ease-in">Ease In</option>
+                            <option value="ease-out">Ease Out</option>
+                            <option value="ease-in-out">Ease In Out</option>
+                            <option value="linear">Linear</option>
+                            <option value="cubic-bezier(0.25, 0.1, 0.25, 1)">Smooth</option>
+                            <option value="cubic-bezier(0.68, -0.55, 0.265, 1.55)">Bounce</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="iteration-count">Repeat:</label>
+                        <select id="iteration-count">
+                            <option value="1">Once</option>
+                            <option value="2">Twice</option>
+                            <option value="3">3 times</option>
+                            <option value="infinite">Infinite</option>
+                        </select>
+                    </div>
+
+                    <div class="control-buttons">
+                        <button class="play-btn" id="play-animation">Play Animation</button>
+                        <button class="reset-btn" id="reset-animation">Reset</button>
+                    </div>
+                </div>
+
+                <!-- Advanced Controls -->
+                <div class="tab-content" id="advanced-tab">
+                    <div class="control-group">
+                        <label for="transform-origin">Transform Origin:</label>
+                        <select id="transform-origin">
+                            <option value="center">Center</option>
+                            <option value="top">Top</option>
+                            <option value="bottom">Bottom</option>
+                            <option value="left">Left</option>
+                            <option value="right">Right</option>
+                            <option value="top left">Top Left</option>
+                            <option value="top right">Top Right</option>
+                            <option value="bottom left">Bottom Left</option>
+                            <option value="bottom right">Bottom Right</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="direction">Direction:</label>
+                        <select id="direction">
+                            <option value="normal">Normal</option>
+                            <option value="reverse">Reverse</option>
+                            <option value="alternate">Alternate</option>
+                            <option value="alternate-reverse">Alternate Reverse</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="fill-mode">Fill Mode:</label>
+                        <select id="fill-mode">
+                            <option value="none">None</option>
+                            <option value="forwards">Forwards</option>
+                            <option value="backwards">Backwards</option>
+                            <option value="both">Both</option>
+                        </select>
+                    </div>
+
+                    <div class="control-buttons">
+                        <button class="play-btn" id="play-animation-advanced">Play Animation</button>
+                        <button class="reset-btn" id="reset-animation-advanced">Reset</button>
+                    </div>
+                </div>
+
+                <!-- Presets -->
+                <div class="tab-content" id="presets-tab">
+                    <div class="preset-grid">
+                        <button class="preset-button" data-preset="attention">Attention</button>
+                        <button class="preset-button" data-preset="bounce">Bounce</button>
+                        <button class="preset-button" data-preset="elegant">Elegant</button>
+                        <button class="preset-button" data-preset="slide">Slide</button>
+                        <button class="preset-button" data-preset="zoom">Zoom</button>
+                        <button class="preset-button" data-preset="rotate">Rotate</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Live Preview -->
+            <div class="preview-area">
+                <div class="preview-element" id="preview-element">
+                    Preview
+                </div>
+            </div>
+        </div>
+
+        <!-- CSS Output -->
+        <div class="css-output">
+            <div class="code-section">
+                <div class="code-tabs">
+                    <button class="code-tab active" data-code="css">CSS</button>
+                    <button class="code-tab" data-code="html">HTML</button>
+                    <button class="code-tab" data-code="keyframes">Keyframes</button>
+                </div>
+                <div class="code-container">
+                    <button class="copy-btn" id="copy-code">Copy Code</button>
+                    <pre id="css-code">/* Click "Play Animation" to generate CSS */</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animation Builder Class
+        class CSSAnimationBuilder {
+            constructor() {
+                this.presets = {
+                    attention: { type: 'pulse', duration: 1, iterationCount: 'infinite' },
+                    bounce: { type: 'bounceIn', duration: 1.2, timingFunction: 'cubic-bezier(0.68, -0.55, 0.265, 1.55)' },
+                    elegant: { type: 'fadeIn', duration: 2, delay: 0.5, timingFunction: 'ease-out' },
+                    slide: { type: 'slideInLeft', duration: 0.8, delay: 0.2 },
+                    zoom: { type: 'zoomIn', duration: 0.6, timingFunction: 'ease-out' },
+                    rotate: { type: 'rotateIn', duration: 1, timingFunction: 'ease-in-out' }
+                };
+
+                this.currentAnimation = null;
+                this.init();
+            }
+
+            init() {
+                this.bindEvents();
+                this.updateValueDisplays();
+            }
+
+            bindEvents() {
+                // Tab switching
+                document.querySelectorAll('.tab-button').forEach(button => {
+                    button.addEventListener('click', (e) => this.switchTab(e.target.dataset.tab));
+                });
+
+                // Code tab switching
+                document.querySelectorAll('.code-tab').forEach(button => {
+                    button.addEventListener('click', (e) => this.switchCodeTab(e.target.dataset.code));
+                });
+
+                // Range inputs
+                document.querySelectorAll('input[type="range"]').forEach(input => {
+                    input.addEventListener('input', () => this.updateValueDisplays());
+                });
+
+                // Play buttons
+                document.querySelectorAll('.play-btn').forEach(button => {
+                    button.addEventListener('click', () => this.playAnimation());
+                });
+
+                // Reset buttons
+                document.querySelectorAll('.reset-btn').forEach(button => {
+                    button.addEventListener('click', () => this.resetAnimation());
+                });
+
+                // Preset buttons
+                document.querySelectorAll('.preset-button').forEach(button => {
+                    button.addEventListener('click', (e) => this.applyPreset(e.target.dataset.preset));
+                });
+
+                // Copy button
+                document.getElementById('copy-code').addEventListener('click', () => this.copyCode());
+            }
+
+            switchTab(tabName) {
+                // Update tab buttons
+                document.querySelectorAll('.tab-button').forEach(button => {
+                    button.classList.remove('active');
+                });
+                document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+
+                // Update tab content
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.getElementById(`${tabName}-tab`).classList.add('active');
+            }
+
+            switchCodeTab(codeType) {
+                // Update code tab buttons
+                document.querySelectorAll('.code-tab').forEach(button => {
+                    button.classList.remove('active');
+                });
+                document.querySelector(`[data-code="${codeType}"]`).classList.add('active');
+
+                // Update code content
+                this.updateCodeDisplay(codeType);
+            }
+
+            updateValueDisplays() {
+                const duration = document.getElementById('duration');
+                const delay = document.getElementById('delay');
+                
+                document.getElementById('duration-value').textContent = duration.value + 's';
+                document.getElementById('delay-value').textContent = delay.value + 's';
+            }
+
+            playAnimation() {
+                const settings = this.getCurrentSettings();
+                this.applyAnimation(settings);
+                this.generateCode(settings);
+            }
+
+            resetAnimation() {
+                const previewElement = document.getElementById('preview-element');
+                previewElement.style.animation = 'none';
+                previewElement.style.transform = '';
+                previewElement.style.opacity = '';
+                
+                // Force reflow
+                previewElement.offsetHeight;
+                
+                this.currentAnimation = null;
+            }
+
+            getCurrentSettings() {
+                return {
+                    type: document.getElementById('animation-type').value,
+                    duration: parseFloat(document.getElementById('duration').value),
+                    delay: parseFloat(document.getElementById('delay').value),
+                    timingFunction: document.getElementById('timing-function').value,
+                    iterationCount: document.getElementById('iteration-count').value,
+                    transformOrigin: document.getElementById('transform-origin').value,
+                    direction: document.getElementById('direction').value,
+                    fillMode: document.getElementById('fill-mode').value
+                };
+            }
+
+            applyAnimation(settings) {
+                const previewElement = document.getElementById('preview-element');
+                
+                // Reset animation
+                previewElement.style.animation = 'none';
+                previewElement.offsetHeight; // Force reflow
+                
+                // Apply new animation
+                previewElement.style.animationName = settings.type;
+                previewElement.style.animationDuration = settings.duration + 's';
+                previewElement.style.animationDelay = settings.delay + 's';
+                previewElement.style.animationTimingFunction = settings.timingFunction;
+                previewElement.style.animationIterationCount = settings.iterationCount;
+                previewElement.style.animationDirection = settings.direction;
+                previewElement.style.animationFillMode = settings.fillMode;
+                previewElement.style.transformOrigin = settings.transformOrigin;
+                
+                this.currentAnimation = settings;
+            }
+
+            generateCode(settings) {
+                const cssCode = this.generateCSSCode(settings);
+                const htmlCode = this.generateHTMLCode(settings);
+                const keyframesCode = this.generateKeyframesCode(settings.type);
+                
+                // Store codes for tab switching
+                this.codes = {
+                    css: cssCode,
+                    html: htmlCode,
+                    keyframes: keyframesCode
+                };
+                
+                // Update current display
+                const activeTab = document.querySelector('.code-tab.active');
+                const codeType = activeTab ? activeTab.dataset.code : 'css';
+                this.updateCodeDisplay(codeType);
+            }
+
+            generateCSSCode(settings) {
+                return `.animated-${settings.type} {
+    animation-name: ${settings.type};
+    animation-duration: ${settings.duration}s;
+    animation-delay: ${settings.delay}s;
+    animation-timing-function: ${settings.timingFunction};
+    animation-iteration-count: ${settings.iterationCount};
+    animation-direction: ${settings.direction};
+    animation-fill-mode: ${settings.fillMode};
+    transform-origin: ${settings.transformOrigin};
+}`;
+            }
+
+            generateHTMLCode(settings) {
+                return `<!-- Add this class to your HTML element -->
+<div class="animated-${settings.type}">
+    Your content here
+</div>`;
+            }
+
+            generateKeyframesCode(animationType) {
+                const keyframes = {
+                    fadeIn: `@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}`,
+                    fadeOut: `@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}`,
+                    slideInLeft: `@keyframes slideInLeft {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}`,
+                    slideInRight: `@keyframes slideInRight {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}`,
+                    slideInUp: `@keyframes slideInUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}`,
+                    slideInDown: `@keyframes slideInDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}`,
+                    zoomIn: `@keyframes zoomIn {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+}`,
+                    zoomOut: `@keyframes zoomOut {
+    from { transform: scale(1); }
+    to { transform: scale(0); }
+}`,
+                    bounceIn: `@keyframes bounceIn {
+    0%, 20%, 40%, 60%, 80%, 100% { 
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); 
+    }
+    0% { opacity: 0; transform: scale3d(.3, .3, .3); }
+    20% { transform: scale3d(1.1, 1.1, 1.1); }
+    40% { transform: scale3d(.9, .9, .9); }
+    60% { opacity: 1; transform: scale3d(1.03, 1.03, 1.03); }
+    80% { transform: scale3d(.97, .97, .97); }
+    100% { opacity: 1; transform: scale3d(1, 1, 1); }
+}`,
+                    rotateIn: `@keyframes rotateIn {
+    from { transform: rotate(-360deg); opacity: 0; }
+    to { transform: rotate(0deg); opacity: 1; }
+}`,
+                    pulse: `@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}`,
+                    shake: `@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+    20%, 40%, 60%, 80% { transform: translateX(10px); }
+}`,
+                    wobble: `@keyframes wobble {
+    0%, 100% { transform: translateX(0%); }
+    15% { transform: translateX(-25%) rotate(-5deg); }
+    30% { transform: translateX(20%) rotate(3deg); }
+    45% { transform: translateX(-15%) rotate(-3deg); }
+    60% { transform: translateX(10%) rotate(2deg); }
+    75% { transform: translateX(-5%) rotate(-1deg); }
+}`,
+                    swing: `@keyframes swing {
+    0%, 100% { transform: rotate(0deg); }
+    20% { transform: rotate(15deg); }
+    40% { transform: rotate(-10deg); }
+    60% { transform: rotate(5deg); }
+    80% { transform: rotate(-5deg); }
+}`
+                };
+                
+                return keyframes[animationType] || `/* Keyframes for ${animationType} not found */`;
+            }
+
+            updateCodeDisplay(codeType) {
+                const codeElement = document.getElementById('css-code');
+                if (this.codes && this.codes[codeType]) {
+                    codeElement.textContent = this.codes[codeType];
+                } else {
+                    codeElement.textContent = '/* Click "Play Animation" to generate code */';
+                }
+            }
+
+            applyPreset(presetName) {
+                const preset = this.presets[presetName];
+                if (!preset) return;
+                
+                // Apply preset values to controls
+                document.getElementById('animation-type').value = preset.type;
+                document.getElementById('duration').value = preset.duration || 1;
+                document.getElementById('delay').value = preset.delay || 0;
+                document.getElementById('timing-function').value = preset.timingFunction || 'ease';
+                document.getElementById('iteration-count').value = preset.iterationCount || 1;
+                
+                // Update displays
+                this.updateValueDisplays();
+                
+                // Auto-play the animation
+                this.playAnimation();
+            }
+
+            copyCode() {
+                const codeElement = document.getElementById('css-code');
+                const copyButton = document.getElementById('copy-code');
+                
+                // Create a temporary textarea to copy the text
+                const textarea = document.createElement('textarea');
+                textarea.value = codeElement.textContent;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                
+                // Update button state
+                copyButton.textContent = 'Copied!';
+                copyButton.classList.add('copied');
+                
+                setTimeout(() => {
+                    copyButton.textContent = 'Copy Code';
+                    copyButton.classList.remove('copied');
+                }, 2000);
+            }
+        }
+
+        // Initialize the animation builder when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new CSSAnimationBuilder();
+        });
+    </script>
+</body>
+</html>
