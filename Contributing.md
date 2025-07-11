@@ -4,7 +4,7 @@ Thank you for your interest in contributing to CSS Animation Builder! This docum
 
 ## Code of Conduct
 
-This project adheres to a Code of Conduct. By participating, you are expected to uphold this code. Please report unacceptable behavior to david@realtors.com.
+This project adheres to a Code of Conduct. By participating, you are expected to uphold this code. Please report unacceptable behavior to DavidEngland@hotmail.com.
 
 ## How to Contribute
 
@@ -169,7 +169,7 @@ Releases are automated through GitHub Actions:
 
 ## Questions?
 
-Feel free to open an issue for questions, or contact David England directly at david@realtors.com.
+Feel free to open an issue for questions, or contact David England directly at DavidEngland@hotmail.com.
 
 ## Recognition
 

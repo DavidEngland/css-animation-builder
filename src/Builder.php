@@ -10,7 +10,7 @@ namespace Reia\CSSAnimationBuilder;
  * 
  * @package Reia\CSSAnimationBuilder
  * @version 1.0.0
- * @author REIA Development Team
+ * @author David England
  * @license MIT
  */
 class Builder

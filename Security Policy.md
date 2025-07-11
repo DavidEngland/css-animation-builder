@@ -17,7 +17,7 @@ We take security vulnerabilities seriously. If you discover a security vulnerabi
 
 Security vulnerabilities should be reported privately to protect users.
 
-### 2. Send a detailed report to: david@realtors.com
+### 2. Send a detailed report to: DavidEngland@hotmail.com
 
 Include the following information:
 - Description of the vulnerability
@@ -111,7 +111,7 @@ We thank the security researchers and community members who help keep CSS Animat
 ## Contact
 
 For security-related questions or concerns:
-- **Email**: david@realtors.com
+- **Email**: DavidEngland@hotmail.com
 - **Subject**: [SECURITY] CSS Animation Builder
 - **Response Time**: Within 48 hours
 

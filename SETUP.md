@@ -48,6 +48,27 @@ css-animation-builder-standalone/
 
 ## Available Scripts
 
+### NPM Scripts
+- `npm run build` - Build the project
+- `npm run dev` - Development mode with watching
+- `npm run test` - Run JavaScript tests
+- `npm run lint` - Run ESLint
+- `npm run lint:fix` - Fix ESLint issues
+
+### Composer Scripts
+- `composer test` - Run PHP tests
+- `composer install` - Install PHP dependencies
+
+## 📦 Publishing
+
+### NPM Package
+NPM publishing will be handled by collaborators. The package configuration is ready in `package.json`.
+
+### Composer Package
+Future plans include publishing to Packagist. The package configuration is ready in `composer.json`.
+
+## 🚀 Deployment
+
 - `npm run build` - Build the project
 - `npm run dev` - Start development mode with watch
 - `npm test` - Run JavaScript tests

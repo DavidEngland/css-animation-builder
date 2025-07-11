@@ -4,8 +4,8 @@
  * Plugin URI: https://github.com/reia/css-animation-builder
  * Description: A standalone CSS Animation Builder that provides an interactive interface for creating beautiful CSS animations. Works as a Composer package, WordPress plugin, or standalone HTML/JS application.
  * Version: 1.0.1
- * Author: REIA Development Team
- * Author URI: https://reia.com
+ * Author: David England
+ * Author URI: https://github.com/DavidEngland
  * License: MIT
  * License URI: https://opensource.org/licenses/MIT
  * Text Domain: css-animation-builder

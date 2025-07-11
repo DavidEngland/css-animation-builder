@@ -68,7 +68,28 @@ echo $builder->render();
 
 ## 📦 Installation Options
 
-### 1. Standalone Usage
+### 1. NPM Package (Available Soon)
+
+The NPM package will be published by a collaborator. For now, you can:
+
+```bash
+# Clone and build locally
+git clone https://github.com/DavidEngland/css-animation-builder.git
+cd css-animation-builder
+npm install
+npm run build
+```
+
+### 2. Composer Package (Coming Soon)
+
+Will be available on Packagist:
+
+```bash
+# This will be available soon
+composer require davidengland/css-animation-builder
+```
+
+### 3. Standalone Usage
 
 Download the latest release files and include them in your HTML:
 

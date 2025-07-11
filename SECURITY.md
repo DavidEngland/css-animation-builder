@@ -10,7 +10,7 @@ We release patches for security vulnerabilities. Which versions are eligible for
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability within CSS Animation Builder, please send an email to security@davidengland.dev. All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within CSS Animation Builder, please send an email to DavidEngland@hotmail.com. All security vulnerabilities will be promptly addressed.
 
 Please do not disclose security-related issues publicly until a fix has been announced.
 
@@ -48,7 +48,7 @@ Currently, we do not have a formal bug bounty program. However, we deeply apprec
 ## Contact
 
 For any security-related questions or concerns, please contact:
-- Email: security@davidengland.dev
+- Email: DavidEngland@hotmail.com
 - GitHub: Create a private security advisory
 
 Thank you for helping keep CSS Animation Builder and our users safe!
