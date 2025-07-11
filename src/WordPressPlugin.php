@@ -6,9 +6,11 @@ namespace Reia\CSSAnimationBuilder;
  * WordPress Plugin Integration
  * 
  * Provides WordPress-specific functionality for the CSS Animation Builder
+ * Developed by Real Estate Intelligence Agency (REIA)
  * 
  * @package Reia\CSSAnimationBuilder
  * @version 1.0.0
+ * @author David England <DavidEngland@hotmail.com>
  */
 class WordPressPlugin
 {

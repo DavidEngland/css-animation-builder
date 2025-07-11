@@ -1,6 +1,13 @@
 # Contributing to CSS Animation Builder
 
-Thank you for your interest in contributing to CSS Animation Builder! This document provides guidelines and information for contributors.
+Thank you for your interest in contributing to CSS Animation Builder! This project is developed by the **Real Estate Intelligence Agency (REIA)** full stack development team.
+
+## About REIA
+
+- **Organization**: Real Estate Intelligence Agency (REIA)
+- **Senior Lead Developer**: David England - DavidEngland@hotmail.com
+- **CEO & Chief Broker**: Mikko P. Jetsu - Mikko@RealEstate-Huntsville.com
+- **Website**: realestateintelligenceagency.com *(coming soon)*
 
 ## Code of Conduct
 

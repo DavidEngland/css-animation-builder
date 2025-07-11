@@ -7,10 +7,11 @@ namespace Reia\CSSAnimationBuilder;
  * 
  * A framework-agnostic CSS animation builder that generates interactive
  * HTML interfaces for creating CSS animations.
+ * Developed by Real Estate Intelligence Agency (REIA)
  * 
  * @package Reia\CSSAnimationBuilder
  * @version 1.0.0
- * @author David England
+ * @author David England <DavidEngland@hotmail.com>
  * @license MIT
  */
 class Builder

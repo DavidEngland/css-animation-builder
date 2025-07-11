@@ -1,13 +1,20 @@
 {
     "name": "reia/css-animation-builder",
-    "description": "A standalone CSS Animation Builder library for creating beautiful animations with interactive controls",
+    "description": "A standalone CSS Animation Builder library for creating beautiful animations with interactive controls - developed by Real Estate Intelligence Agency (REIA)",
     "version": "1.0.1",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
             "name": "David England",
-            "email": "DavidEngland@hotmail.com"
+            "email": "DavidEngland@hotmail.com",
+            "homepage": "https://github.com/DavidEngland",
+            "role": "Senior Lead Developer"
+        },
+        {
+            "name": "Mikko P. Jetsu",
+            "email": "Mikko@RealEstate-Huntsville.com",
+            "role": "CEO & Chief Broker"
         }
     ],
     "keywords": [

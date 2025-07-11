@@ -366,6 +366,18 @@ composer test
 npm run test:coverage
 ```
 
+## 🤝 About REIA
+
+This project is developed by the **Real Estate Intelligence Agency (REIA)** full stack development team.
+
+### Team
+- **Senior Lead Developer**: [David England](https://github.com/DavidEngland) - DavidEngland@hotmail.com
+- **CEO & Chief Broker**: Mikko P. Jetsu - Mikko@RealEstate-Huntsville.com
+
+### Organization
+- **Website**: realestateintelligenceagency.com *(coming soon)*
+- **GitHub**: [github.com/DavidEngland/css-animation-builder](https://github.com/DavidEngland/css-animation-builder)
+
 ## 🤝 Contributing
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.

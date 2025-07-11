@@ -1,10 +1,10 @@
 <?php
 /**
  * Plugin Name: CSS Animation Builder
- * Plugin URI: https://github.com/reia/css-animation-builder
- * Description: A standalone CSS Animation Builder that provides an interactive interface for creating beautiful CSS animations. Works as a Composer package, WordPress plugin, or standalone HTML/JS application.
+ * Plugin URI: https://github.com/DavidEngland/css-animation-builder
+ * Description: A standalone CSS Animation Builder that provides an interactive interface for creating beautiful CSS animations. Developed by Real Estate Intelligence Agency (REIA). Works as a Composer package, WordPress plugin, or standalone HTML/JS application.
  * Version: 1.0.1
- * Author: David England
+ * Author: David England (REIA - Real Estate Intelligence Agency)
  * Author URI: https://github.com/DavidEngland
  * License: MIT
  * License URI: https://opensource.org/licenses/MIT
