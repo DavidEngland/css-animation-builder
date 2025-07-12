@@ -1,0 +1,25 @@
+<!-- wp:template-part {"slug":"reia/header","area":"header"} /-->
+
+<!-- wp:group {"tagName":"main","style":{"spacing":{"padding":{"top":"4rem","bottom":"4rem"}}},"layout":{"type":"constrained","contentSize":"1200px"}} -->
+<main class="wp-block-group" style="padding-top:4rem;padding-bottom:4rem">
+    <!-- wp:query-title {"type":"archive","textAlign":"center","style":{"typography":{"fontSize":"2.5rem","fontWeight":"800"},"color":{"text":"var(--wp--preset--color--primary)"},"spacing":{"margin":{"bottom":"2rem"}}}} /-->
+    
+    <!-- wp:term-description {"textAlign":"center","style":{"spacing":{"margin":{"bottom":"3rem"}}}} /-->
+    
+    <!-- wp:query {"queryId":0,"query":{"perPage":12,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true},"layout":{"type":"constrained"}} -->
+    <div class="wp-block-query">
+        <!-- wp:post-template {"style":{"spacing":{"blockGap":"2rem"}},"layout":{"type":"grid","columnCount":3}} -->
+        <!-- wp:pattern {"slug":"reia/post-card"} /-->
+        <!-- /wp:post-template -->
+        
+        <!-- wp:query-pagination {"paginationArrow":"arrow","layout":{"type":"flex","justifyContent":"center","flexWrap":"wrap"}} -->
+        <!-- wp:query-pagination-previous /-->
+        <!-- wp:query-pagination-numbers /-->
+        <!-- wp:query-pagination-next /-->
+        <!-- /wp:query-pagination -->
+    </div>
+    <!-- /wp:query -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"reia/footer","area":"footer"} /-->

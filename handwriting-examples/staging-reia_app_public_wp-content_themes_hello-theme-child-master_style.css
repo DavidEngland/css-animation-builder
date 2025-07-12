@@ -1,0 +1,329 @@
+/*
+Theme Name: Hello Elementor Child
+Theme URI: https://github.com/elementor/hello-theme-child/
+Description: Hello Elementor Child is a child theme of Hello Elementor, created by Elementor team
+Author: Elementor Team
+Author URI: https://elementor.com/
+Template: hello-elementor
+Version: 2.0.4
+Text Domain: hello-elementor-child
+License: GNU General Public License v3 or later.
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
+Tags: flexible-header, custom-colors, custom-menu, custom-logo, editor-style, featured-images, rtl-language-support, threaded-comments, translation-ready
+*/
+
+/* ==========================================================================
+   Custom Styles for Zillow Review Link Block
+   ========================================================================== */
+
+/**
+ * Zillow review link block styling.
+ */
+.zillow-review-link {
+    display: inline-block;
+    text-align: center;
+    margin: 1em auto;
+}
+
+.zillow-review-link a {
+    display: block;
+    text-decoration: none;
+    background: #fff;
+    border-radius: 0.25rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.2s, background-color 0.2s;
+    padding: 0.75em 1.5em;
+}
+
+.zillow-review-link a:hover,
+.zillow-review-link a:focus {
+    background-color: var(--wp--preset--color--primary, #002D5F);
+    box-shadow: 0 2px 8px rgba(0, 45, 95, 0.15);
+    outline: none;
+}
+
+.zillow-review-link figcaption {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+    color: var(--wp--preset--color--primary, #002D5F);
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.zillow-review-link a:hover figcaption,
+.zillow-review-link a:focus figcaption {
+    color: var(--wp--preset--color--background, #fff);
+}
+
+.zillow-review-link img {
+    vertical-align: middle;
+    transition: filter 0.2s;
+    max-width: 100%;
+    height: auto;
+}
+
+.zillow-review-link a:hover img,
+.zillow-review-link a:focus img {
+    filter: brightness(0) invert(1);
+}
+
+/* ==========================================================================
+   Single Post Card Layout
+   ========================================================================== */
+
+/**
+ * Card container for single post view.
+ */
+.single-post-card {
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+    margin: 2rem auto;
+    max-width: 800px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+/**
+ * Featured image for single post.
+ * SVGs and raster images are scaled to fit.
+ */
+.single-post-thumb img {
+    width: 100%;
+    max-width: 100%;
+    max-height: 400px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    background: #e0e6ed;
+}
+
+/**
+ * Content area for single post.
+ */
+.single-post-content {
+    padding: 2rem;
+}
+
+/* Responsive adjustments for single post card */
+@media (max-width: 600px) {
+    .single-post-card {
+        margin: 1rem;
+    }
+
+    .single-post-content {
+        padding: 1rem;
+    }
+}
+
+/* ==========================================================================
+   Archive Grid Card Layout - Responsive Columns
+   ========================================================================== */
+
+/**
+ * Responsive grid for archive cards.
+ * 4 columns on wide screens, 3 on desktop, 2 on tablet, 1 on mobile.
+ */
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+@media (max-width: 1200px) {
+    .post-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .post-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .post-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================================
+   Archive Card Styles
+   ========================================================================== */
+
+/**
+ * Card container for each post in the grid.
+ */
+.post-card {
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.2s;
+}
+
+/**
+ * Card hover effect for interactivity.
+ */
+.post-card:hover {
+    box-shadow: 0 6px 24px rgba(0, 45, 95, 0.12);
+}
+
+/**
+ * Thumbnail area for the card.
+ * Always reserves space for image or placeholder.
+ */
+.post-card-thumb {
+    display: block;
+    width: 100%;
+    height: 180px;
+    background: #f4f4f4;
+    position: relative;
+    overflow: hidden;
+}
+
+/**
+ * Featured image or placeholder for the card.
+ * Ensures consistent height and alignment.
+ * SVGs are scaled to fit, raster images are covered.
+ */
+.post-card-thumb img,
+.post-card-thumb--placeholder {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    background: #e0e6ed;
+}
+
+.post-card-thumb img[src$=".svg"] {
+    object-fit: contain;
+    background: #e0e6ed;
+}
+
+/**
+ * Placeholder styling for cards without a featured image.
+ * Just whitespace with a subtle background.
+ */
+.post-card-thumb--placeholder {
+    background: #e0e6ed;
+}
+
+/* Responsive adjustments for card thumbnails and content */
+@media (max-width: 600px) {
+
+    .post-card-thumb,
+    .post-card-thumb img,
+    .post-card-thumb--placeholder {
+        height: 120px;
+    }
+
+    .post-card-content {
+        padding: 1rem;
+    }
+}
+
+/**
+ * Card content area.
+ */
+.post-card-content {
+    padding: 1.25rem 1.25rem 1.5rem 1.25rem;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/**
+ * Post title styling in card.
+ */
+.post-card .entry-title {
+    font-size: 1.25rem;
+    margin: 0 0 0.75rem 0;
+    line-height: 1.2;
+}
+
+/**
+ * Post title link styling in card.
+ */
+.post-card .entry-title a {
+    color: var(--wp--preset--color--primary, #002D5F);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.post-card .entry-title a:hover {
+    color: var(--wp--preset--color--accent, #0073e6);
+}
+
+/**
+ * Excerpt styling in card.
+ */
+.post-card-excerpt {
+    color: #444;
+    font-size: 1rem;
+    margin-top: auto;
+}
+
+footer .hfe-nav-menu .sub-arrow {
+    display: none;
+}
+
+:root {
+    --primary: #002D5F;
+    --accent: #0073e6;
+}
+
+.post-card .entry-title a {
+    color: var(--primary);
+}
+
+:is(h1, h2, h3) {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.entry-title {
+    font-size: clamp(1.2rem, 2vw, 2rem);
+}
+
+.post-card-thumb img {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.card:has(img) {
+    border: 2px solid var(--accent);
+}
+
+.slider {
+    scroll-snap-type: x mandatory;
+}
+
+.slide {
+    scroll-snap-align: start;
+}
+
+@container (min-width: 400px) {
+    .card {
+        flex-direction: row;
+    }
+}
+
+input[type="checkbox"] {
+    accent-color: var(--accent);
+}
+
+body {
+    background: color-mix(in srgb, #0073e6 80%, white);
+}

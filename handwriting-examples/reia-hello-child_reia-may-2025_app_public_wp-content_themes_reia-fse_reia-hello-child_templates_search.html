@@ -1,0 +1,48 @@
+<!-- wp:template-part {"slug":"reia/header","area":"header"} /-->
+
+<!-- wp:group {"tagName":"main","style":{"spacing":{"padding":{"top":"4rem","bottom":"4rem"}}},"layout":{"type":"constrained","contentSize":"1200px"}} -->
+<main class="wp-block-group search" style="padding-top:4rem;padding-bottom:4rem">
+    <!-- wp:heading {"level":1,"textAlign":"center","style":{"typography":{"fontSize":"2.5rem","fontWeight":"800"},"color":{"text":"var(--wp--preset--color--primary)"},"spacing":{"margin":{"bottom":"1rem"}}}} -->
+    <h1 class="wp-block-heading has-text-align-center" style="color:var(--wp--preset--color--primary);margin-bottom:1rem;font-size:2.5rem;font-weight:800">Search Results</h1>
+    <!-- /wp:heading -->
+    
+    <!-- wp:paragraph {"align":"center","style":{"color":{"text":"var(--wp--preset--color--text-muted)"},"typography":{"fontSize":"1.1rem"},"spacing":{"margin":{"bottom":"2rem"}}}} -->
+    <p class="has-text-align-center" style="color:var(--wp--preset--color--text-muted);margin-bottom:2rem;font-size:1.1rem">Find what you're looking for in our real estate content</p>
+    <!-- /wp:paragraph -->
+    
+    <!-- wp:search {"label":"Search","showLabel":false,"placeholder":"Search our site...","width":60,"widthUnit":"%","buttonText":"Search","buttonPosition":"button-inside","buttonUseIcon":true,"style":{"border":{"radius":"2rem"}}} /-->
+    
+    <!-- wp:spacer {"height":"3rem"} -->
+    <div style="height:3rem" aria-hidden="true" class="wp-block-spacer"></div>
+    <!-- /wp:spacer -->
+    
+    <!-- wp:query {"queryId":0,"query":{"perPage":10,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"relevance","author":"","search":"","exclude":[],"sticky":"","inherit":true},"layout":{"type":"constrained"}} -->
+    <div class="wp-block-query">
+        <!-- wp:conditional-tags {"condition":"have_posts"} -->
+        <!-- wp:group {"style":{"spacing":{"margin":{"bottom":"2rem"},"padding":{"bottom":"1rem"}},"border":{"bottom":{"color":"var(--wp--preset--color--card-bg-alt)","width":"1px"}}},"layout":{"type":"flex","justifyContent":"space-between","flexWrap":"wrap"}} -->
+        <div class="wp-block-group" style="border-bottom-color:var(--wp--preset--color--card-bg-alt);border-bottom-width:1px;margin-bottom:2rem;padding-bottom:1rem">
+            <!-- wp:query-title {"type":"search","textAlign":"left","style":{"typography":{"fontSize":"1.1rem","fontWeight":"600"},"color":{"text":"var(--wp--preset--color--primary)"}}} /-->
+            <!-- wp:post-results-count {"style":{"typography":{"fontSize":"0.95rem"},"color":{"text":"var(--wp--preset--color--text-muted)"}}} /-->
+        </div>
+        <!-- /wp:group -->
+        <!-- /wp:conditional-tags -->
+        
+        <!-- wp:post-template {"style":{"spacing":{"blockGap":"2rem"}},"layout":{"type":"grid","columnCount":2}} -->
+        <!-- wp:pattern {"slug":"reia/post-card-search"} /-->
+        <!-- /wp:post-template -->
+        
+        <!-- wp:query-no-results -->
+        <!-- wp:pattern {"slug":"reia/no-results"} /-->
+        <!-- /wp:query-no-results -->
+        
+        <!-- wp:query-pagination {"paginationArrow":"arrow","layout":{"type":"flex","justifyContent":"space-between"}} -->
+        <!-- wp:query-pagination-previous /-->
+        <!-- wp:query-pagination-numbers /-->
+        <!-- wp:query-pagination-next /-->
+        <!-- /wp:query-pagination -->
+    </div>
+    <!-- /wp:query -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"reia/footer","area":"footer"} /-->

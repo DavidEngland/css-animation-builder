@@ -1,0 +1,3714 @@
+/*!
+Theme Name: REIA Hello Child
+Theme URI: https://github.com/DavidEngland/reia-hello-child/
+Description: REIA Hello Child is a child theme of Hello Elementor, created for Real Estate Intelligence Agency
+Author: DavidEngland
+Author URI: https://github.com/DavidEngland
+Template: hello-elementor
+Version: 2.3.0
+Text Domain: hello-elementor-child
+License: GNU General Public License v3 or later.
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
+Tags: flexible-header, custom-colors, custom-menu, custom-logo, editor-style, featured-images, rtl-language-support, threaded-comments, translation-ready
+*/
+@import"https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Slab:wght@400;700&display=swap";
+
+:root {
+    --primary: #002D5F;
+    --accent: #0073e6;
+    --parchment: #F4E4BC;
+    --color-text: #212529;
+    --color-text-muted: #6c757d;
+    --color-text-light: #ffffff;
+    --card-radius: 1.5rem;
+    --card-bg: #ffffff;
+    --card-bg-alt: #f8f9fa;
+    --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+    --card-shadow-hover: 0 4px 16px rgba(0, 45, 95, 0.08);
+    --gap-cards: 2rem;
+    --gap-grid: clamp(1rem, 3vw, 2.5rem);
+    --heading-size: clamp(1.25rem, 2vw, 2.25rem);
+    --body-size: clamp(1rem, 1.5vw, 1.125rem);
+    --card-thumb-height: clamp(120px, 20vw, 300px);
+    --font-main: Inter, Arial, sans-serif;
+    --font-heading: Merriweather, serif;
+    --max-width-desktop: 980px;
+    --max-width-tablet: 800px;
+    --max-width-mobile: 600px;
+    --max-width-small: 100%;
+    --content-padding-desktop: clamp(1.5rem, 4vw, 2.5rem);
+    --content-padding-tablet: clamp(1rem, 3vw, 2rem);
+    --content-padding-mobile: clamp(0.5rem, 2vw, 1rem);
+    --content-padding-small: 0.5rem;
+    --excerpt-lines: 3
+}
+
+.post-card {
+    background: #fff;
+    border-radius: 1.5rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, .07);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow .2s, border-radius .3s
+}
+
+.post-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 45, 95, .08);
+    border-radius: 1.5rem
+}
+
+.post-card .post-card-thumb {
+    display: block;
+    width: 100%;
+    height: clamp(120px, 20vw, 300px);
+    background: #fff;
+    position: relative;
+    overflow: hidden
+}
+
+.post-card .post-card-thumb img,
+.post-card .post-card-thumb .post-card-thumb--placeholder {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    background: #f8f9fa
+}
+
+.post-card .post-card-thumb .post-card-thumb--placeholder {
+    background: #f8f9fa url('data:image/svg+xml;utf8,<svg fill="gray" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="4" fill="%23e0e6ed"/><path d="M8 24l5-7 4 5 3-4 4 6H8z" fill="%23b0b8c1"/><circle cx="12" cy="12" r="3" fill="%23b0b8c1"/></svg>') center/48px no-repeat
+}
+
+.post-card .post-card-content {
+    padding: 1.25rem 1.25rem 1.5rem 1.25rem;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column
+}
+
+.post-card .entry-title {
+    font-size: clamp(1.25rem, 2vw, 2.25rem);
+    margin: 0 0 .75rem 0;
+    line-height: 1.2;
+    font-family: "Merriweather", serif
+}
+
+.post-card .entry-title a {
+    color: #002d5f;
+    text-decoration: none;
+    transition: color .2s
+}
+
+.post-card .entry-title a:hover {
+    color: #0073e6
+}
+
+.post-card .post-card-excerpt {
+    color: #6c757d;
+    font-size: clamp(1rem, 1.5vw, 1.125rem);
+    margin-top: auto
+}
+
+@media(max-width: 600px) {
+
+    .post-card-thumb,
+    .post-card-thumb img,
+    .post-card-thumb--placeholder {
+        height: 120px
+    }
+
+    .post-card-content {
+        padding: 1rem
+    }
+}
+
+.single-post-card {
+    background: #fff;
+    border-radius: 1.5rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, .07);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow .2s, border-radius .3s;
+    margin: 2rem auto;
+    max-width: 980px;
+    padding: 0
+}
+
+.single-post-card .single-post-thumb img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem
+}
+
+.single-post-card .single-post-content {
+    padding: 2rem;
+    font-size: clamp(1rem, 1.5vw, 1.125rem);
+    font-family: "Inter", Arial, sans-serif;
+    color: #212529
+}
+
+@media(max-width: 600px) {
+    .single-post-card {
+        margin: 1rem
+    }
+
+    .single-post-content {
+        padding: 1rem
+    }
+}
+
+.entry-content,
+.post-content,
+.page-content,
+.wp-block-post-content {
+    color: #212529;
+    background: #fff
+}
+
+.footer-width-fixer .entry-content,
+.footer-width-fixer .post-content,
+.footer-width-fixer .page-content,
+.footer-width-fixer .wp-block-post-content {
+    background: rgba(0, 0, 0, 0)
+}
+
+.single-post .elementor-widget-text-editor,
+.page:not(.elementor-page) .elementor-widget-text-editor,
+.blog .elementor-widget-text-editor,
+.archive .elementor-widget-text-editor {
+    color: #212529;
+    background: #fff
+}
+
+.footer-width-fixer .elementor-widget-text-editor {
+    background: rgba(0, 0, 0, 0) !important
+}
+
+.single-post .elementor-widget-container,
+.page:not(.elementor-page) .elementor-widget-container,
+.blog .elementor-widget-container,
+.archive .elementor-widget-container {
+    background-color: inherit !important
+}
+
+.footer-width-fixer .elementor-widget-container {
+    background-color: rgba(0, 0, 0, 0) !important
+}
+
+.entry-content .wp-block-paragraph,
+.entry-content .wp-block-heading,
+.entry-content .wp-block-list,
+.entry-content .wp-block-quote,
+.post-content .wp-block-paragraph,
+.post-content .wp-block-heading,
+.post-content .wp-block-list,
+.post-content .wp-block-quote,
+.page-content .wp-block-paragraph,
+.page-content .wp-block-heading,
+.page-content .wp-block-list,
+.page-content .wp-block-quote {
+    color: #212529
+}
+
+footer .hfe-nav-menu .sub-arrow {
+    display: none !important
+}
+
+footer .hfe-nav-menu ul ul,
+footer .hfe-nav-menu li.menu-item-has-children > ul {
+    display: none !important
+}
+
+footer .hfe-nav-menu .sub-arrow {
+    pointer-events: none !important
+}
+
+footer .hfe-nav-menu a:focus-visible {
+    outline: 2px solid var(--accent, #0073e6);
+    outline-offset: 2px;
+    border-radius: .5em;
+    background: #f0f6ff
+}
+
+.visually-hidden,
+.sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both
+}
+
+.responsive-embed {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden
+}
+
+.responsive-embed iframe,
+.responsive-embed embed,
+.responsive-embed object,
+.responsive-embed video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
+}
+
+@layer components {
+    .responsive-map-embeds {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin: 2rem 0;
+        gap: 1rem
+    }
+
+    .map-embed {
+        display: none;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, .06);
+        border-radius: 1rem;
+        width: 100%;
+        max-width: 100%;
+        border: 0;
+        max-height: 70vh
+    }
+
+    @media(max-width: 599px) {
+        .map-embed--small {
+            display: block
+        }
+    }
+
+    @media(min-width: 600px)and (max-width: 1023px) {
+        .map-embed--medium {
+            display: block
+        }
+    }
+
+    @media(min-width: 1024px) {
+        .map-embed--large {
+            display: block
+        }
+    }
+
+    .map-embed:focus {
+        outline: 2px solid var(--accent, #ac3033);
+        outline-offset: 2px
+    }
+}
+
+.no-select {
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -ms-user-select: none !important
+}
+
+.text-center {
+    text-align: center !important
+}
+
+.text-left {
+    text-align: left !important
+}
+
+.text-right {
+    text-align: right !important
+}
+
+.m-0 {
+    margin: 0 !important
+}
+
+.p-0 {
+    padding: 0 !important
+}
+
+.rounded {
+    border-radius: .5rem !important
+}
+
+.rounded-sm {
+    border-radius: .25rem !important
+}
+
+.rounded-lg {
+    border-radius: 1.5rem !important
+}
+
+.shadow {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .08) !important
+}
+
+.shadow-lg {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, .12) !important
+}
+
+.d-block {
+    display: block !important
+}
+
+.d-inline {
+    display: inline !important
+}
+
+.d-none {
+    display: none !important
+}
+
+@media print {
+    body {
+        background: #fff !important;
+        color: #000 !important
+    }
+
+    a,
+    a:visited {
+        color: #000 !important;
+        text-decoration: underline !important
+    }
+
+    nav,
+    .no-print,
+    .elementor-header,
+    .elementor-footer {
+        display: none !important
+    }
+}
+
+.wp-block-html .company-slogan {
+    margin-top: 0;
+    margin-bottom: 0
+}
+
+.wp-block-html + .wp-block-html .company-slogan {
+    margin-top: 2rem
+}
+
+.object-cover {
+    object-fit: cover !important
+}
+
+.object-contain {
+    object-fit: contain !important
+}
+
+.object-fill {
+    object-fit: fill !important
+}
+
+.object-scale-down {
+    object-fit: scale-down !important
+}
+
+@property --btn-bg {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: #fff
+}
+
+@property --btn-color {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: #002d5f
+}
+
+@property --btn-border {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: var(--accent, #0073e6)
+}
+
+@property --btn-radius {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 2em
+}
+
+@property --btn-shadow {
+    syntax: "<shadow>";
+    inherits: true;
+    initial-value: 0 2px 8px rgba(0, 45, 95, .08)
+}
+
+:root {
+    --btn-bg: #fff;
+    --btn-color: #002D5F;
+    --btn-border: var(--accent, #0073e6);
+    --btn-radius: 2em;
+    --btn-shadow: 0 2px 8px rgba(0, 45, 95, 0.08)
+}
+
+@layer components {
+
+    .btn,
+    .button,
+    .wp-block-button__link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-main, "Inter", Arial, sans-serif);
+        font-weight: 600;
+        font-size: 1.08em;
+        line-height: 1.2;
+        padding: .7em 2em;
+        border-radius: var(--btn-radius);
+        border: 2px solid var(--btn-border);
+        background: var(--btn-bg);
+        color: var(--btn-color);
+        box-shadow: var(--btn-shadow);
+        cursor: pointer;
+        transition: color .2s, background .2s, border-color .2s, box-shadow .2s, --btn-radius .3s;
+        text-decoration: none;
+        position: relative;
+        overflow: hidden;
+        min-width: 2.5em;
+        min-height: 2.5em;
+        user-select: none;
+        outline: none
+    }
+
+    .btn:focus-visible,
+    .button:focus-visible,
+    .wp-block-button__link:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+        box-shadow: 0 0 0 4px rgba(0, 115, 230, .12)
+    }
+
+    .btn-primary {
+        --btn-bg: var(--accent, #0073e6);
+        --btn-color: #fff;
+        --btn-border: var(--accent, #0073e6)
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus {
+        --btn-bg: #005bb5;
+        --btn-border: #005bb5;
+        --btn-radius: 2.5em
+    }
+
+    .btn-secondary {
+        --btn-bg: #fff;
+        --btn-color: var(--accent, #0073e6);
+        --btn-border: var(--accent, #0073e6)
+    }
+
+    .btn-secondary:hover,
+    .btn-secondary:focus {
+        --btn-bg: var(--accent, #0073e6);
+        --btn-color: #fff;
+        --btn-radius: 2.5em
+    }
+
+    .btn-danger {
+        --btn-bg: #fff;
+        --btn-color: #d7263d;
+        --btn-border: #d7263d
+    }
+
+    .btn-danger:hover,
+    .btn-danger:focus {
+        --btn-bg: #d7263d;
+        --btn-color: #fff;
+        --btn-border: #d7263d
+    }
+
+    .btn-success {
+        --btn-bg: #fff;
+        --btn-color: #1ca67a;
+        --btn-border: #1ca67a
+    }
+
+    .btn-success:hover,
+    .btn-success:focus {
+        --btn-bg: #1ca67a;
+        --btn-color: #fff;
+        --btn-border: #1ca67a
+    }
+
+    .btn-small {
+        font-size: .95em;
+        padding: .5em 1.2em;
+        border-radius: 1.5em
+    }
+
+    .btn-large {
+        font-size: 1.25em;
+        padding: 1em 2.5em;
+        border-radius: 2.5em
+    }
+
+    .btn-block {
+        display: flex;
+        width: 100%;
+        justify-content: center
+    }
+
+    .btn-icon {
+        padding: .5em;
+        width: 2.5em;
+        height: 2.5em;
+        border-radius: 50%;
+        font-size: 1.2em;
+        justify-content: center
+    }
+
+    .btn-ghost {
+        --btn-bg: transparent;
+        --btn-color: var(--accent, #0073e6);
+        --btn-border: var(--accent, #0073e6);
+        box-shadow: none
+    }
+
+    .btn-ghost:hover,
+    .btn-ghost:focus {
+        --btn-bg: var(--accent, #0073e6);
+        --btn-color: #fff
+    }
+
+    .btn-animated-border {
+        position: relative;
+        z-index: 1;
+        overflow: hidden
+    }
+
+    .btn-animated-border::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        border: 2px solid var(--btn-border, var(--accent, #0073e6));
+        border-radius: inherit;
+        pointer-events: none;
+        box-sizing: border-box;
+        transform: scaleX(0);
+        transition: transform .4s cubic-bezier(0.4, 1.6, 0.6, 1)
+    }
+
+    .btn-animated-border:hover::before,
+    .btn-animated-border:focus::before {
+        transform: scaleX(1)
+    }
+
+    .btn-minimal {
+        --btn-bg: transparent;
+        --btn-color: var(--primary, #002D5F);
+        --btn-border: transparent;
+        box-shadow: none;
+        border-width: 0;
+        padding: .7em 1em
+    }
+
+    .btn-minimal:hover,
+    .btn-minimal:focus {
+        --btn-color: var(--accent, #0073e6);
+        text-decoration: underline
+    }
+
+    .btn-group {
+        display: flex;
+        gap: 1em;
+        flex-wrap: wrap;
+        container-type: inline-size
+    }
+
+    @container (max-width: 400px) {
+        .btn-group {
+            flex-direction: column;
+            gap: .5em
+        }
+    }
+}
+
+details {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 0 1.5em 0;
+    border-radius: .5em;
+    border: 1px solid #e0e6ed;
+    background: var(--muted, #fafbfc);
+    padding: 0;
+    box-shadow: 0 1px 4px rgba(0, 45, 95, .04);
+    position: relative;
+    transition: box-shadow .2s, background .2s
+}
+
+details[open] {
+    box-shadow: 0 4px 16px rgba(0, 45, 95, .1);
+    background: #fffbe7
+}
+
+summary {
+    font-weight: 700;
+    color: var(--primary, #002d5f);
+    cursor: pointer;
+    outline: none;
+    padding: .7em 1.2em;
+    margin-bottom: .5em;
+    font-size: 1.13em;
+    letter-spacing: .01em;
+    border-bottom: 1px solid #e0e6ed;
+    transition: color .2s, border-color .2s, background .2s;
+    list-style: none;
+    background: rgba(0, 0, 0, 0);
+    display: flex;
+    align-items: center;
+    gap: .5em
+}
+
+summary::-webkit-details-marker,
+summary::marker {
+    display: none
+}
+
+details[open] summary {
+    color: var(--accent, #ac3033);
+    border-bottom: 1px solid #ffd9b3
+}
+
+summary::after {
+    content: "▼";
+    margin-left: auto;
+    font-size: .9em;
+    color: #bbb;
+    transition: transform .2s, color .2s
+}
+
+details[open] summary::after {
+    transform: rotate(-180deg);
+    color: var(--accent, #ac3033)
+}
+
+details > *:not(summary) {
+    margin: .7em 1.2em .7em 1.2em
+}
+
+details:last-child {
+    margin-bottom: 0
+}
+
+summary:focus {
+    outline: 2px solid var(--accent, #ac3033);
+    outline-offset: 2px;
+    background: #fbeaea;
+    border-radius: .3em
+}
+
+details[open] {
+    border-color: #ffd9b3
+}
+
+@supports selector(details:has([open])) {
+    details:has([open]) {
+        outline: 2px solid var(--accent, #ac3033);
+        outline-offset: 2px;
+        box-shadow: 0 0 0 4px #ffe6cc
+    }
+}
+
+@scope (details) {
+    summary {
+        background: #fffbe7
+    }
+
+    details[open] summary {
+        background: #fffbe7;
+        color: var(--accent, #ac3033)
+    }
+}
+
+@media(min-width: 0px) {
+    details summary {
+        background: #fffbe7
+    }
+
+    details[open] summary {
+        background: #fffbe7;
+        color: var(--accent, #ac3033)
+    }
+}
+
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(1rem, 3vw, 2.5rem);
+    margin: 2rem 0
+}
+
+@media(max-width: 1200px) {
+    .post-grid {
+        grid-template-columns: repeat(3, 1fr)
+    }
+}
+
+@media(max-width: 900px) {
+    .post-grid {
+        grid-template-columns: repeat(2, 1fr)
+    }
+}
+
+@media(max-width: 600px) {
+    .post-grid {
+        grid-template-columns: repeat(1, 1fr)
+    }
+}
+
+:root {
+    --ai-anim-duration: 1s;
+    --ai-anim-delay: 0s;
+    --ai-anim-ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --ai-anim-iteration: 1
+}
+
+@media(prefers-reduced-motion: reduce) {
+
+    .animated,
+    [class*=animated],
+    [class*=ai-anim-] {
+        animation: none !important;
+        transition: none !important
+    }
+}
+
+.animated {
+    animation-duration: var(--ai-anim-duration, 1s);
+    animation-delay: var(--ai-anim-delay, 0s);
+    animation-timing-function: var(--ai-anim-ease, cubic-bezier(0.4, 0, 0.2, 1));
+    animation-iteration-count: var(--ai-anim-iteration, 1);
+    animation-fill-mode: both;
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0)
+}
+
+.animated.infinite {
+    --ai-anim-iteration: infinite
+}
+
+[class^=ai-delay-] {
+    animation-delay: var(--ai-anim-delay, 0s)
+}
+
+[class^=ai-duration-] {
+    animation-duration: var(--ai-anim-duration, 1s)
+}
+
+.ai-delay-1 {
+    --ai-anim-delay: .5s
+}
+
+.ai-delay-2 {
+    --ai-anim-delay: 1s
+}
+
+.ai-delay-3 {
+    --ai-anim-delay: 1.5s
+}
+
+.ai-delay-4 {
+    --ai-anim-delay: 2s
+}
+
+.ai-delay-5 {
+    --ai-anim-delay: 2.5s
+}
+
+.ai-delay-6 {
+    --ai-anim-delay: 3s
+}
+
+.ai-delay-7 {
+    --ai-anim-delay: 3.5s
+}
+
+.ai-delay-8 {
+    --ai-anim-delay: 4s
+}
+
+.ai-delay-9 {
+    --ai-anim-delay: 4.5s
+}
+
+.ai-delay-10 {
+    --ai-anim-delay: 5s
+}
+
+.ai-duration-1 {
+    --ai-anim-duration: .5s
+}
+
+.ai-duration-2 {
+    --ai-anim-duration: 1s
+}
+
+.ai-duration-3 {
+    --ai-anim-duration: 1.5s
+}
+
+.ai-duration-4 {
+    --ai-anim-duration: 2s
+}
+
+.ai-duration-5 {
+    --ai-anim-duration: 2.5s
+}
+
+.ai-duration-6 {
+    --ai-anim-duration: 3s
+}
+
+.ai-duration-7 {
+    --ai-anim-duration: 3.5s
+}
+
+.ai-duration-8 {
+    --ai-anim-duration: 4s
+}
+
+.ai-duration-9 {
+    --ai-anim-duration: 4.5s
+}
+
+.ai-duration-10 {
+    --ai-anim-duration: 5s
+}
+
+.eds-animate {
+    overflow: hidden
+}
+
+.edsanimate-sis-hidden,
+.eds-scroll-hidden {
+    opacity: 0
+}
+
+.eds-scroll-visible {
+    opacity: 1
+}
+
+@keyframes flash {
+
+    0%,
+    50%,
+    100% {
+        opacity: 1
+    }
+
+    25%,
+    75% {
+        opacity: 0
+    }
+}
+
+.animated.flash {
+    animation-name: flash
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0)
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translateX(-10px)
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translateX(10px)
+    }
+}
+
+.animated.shake {
+    animation-name: shake
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0)
+    }
+
+    40% {
+        transform: translateY(-30px)
+    }
+
+    60% {
+        transform: translateY(-15px)
+    }
+}
+
+.animated.bounce {
+    animation-name: bounce
+}
+
+@keyframes tada {
+    0% {
+        transform: scale(1)
+    }
+
+    10%,
+    20% {
+        transform: scale(0.9) rotate(-3deg)
+    }
+
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: scale(1.1) rotate(3deg)
+    }
+
+    40%,
+    60%,
+    80% {
+        transform: scale(1.1) rotate(-3deg)
+    }
+
+    100% {
+        transform: scale(1) rotate(0)
+    }
+}
+
+.animated.tada {
+    animation-name: tada
+}
+
+@keyframes swing {
+
+    20%,
+    40%,
+    60%,
+    80%,
+    100% {
+        transform-origin: top center
+    }
+
+    20% {
+        transform: rotate(15deg)
+    }
+
+    40% {
+        transform: rotate(-10deg)
+    }
+
+    60% {
+        transform: rotate(5deg)
+    }
+
+    80% {
+        transform: rotate(-5deg)
+    }
+
+    100% {
+        transform: rotate(0deg)
+    }
+}
+
+.animated.swing {
+    animation-name: swing
+}
+
+@keyframes rubberBand {
+    0% {
+        transform: scale3d(1, 1, 1)
+    }
+
+    30% {
+        transform: scale3d(1.25, 0.75, 1)
+    }
+
+    40% {
+        transform: scale3d(0.75, 1.25, 1)
+    }
+
+    50% {
+        transform: scale3d(1.15, 0.85, 1)
+    }
+
+    65% {
+        transform: scale3d(0.95, 1.05, 1)
+    }
+
+    75% {
+        transform: scale3d(1.05, 0.95, 1)
+    }
+
+    100% {
+        transform: scale3d(1, 1, 1)
+    }
+}
+
+.animated.rubberBand {
+    animation-name: rubberBand
+}
+
+@keyframes wobble {
+    0% {
+        transform: translateX(0%)
+    }
+
+    15% {
+        transform: translateX(-25%) rotate(-5deg)
+    }
+
+    30% {
+        transform: translateX(20%) rotate(3deg)
+    }
+
+    45% {
+        transform: translateX(-15%) rotate(-3deg)
+    }
+
+    60% {
+        transform: translateX(10%) rotate(2deg)
+    }
+
+    75% {
+        transform: translateX(-5%) rotate(-1deg)
+    }
+
+    100% {
+        transform: translateX(0%)
+    }
+}
+
+.animated.wobble {
+    animation-name: wobble
+}
+
+@keyframes jello {
+
+    0%,
+    11.1%,
+    100% {
+        transform: none
+    }
+
+    22.2% {
+        transform: skewX(-12.5deg) skewY(-12.5deg)
+    }
+
+    33.3% {
+        transform: skewX(6.25deg) skewY(6.25deg)
+    }
+
+    44.4% {
+        transform: skewX(-3.125deg) skewY(-3.125deg)
+    }
+
+    55.5% {
+        transform: skewX(1.5625deg) skewY(1.5625deg)
+    }
+
+    66.6% {
+        transform: skewX(-0.78125deg) skewY(-0.78125deg)
+    }
+
+    77.7% {
+        transform: skewX(0.390625deg) skewY(0.390625deg)
+    }
+
+    88.8% {
+        transform: skewX(-0.1953125deg) skewY(-0.1953125deg)
+    }
+}
+
+.animated.jello {
+    animation-name: jello;
+    transform-origin: center
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1)
+    }
+
+    50% {
+        transform: scale(1.1)
+    }
+
+    100% {
+        transform: scale(1)
+    }
+}
+
+.animated.pulse {
+    animation-name: pulse
+}
+
+@keyframes flip {
+    0% {
+        transform: perspective(400px) rotateY(0);
+        animation-timing-function: ease-out
+    }
+
+    40% {
+        transform: perspective(400px) translateZ(150px) rotateY(170deg);
+        animation-timing-function: ease-out
+    }
+
+    50% {
+        transform: perspective(400px) translateZ(150px) rotateY(190deg) scale(1);
+        animation-timing-function: ease-in
+    }
+
+    80% {
+        transform: perspective(400px) rotateY(360deg) scale(0.95);
+        animation-timing-function: ease-in
+    }
+
+    100% {
+        transform: perspective(400px) scale(1);
+        animation-timing-function: ease-in
+    }
+}
+
+.animated.flip {
+    backface-visibility: visible !important;
+    animation-name: flip
+}
+
+@keyframes flipInX {
+    0% {
+        transform: perspective(400px) rotateX(90deg);
+        opacity: 0
+    }
+
+    40% {
+        transform: perspective(400px) rotateX(-10deg)
+    }
+
+    70% {
+        transform: perspective(400px) rotateX(10deg)
+    }
+
+    100% {
+        transform: perspective(400px) rotateX(0deg);
+        opacity: 1
+    }
+}
+
+.animated.flipInX {
+    backface-visibility: visible !important;
+    animation-name: flipInX
+}
+
+@keyframes flipOutX {
+    0% {
+        transform: perspective(400px) rotateX(0deg);
+        opacity: 1
+    }
+
+    100% {
+        transform: perspective(400px) rotateX(90deg);
+        opacity: 0
+    }
+}
+
+.animated.flipOutX {
+    animation-name: flipOutX;
+    backface-visibility: visible !important
+}
+
+@keyframes flipInY {
+    0% {
+        transform: perspective(400px) rotateY(90deg);
+        opacity: 0
+    }
+
+    40% {
+        transform: perspective(400px) rotateY(-10deg)
+    }
+
+    70% {
+        transform: perspective(400px) rotateY(10deg)
+    }
+
+    100% {
+        transform: perspective(400px) rotateY(0deg);
+        opacity: 1
+    }
+}
+
+.animated.flipInY {
+    backface-visibility: visible !important;
+    animation-name: flipInY
+}
+
+@keyframes flipOutY {
+    0% {
+        transform: perspective(400px) rotateY(0deg);
+        opacity: 1
+    }
+
+    100% {
+        transform: perspective(400px) rotateY(90deg);
+        opacity: 0
+    }
+}
+
+.animated.flipOutY {
+    animation-name: flipOutY;
+    backface-visibility: visible !important
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
+    }
+}
+
+.animated.fadeIn {
+    animation-name: fadeIn
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+.animated.fadeInUp {
+    animation-name: fadeInUp
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+.animated.fadeInDown {
+    animation-name: fadeInDown
+}
+
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+
+.animated.fadeInLeft {
+    animation-name: fadeInLeft
+}
+
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(20px)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+
+.animated.fadeInRight {
+    animation-name: fadeInRight
+}
+
+@keyframes fadeInUpBig {
+    0% {
+        opacity: 0;
+        transform: translateY(1080px)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+.animated.fadeInUpBig {
+    animation-name: fadeInUpBig
+}
+
+@keyframes fadeInDownBig {
+    0% {
+        opacity: 0;
+        transform: translateY(-1080px)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+.animated.fadeInDownBig {
+    animation-name: fadeInDownBig
+}
+
+@keyframes fadeInLeftBig {
+    0% {
+        opacity: 0;
+        transform: translateX(-2000px)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+
+.animated.fadeInLeftBig {
+    animation-name: fadeInLeftBig
+}
+
+@keyframes fadeInRightBig {
+    0% {
+        opacity: 0;
+        transform: translateX(2000px)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+
+.animated.fadeInRightBig {
+    animation-name: fadeInRightBig
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1
+    }
+
+    100% {
+        opacity: 0
+    }
+}
+
+.animated.fadeOut {
+    animation-name: fadeOut
+}
+
+@keyframes fadeOutUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0)
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-20px)
+    }
+}
+
+.animated.fadeOutUp {
+    animation-name: fadeOutUp
+}
+
+@keyframes fadeOutDown {
+    0% {
+        opacity: 1;
+        transform: translateY(0)
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(20px)
+    }
+}
+
+.animated.fadeOutDown {
+    animation-name: fadeOutDown
+}
+
+@keyframes fadeOutLeft {
+    0% {
+        opacity: 1;
+        transform: translateX(0)
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-20px)
+    }
+}
+
+.animated.fadeOutLeft {
+    animation-name: fadeOutLeft
+}
+
+@keyframes fadeOutRight {
+    0% {
+        opacity: 1;
+        transform: translateX(0)
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(20px)
+    }
+}
+
+.animated.fadeOutRight {
+    animation-name: fadeOutRight
+}
+
+@keyframes fadeOutUpBig {
+    0% {
+        opacity: 1;
+        transform: translateY(0)
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-1080px)
+    }
+}
+
+.animated.fadeOutUpBig {
+    animation-name: fadeOutUpBig
+}
+
+@keyframes fadeOutDownBig {
+    0% {
+        opacity: 1;
+        transform: translateY(0)
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(1080px)
+    }
+}
+
+.animated.fadeOutDownBig {
+    animation-name: fadeOutDownBig
+}
+
+@keyframes fadeOutLeftBig {
+    0% {
+        opacity: 1;
+        transform: translateX(0)
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-2000px)
+    }
+}
+
+.animated.fadeOutLeftBig {
+    animation-name: fadeOutLeftBig
+}
+
+@keyframes fadeOutRightBig {
+    0% {
+        opacity: 1;
+        transform: translateX(0)
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(2000px)
+    }
+}
+
+.animated.fadeOutRightBig {
+    animation-name: fadeOutRightBig
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3)
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.05)
+    }
+
+    70% {
+        transform: scale(0.9)
+    }
+
+    100% {
+        transform: scale(1)
+    }
+}
+
+.animated.bounceIn {
+    animation-name: bounceIn
+}
+
+@keyframes bounceInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(1080px)
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateY(-30px)
+    }
+
+    80% {
+        transform: translateY(10px)
+    }
+
+    100% {
+        transform: translateY(0)
+    }
+}
+
+.animated.bounceInUp {
+    animation-name: bounceInUp
+}
+
+@keyframes bounceInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-1080px)
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateY(30px)
+    }
+
+    80% {
+        transform: translateY(-10px)
+    }
+
+    100% {
+        transform: translateY(0)
+    }
+}
+
+.animated.bounceInDown {
+    animation-name: bounceInDown
+}
+
+@keyframes bounceInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-2000px)
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateX(30px)
+    }
+
+    80% {
+        transform: translateX(-10px)
+    }
+
+    100% {
+        transform: translateX(0)
+    }
+}
+
+.animated.bounceInLeft {
+    animation-name: bounceInLeft
+}
+
+@keyframes bounceInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(2000px)
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateX(-30px)
+    }
+
+    80% {
+        transform: translateX(10px)
+    }
+
+    100% {
+        transform: translateX(0)
+    }
+}
+
+.animated.bounceInRight {
+    animation-name: bounceInRight
+}
+
+@keyframes bounceOut {
+    0% {
+        transform: scale(1)
+    }
+
+    25% {
+        transform: scale(0.95)
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.1)
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.3)
+    }
+}
+
+.animated.bounceOut {
+    animation-name: bounceOut
+}
+
+@keyframes bounceOutUp {
+    0% {
+        transform: translateY(0)
+    }
+
+    20% {
+        opacity: 1;
+        transform: translateY(20px)
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-1080px)
+    }
+}
+
+.animated.bounceOutUp {
+    animation-name: bounceOutUp
+}
+
+@keyframes bounceOutDown {
+    0% {
+        transform: translateY(0)
+    }
+
+    20% {
+        opacity: 1;
+        transform: translateY(-20px)
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(1080px)
+    }
+}
+
+.animated.bounceOutDown {
+    animation-name: bounceOutDown
+}
+
+@keyframes bounceOutLeft {
+    0% {
+        transform: translateX(0)
+    }
+
+    20% {
+        opacity: 1;
+        transform: translateX(20px)
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-2000px)
+    }
+}
+
+.animated.bounceOutLeft {
+    animation-name: bounceOutLeft
+}
+
+@keyframes bounceOutRight {
+    0% {
+        transform: translateX(0)
+    }
+
+    20% {
+        opacity: 1;
+        transform: translateX(-20px)
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(2000px)
+    }
+}
+
+.animated.bounceOutRight {
+    animation-name: bounceOutRight
+}
+
+@keyframes rotateIn {
+    0% {
+        transform: rotate(-200deg);
+        opacity: 0
+    }
+
+    100% {
+        transform: rotate(0);
+        opacity: 1
+    }
+}
+
+.animated.rotateIn {
+    animation-name: rotateIn
+}
+
+@keyframes rotateInUpLeft {
+    0% {
+        transform: rotate(90deg);
+        opacity: 0
+    }
+
+    100% {
+        transform: rotate(0);
+        opacity: 1
+    }
+}
+
+.animated.rotateInUpLeft {
+    animation-name: rotateInUpLeft
+}
+
+@keyframes rotateInDownLeft {
+    0% {
+        transform: rotate(-90deg);
+        opacity: 0
+    }
+
+    100% {
+        transform: rotate(0);
+        opacity: 1
+    }
+}
+
+.animated.rotateInDownLeft {
+    animation-name: rotateInDownLeft
+}
+
+@keyframes rotateInUpRight {
+    0% {
+        transform: rotate(-90deg);
+        opacity: 0
+    }
+
+    100% {
+        transform: rotate(0);
+        opacity: 1
+    }
+}
+
+.animated.rotateInUpRight {
+    animation-name: rotateInUpRight
+}
+
+@keyframes rotateInDownRight {
+    0% {
+        transform: rotate(90deg);
+        opacity: 0
+    }
+
+    100% {
+        transform: rotate(0);
+        opacity: 1
+    }
+}
+
+.animated.rotateInDownRight {
+    animation-name: rotateInDownRight
+}
+
+@keyframes rotateOut {
+    0% {
+        transform: rotate(0);
+        opacity: 1
+    }
+
+    100% {
+        transform: rotate(200deg);
+        opacity: 0
+    }
+}
+
+.animated.rotateOut {
+    animation-name: rotateOut
+}
+
+@keyframes rotateOutUpLeft {
+    0% {
+        transform: rotate(0);
+        opacity: 1
+    }
+
+    100% {
+        transform: rotate(-90deg);
+        opacity: 0
+    }
+}
+
+.animated.rotateOutUpLeft {
+    animation-name: rotateOutUpLeft
+}
+
+@keyframes rotateOutDownLeft {
+    0% {
+        transform: rotate(0);
+        opacity: 1
+    }
+
+    100% {
+        transform: rotate(90deg);
+        opacity: 0
+    }
+}
+
+.animated.rotateOutDownLeft {
+    animation-name: rotateOutDownLeft
+}
+
+@keyframes rotateOutUpRight {
+    0% {
+        transform: rotate(0);
+        opacity: 1
+    }
+
+    100% {
+        transform: rotate(90deg);
+        opacity: 0
+    }
+}
+
+.animated.rotateOutUpRight {
+    animation-name: rotateOutUpRight
+}
+
+@keyframes rotateOutDownRight {
+    0% {
+        transform: rotate(0);
+        opacity: 1
+    }
+
+    100% {
+        transform: rotate(-90deg);
+        opacity: 0
+    }
+}
+
+.animated.rotateOutDownRight {
+    animation-name: rotateOutDownRight
+}
+
+@keyframes zoomIn {
+    0% {
+        opacity: 0;
+        transform: scale3d(0.3, 0.3, 0.3)
+    }
+
+    50% {
+        opacity: 1
+    }
+}
+
+.animated.zoomIn {
+    animation-name: zoomIn
+}
+
+@keyframes zoomInDown {
+    0% {
+        opacity: 0;
+        transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -1000px, 0);
+        animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19)
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
+        animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1)
+    }
+}
+
+.animated.zoomInDown {
+    animation-name: zoomInDown
+}
+
+@keyframes zoomInLeft {
+    0% {
+        opacity: 0;
+        transform: scale3d(0.1, 0.1, 0.1) translate3d(-1000px, 0, 0);
+        animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19)
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale3d(0.475, 0.475, 0.475) translate3d(10px, 0, 0);
+        animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1)
+    }
+}
+
+.animated.zoomInLeft {
+    animation-name: zoomInLeft
+}
+
+@keyframes zoomInRight {
+    0% {
+        opacity: 0;
+        transform: scale3d(0.1, 0.1, 0.1) translate3d(1000px, 0, 0);
+        animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19)
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale3d(0.475, 0.475, 0.475) translate3d(-10px, 0, 0);
+        animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1)
+    }
+}
+
+.animated.zoomInRight {
+    animation-name: zoomInRight
+}
+
+@keyframes zoomInUp {
+    0% {
+        opacity: 0;
+        transform: scale3d(0.1, 0.1, 0.1) translate3d(0, 1000px, 0);
+        animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19)
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale3d(0.475, 0.475, 0.475) translate3d(0, -60px, 0);
+        animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1)
+    }
+}
+
+.animated.zoomInUp {
+    animation-name: zoomInUp
+}
+
+@keyframes zoomOut {
+    0% {
+        opacity: 1
+    }
+
+    50% {
+        opacity: 0;
+        transform: scale3d(0.3, 0.3, 0.3)
+    }
+
+    100% {
+        opacity: 0
+    }
+}
+
+.animated.zoomOut {
+    animation-name: zoomOut
+}
+
+@keyframes zoomOutDown {
+    40% {
+        opacity: 1;
+        transform: scale3d(0.475, 0.475, 0.475) translate3d(0, -60px, 0);
+        animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19)
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale3d(0.1, 0.1, 0.1) translate3d(0, 1080px, 0);
+        transform-origin: center bottom;
+        animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1)
+    }
+}
+
+.animated.zoomOutDown {
+    animation-name: zoomOutDown
+}
+
+@keyframes zoomOutLeft {
+    40% {
+        opacity: 1;
+        transform: scale3d(0.475, 0.475, 0.475) translate3d(42px, 0, 0)
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.1) translate3d(-2000px, 0, 0);
+        transform-origin: left center
+    }
+}
+
+.animated.zoomOutLeft {
+    animation-name: zoomOutLeft
+}
+
+@keyframes zoomOutRight {
+    40% {
+        opacity: 1;
+        transform: scale3d(0.475, 0.475, 0.475) translate3d(-42px, 0, 0)
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.1) translate3d(2000px, 0, 0);
+        transform-origin: right center
+    }
+}
+
+.animated.zoomOutRight {
+    animation-name: zoomOutRight
+}
+
+@keyframes zoomOutUp {
+    40% {
+        opacity: 1;
+        transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
+        animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19)
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -1080px, 0);
+        transform-origin: center bottom;
+        animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1)
+    }
+}
+
+.animated.zoomOutUp {
+    animation-name: zoomOutUp
+}
+
+@keyframes slideInDown {
+    0% {
+        transform: translate3d(0, -1080px, 0);
+        opacity: 1
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0)
+    }
+}
+
+.animated.slideInDown {
+    animation-name: slideInDown
+}
+
+@keyframes slideInLeft {
+    0% {
+        transform: translate3d(-3000px, 0, 0);
+        opacity: 1
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0)
+    }
+}
+
+.animated.slideInLeft {
+    animation-name: slideInLeft
+}
+
+@keyframes slideInRight {
+    0% {
+        transform: translate3d(3000px, 0, 0);
+        opacity: 1
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0)
+    }
+}
+
+.animated.slideInRight {
+    animation-name: slideInRight
+}
+
+@keyframes slideInUp {
+    0% {
+        transform: translate3d(0, 1080px, 0);
+        opacity: 1
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0)
+    }
+}
+
+.animated.slideInUp {
+    animation-name: slideInUp
+}
+
+@keyframes slideOutDown {
+    0% {
+        transform: translate3d(0, 0, 0)
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate3d(0, 1080px, 0)
+    }
+}
+
+.animated.slideOutDown {
+    animation-name: slideOutDown
+}
+
+@keyframes slideOutLeft {
+    0% {
+        transform: translate3d(0, 0, 0)
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate3d(-3000px, 0, 0)
+    }
+}
+
+.animated.slideOutLeft {
+    animation-name: slideOutLeft
+}
+
+@keyframes slideOutRight {
+    0% {
+        transform: translate3d(0, 0, 0)
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate3d(3000px, 0, 0)
+    }
+}
+
+.animated.slideOutRight {
+    animation-name: slideOutRight
+}
+
+@keyframes slideOutUp {
+    0% {
+        transform: translate3d(0, 0, 0)
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate3d(0, -1080px, 0)
+    }
+}
+
+.animated.slideOutUp {
+    animation-name: slideOutUp
+}
+
+@keyframes hinge {
+    0% {
+        transform: rotate(0);
+        transform-origin: top left;
+        animation-timing-function: ease-in-out
+    }
+
+    20%,
+    60% {
+        transform: rotate(80deg);
+        transform-origin: top left;
+        animation-timing-function: ease-in-out
+    }
+
+    40% {
+        transform: rotate(60deg);
+        transform-origin: top left;
+        animation-timing-function: ease-in-out
+    }
+
+    80% {
+        transform: rotate(60deg) translateY(0);
+        opacity: 1;
+        transform-origin: top left;
+        animation-timing-function: ease-in-out
+    }
+
+    100% {
+        transform: translateY(700px);
+        opacity: 0
+    }
+}
+
+.animated.hinge {
+    animation-name: hinge
+}
+
+@keyframes rollIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-3000px) rotate(-120deg)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0px) rotate(0deg)
+    }
+}
+
+.animated.rollIn {
+    animation-name: rollIn
+}
+
+@keyframes rollOut {
+    0% {
+        opacity: 1;
+        transform: translateX(0px) rotate(0deg)
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(3000px) rotate(120deg)
+    }
+}
+
+.animated.rollOut {
+    animation-name: rollOut
+}
+
+@keyframes lightSpeedIn {
+    0% {
+        transform: translateX(100%) skewX(-30deg);
+        opacity: 0
+    }
+
+    60% {
+        transform: translateX(-20%) skewX(30deg);
+        opacity: 1
+    }
+
+    80% {
+        transform: translateX(0%) skewX(-15deg);
+        opacity: 1
+    }
+
+    100% {
+        transform: translateX(0%) skewX(0deg);
+        opacity: 1
+    }
+}
+
+.animated.lightSpeedIn {
+    animation-name: lightSpeedIn;
+    animation-timing-function: ease-out
+}
+
+@keyframes lightSpeedOut {
+    0% {
+        transform: translateX(0%) skewX(0deg);
+        opacity: 1
+    }
+
+    100% {
+        transform: translateX(100%) skewX(-30deg);
+        opacity: 0
+    }
+}
+
+.animated.lightSpeedOut {
+    animation-name: lightSpeedOut;
+    animation-timing-function: ease-in
+}
+
+@keyframes wiggle {
+    0% {
+        transform: skewX(9deg)
+    }
+
+    10% {
+        transform: skewX(-8deg)
+    }
+
+    20% {
+        transform: skewX(7deg)
+    }
+
+    30% {
+        transform: skewX(-6deg)
+    }
+
+    40% {
+        transform: skewX(5deg)
+    }
+
+    50% {
+        transform: skewX(-4deg)
+    }
+
+    60% {
+        transform: skewX(3deg)
+    }
+
+    70% {
+        transform: skewX(-2deg)
+    }
+
+    80% {
+        transform: skewX(1deg)
+    }
+
+    90% {
+        transform: skewX(0deg)
+    }
+
+    100% {
+        transform: skewX(0deg)
+    }
+}
+
+.animated.wiggle {
+    animation-name: wiggle;
+    animation-timing-function: ease-in
+}
+
+.animated.fade {
+    animation-name: fade
+}
+
+@keyframes fade {
+    0% {
+        opacity: 1
+    }
+
+    100% {
+        opacity: 0
+    }
+}
+
+.animated.appear {
+    animation-name: appear
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
+    }
+}
+
+.animated.spinner {
+    animation-name: spinner
+}
+
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+.animated.twirlIn {
+    animation-name: twirlIn
+}
+
+@keyframes twirlIn {
+    0% {
+        transform: rotate3d(80, -70, 10, 180deg)
+    }
+
+    100% {
+        transform: rotate3d(0, 0, 0, 0deg)
+    }
+}
+
+.animated.twirlOut {
+    animation-name: twirlOut
+}
+
+@keyframes twirlOut {
+    0% {
+        transform: rotate3d(0, 0, 0, 0deg)
+    }
+
+    100% {
+        transform: rotate3d(80, -70, 10, 180deg)
+    }
+}
+
+.animated.grow {
+    animation-name: grow
+}
+
+@keyframes grow {
+    100% {
+        transform: scale(1.1)
+    }
+}
+
+.animated.shrink {
+    animation-name: shrink
+}
+
+@keyframes shrink {
+    100% {
+        transform: scale(0.9)
+    }
+}
+
+.animated.pulseGrow {
+    animation-direction: alternate;
+    animation-name: pulseGrow
+}
+
+@keyframes pulseGrow {
+    0% {
+        transform: scale(1.1)
+    }
+}
+
+.animated.pulseShrink {
+    animation-direction: alternate;
+    animation-name: pulseShrink
+}
+
+@keyframes pulseShrink {
+    0% {
+        transform: scale(0.9)
+    }
+}
+
+.animated.push {
+    animation-name: push
+}
+
+@keyframes push {
+    50% {
+        transform: scale(0.8)
+    }
+
+    100% {
+        transform: scale(1)
+    }
+}
+
+.animated.pop {
+    animation-name: pop
+}
+
+@keyframes pop {
+    50% {
+        transform: scale(1.2)
+    }
+}
+
+.animated.rotate {
+    animation-name: rotate
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(60deg)
+    }
+}
+
+.animated.growRotate {
+    animation-name: growRotate
+}
+
+@keyframes growRotate {
+    100% {
+        transform: scale(1.1) rotate(60deg)
+    }
+}
+
+.animated.float {
+    animation-name: float
+}
+
+@keyframes float {
+    100% {
+        transform: translateY(-8px)
+    }
+}
+
+.animated.sink {
+    animation-name: sink
+}
+
+@keyframes sink {
+    100% {
+        transform: translateY(8px)
+    }
+}
+
+.animated.skew {
+    animation-name: skew
+}
+
+@keyframes skew {
+    100% {
+        transform: skew(-10deg)
+    }
+}
+
+.animated.skewForward {
+    transform-origin: 0 100%;
+    animation-name: skewForward
+}
+
+@keyframes skewForward {
+    100% {
+        transform: skew(-10deg)
+    }
+}
+
+.animated.skewBackward {
+    transform-origin: 0 100%;
+    animation-name: skewBackward
+}
+
+@keyframes skewBackward {
+    100% {
+        transform: skew(10deg)
+    }
+}
+
+.animated.wobbleVertical {
+    animation-name: wobbleVertical
+}
+
+@keyframes wobbleVertical {
+    16.65% {
+        transform: translateY(8px)
+    }
+
+    33.3% {
+        transform: translateY(-6px)
+    }
+
+    49.95% {
+        transform: translateY(4px)
+    }
+
+    66.6% {
+        transform: translateY(-2px)
+    }
+
+    83.25% {
+        transform: translateY(1px)
+    }
+
+    100% {
+        transform: translateY(0)
+    }
+}
+
+.animated.wobbleHorizontal {
+    animation-name: wobbleHorizontal
+}
+
+@keyframes wobbleHorizontal {
+    16.65% {
+        transform: translateX(8px)
+    }
+
+    33.3% {
+        transform: translateX(-6px)
+    }
+
+    49.95% {
+        transform: translateX(4px)
+    }
+
+    66.6% {
+        transform: translateX(-2px)
+    }
+
+    83.25% {
+        transform: translateX(1px)
+    }
+
+    100% {
+        transform: translateX(0)
+    }
+}
+
+.animated.wobbleToBottomRight {
+    animation-name: wobbleToBottomRight
+}
+
+@keyframes wobbleToBottomRight {
+    16.65% {
+        transform: translate(8px, 8px)
+    }
+
+    33.3% {
+        transform: translate(-6px, -6px)
+    }
+
+    49.95% {
+        transform: translate(4px, 4px)
+    }
+
+    66.6% {
+        transform: translate(-2px, -2px)
+    }
+
+    83.25% {
+        transform: translate(1px, 1px)
+    }
+
+    100% {
+        transform: translate(0, 0)
+    }
+}
+
+.animated.wobbleToTopRight {
+    animation-name: wobbleToTopRight
+}
+
+@keyframes wobbleToTopRight {
+    16.65% {
+        transform: translate(8px, -8px)
+    }
+
+    33.3% {
+        transform: translate(-6px, 6px)
+    }
+
+    49.95% {
+        transform: translate(4px, -4px)
+    }
+
+    66.6% {
+        transform: translate(-2px, 2px)
+    }
+
+    83.25% {
+        transform: translate(1px, -1px)
+    }
+
+    100% {
+        transform: translate(0, 0)
+    }
+}
+
+.animated.wobbleTop {
+    transform-origin: 0 100%;
+    animation-name: wobbleTop
+}
+
+@keyframes wobbleTop {
+    16.65% {
+        transform: skew(-12deg)
+    }
+
+    33.3% {
+        transform: skew(10deg)
+    }
+
+    49.95% {
+        transform: skew(-6deg)
+    }
+
+    66.6% {
+        transform: skew(4deg)
+    }
+
+    83.25% {
+        transform: skew(-2deg)
+    }
+
+    100% {
+        transform: skew(0)
+    }
+}
+
+.animated.wobbleBottom {
+    transform-origin: 100% 0;
+    animation-name: wobbleBottom
+}
+
+@keyframes wobbleBottom {
+    16.65% {
+        transform: skew(-12deg)
+    }
+
+    33.3% {
+        transform: skew(10deg)
+    }
+
+    49.95% {
+        transform: skew(-6deg)
+    }
+
+    66.6% {
+        transform: skew(4deg)
+    }
+
+    83.25% {
+        transform: skew(-2deg)
+    }
+
+    100% {
+        transform: skew(0)
+    }
+}
+
+.animated.wobbleSkew {
+    animation-name: wobbleSkew
+}
+
+@keyframes wobbleSkew {
+    16.65% {
+        transform: skew(-12deg)
+    }
+
+    33.3% {
+        transform: skew(10deg)
+    }
+
+    49.95% {
+        transform: skew(-6deg)
+    }
+
+    66.6% {
+        transform: skew(4deg)
+    }
+
+    83.25% {
+        transform: skew(-2deg)
+    }
+
+    100% {
+        transform: skew(0)
+    }
+}
+
+.animated.buzz {
+    animation-name: buzz
+}
+
+@keyframes buzz {
+    50% {
+        transform: translateX(3px) rotate(2deg)
+    }
+
+    100% {
+        transform: translateX(-3px) rotate(-2deg)
+    }
+}
+
+.animated.buzzOut {
+    animation-name: buzzOut
+}
+
+@keyframes buzzOut {
+    10% {
+        transform: translateX(3px) rotate(2deg)
+    }
+
+    20% {
+        transform: translateX(-3px) rotate(-2deg)
+    }
+
+    30% {
+        transform: translateX(3px) rotate(2deg)
+    }
+
+    40% {
+        transform: translateX(-3px) rotate(-2deg)
+    }
+
+    50% {
+        transform: translateX(2px) rotate(1deg)
+    }
+
+    60% {
+        transform: translateX(-2px) rotate(-1deg)
+    }
+
+    70% {
+        transform: translateX(2px) rotate(1deg)
+    }
+
+    80% {
+        transform: translateX(-2px) rotate(-1deg)
+    }
+
+    90% {
+        transform: translateX(1px) rotate(0)
+    }
+
+    100% {
+        transform: translateX(-1px) rotate(0)
+    }
+}
+
+.animated.forward {
+    animation-name: forward
+}
+
+@keyframes forward {
+    100% {
+        transform: translateX(8px)
+    }
+}
+
+.animated.backward {
+    animation-name: backward
+}
+
+@keyframes backward {
+    100% {
+        transform: translateX(-8px)
+    }
+}
+
+.company-slogan,
+.smart-move-slogan,
+[data-slogan*="Smart Move"] {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--primary);
+    text-align: center;
+    margin: 1.5rem 0
+}
+
+.slogan-gradient {
+    background: linear-gradient(45deg, var(--primary), var(--accent), #ff6b35, var(--primary));
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: rgba(0, 0, 0, 0);
+    animation: gradientShift 4s ease-in-out infinite;
+    text-shadow: 0 0 20px rgba(0, 45, 95, .3);
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 700
+}
+
+@keyframes gradientShift {
+
+    0%,
+    100% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+}
+
+.slogan-highlighted {
+    background: linear-gradient(135deg, #fff9e6, #fffbe7);
+    border: 3px solid var(--accent);
+    border-radius: var(--card-radius);
+    padding: clamp(1rem, 3vw, 2rem);
+    box-shadow: 0 4px 20px rgba(0, 45, 95, .1), inset 0 1px 0 hsla(0, 0%, 100%, .6);
+    position: relative;
+    overflow: hidden;
+    transform: perspective(1000px) rotateX(2deg);
+    transition: transform .3s ease
+}
+
+.slogan-highlighted:hover {
+    transform: perspective(1000px) rotateX(0deg) scale(1.02)
+}
+
+.slogan-highlighted::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(0, 115, 230, 0.1), transparent);
+    transform: rotate(45deg);
+    animation: shimmer 3s infinite
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg)
+    }
+
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg)
+    }
+}
+
+.slogan-handwritten {
+    font-family: "Caveat", "Dancing Script", cursive, var(--font-heading);
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    color: #2c3e50;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, .1);
+    transform: rotate(-1deg);
+    letter-spacing: .02em;
+    position: relative
+}
+
+.slogan-handwritten::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 10%;
+    right: 10%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    border-radius: 2px;
+    opacity: .7
+}
+
+.slogan-emphasis {
+    font-size: clamp(1.3rem, 3.5vw, 2.2rem);
+    color: #333
+}
+
+.slogan-emphasis .smart-move {
+    color: var(--accent);
+    font-weight: 800;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    background: linear-gradient(135deg, var(--accent), #005bb5);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: rgba(0, 0, 0, 0);
+    text-shadow: 0 2px 10px rgba(0, 115, 230, .3);
+    position: relative
+}
+
+.slogan-emphasis .smart-move::after {
+    content: "™";
+    position: absolute;
+    top: -0.5em;
+    right: -0.8em;
+    font-size: .4em;
+    color: var(--accent);
+    font-weight: 400
+}
+
+.slogan-emphasis .guarantee {
+    color: var(--primary);
+    font-weight: 700;
+    font-style: italic;
+    text-decoration: underline;
+    text-decoration-color: #ff6b35;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px
+}
+
+.slogan-card {
+    background: linear-gradient(135deg, #f8f9fa, #fff);
+    border-radius: 20px;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    box-shadow: 0 10px 30px rgba(0, 45, 95, .08), 0 1px 8px rgba(0, 45, 95, .06), inset 0 1px 0 hsla(0, 0%, 100%, .8);
+    border: 1px solid rgba(0, 115, 230, .1);
+    position: relative;
+    backdrop-filter: blur(10px);
+    max-width: 800px;
+    margin: 2rem auto
+}
+
+.slogan-card::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    font-size: 4rem;
+    color: var(--accent);
+    opacity: .3;
+    font-family: Georgia, serif
+}
+
+.slogan-card::after {
+    content: '"';
+    position: absolute;
+    bottom: -30px;
+    right: 20px;
+    font-size: 4rem;
+    color: var(--accent);
+    opacity: .3;
+    font-family: Georgia, serif
+}
+
+.slogan-typewriter {
+    font-family: "Courier New", monospace;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    border-right: 3px solid var(--accent);
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typewriter 4s steps(50, end), blinkCursor 1s step-end infinite;
+    max-width: fit-content;
+    margin: 2rem auto
+}
+
+@keyframes typewriter {
+    from {
+        width: 0
+    }
+
+    to {
+        width: 100%
+    }
+}
+
+@keyframes blinkCursor {
+
+    0%,
+    50% {
+        border-color: var(--accent)
+    }
+
+    51%,
+    100% {
+        border-color: rgba(0, 0, 0, 0)
+    }
+}
+
+.slogan-3d {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 800;
+    color: var(--primary);
+    text-shadow: 1px 1px 0 var(--accent), 2px 2px 0 var(--accent), 3px 3px 0 var(--accent), 4px 4px 0 var(--accent), 5px 5px 10px rgba(0, 45, 95, .3);
+    transform: perspective(1000px) rotateX(15deg);
+    letter-spacing: .02em
+}
+
+.slogan-center {
+    text-align: center
+}
+
+.slogan-large {
+    font-size: clamp(1.8rem, 5vw, 3rem)
+}
+
+.slogan-xl {
+    font-size: clamp(2rem, 6vw, 4rem)
+}
+
+.slogan-animate {
+    animation: bounceIn 1s ease-out
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.3);
+        opacity: 0
+    }
+
+    50% {
+        transform: scale(1.05)
+    }
+
+    70% {
+        transform: scale(0.9)
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+@media(max-width: 768px) {
+    .slogan-3d {
+        text-shadow: 1px 1px 0 var(--accent), 2px 2px 0 var(--accent), 3px 3px 5px rgba(0, 45, 95, .3);
+        transform: perspective(500px) rotateX(10deg)
+    }
+
+    .slogan-highlighted {
+        padding: clamp(.8rem, 2vw, 1.5rem);
+        transform: perspective(500px) rotateX(1deg)
+    }
+
+    .slogan-card {
+        padding: clamp(1rem, 3vw, 2rem);
+        margin: 1rem auto
+    }
+}
+
+.slogan-premium {
+    background: linear-gradient(135deg, #f8f9fa, #fff);
+    border-radius: 20px;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    box-shadow: 0 10px 30px rgba(0, 45, 95, .08), 0 1px 8px rgba(0, 45, 95, .06), inset 0 1px 0 hsla(0, 0%, 100%, .8);
+    border: 1px solid rgba(0, 115, 230, .1);
+    position: relative;
+    backdrop-filter: blur(10px);
+    max-width: 800px;
+    margin: 2rem auto;
+    background: linear-gradient(45deg, var(--primary), var(--accent), #ff6b35, var(--primary));
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: rgba(0, 0, 0, 0);
+    animation: gradientShift 4s ease-in-out infinite;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-weight: 700
+}
+
+.slogan-statement {
+    background: linear-gradient(135deg, #fff9e6, #fffbe7);
+    border: 3px solid var(--accent);
+    border-radius: var(--card-radius);
+    padding: clamp(1rem, 3vw, 2rem);
+    box-shadow: 0 4px 20px rgba(0, 45, 95, .1), inset 0 1px 0 hsla(0, 0%, 100%, .6);
+    position: relative;
+    overflow: hidden;
+    transform: perspective(1000px) rotateX(2deg);
+    transition: transform .3s ease;
+    font-size: clamp(1.3rem, 3.5vw, 2.2rem);
+    color: #333;
+    animation: bounceIn 1s ease-out
+}
+
+@property --slogan-accent {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: #0073e6
+}
+
+@property --slogan-glow {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 10px
+}
+
+.elementor-heading-title[data-slogan*="Smart Move"],
+h1[data-slogan*="Smart Move"],
+h2[data-slogan*="Smart Move"],
+h3[data-slogan*="Smart Move"] {
+    font-size: clamp(1.3rem, 3.5vw, 2.2rem);
+    color: #333
+}
+
+.slogan-wrapper,
+.smart-move-container {
+    position: relative
+}
+
+.slogan-wrapper::before,
+.smart-move-container::before {
+    content: "⭐";
+    position: absolute;
+    left: -2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5em;
+    color: gold;
+    animation: twinkle 2s infinite
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: translateY(-50%) scale(1)
+    }
+
+    50% {
+        opacity: .5;
+        transform: translateY(-50%) scale(1.2)
+    }
+}
+
+.slogan-left {
+    text-align: left !important
+}
+
+.slogan-right {
+    text-align: right !important
+}
+
+.slogan-justify {
+    text-align: justify !important
+}
+
+.slogan-spacing-sm {
+    margin: 1rem 0
+}
+
+.slogan-spacing-md {
+    margin: 2rem 0
+}
+
+.slogan-spacing-lg {
+    margin: 3rem 0
+}
+
+.slogan-spacing-xl {
+    margin: 4rem 0
+}
+
+.slogan-padding-sm {
+    padding: 1rem
+}
+
+.slogan-padding-md {
+    padding: 2rem
+}
+
+.slogan-padding-lg {
+    padding: 3rem
+}
+
+.slogan-bg-light {
+    background: linear-gradient(135deg, #f8f9fa, #fff);
+    border-radius: 15px;
+    padding: 3rem 1rem;
+    margin: 2rem 0
+}
+
+.slogan-bg-primary {
+    background: linear-gradient(135deg, var(--primary), #1a3a6b);
+    color: #fff;
+    border-radius: 15px;
+    padding: 3rem 1rem;
+    margin: 2rem 0
+}
+
+.slogan-bg-accent {
+    background: linear-gradient(135deg, var(--accent), #005bb5);
+    color: #fff;
+    border-radius: 15px;
+    padding: 3rem 1rem;
+    margin: 2rem 0
+}
+
+.company-slogan {
+    word-spacing: .1em;
+    hyphens: none;
+    word-break: keep-all
+}
+
+@media(max-width: 768px) {
+    .company-slogan {
+        word-spacing: .05em;
+        line-height: 1.4
+    }
+
+    .slogan-bg-light,
+    .slogan-bg-primary,
+    .slogan-bg-accent {
+        padding: 2rem 1rem;
+        margin: 1rem 0
+    }
+}
+
+@media print {
+    .company-slogan {
+        color: #000 !important;
+        background: none !important;
+        -webkit-text-fill-color: #000 !important;
+        text-shadow: none !important;
+        box-shadow: none !important
+    }
+
+    .slogan-gradient,
+    .slogan-3d,
+    .slogan-typewriter {
+        animation: none !important;
+        border: none !important
+    }
+}
+
+@media(prefers-reduced-motion: reduce) {
+
+    .slogan-gradient,
+    .slogan-typewriter,
+    .slogan-animate,
+    .slogan-wrapper::before {
+        animation: none !important
+    }
+
+    .slogan-highlighted::before {
+        animation: none !important
+    }
+}
+
+@media(prefers-contrast: high) {
+    .company-slogan {
+        color: #000 !important;
+        background: #fff !important;
+        border: 2px solid #000 !important;
+        -webkit-text-fill-color: #000 !important
+    }
+
+    .smart-move,
+    .guarantee {
+        color: #000 !important;
+        background: #ff0 !important;
+        -webkit-text-fill-color: #000 !important
+    }
+}
+
+.company-slogan:focus-within {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px
+}
+
+.zillow-review-link {
+    display: inline-block;
+    text-align: center;
+    margin: 1em auto
+}
+
+.zillow-review-link a {
+    display: block;
+    text-decoration: none;
+    background: #fff;
+    border-radius: .25rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .06);
+    transition: box-shadow .2s, background-color .2s;
+    padding: clamp(.5em, 2vw, 1.5em) clamp(1em, 4vw, 2em)
+}
+
+.zillow-review-link a:hover,
+.zillow-review-link a:focus {
+    background-color: #002d5f;
+    box-shadow: 0 2px 8px rgba(0, 45, 95, .15);
+    outline: none
+}
+
+.zillow-review-link a:hover figcaption,
+.zillow-review-link a:focus figcaption {
+    color: #fff
+}
+
+.zillow-review-link a:hover img,
+.zillow-review-link a:focus img {
+    filter: brightness(0) invert(1)
+}
+
+.zillow-review-link figcaption {
+    font-size: clamp(1em, 1.5vw, 1.2em);
+    margin-bottom: .5em;
+    color: #002d5f;
+    font-weight: bold;
+    transition: color .2s
+}
+
+.zillow-review-link img {
+    vertical-align: middle;
+    transition: filter .2s;
+    max-width: 100%;
+    height: auto
+}
+
+:root {
+    --menu-bg: #fff;
+    --menu-color: #002D5F;
+    --menu-hover: #0073e6;
+    --menu-radius: 2em;
+    --menu-padding: 0.7em 1.5em;
+    --menu-gap: 1.5em
+}
+
+.hfe-nav-menu--main,
+.hfe-nav-menu--main ul {
+    display: flex;
+    gap: var(--menu-gap);
+    background: var(--menu-bg);
+    border-radius: var(--menu-radius);
+    padding: .5em 1.5em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .04);
+    align-items: center;
+    list-style: none
+}
+
+.hfe-nav-menu--main li {
+    position: relative
+}
+
+.hfe-nav-menu--main a {
+    color: var(--menu-color);
+    font-weight: 600;
+    font-size: 1.08em;
+    padding: var(--menu-padding);
+    border-radius: var(--menu-radius);
+    text-decoration: none;
+    transition: color .2s, background .2s;
+    outline: none;
+    display: inline-block
+}
+
+.hfe-nav-menu--main a:hover,
+.hfe-nav-menu--main a:focus-visible {
+    color: #fff;
+    background: var(--menu-hover)
+}
+
+.hfe-nav-menu--main ul ul,
+.hfe-nav-menu--main li.menu-item-has-children > ul {
+    display: none !important
+}
+
+@media(max-width: 767px) {
+    .hfe-nav-menu--main {
+        display: none !important
+    }
+}
+
+.hfe-nav-menu--footer,
+.hfe-nav-menu--footer ul {
+    display: flex;
+    gap: var(--menu-gap);
+    background: rgba(0, 0, 0, 0);
+    border-radius: 0;
+    padding: 0;
+    align-items: center;
+    list-style: none;
+    justify-content: center
+}
+
+.hfe-nav-menu--footer li {
+    position: relative
+}
+
+.hfe-nav-menu--footer a {
+    color: var(--menu-color);
+    font-weight: 500;
+    font-size: 1em;
+    padding: .5em 1em;
+    border-radius: 1em;
+    text-decoration: none;
+    transition: color .2s, background .2s;
+    outline: none;
+    display: inline-block
+}
+
+.hfe-nav-menu--footer a:hover,
+.hfe-nav-menu--footer a:focus-visible {
+    color: var(--menu-hover);
+    background: #f0f6ff
+}
+
+.hfe-nav-menu--footer ul ul,
+.hfe-nav-menu--footer li.menu-item-has-children > ul {
+    display: none !important
+}
+
+.hfe-nav-menu .sub-arrow,
+.hfe-nav-menu .menu-toggle {
+    display: none !important
+}
+
+.hfe-nav-menu a {
+    min-height: 44px;
+    min-width: 44px
+}
+
+.hfe-nav-menu,
+.hfe-nav-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0
+}
+
+.hfe-nav-menu a:focus-visible {
+    outline: 2px solid var(--menu-hover);
+    outline-offset: 2px;
+    background: #f0f6ff;
+    border-radius: 1em
+}
+
+.hfe-nav-menu a:hover {
+    background: #f0f6ff;
+    border-radius: 1em
+}
+
+.hfe-nav-menu--main li:not(:last-child) a {
+    border-right: 1px solid #e0e6ed
+}
+
+.hfe-nav-menu--main li:last-child a {
+    border-right: none
+}
+
+.elementor-section.elementor-section-boxed > .elementor-container,
+.elementor-section > .elementor-container,
+.elementor-widget-wrap,
+.elementor-header,
+.elementor-footer {
+    background-color: var(--primary, #002D5F);
+    color: var(--color-text-light, #ffffff)
+}
+
+.elementor-section .elementor-widget,
+.elementor-section .elementor-widget-container,
+.elementor-header .elementor-widget,
+.elementor-footer .elementor-widget {
+    color: var(--color-text-light, #ffffff)
+}
+
+.elementor-section h1,
+.elementor-section h2,
+.elementor-section h3,
+.elementor-section h4,
+.elementor-section h5,
+.elementor-section h6,
+.elementor-header h1,
+.elementor-header h2,
+.elementor-header h3,
+.elementor-header h4,
+.elementor-header h5,
+.elementor-header h6,
+.elementor-footer h1,
+.elementor-footer h2,
+.elementor-footer h3,
+.elementor-footer h4,
+.elementor-footer h5,
+.elementor-footer h6 {
+    color: var(--color-text-light, #ffffff)
+}
+
+.elementor-section .elementor-text-editor,
+.elementor-section .elementor-widget-text-editor,
+.elementor-section p,
+.elementor-header .elementor-text-editor,
+.elementor-header .elementor-widget-text-editor,
+.elementor-header p,
+.elementor-footer .elementor-text-editor,
+.elementor-footer .elementor-widget-text-editor,
+.elementor-footer p {
+    color: var(--color-text-light, #ffffff)
+}
+
+.elementor-section a,
+.elementor-header a,
+.elementor-footer a {
+    color: var(--parchment, #F4E4BC);
+    text-decoration: none;
+    transition: color .2s ease, text-decoration .2s ease
+}
+
+.elementor-section a:hover,
+.elementor-section a:focus,
+.elementor-header a:hover,
+.elementor-header a:focus,
+.elementor-footer a:hover,
+.elementor-footer a:focus {
+    color: var(--color-text-light, #ffffff);
+    text-decoration: underline;
+    text-decoration-color: var(--parchment, #F4E4BC)
+}
+
+.elementor-section .hfe-nav-menu a,
+.elementor-header .hfe-nav-menu a,
+.elementor-footer .hfe-nav-menu a {
+    color: var(--color-text-light, #ffffff);
+    background: rgba(0, 0, 0, 0)
+}
+
+.elementor-section .hfe-nav-menu a:hover,
+.elementor-section .hfe-nav-menu a:focus,
+.elementor-header .hfe-nav-menu a:hover,
+.elementor-header .hfe-nav-menu a:focus,
+.elementor-footer .hfe-nav-menu a:hover,
+.elementor-footer .hfe-nav-menu a:focus {
+    color: var(--parchment, #F4E4BC);
+    background: rgba(244, 228, 188, .1)
+}
+
+.elementor-section .elementor-button,
+.elementor-header .elementor-button,
+.elementor-footer .elementor-button {
+    background-color: var(--parchment, #F4E4BC);
+    color: var(--primary, #002D5F);
+    border: 2px solid var(--parchment, #F4E4BC);
+    transition: all .2s ease
+}
+
+.elementor-section .elementor-button:hover,
+.elementor-section .elementor-button:focus,
+.elementor-header .elementor-button:hover,
+.elementor-header .elementor-button:focus,
+.elementor-footer .elementor-button:hover,
+.elementor-footer .elementor-button:focus {
+    background-color: rgba(0, 0, 0, 0);
+    color: var(--parchment, #F4E4BC);
+    border-color: var(--parchment, #F4E4BC)
+}
+
+.elementor-section input,
+.elementor-section textarea,
+.elementor-section select,
+.elementor-header input,
+.elementor-header textarea,
+.elementor-header select,
+.elementor-footer input,
+.elementor-footer textarea,
+.elementor-footer select {
+    background-color: var(--color-text-light, #ffffff);
+    color: var(--primary, #002D5F);
+    border: 1px solid var(--parchment, #F4E4BC)
+}
+
+.elementor-section input:focus,
+.elementor-section textarea:focus,
+.elementor-section select:focus,
+.elementor-header input:focus,
+.elementor-header textarea:focus,
+.elementor-header select:focus,
+.elementor-footer input:focus,
+.elementor-footer textarea:focus,
+.elementor-footer select:focus {
+    outline: 2px solid var(--parchment, #F4E4BC);
+    outline-offset: 2px
+}

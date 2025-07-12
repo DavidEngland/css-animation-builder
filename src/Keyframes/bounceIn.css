@@ -1,0 +1,4 @@
+0% { transform: scale(var(--transform-scale-xs)); opacity: var(--opacity-transparent); }
+50% { transform: scale(var(--transform-scale-lg)); opacity: var(--opacity-opaque); }
+70% { transform: scale(0.9); opacity: var(--opacity-opaque); }
+100% { transform: scale(var(--transform-scale-md)); opacity: var(--opacity-opaque); }

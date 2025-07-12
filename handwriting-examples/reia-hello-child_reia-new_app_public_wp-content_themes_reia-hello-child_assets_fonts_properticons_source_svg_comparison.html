@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Properticons - Before vs After Comparison</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+        h1 { color: #333; text-align: center; }
+        .comparison { display: flex; gap: 40px; justify-content: center; margin: 40px 0; }
+        .version { 
+            background: white; 
+            padding: 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            min-width: 300px;
+        }
+        .version h2 { margin-top: 0; }
+        .problem { color: #dc3545; background: #f8d7da; padding: 10px; border-radius: 4px; margin-bottom: 15px; }
+        .success { color: #155724; background: #d4edda; padding: 10px; border-radius: 4px; margin-bottom: 15px; }
+        .icon-showcase { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 15px; 
+            margin: 20px 0;
+        }
+        .icon-item { 
+            background: #f8f9fa; 
+            padding: 15px; 
+            border-radius: 4px; 
+            border: 1px solid #dee2e6;
+        }
+        .icon-item svg { width: 48px; height: 48px; color: #333; }
+        .icon-name { font-size: 11px; margin-top: 5px; color: #666; }
+        .technical { background: #e9ecef; padding: 15px; border-radius: 4px; margin-top: 20px; }
+        .technical h4 { margin-top: 0; color: #495057; }
+        .technical code { background: #f8f9fa; padding: 2px 4px; border-radius: 2px; }
+    </style>
+</head>
+<body>
+    <h1>Properticons Extraction - Before vs After</h1>
+    
+    <div class="comparison">
+        <div class="version">
+            <h2>❌ Before (Clipped)</h2>
+            <div class="problem">
+                <strong>Problem:</strong> Icons were getting clipped on top/right edges due to incorrect viewBox and transformations.
+            </div>
+            
+            <div class="icon-showcase">
+                <div class="icon-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="48" height="48">
+                        <g transform="scale(1, -1) translate(0, -1024)">
+                            <path d="M600 160h-120v160h120v-160zM0 360v480h960v-428l210 268h30l-240 -320h-960zM480 1120h240v-240h-80v140h-160v100z" fill="currentColor"/>
+                        </g>
+                    </svg>
+                    <div class="icon-name">mailbox (clipped)</div>
+                </div>
+                <div class="icon-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="48" height="48">
+                        <g transform="scale(1, -1) translate(0, -1024)">
+                            <path d="M980 1080v-340l220 -260h-240v-480h-240v360h-240v-360h-240v480h-240l620 600l120 -128v128h240z" fill="currentColor"/>
+                        </g>
+                    </svg>
+                    <div class="icon-name">home (clipped)</div>
+                </div>
+                <div class="icon-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="48" height="48">
+                        <g transform="scale(1, -1) translate(0, -1024)">
+                            <path d="M354 496l142 -140l-352 -354l-142 142zM800 500q124 0 211 88t87 212t-87 211t-211 87t-212 -87t-88 -211t88 -212t212 -88zM398 800q0 166 117 282t283 116t283 -116t117 -282t-117 -283t-283 -117q-128 0 -226 68l-92 -96l-110 108l100 94q-72 104 -72 226z" fill="currentColor"/>
+                        </g>
+                    </svg>
+                    <div class="icon-name">search (clipped)</div>
+                </div>
+            </div>
+            
+            <div class="technical">
+                <h4>Technical Issues:</h4>
+                <ul>
+                    <li>ViewBox: <code>0 0 1024 1024</code></li>
+                    <li>Font extends to: <code>1256px</code> horizontally</li>
+                    <li>Transform: <code>translate(0, -1024)</code></li>
+                    <li><strong>Result:</strong> Right edge cut off</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version">
+            <h2>✅ After (Fixed)</h2>
+            <div class="success">
+                <strong>Solution:</strong> Using proper font metrics and bounding box to prevent any clipping.
+            </div>
+            
+            <div class="icon-showcase">
+                <div class="icon-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" width="48" height="48">
+                        <g transform="translate(414, 305) scale(1, -1) translate(0, -1638)">
+                            <path d="M600 160h-120v160h120v-160zM0 360v480h960v-428l210 268h30l-240 -320h-960zM480 1120h240v-240h-80v140h-160v100z" fill="currentColor"/>
+                        </g>
+                    </svg>
+                    <div class="icon-name">mailbox (perfect)</div>
+                </div>
+                <div class="icon-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" width="48" height="48">
+                        <g transform="translate(414, 305) scale(1, -1) translate(0, -1638)">
+                            <path d="M980 1080v-340l220 -260h-240v-480h-240v360h-240v-360h-240v480h-240l620 600l120 -128v128h240z" fill="currentColor"/>
+                        </g>
+                    </svg>
+                    <div class="icon-name">home (perfect)</div>
+                </div>
+                <div class="icon-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" width="48" height="48">
+                        <g transform="translate(414, 305) scale(1, -1) translate(0, -1638)">
+                            <path d="M354 496l142 -140l-352 -354l-142 142zM800 500q124 0 211 88t87 212t-87 211t-211 87t-212 -87t-88 -211t88 -212t212 -88zM398 800q0 166 117 282t283 116t283 -116t117 -282t-117 -283t-283 -117q-128 0 -226 68l-92 -96l-110 108l100 94q-72 104 -72 226z" fill="currentColor"/>
+                        </g>
+                    </svg>
+                    <div class="icon-name">search (perfect)</div>
+                </div>
+            </div>
+            
+            <div class="technical">
+                <h4>Technical Solution:</h4>
+                <ul>
+                    <li>ViewBox: <code>0 0 2048 2048</code></li>
+                    <li>Font bbox: <code>-36, -2, 1256, 1440</code></li>
+                    <li>Proper centering and translation</li>
+                    <li><strong>Result:</strong> Complete icons, no clipping</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div style="text-align: center; margin-top: 40px; padding: 20px; background: white; border-radius: 8px;">
+        <h3>✅ Problem Resolved</h3>
+        <p>The fixed version (<code>extracted-php-fixed/</code>) now contains all 21 icons with proper dimensions and no clipping.</p>
+        <p>Use the icons from the <strong>extracted-php-fixed</strong> directory for production.</p>
+    </div>
+</body>
+</html>

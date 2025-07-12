@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shogun Slogans - Test Showcase</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #f8f9fa;
+        }
+        
+        .showcase-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .showcase-title {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .demo-container {
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        /* Include the typewriter styles */
+        .shogun-typewriter {
+            font-family: 'Courier New', monospace;
+            position: relative;
+            display: inline-block;
+            min-height: 1.2em;
+            line-height: 1.4;
+        }
+
+        .typewriter-text {
+            display: inline;
+            vertical-align: baseline;
+        }
+
+        .typewriter-cursor {
+            display: inline-block;
+            font-weight: normal;
+            color: currentColor;
+            animation: typewriterBlink 1s infinite step-end;
+            vertical-align: baseline;
+            margin-left: 1px;
+        }
+
+        @keyframes typewriterBlink {
+            0%, 50% {
+                opacity: 1;
+            }
+            51%, 100% {
+                opacity: 0;
+            }
+        }
+        
+        .copy-note {
+            background: #e8f5e8;
+            border: 1px solid #c3e6c3;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-size: 14px;
+            color: #2d5a2d;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎯 Shogun Slogans - Test Showcase</h1>
+    <p>Test the typewriter functionality with these examples. Copy the shortcodes to use in WordPress.</p>
+
+    <!-- Basic Demo -->
+    <div class="showcase-section">
+        <h2 class="showcase-title">📝 Basic Typewriter</h2>
+        <div class="demo-container">
+            <div class="shogun-typewriter" 
+                 data-text="Hello! This is the Shogun Slogans typewriter effect..."
+                 data-speed="100"
+                 data-cursor="|"
+                 data-loop="true">
+                <span class="typewriter-text"></span>
+                <span class="typewriter-cursor">|</span>
+            </div>
+        </div>
+        
+        <div class="copy-note">
+            📋 WordPress shortcode:
+        </div>
+        
+        <div class="code-block">
+[typewriter_text text="Hello! This is the Shogun Slogans typewriter effect..." speed="100"]
+        </div>
+    </div>
+
+    <!-- Fast Typing Demo -->
+    <div class="showcase-section">
+        <h2 class="showcase-title">⚡ Fast Typing</h2>
+        <div class="demo-container">
+            <div class="shogun-typewriter" 
+                 data-text="I type really fast! Watch me go..."
+                 data-speed="30"
+                 data-cursor="▌"
+                 data-loop="true">
+                <span class="typewriter-text"></span>
+                <span class="typewriter-cursor">▌</span>
+            </div>
+        </div>
+        
+        <div class="code-block">
+[typewriter_text text="I type really fast! Watch me go..." speed="30" cursor="▌"]
+        </div>
+    </div>
+
+    <!-- Slow Dramatic Demo -->
+    <div class="showcase-section">
+        <h2 class="showcase-title">🐌 Slow & Dramatic</h2>
+        <div class="demo-container">
+            <div class="shogun-typewriter" 
+                 data-text="Slow... and... very... dramatic... effect..."
+                 data-speed="200"
+                 data-cursor="_"
+                 data-loop="true"
+                 style="font-family: 'Georgia', serif; font-size: 20px; color: #8e44ad;">
+                <span class="typewriter-text"></span>
+                <span class="typewriter-cursor">_</span>
+            </div>
+        </div>
+        
+        <div class="code-block">
+[typewriter_text text="Slow... and... very... dramatic... effect..." speed="200" cursor="_"]
+        </div>
+    </div>
+
+    <!-- No Loop Demo -->
+    <div class="showcase-section">
+        <h2 class="showcase-title">🔄 Type Once (No Loop)</h2>
+        <div class="demo-container">
+            <div class="shogun-typewriter" 
+                 data-text="This text only types once and stops."
+                 data-speed="80"
+                 data-cursor="|"
+                 data-loop="false">
+                <span class="typewriter-text"></span>
+                <span class="typewriter-cursor">|</span>
+            </div>
+        </div>
+        
+        <div class="code-block">
+[typewriter_text text="This text only types once and stops." speed="80" loop="false"]
+        </div>
+    </div>
+
+    <!-- Code Style Demo -->
+    <div class="showcase-section">
+        <h2 class="showcase-title">💻 Code Style</h2>
+        <div class="demo-container">
+            <div class="shogun-typewriter" 
+                 data-text="const message = 'Hello, World!'; console.log(message);"
+                 data-speed="60"
+                 data-cursor="█"
+                 data-loop="true"
+                 style="font-family: 'Monaco', monospace; background: #2c3e50; color: #2ecc71; padding: 15px; border-radius: 5px;">
+                <span class="typewriter-text"></span>
+                <span class="typewriter-cursor">█</span>
+            </div>
+        </div>
+        
+        <div class="code-block">
+[typewriter_text text="const message = 'Hello, World!'; console.log(message);" speed="60" cursor="█"]
+        </div>
+    </div>
+
+    <!-- Quote Demo -->
+    <div class="showcase-section">
+        <h2 class="showcase-title">💬 Quote Style</h2>
+        <div class="demo-container">
+            <div class="shogun-typewriter" 
+                 data-text="&quot;The future belongs to those who believe in the beauty of their dreams.&quot; - Eleanor Roosevelt"
+                 data-speed="70"
+                 data-cursor="❘"
+                 data-loop="true"
+                 style="font-family: 'Times New Roman', serif; font-size: 18px; color: #34495e; font-style: italic; text-align: center;">
+                <span class="typewriter-text"></span>
+                <span class="typewriter-cursor">❘</span>
+            </div>
+        </div>
+        
+        <div class="code-block">
+[typewriter_text text="The future belongs to those who believe..." speed="70" cursor="❘"]
+        </div>
+    </div>
+
+    <!-- WordPress Custom HTML Block Section -->
+    <div class="showcase-section">
+        <h2 class="showcase-title">🚀 Ready-to-Paste HTML for WordPress</h2>
+        <p><strong>Copy these HTML snippets and paste directly into WordPress Custom HTML blocks for instant testing!</strong></p>
+        
+        <h3>📝 Basic Typewriter HTML</h3>
+        <div class="code-block">
+&lt;div class="shogun-typewriter" 
+     data-text="Hello! This is working in WordPress!"
+     data-speed="100"
+     data-cursor="|"
+     data-loop="true"&gt;
+    &lt;span class="typewriter-text"&gt;&lt;/span&gt;
+    &lt;span class="typewriter-cursor"&gt;|&lt;/span&gt;
+&lt;/div&gt;
+        </div>
+        
+        <h3>⚡ Fast Typing HTML</h3>
+        <div class="code-block">
+&lt;div class="shogun-typewriter" 
+     data-text="Super fast typing in WordPress!"
+     data-speed="30"
+     data-cursor="▌"
+     data-loop="true"&gt;
+    &lt;span class="typewriter-text"&gt;&lt;/span&gt;
+    &lt;span class="typewriter-cursor"&gt;▌&lt;/span&gt;
+&lt;/div&gt;
+        </div>
+        
+        <h3>🐌 Slow Dramatic HTML</h3>
+        <div class="code-block">
+&lt;div class="shogun-typewriter" 
+     data-text="Slow... dramatic... WordPress... effect..."
+     data-speed="200"
+     data-cursor="_"
+     data-loop="true"
+     style="font-size: 18px; color: #8e44ad; font-weight: bold;"&gt;
+    &lt;span class="typewriter-text"&gt;&lt;/span&gt;
+    &lt;span class="typewriter-cursor"&gt;_&lt;/span&gt;
+&lt;/div&gt;
+        </div>
+        
+        <h3>💻 Code Style HTML</h3>
+        <div class="code-block">
+&lt;div class="shogun-typewriter" 
+     data-text="console.log('WordPress typewriter works!');"
+     data-speed="60"
+     data-cursor="█"
+     data-loop="true"
+     style="font-family: monospace; background: #2c3e50; color: #2ecc71; padding: 15px; border-radius: 5px;"&gt;
+    &lt;span class="typewriter-text"&gt;&lt;/span&gt;
+    &lt;span class="typewriter-cursor"&gt;█&lt;/span&gt;
+&lt;/div&gt;
+        </div>
+        
+        <h3>🔄 No Loop HTML (Types Once)</h3>
+        <div class="code-block">
+&lt;div class="shogun-typewriter" 
+     data-text="This types once and stops in WordPress."
+     data-speed="80"
+     data-cursor="|"
+     data-loop="false"&gt;
+    &lt;span class="typewriter-text"&gt;&lt;/span&gt;
+    &lt;span class="typewriter-cursor"&gt;|&lt;/span&gt;
+&lt;/div&gt;
+        </div>
+        
+        <h3>📱 Mobile-Friendly HTML</h3>
+        <div class="code-block">
+&lt;div class="shogun-typewriter" 
+     data-text="Mobile responsive typewriter for WordPress!"
+     data-speed="90"
+     data-cursor="❘"
+     data-loop="true"
+     style="font-size: 16px; text-align: center; padding: 10px;"&gt;
+    &lt;span class="typewriter-text"&gt;&lt;/span&gt;
+    &lt;span class="typewriter-cursor"&gt;❘&lt;/span&gt;
+&lt;/div&gt;
+        </div>
+        
+        <div class="copy-note">
+            💡 <strong>WordPress Testing Steps:</strong><br>
+            1. Copy any HTML code above<br>
+            2. In WordPress editor, add a "Custom HTML" block<br>
+            3. Paste the HTML code<br>
+            4. Preview/publish to see the typewriter effect!
+        </div>
+    </div>
+
+    <!-- Instructions -->
+    <div class="showcase-section">
+        <h2 class="showcase-title">📋 How to Use in WordPress</h2>
+        <ol style="font-size: 16px; line-height: 1.8;">
+            <li><strong>Activate the plugin</strong> in your WordPress admin</li>
+            <li><strong>Edit a post or page</strong> where you want the typewriter effect</li>
+            <li><strong>Add a Shortcode block</strong> or Custom HTML block</li>
+            <li><strong>Copy shortcode OR HTML</strong> from above and paste it</li>
+            <li><strong>Customize parameters</strong> as needed (speed, cursor, text, etc.)</li>
+            <li><strong>Preview or publish</strong> to see the effect in action</li>
+        </ol>
+        
+        <h3>🛠️ Customization Options:</h3>
+        <ul style="font-size: 14px; line-height: 1.6;">
+            <li><code>text</code> - The text to type out</li>
+            <li><code>speed</code> - Typing speed in milliseconds (lower = faster)</li>
+            <li><code>cursor</code> - Cursor character (|, _, ▌, █, etc.)</li>
+            <li><code>loop</code> - Loop animation (true/false)</li>
+            <li><code>delay</code> - Delay before starting (milliseconds)</li>
+            <li><code>class</code> - Additional CSS class for styling</li>
+            <li><code>id</code> - HTML ID for targeting with CSS</li>
+        </ul>
+    </div>
+
+    <script>
+        // Typewriter functionality for demo
+        class SimpleTypewriter {
+            constructor(element) {
+                this.element = element;
+                this.textElement = element.querySelector('.typewriter-text');
+                this.cursorElement = element.querySelector('.typewriter-cursor');
+                
+                this.settings = {
+                    text: element.dataset.text || 'Sample text...',
+                    speed: parseInt(element.dataset.speed) || 100,
+                    cursor: element.dataset.cursor || '|',
+                    loop: element.dataset.loop !== 'false'
+                };
+                
+                this.currentIndex = 0;
+                this.isTyping = false;
+                this.timeoutId = null;
+                
+                this.init();
+            }
+            
+            init() {
+                this.textElement.textContent = '';
+                this.cursorElement.textContent = this.settings.cursor;
+                this.startTyping();
+            }
+            
+            startTyping() {
+                if (this.isTyping) return;
+                this.isTyping = true;
+                this.typeCharacter();
+            }
+            
+            typeCharacter() {
+                const currentText = this.settings.text;
+                const displayText = currentText.substring(0, this.currentIndex + 1);
+                
+                this.textElement.textContent = displayText;
+                this.currentIndex++;
+                
+                if (this.currentIndex < currentText.length) {
+                    this.timeoutId = setTimeout(() => this.typeCharacter(), this.settings.speed);
+                } else {
+                    this.isTyping = false;
+                    if (this.settings.loop) {
+                        this.timeoutId = setTimeout(() => {
+                            this.currentIndex = 0;
+                            this.textElement.textContent = '';
+                            this.startTyping();
+                        }, 2000);
+                    }
+                }
+            }
+        }
+        
+        // Initialize all typewriters
+        document.addEventListener('DOMContentLoaded', function() {
+            const typewriters = document.querySelectorAll('.shogun-typewriter');
+            typewriters.forEach(element => {
+                new SimpleTypewriter(element);
+            });
+        });
+    </script>
+</body>
+</html>

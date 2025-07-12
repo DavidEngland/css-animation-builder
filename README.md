@@ -1,6 +1,6 @@
 # CSS Animation Builder 🎨
 
-[![Version](https://img.shields.io/badge/version-1.0.1-blue.svg)](https://github.com/DavidEngland/css-animation-builder)
+[![Version](https://img.shields.io/badge/version-1.3.0-blue.svg)](https://github.com/DavidEngland/css-animation-builder)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Build Status](https://github.com/DavidEngland/css-animation-builder/workflows/CI/badge.svg)](https://github.com/DavidEngland/css-animation-builder/actions)
 
@@ -12,6 +12,7 @@ A standalone, framework-agnostic CSS Animation Builder library that provides an 
 
 - 🎨 **Interactive Animation Builder** - Visual interface for creating animations
 - 🎭 **18+ Animation Types** - Fade, slide, zoom, bounce, rotate, shake, and more
+- ✍️ **Professional Handwriting Animations** - Typewriter-style handwriting effects with multiple fonts
 - ⚡ **Live Preview** - Real-time animation preview with controls
 - 📋 **Code Generation** - Generate clean CSS and HTML code
 - 🎯 **Framework Agnostic** - Works with any web framework or vanilla HTML
@@ -20,6 +21,18 @@ A standalone, framework-agnostic CSS Animation Builder library that provides an 
 - 🎪 **Animation Presets** - Quick-start templates for common use cases
 - 🌙 **Multiple Themes** - Default, dark, and minimal themes
 - ♿ **Accessibility** - ARIA attributes, high contrast, reduced motion support
+
+## 🖋️ New in v1.3.0: Professional Handwriting Animations
+
+Experience sophisticated typewriter-style handwriting animations with authentic fonts and ink trail effects:
+
+- **Multiple Handwriting Styles**: Quill, Fountain Pen, Casual Script, Formal Script, Signature
+- **Professional Fonts**: Dancing Script, Great Vibes, Caveat, Tangerine
+- **Ink Trail Effects**: Color-coded ink trails that appear as text is written
+- **Interactive Showcase**: Live demo with customizable text, fonts, and colors
+- **Clean CSS Implementation**: Reliable typewriter animation without complex graphics
+
+[View Handwriting Showcase](handwriting-showcase.html) | [Demo](demo.html)
 
 ## 🚀 Quick Start
 
@@ -165,6 +178,43 @@ npm run dev
 - `wobble` - Wobbling effect
 - `swing` - Swinging effect
 
+### Handwriting Animations
+- `handwriting` - Typewriter-style handwriting effect
+- `quill` - Quill pen writing with ink trail
+- `fountain` - Fountain pen writing effect
+- `casual` - Casual script handwriting
+- `formal` - Formal script handwriting
+- `signature` - Signature-style writing
+
+### Handwriting Animation Usage
+
+```html
+<!-- Basic handwriting animation -->
+<div class="handwriting-quill">Coca-Cola</div>
+
+<!-- Fountain pen effect -->
+<div class="handwriting-fountain">Shakespeare</div>
+
+<!-- Signature animation -->
+<div class="handwriting-signature">William Shakespeare</div>
+```
+
+```css
+/* Include handwriting animations CSS */
+@import url('css/handwriting-animations.css');
+
+/* Or use the typewriter animation directly */
+.my-handwriting {
+    font-family: 'Dancing Script', cursive;
+    color: #8B4513;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    animation: typewriter 4s steps(40, end) forwards;
+}
+```
+
 ## ⚙️ Configuration
 
 ### Basic Configuration
@@ -260,6 +310,33 @@ $builder = new Builder($config);
 - `generateCSS($animation, $options)` - Generate CSS for specific animation
 - `setTheme($theme)` - Set the UI theme
 - `addCustomAnimation($name, $keyframes)` - Add custom animation
+
+## 🏗️ Architecture
+
+The CSS Animation Builder uses a **file-based keyframes architecture** for maximum maintainability and scalability:
+
+```
+src/
+├── Builder.php              # Main animation builder class
+├── Keyframes/               # Individual keyframe files
+│   ├── fadeIn.css
+│   ├── slideInLeft.css
+│   ├── bounceIn.css
+│   └── ... (19 animations)
+├── keyframes.js             # Auto-generated JavaScript keyframes
+└── WordPressPlugin.php      # WordPress integration
+```
+
+### Key Benefits:
+- **Modular Design**: Each animation in its own file
+- **Easy Maintenance**: Modify animations without touching core code
+- **Scalable**: Add new animations by creating new files
+- **Build System**: Automatic JavaScript generation from CSS files
+
+To add a new animation:
+1. Create `src/Keyframes/newAnimation.css`
+2. Run `php build-keyframes.php` to update JavaScript
+3. Animation is automatically available in the builder
 
 ## 🎨 Customization
 

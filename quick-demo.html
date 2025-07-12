@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Demo - Typewriter & Handwriting Animations</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--animation-secondary) 0%, #764ba2 var(--element-width-full));
+            min-height: 100vh;
+            padding: var(--font-size-xxxl);
+            color: var(--text-primary);
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: var(--transform-translate-md);
+            padding: var(--font-size-xxxl);
+            box-shadow: 0 var(--transform-translate-md) 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: var(--text-dark);
+            margin-bottom: var(--font-size-xxxl);
+            font-size: 2.5rem;
+        }
+        
+        .demo-section {
+            margin-bottom: 3rem;
+            padding: var(--font-size-xxl);
+            background: var(--bg-secondary);
+            border-radius: 1var(--border-width-medium);
+            border-left: 4px solid var(--animation-secondary);
+        }
+        
+        .demo-section h2 {
+            color: var(--text-dark);
+            margin-bottom: var(--font-size-md);
+            font-size: var(--font-size-xxl);
+        }
+        
+        .demo-box {
+            background: white;
+            padding: var(--font-size-xxxl);
+            border-radius: var(--radius-lg);
+            margin: var(--font-size-md) 0;
+            box-shadow: 0 var(--border-width-medium) var(--transform-translate-sm) rgba(0, 0, 0, 0.1);
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.var(--font-size-xxxl);
+            position: relative;
+        }
+        
+        .controls {
+            display: flex;
+            gap: var(--font-size-md);
+            margin-bottom: var(--font-size-md);
+            flex-wrap: wrap;
+        }
+        
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .control-group label {
+            font-weight: 600;
+            color: var(--typewriter-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .control-group input,
+        .control-group select,
+        .control-group button {
+            padding: 0.5rem;
+            border: var(--border-width-thin) solid var(--border-tertiary);
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+        }
+        
+        .control-group button {
+            background: var(--animation-secondary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background var(--duration-fast) ease;
+        }
+        
+        .control-group button:hover {
+            background: #5a6fd8;
+        }
+        
+        /* Typewriter styles */
+        .typewriter-demo {
+            font-family: 'Courier New', monospace;
+            font-size: 1.var(--font-size-xxxl);
+        }
+        
+        .typewriter-cursor {
+            display: inline-block;
+            background-color: currentColor;
+            width: var(--border-width-medium);
+            animation: blink var(--duration-slow) infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: var(--opacity-opaque); }
+            51%, var(--element-width-full) { opacity: var(--opacity-transparent); }
+        }
+        
+        .typewriter-theme-terminal {
+            background: #000;
+            color: #0f0;
+            padding: var(--font-size-md);
+            border-radius: var(--radius-sm);
+            font-family: 'Consolas', monospace;
+        }
+        
+        .typewriter-theme-retro {
+            background: #2d1b0e;
+            color: #ff6b35;
+            padding: var(--font-size-md);
+            border-radius: var(--radius-sm);
+        }
+        
+        /* Handwriting styles */
+        .handwriting-demo {
+            font-family: 'Brush Script MT', cursive;
+            font-size: var(--font-size-xxxl);
+            position: relative;
+            min-height: var(--layout-min-height-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .handwriting-demo.old-english {
+            font-family: 'Old English Text MT', 'Blackletter', serif;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--text-dark);
+            text-shadow: var(--border-width-medium) var(--border-width-medium) 4px rgba(0,0,0,0.3);
+        }
+        
+        .handwriting-demo.signature {
+            font-family: 'Lucida Handwriting', cursive;
+            font-size: 2.var(--font-size-xxxl);
+            font-style: italic;
+            color: #1a365d;
+        }
+        
+        .handwriting-demo.formal {
+            font-family: 'Times New Roman', serif;
+            font-size: 1.8rem;
+            color: var(--bg-dark);
+        }
+        
+        .handwriting-demo.calligraphy {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 2.4rem;
+            color: var(--handwriting-primary);
+            text-shadow: var(--border-width-thin) var(--border-width-thin) var(--border-width-medium) rgba(0,0,0,0.2);
+        }
+        
+        .handwriting-demo.cursive {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.var(--font-size-xxxl);
+            color: #4a5568;
+            font-weight: 600;
+        }
+        
+        .handwriting-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: var(--element-width-full);
+            height: var(--element-width-full);
+            pointer-events: none;
+            overflow: visible;
+            z-index: 2;
+        }
+        
+        .handwriting-path {
+            fill: none;
+            stroke: var(--text-primary);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        
+        .handwriting-old-english .handwriting-path {
+            stroke: var(--text-dark);
+            stroke-width: 3;
+        }
+        
+        .handwriting-signature .handwriting-path {
+            stroke: #1a365d;
+            stroke-width: 2.5;
+        }
+        
+        .handwriting-calligraphy .handwriting-path {
+            stroke: var(--handwriting-primary);
+            stroke-width: 3;
+        }
+        
+        .handwriting-cursive .handwriting-path {
+            stroke: #4a5568;
+            stroke-width: 2;
+        }
+        
+        /* Handwriting Showcase */
+        .handwriting-showcase {
+            margin-top: var(--font-size-xxxl);
+            padding: var(--font-size-xxl);
+            background: var(--bg-primary);
+            border-radius: 1var(--border-width-medium);
+            box-shadow: 0 4px 1var(--transform-translate-xs) rgba(0,0,0,0.1);
+        }
+        
+        .handwriting-showcase h3 {
+            text-align: center;
+            color: var(--text-dark);
+            margin-bottom: var(--font-size-xxxl);
+            font-size: 1.8rem;
+        }
+        
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--font-size-xxxl);
+        }
+        
+        .showcase-item {
+            background: var(--bg-secondary);
+            padding: var(--font-size-xxl);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            border: var(--border-width-medium) solid var(--bg-tertiary);
+            transition: all var(--duration-fast) ease;
+        }
+        
+        .showcase-item:hover {
+            border-color: var(--animation-secondary);
+            transform: translateY(-var(--border-width-medium));
+            box-shadow: 0 8px 2var(--transform-translate-xs) rgba(0,0,0,0.1);
+        }
+        
+        .showcase-item h4 {
+            color: var(--typewriter-secondary);
+            margin-bottom: var(--font-size-md);
+            font-size: 1.var(--font-size-xxxl);
+        }
+        
+        .showcase-demo {
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: var(--font-size-md) 0;
+            position: relative;
+            font-size: var(--font-size-xxl);
+            font-weight: 600;
+        }
+        
+        .signature-showcase {
+            font-family: 'Lucida Handwriting', cursive;
+            font-style: italic;
+            color: #1a365d;
+            font-size: 1.3rem;
+        }
+        
+        .old-english-showcase {
+            font-family: 'Old English Text MT', serif;
+            font-weight: bold;
+            color: var(--text-dark);
+            font-size: 1.8rem;
+            text-shadow: var(--border-width-medium) var(--border-width-medium) 4px rgba(0,0,0,0.2);
+        }
+        
+        .calligraphy-showcase {
+            font-family: 'Brush Script MT', cursive;
+            color: var(--handwriting-primary);
+            font-size: 1.6rem;
+            text-shadow: var(--border-width-thin) var(--border-width-thin) var(--border-width-medium) rgba(0,0,0,0.1);
+        }
+        
+        .cursive-showcase {
+            font-family: 'Dancing Script', cursive;
+            color: #4a5568;
+            font-size: var(--font-size-xxl);
+            font-weight: 600;
+        }
+        
+        .showcase-item button {
+            background: var(--animation-secondary);
+            color: white;
+            border: none;
+            padding: 0.8rem var(--font-size-xxl);
+            border-radius: 2var(--transform-translate-xs);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all var(--duration-fast) ease;
+            margin-top: var(--font-size-md);
+        }
+        
+        .showcase-item button:hover {
+            background: #5a6fd8;
+            transform: translateY(-var(--border-width-thin));
+            box-shadow: 0 4px 1var(--transform-translate-xs) rgba(102, 126, 234, 0.4);
+        }
+        
+        .showcase-item button:active {
+            transform: translateY(0);
+        }
+        
+        /* Pen animation */
+        .handwriting-pen {
+            position: absolute;
+            width: 2var(--transform-translate-xs);
+            height: 6px;
+            background: linear-gradient(45deg, var(--handwriting-primary), #D2691E);
+            border-radius: var(--element-height-divider);
+            transform-origin: left center;
+            z-index: 10;
+            pointer-events: none;
+            transition: all 0.var(--duration-slow) ease;
+        }
+        
+        .handwriting-pen.fountain {
+            background: linear-gradient(45deg, #2C3E50, #34495E);
+            height: 8px;
+        }
+        
+        .handwriting-pen.quill {
+            background: linear-gradient(45deg, var(--handwriting-primary), #CD853F);
+            height: var(--transform-translate-sm);
+            border-radius: var(--transform-translate-xs) 0 0 var(--transform-translate-xs);
+        }
+        
+        .handwriting-pen.brush {
+            background: linear-gradient(45deg, var(--handwriting-secondary), var(--handwriting-primary));
+            height: 1var(--border-width-medium);
+            border-radius: 6px;
+        }
+        
+        .handwriting-pen.marker {
+            background: linear-gradient(45deg, #FF4500, #FF6347);
+            height: 8px;
+            border-radius: var(--radius-sm);
+        }
+        
+        .handwriting-pen::after {
+            content: '';
+            position: absolute;
+            right: -var(--element-height-divider);
+            top: 50%;
+            transform: translateY(-50%);
+            width: var(--element-height-divider);
+            height: var(--element-height-divider);
+            background: currentColor;
+            border-radius: 50%;
+        }
+        
+        /* Enhanced animations */
+        @keyframes handwriting-draw {
+            0% {
+                stroke-dashoffset: var(--element-width-full);
+                opacity: var(--opacity-transparent);
+            }
+            var(--spacing-sm) {
+                opacity: var(--opacity-opaque);
+            }
+            var(--element-width-full) {
+                stroke-dashoffset: 0%;
+                opacity: var(--opacity-opaque);
+            }
+        }
+        
+        @keyframes pen-move {
+            0% {
+                transform: translateX(0) rotate(0deg);
+            }
+            var(--element-width-full) {
+                transform: translateX(var(--element-width-full)) rotate(15deg);
+            }
+        }
+        
+        @keyframes ink-flow {
+            0% {
+                filter: blur(0px);
+            }
+            50% {
+                filter: blur(0.var(--transform-translate-xs));
+            }
+            var(--element-width-full) {
+                filter: blur(0px);
+            }
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: var(--font-size-xxxl);
+            padding: var(--font-size-md);
+            border-top: var(--border-width-thin) solid var(--bg-tertiary);
+            color: var(--text-secondary);
+        }
+        
+        .footer a {
+            color: var(--animation-secondary);
+            text-decoration: none;
+        }
+        
+        .status {
+            position: fixed;
+            top: var(--transform-translate-md);
+            right: var(--transform-translate-md);
+            background: var(--animation-success);
+            color: white;
+            padding: 0.5rem var(--font-size-md);
+            border-radius: var(--transform-translate-md);
+            font-size: 0.8rem;
+            z-index: 1000;
+        }
+        
+        @media (max-width: 768px) {
+            .controls {
+                flex-direction: column;
+            }
+            
+            .control-group {
+                width: var(--element-width-full);
+            }
+        }
+    </style>
+<!-- CSS Variables Import -->
+<link rel="stylesheet" href="src/variables.css">
+<!-- End CSS Variables Import -->
+</head>
+<body>
+    <div class="status">✅ Ready to Demo</div>
+    
+    <div class="container">
+        <h1>🎯 Typewriter & Handwriting Demo</h1>
+        
+        <!-- Typewriter Demo -->
+        <div class="demo-section">
+            <h2>📝 Typewriter Animation</h2>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label for="typewriter-text">Text:</label>
+                    <input type="text" id="typewriter-text" value="Hello from REIA! Real Estate Intelligence Agency." />
+                </div>
+                <div class="control-group">
+                    <label for="typewriter-speed">Speed (ms):</label>
+                    <input type="number" id="typewriter-speed" min="10" max="500" value="100" />
+                </div>
+                <div class="control-group">
+                    <label for="typewriter-theme">Theme:</label>
+                    <select id="typewriter-theme">
+                        <option value="default">Default</option>
+                        <option value="terminal">Terminal</option>
+                        <option value="retro">Retro</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>&nbsp;</label>
+                    <button onclick="startTypewriter()">Start Typewriter</button>
+                </div>
+            </div>
+            
+            <div class="demo-box">
+                <div id="typewriter-demo" class="typewriter-demo"></div>
+            </div>
+        </div>
+        
+        <!-- Handwriting Demo -->
+        <div class="demo-section">
+            <h2>✍️ Advanced Handwriting Animation</h2>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label for="handwriting-text">Text:</label>
+                    <input type="text" id="handwriting-text" value="Real Estate Intelligence Agency" />
+                </div>
+                <div class="control-group">
+                    <label for="handwriting-speed">Speed (ms):</label>
+                    <input type="range" id="handwriting-speed" min="10" max="100" value="40" />
+                    <span id="handwriting-speed-value">40</span>
+                </div>
+                <div class="control-group">
+                    <label for="handwriting-style">Style:</label>
+                    <select id="handwriting-style">
+                        <option value="cursive">Cursive Script</option>
+                        <option value="old-english" selected>Old English</option>
+                        <option value="signature">Signature</option>
+                        <option value="formal">Formal Writing</option>
+                        <option value="calligraphy">Calligraphy</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="handwriting-pen">Pen Type:</label>
+                    <select id="handwriting-pen">
+                        <option value="fountain">Fountain Pen</option>
+                        <option value="ballpoint">Ballpoint</option>
+                        <option value="quill">Quill Pen</option>
+                        <option value="brush">Brush Pen</option>
+                        <option value="marker">Marker</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>&nbsp;</label>
+                    <button onclick="startHandwriting()">Start Handwriting</button>
+                </div>
+            </div>
+            
+            <div class="demo-box">
+                <div id="handwriting-demo" class="handwriting-demo"></div>
+            </div>
+            
+            <!-- Handwriting Showcase -->
+            <div class="handwriting-showcase">
+                <h3>🎨 Handwriting Showcase</h3>
+                <div class="showcase-grid">
+                    <div class="showcase-item">
+                        <h4>Elegant Signature</h4>
+                        <div class="showcase-demo signature-showcase">Real Estate Intelligence Agency</div>
+                        <button onclick="showcaseSignature()">Animate</button>
+                    </div>
+                    <div class="showcase-item">
+                        <h4>Old English Script</h4>
+                        <div class="showcase-demo old-english-showcase">Handwritten Excellence</div>
+                        <button onclick="showcaseOldEnglish()">Animate</button>
+                    </div>
+                    <div class="showcase-item">
+                        <h4>Modern Calligraphy</h4>
+                        <div class="showcase-demo calligraphy-showcase">Beautiful Writing</div>
+                        <button onclick="showcaseCalligraphy()">Animate</button>
+                    </div>
+                    <div class="showcase-item">
+                        <h4>Cursive Script</h4>
+                        <div class="showcase-demo cursive-showcase">Flowing Letters</div>
+                        <button onclick="showcaseCursive()">Animate</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Multiple Sequences Demo -->
+        <div class="demo-section">
+            <h2>🔄 Multiple Sequences</h2>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label>&nbsp;</label>
+                    <button onclick="startSequenceDemo()">Start Sequence Demo</button>
+                </div>
+            </div>
+            
+            <div class="demo-box">
+                <div id="sequence-demo" class="typewriter-demo"></div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p><strong>CSS Animation Builder</strong> - Developed by <a href="https://github.com/DavidEngland">Real Estate Intelligence Agency (REIA)</a></p>
+            <p>Senior Lead Developer: David England | CEO & Chief Broker: Mikko P. Jetsu</p>
+        </div>
+    </div>
+    
+    <script src="assets/js/typewriter-animation.js"></script>
+    <script src="assets/js/handwriting-animation.js"></script>
+    <script>
+        let typewriterInstance, handwritingInstance, sequenceInstance;
+        
+        function startTypewriter() {
+            const element = document.getElementById('typewriter-demo');
+            const text = document.getElementById('typewriter-text').value;
+            const speed = parseInt(document.getElementById('typewriter-speed').value);
+            const theme = document.getElementById('typewriter-theme').value;
+            
+            // Clear previous
+            if (typewriterInstance) {
+                typewriterInstance.destroy();
+            }
+            
+            element.textContent = '';
+            element.className = 'typewriter-demo';
+            
+            if (theme !== 'default') {
+                element.classList.add(`typewriter-theme-${theme}`);
+            }
+            
+            typewriterInstance = new TypewriterAnimation(element, {
+                speed: speed,
+                cursor: '|',
+                cursorBlink: true,
+                humanize: true,
+                autoStart: false,
+                onComplete: () => {
+                    console.log('Typewriter completed!');
+                    updateStatus('✅ Typewriter Complete');
+                },
+                onCharacterTyped: (char) => {
+                    console.log('Typed:', char);
+                }
+            });
+            
+            typewriterInstance.type(text);
+            updateStatus('⌨️ Typewriter Running...');
+        }
+        
+        function startHandwriting() {
+            const element = document.getElementById('handwriting-demo');
+            const text = document.getElementById('handwriting-text').value;
+            const speed = parseInt(document.getElementById('handwriting-speed').value);
+            const style = document.getElementById('handwriting-style').value;
+            const penType = document.getElementById('handwriting-pen').value;
+            
+            // Clear previous
+            if (handwritingInstance) {
+                handwritingInstance.destroy();
+            }
+            
+            element.innerHTML = '';
+            element.className = 'handwriting-demo';
+            
+            // Apply style-specific classes
+            if (style === 'old-english') {
+                element.classList.add('old-english');
+            } else if (style === 'signature') {
+                element.classList.add('signature');
+            } else if (style === 'formal') {
+                element.classList.add('formal');
+            } else if (style === 'calligraphy') {
+                element.classList.add('calligraphy');
+            } else if (style === 'cursive') {
+                element.classList.add('cursive');
+            }
+            
+            // Create handwriting animation with enhanced options
+            handwritingInstance = new HandwritingAnimation(element, {
+                speed: speed,
+                strokeColor: getStyleColor(style),
+                strokeWidth: getStyleStrokeWidth(style),
+                penType: penType,
+                showPen: true,
+                style: style,
+                pressure: style === 'old-english' ? 1.5 : 1.0,
+                shakiness: style === 'signature' ? 0.2 : 0.1,
+                curveIntensity: style === 'calligraphy' ? 0.5 : 0.3,
+                showGuideLines: false,
+                paperTexture: style === 'formal',
+                inkBleed: style === 'fountain' || penType === 'fountain',
+                humanize: true,
+                pauseBetweenWords: 400,
+                pauseBetweenLetters: 150,
+                onComplete: () => {
+                    console.log('Handwriting completed!');
+                    updateStatus('✅ Handwriting Complete');
+                },
+                onCharacterComplete: (char) => {
+                    console.log('Character completed:', char);
+                },
+                onWordComplete: (word) => {
+                    console.log('Word completed:', word);
+                }
+            });
+            
+            handwritingInstance.writeText(text);
+            updateStatus('✍️ Handwriting Running...');
+        }
+        
+        function getStyleColor(style) {
+            const colors = {
+                'old-english': 'var(--text-dark)',
+                'signature': '#1a365d',
+                'formal': 'var(--bg-dark)',
+                'calligraphy': 'var(--handwriting-primary)',
+                'cursive': '#4a5568'
+            };
+            return colors[style] || 'var(--text-primary)';
+        }
+        
+        function getStyleStrokeWidth(style) {
+            const widths = {
+                'old-english': 3,
+                'signature': 2.5,
+                'formal': 2,
+                'calligraphy': 3,
+                'cursive': 2
+            };
+            return widths[style] || 2;
+        }
+        
+        // Showcase functions
+        function showcaseSignature() {
+            animateShowcase('signature-showcase', 'Real Estate Intelligence Agency', 'signature', 'fountain');
+        }
+        
+        function showcaseOldEnglish() {
+            animateShowcase('old-english-showcase', 'Handwritten Excellence', 'old-english', 'quill');
+        }
+        
+        function showcaseCalligraphy() {
+            animateShowcase('calligraphy-showcase', 'Beautiful Writing', 'calligraphy', 'brush');
+        }
+        
+        function showcaseCursive() {
+            animateShowcase('cursive-showcase', 'Flowing Letters', 'cursive', 'fountain');
+        }
+        
+        function animateShowcase(elementId, text, style, penType) {
+            const element = document.querySelector('.' + elementId);
+            if (!element) return;
+            
+            // Clear existing content
+            element.innerHTML = '';
+            
+            // Create new handwriting animation
+            const showcaseAnimation = new HandwritingAnimation(element, {
+                speed: 40,
+                strokeColor: getStyleColor(style),
+                strokeWidth: getStyleStrokeWidth(style),
+                penType: penType,
+                showPen: true,
+                style: style,
+                pressure: style === 'old-english' ? 1.8 : 1.2,
+                shakiness: style === 'signature' ? 0.25 : 0.15,
+                curveIntensity: style === 'calligraphy' ? 0.6 : 0.4,
+                showGuideLines: false,
+                paperTexture: false,
+                inkBleed: penType === 'fountain' || penType === 'quill',
+                humanize: true,
+                pauseBetweenWords: 300,
+                pauseBetweenLetters: 100,
+                onComplete: () => {
+                    console.log('Showcase animation completed:', style);
+                    updateStatus(`✅ ${style} Showcase Complete`);
+                }
+            });
+            
+            showcaseAnimation.writeText(text);
+            updateStatus(`🎨 ${style} Showcase Running...`);
+        }
+        
+        function startSequenceDemo() {
+            const element = document.getElementById('sequence-demo');
+            
+            // Clear previous
+            if (sequenceInstance) {
+                sequenceInstance.destroy();
+            }
+            
+            element.textContent = '';
+            
+            sequenceInstance = new TypewriterAnimation(element, {
+                speed: 80,
+                deleteSpeed: 40,
+                pauseTime: 1500,
+                loop: true,
+                deleteAll: true,
+                humanize: true,
+                autoStart: false,
+                onComplete: () => {
+                    console.log('Sequence completed!');
+                }
+            });
+            
+            const sequences = [
+                'Welcome to REIA!',
+                'Real Estate Intelligence Agency',
+                'Advanced Animation Builder',
+                'Typewriter & Handwriting Effects',
+                'Built with JavaScript & SVG'
+            ];
+            
+            sequenceInstance.type(sequences);
+            updateStatus('🔄 Sequence Running...');
+        }
+        
+        function updateStatus(message) {
+            const status = document.querySelector('.status');
+            status.textContent = message;
+            
+            // Reset to ready after 3 seconds
+            setTimeout(() => {
+                status.textContent = '✅ Ready to Demo';
+            }, 3000);
+        }
+        
+        // Auto-start demos on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Page loaded, starting auto demos...');
+            
+            // Initialize speed value displays
+            document.getElementById('typewriter-speed-value').textContent = document.getElementById('typewriter-speed').value;
+            document.getElementById('handwriting-speed-value').textContent = document.getElementById('handwriting-speed').value;
+            
+            // Update speed displays when sliders change
+            document.getElementById('typewriter-speed').addEventListener('input', function() {
+                document.getElementById('typewriter-speed-value').textContent = this.value;
+            });
+            
+            document.getElementById('handwriting-speed').addEventListener('input', function() {
+                document.getElementById('handwriting-speed-value').textContent = this.value;
+            });
+            
+            // Start typewriter after 1 second
+            setTimeout(() => {
+                startTypewriter();
+            }, 1000);
+            
+            // Start handwriting after 4 seconds
+            setTimeout(() => {
+                startHandwriting();
+            }, 4000);
+            
+            // Start sequence after 7 seconds
+            setTimeout(() => {
+                startSequenceDemo();
+            }, 7000);
+        });
+        
+        // Test if classes are available
+        if (typeof TypewriterAnimation !== 'undefined') {
+            console.log('✅ TypewriterAnimation class loaded successfully');
+        } else {
+            console.error('❌ TypewriterAnimation class not found');
+        }
+        
+        if (typeof HandwritingAnimation !== 'undefined') {
+            console.log('✅ HandwritingAnimation class loaded successfully');
+        } else {
+            console.error('❌ HandwritingAnimation class not found');
+        }
+    </script>
+</body>
+</html>

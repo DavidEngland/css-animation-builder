@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handwriting Typewriter Demos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Dancing+Script:wght@400;600;700&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #f8f9fa;
+        }
+        
+        .demo-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .demo-title {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .demo-container {
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        /* Base typewriter styles */
+        .shogun-typewriter {
+            font-family: 'Courier New', monospace;
+            position: relative;
+            display: inline-block;
+            min-height: 1.2em;
+            line-height: 1.4;
+        }
+
+        .typewriter-text {
+            display: inline;
+            vertical-align: baseline;
+        }
+
+        .typewriter-cursor {
+            display: inline-block;
+            font-weight: normal;
+            color: currentColor;
+            animation: typewriterBlink 1s infinite step-end;
+            vertical-align: baseline;
+            margin-left: 1px;
+        }
+
+        @keyframes typewriterBlink {
+            0%, 50% {
+                opacity: 1;
+            }
+            51%, 100% {
+                opacity: 0;
+            }
+        }
+
+        /* Quill Writing Effect */
+        .quill-writing {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quill-writing .typewriter-cursor {
+            animation: quillFloat 2s ease-in-out infinite, typewriterBlink 1.5s infinite step-end;
+            margin-left: 3px;
+            transform: rotate(15deg);
+            display: inline-block;
+            font-size: 1.2em;
+        }
+
+        @keyframes quillFloat {
+            0%, 100% {
+                transform: rotate(15deg) translateY(0px);
+            }
+            50% {
+                transform: rotate(15deg) translateY(-2px);
+            }
+        }
+
+        .quill-writing .typewriter-text {
+            position: relative;
+        }
+
+        .quill-writing .typewriter-text::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #8b4513, transparent);
+            opacity: 0.3;
+            animation: inkFlow 3s ease-in-out infinite;
+        }
+
+        @keyframes inkFlow {
+            0%, 100% {
+                opacity: 0.2;
+                transform: scaleX(0.8);
+            }
+            50% {
+                opacity: 0.4;
+                transform: scaleX(1.1);
+            }
+        }
+
+        /* Spencerian Script Fountain Pen Effect */
+        .fountain-pen-writing {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fountain-pen-writing .typewriter-cursor {
+            animation: quillFloat 2s ease-in-out infinite, typewriterBlink 1.5s infinite step-end;
+            margin-left: 3px;
+            transform: rotate(15deg);
+            display: inline-block;
+            font-size: 1.2em;
+        }
+
+        @keyframes fountainPenFlow {
+            0%, 100% {
+                transform: rotate(205deg) translateY(0px) scale(1);
+            }
+            25% {
+                transform: rotate(200deg) translateY(-1px) scale(1.05);
+            }
+            50% {
+                transform: rotate(205deg) translateY(-2px) scale(1.1);
+            }
+            75% {
+                transform: rotate(210deg) translateY(-1px) scale(1.05);
+            }
+        }
+
+        .fountain-pen-writing .typewriter-text {
+            position: relative;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .fountain-pen-writing .typewriter-text::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #2c3e50, #1a1a2e, transparent);
+            opacity: 0.2;
+            animation: spencerianInk 2.5s ease-in-out infinite;
+            border-radius: 1px;
+        }
+
+        @keyframes spencerianInk {
+            0%, 100% {
+                opacity: 0.15;
+                transform: scaleX(0.9) scaleY(0.8);
+            }
+            50% {
+                opacity: 0.25;
+                transform: scaleX(1.2) scaleY(1.2);
+            }
+        }
+
+        .fountain-pen-writing .typewriter-text::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 40%, rgba(26,26,46,0.05) 50%, transparent 60%);
+            pointer-events: none;
+            animation: spencerianSheen 3s ease-in-out infinite;
+        }
+
+        @keyframes spencerianSheen {
+            0%, 100% {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            50% {
+                opacity: 1;
+                transform: translateX(100%);
+            }
+        }
+
+        .copy-note {
+            background: #e8f5e8;
+            border: 1px solid #c3e6c3;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: 14px;
+            color: #2d5a2d;
+        }
+    </style>
+</head>
+<body>
+    <h1>🖋️ Handwriting Typewriter Demos</h1>
+    <p>Two elegant handwriting typewriter effects with CSS animations.</p>
+
+    <!-- Quill Typewriter Demo -->
+    <div class="demo-section">
+        <h2 class="demo-title">🖋️ Quill Typewriter - Shakespearean Style</h2>
+        <div class="demo-container">
+            <div class="shogun-typewriter quill-writing" 
+                 data-text="&quot;We will help you make The Smart Move — I guarantee it!&quot; — Mikko Jetsu, CEO/Chief Broker"
+                 data-speed="120"
+                 data-cursor="🖋️"
+                 data-loop="true"
+                 style="font-family: 'Caveat', cursive; font-size: clamp(1.5rem, 3.5vw, 2.5rem); color: #2c3e50; text-align: center; padding: 2rem; transform: rotate(-0.5deg); text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">
+                <span class="typewriter-text"></span>
+                <span class="typewriter-cursor">🖋️</span>
+            </div>
+        </div>
+        
+        <div class="copy-note">
+            📋 <strong>HTML Code:</strong>
+        </div>
+        
+        <div class="code-block">
+&lt;div class="shogun-typewriter quill-writing" 
+     data-text="&amp;quot;We will help you make The Smart Move — I guarantee it!&amp;quot; — Mikko Jetsu, CEO/Chief Broker"
+     data-speed="120"
+     data-cursor="🖋️"
+     data-loop="true"
+     style="font-family: 'Caveat', cursive; font-size: clamp(1.5rem, 3.5vw, 2.5rem); color: #2c3e50; text-align: center; padding: 2rem; transform: rotate(-0.5deg); text-shadow: 1px 1px 2px rgba(0,0,0,0.1);"&gt;
+    &lt;span class="typewriter-text"&gt;&lt;/span&gt;
+    &lt;span class="typewriter-cursor"&gt;🖋️&lt;/span&gt;
+&lt;/div&gt;
+        </div>
+    </div>
+
+    <!-- Spencerian Script Fountain Pen Demo -->
+    <div class="demo-section">
+        <h2 class="demo-title">✒️ Spencerian Script - Fountain Pen Elegance</h2>
+        <div class="demo-container">
+            <div class="shogun-typewriter fountain-pen-writing" 
+                 data-text="&quot;We will help you make The Smart Move — I guarantee it!&quot; — Mikko Jetsu, CEO/Chief Broker"
+                 data-speed="140"
+                 data-cursor="🖋️"
+                 data-loop="true"
+                 style="font-family: 'Dancing Script', 'Tangerine', cursive; font-size: clamp(1.8rem, 4vw, 3.2rem); color: #1a1a2e; text-align: center; padding: 2.5rem; font-weight: 500; letter-spacing: 0.5px; line-height: 1.3;">
+                <span class="typewriter-text"></span>
+                <span class="typewriter-cursor">🖋️</span>
+            </div>
+        </div>
+        
+        <div class="copy-note">
+            📋 <strong>HTML Code:</strong>
+        </div>
+        
+        <div class="code-block">
+&lt;div class="shogun-typewriter fountain-pen-writing" 
+     data-text="&amp;quot;We will help you make The Smart Move — I guarantee it!&amp;quot; — Mikko Jetsu, CEO/Chief Broker"
+     data-speed="140"
+     data-cursor="🖋️"
+     data-loop="true"
+     style="font-family: 'Dancing Script', 'Tangerine', cursive; font-size: clamp(1.8rem, 4vw, 3.2rem); color: #1a1a2e; text-align: center; padding: 2.5rem; font-weight: 500; letter-spacing: 0.5px; line-height: 1.3;"&gt;
+    &lt;span class="typewriter-text"&gt;&lt;/span&gt;
+    &lt;span class="typewriter-cursor"&gt;🖋️&lt;/span&gt;
+&lt;/div&gt;
+        </div>
+    </div>
+
+    <!-- CSS Code Section -->
+    <div class="demo-section">
+        <h2 class="demo-title">🎨 Complete CSS Code</h2>
+        <div class="copy-note">
+            📋 <strong>Copy this CSS to your stylesheet:</strong>
+        </div>
+        
+        <div class="code-block">
+/* Base typewriter styles */
+.shogun-typewriter {
+    font-family: 'Courier New', monospace;
+    position: relative;
+    display: inline-block;
+    min-height: 1.2em;
+    line-height: 1.4;
+}
+
+.typewriter-text {
+    display: inline;
+    vertical-align: baseline;
+}
+
+.typewriter-cursor {
+    display: inline-block;
+    font-weight: normal;
+    color: currentColor;
+    animation: typewriterBlink 1s infinite step-end;
+    vertical-align: baseline;
+    margin-left: 1px;
+}
+
+@keyframes typewriterBlink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
+/* Quill Writing Effect */
+.quill-writing {
+    position: relative;
+    overflow: hidden;
+}
+
+.quill-writing .typewriter-cursor {
+    animation: quillFloat 2s ease-in-out infinite, typewriterBlink 1.5s infinite step-end;
+    margin-left: 3px;
+    transform: rotate(15deg);
+    display: inline-block;
+    font-size: 1.2em;
+}
+
+@keyframes quillFloat {
+    0%, 100% {
+        transform: rotate(15deg) translateY(0px);
+    }
+    50% {
+        transform: rotate(15deg) translateY(-2px);
+    }
+}
+
+.quill-writing .typewriter-text {
+    position: relative;
+}
+
+.quill-writing .typewriter-text::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #8b4513, transparent);
+    opacity: 0.3;
+    animation: inkFlow 3s ease-in-out infinite;
+}
+
+@keyframes inkFlow {
+    0%, 100% {
+        opacity: 0.2;
+        transform: scaleX(0.8);
+    }
+    50% {
+        opacity: 0.4;
+        transform: scaleX(1.1);
+    }
+}
+
+/* Spencerian Script Fountain Pen Effect */
+.fountain-pen-writing {
+    position: relative;
+    overflow: hidden;
+}
+
+.fountain-pen-writing .typewriter-cursor {
+    animation: quillFloat 2s ease-in-out infinite, typewriterBlink 1.5s infinite step-end;
+    margin-left: 3px;
+    transform: rotate(15deg);
+    display: inline-block;
+    font-size: 1.2em;
+}
+
+@keyframes fountainPenFlow {
+    0%, 100% {
+        transform: rotate(205deg) translateY(0px) scale(1);
+    }
+    25% {
+        transform: rotate(200deg) translateY(-1px) scale(1.05);
+    }
+    50% {
+        transform: rotate(205deg) translateY(-2px) scale(1.1);
+    }
+    75% {
+        transform: rotate(210deg) translateY(-1px) scale(1.05);
+    }
+}
+
+.fountain-pen-writing .typewriter-text {
+    position: relative;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.fountain-pen-writing .typewriter-text::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #2c3e50, #1a1a2e, transparent);
+    opacity: 0.2;
+    animation: spencerianInk 2.5s ease-in-out infinite;
+    border-radius: 1px;
+}
+
+@keyframes spencerianInk {
+    0%, 100% {
+        opacity: 0.15;
+        transform: scaleX(0.9) scaleY(0.8);
+    }
+    50% {
+        opacity: 0.25;
+        transform: scaleX(1.2) scaleY(1.2);
+    }
+}
+
+.fountain-pen-writing .typewriter-text::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent 40%, rgba(26,26,46,0.05) 50%, transparent 60%);
+    pointer-events: none;
+    animation: spencerianSheen 3s ease-in-out infinite;
+}
+
+@keyframes spencerianSheen {
+    0%, 100% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(100%);
+    }
+}
+        </div>
+    </div>
+
+    <!-- JavaScript Section -->
+    <div class="demo-section">
+        <h2 class="demo-title">⚡ JavaScript Code</h2>
+        <div class="copy-note">
+            📋 <strong>Copy this JavaScript to make it work:</strong>
+        </div>
+        
+        <div class="code-block">
+// Typewriter functionality
+class SimpleTypewriter {
+    constructor(element) {
+        this.element = element;
+        this.textElement = element.querySelector('.typewriter-text');
+        this.cursorElement = element.querySelector('.typewriter-cursor');
+        
+        this.settings = {
+            text: element.dataset.text || 'Sample text...',
+            speed: parseInt(element.dataset.speed) || 100,
+            cursor: element.dataset.cursor || '|',
+            loop: element.dataset.loop !== 'false'
+        };
+        
+        this.currentIndex = 0;
+        this.isTyping = false;
+        this.timeoutId = null;
+        
+        this.init();
+    }
+    
+    init() {
+        this.textElement.textContent = '';
+        this.cursorElement.textContent = this.settings.cursor;
+        this.startTyping();
+    }
+    
+    startTyping() {
+        if (this.isTyping) return;
+        this.isTyping = true;
+        this.typeCharacter();
+    }
+    
+    typeCharacter() {
+        const currentText = this.settings.text;
+        const displayText = currentText.substring(0, this.currentIndex + 1);
+        
+        this.textElement.textContent = displayText;
+        this.currentIndex++;
+        
+        if (this.currentIndex < currentText.length) {
+            this.timeoutId = setTimeout(() => this.typeCharacter(), this.settings.speed);
+        } else {
+            this.isTyping = false;
+            if (this.settings.loop) {
+                this.timeoutId = setTimeout(() => {
+                    this.currentIndex = 0;
+                    this.textElement.textContent = '';
+                    this.startTyping();
+                }, 2000);
+            }
+        }
+    }
+}
+
+// Initialize all typewriters
+document.addEventListener('DOMContentLoaded', function() {
+    const typewriters = document.querySelectorAll('.shogun-typewriter');
+    typewriters.forEach(element => {
+        new SimpleTypewriter(element);
+    });
+});
+        </div>
+    </div>
+
+    <script>
+        // Typewriter functionality for demo
+        class SimpleTypewriter {
+            constructor(element) {
+                this.element = element;
+                this.textElement = element.querySelector('.typewriter-text');
+                this.cursorElement = element.querySelector('.typewriter-cursor');
+                
+                this.settings = {
+                    text: element.dataset.text || 'Sample text...',
+                    speed: parseInt(element.dataset.speed) || 100,
+                    cursor: element.dataset.cursor || '|',
+                    loop: element.dataset.loop !== 'false'
+                };
+                
+                this.currentIndex = 0;
+                this.isTyping = false;
+                this.timeoutId = null;
+                
+                this.init();
+            }
+            
+            init() {
+                this.textElement.textContent = '';
+                this.cursorElement.textContent = this.settings.cursor;
+                this.startTyping();
+            }
+            
+            startTyping() {
+                if (this.isTyping) return;
+                this.isTyping = true;
+                this.typeCharacter();
+            }
+            
+            typeCharacter() {
+                const currentText = this.settings.text;
+                const displayText = currentText.substring(0, this.currentIndex + 1);
+                
+                this.textElement.textContent = displayText;
+                this.currentIndex++;
+                
+                if (this.currentIndex < currentText.length) {
+                    this.timeoutId = setTimeout(() => this.typeCharacter(), this.settings.speed);
+                } else {
+                    this.isTyping = false;
+                    if (this.settings.loop) {
+                        this.timeoutId = setTimeout(() => {
+                            this.currentIndex = 0;
+                            this.textElement.textContent = '';
+                            this.startTyping();
+                        }, 2000);
+                    }
+                }
+            }
+        }
+        
+        // Initialize all typewriters
+        document.addEventListener('DOMContentLoaded', function() {
+            const typewriters = document.querySelectorAll('.shogun-typewriter');
+            typewriters.forEach(element => {
+                new SimpleTypewriter(element);
+            });
+        });
+    </script>
+</body>
+</html>

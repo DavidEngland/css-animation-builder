@@ -1,0 +1,58 @@
+/* animated-solid-border.css
+   =============================================================================
+   Animated Solid Border Utility (CSS)
+   Modern, accessible, and customizable animated solid border effect
+   -----------------------------------------------------------------------------
+   Usage:
+     Add .ba-animated-solid to any block, card, or button for a pulsing border.
+     <button class="ba-animated-solid">Animated Solid Border</button>
+     <button class="ba-animated-solid" style="--ba-color: #00b894; --ba-width: 6px; --ba-radius: 2em;">Custom</button>
+
+   Features:
+     - Uses CSS custom properties for runtime theming
+     - Accessible: respects prefers-reduced-motion
+     - Modern CSS: color-mix, logical properties
+     - Fully documented for maintainability
+     - Composable with utility classes (e.g., .ba-block, .ba-center)
+   ----------------------------------------------------------------------------- */
+
+.ba-animated-solid {
+  border: var(--ba-width, 4px) solid var(--ba-color, #0073e6);
+  border-radius: var(--ba-radius, 1em);
+  animation: ba-pulse 1.2s infinite alternate;
+  background: #fff;
+  position: relative;
+  display: inline-block;
+  padding-block: 1.5em;
+  padding-inline: 2em;
+  overflow: hidden;
+  z-index: 1;
+  transition: box-shadow 0.2s, border-radius 0.3s;
+  box-sizing: border-box;
+}
+
+@keyframes ba-pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--ba-color, #0073e6);
+  }
+  100% {
+    box-shadow: 0 0 0 8px color-mix(in srgb, var(--ba-color, #0073e6) 30%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ba-animated-solid {
+    animation: none !important;
+    box-shadow: none !important;
+  }
+}
+
+.ba-block { display: block; width: 100%; }
+.ba-center { margin-inline: auto; display: block; }
+
+/* Notes:
+   - Use logical properties for better RTL/LTR support.
+   - Use with any background; border color can be customized via --ba-color.
+   - Works with Elementor, Gutenberg, or any HTML element.
+   - For best results, ensure your theme or Elementor allows custom classes and CSS variables.
+*/

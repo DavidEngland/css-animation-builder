@@ -18,7 +18,8 @@ class CSSAnimationBuilder {
         'fadeIn', 'fadeOut', 'slideInLeft', 'slideInRight', 
         'slideInUp', 'slideInDown', 'slideOutLeft', 'slideOutRight',
         'zoomIn', 'zoomOut', 'bounceIn', 'bounceOut', 
-        'rotateIn', 'rotateOut', 'pulse', 'shake', 'wobble', 'swing'
+        'rotateIn', 'rotateOut', 'pulse', 'shake', 'wobble', 'swing',
+        'typewriter', 'handwriting'
       ],
       defaults: {
         duration: 1.0,
@@ -186,6 +187,34 @@ class CSSAnimationBuilder {
           60% { transform: rotate(5deg); }
           80% { transform: rotate(-5deg); }
           100% { transform: rotate(0deg); }
+        `
+      },
+      typewriter: {
+        name: 'Typewriter',
+        keyframes: `
+          0% { width: 0; }
+          100% { width: 100%; }
+        `,
+        customCSS: `
+          overflow: hidden;
+          border-right: 2px solid;
+          white-space: nowrap;
+          margin: 0 auto;
+          letter-spacing: 0.1em;
+          font-family: 'Courier New', monospace;
+        `
+      },
+      handwriting: {
+        name: 'Handwriting',
+        keyframes: `
+          0% { stroke-dashoffset: 1000; }
+          100% { stroke-dashoffset: 0; }
+        `,
+        customCSS: `
+          stroke-dasharray: 1000;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          fill: none;
         `
       }
     };

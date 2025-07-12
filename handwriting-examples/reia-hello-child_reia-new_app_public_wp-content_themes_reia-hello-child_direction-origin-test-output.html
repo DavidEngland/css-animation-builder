@@ -1,0 +1,410 @@
+<h1>Animation Direction and Transform-Origin Test</h1>
+<p>Testing animation-direction and transform-origin features...</p>
+
+<!-- CSS Generated with Direction and Transform-Origin Support -->
+<style>
+:root {
+  --reia-duration: 1s;
+  --reia-delay: 0s;
+  --reia-easing: cubic-bezier(0.4, 0, 0.2, 1);
+  --reia-direction: normal;
+  --reia-iteration: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reia-animated,
+  [class*="reia-"] {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+.reia-animated {
+  animation-duration: var(--reia-duration);
+  animation-delay: var(--reia-delay);
+  animation-timing-function: var(--reia-easing);
+  animation-direction: var(--reia-direction);
+  animation-iteration-count: var(--reia-iteration);
+  animation-fill-mode: both;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.reia-duration-1 { --reia-duration: 0.5s; }
+.reia-duration-2 { --reia-duration: 1s; }
+.reia-duration-3 { --reia-duration: 1.5s; }
+.reia-duration-4 { --reia-duration: 2s; }
+.reia-duration-5 { --reia-duration: 2.5s; }
+.reia-duration-6 { --reia-duration: 3s; }
+.reia-duration-7 { --reia-duration: 3.5s; }
+.reia-duration-8 { --reia-duration: 4s; }
+.reia-duration-9 { --reia-duration: 4.5s; }
+.reia-duration-10 { --reia-duration: 5s; }
+
+.reia-delay-1 { --reia-delay: 0.5s; }
+.reia-delay-2 { --reia-delay: 1s; }
+.reia-delay-3 { --reia-delay: 1.5s; }
+.reia-delay-4 { --reia-delay: 2s; }
+.reia-delay-5 { --reia-delay: 2.5s; }
+.reia-delay-6 { --reia-delay: 3s; }
+.reia-delay-7 { --reia-delay: 3.5s; }
+.reia-delay-8 { --reia-delay: 4s; }
+.reia-delay-9 { --reia-delay: 4.5s; }
+.reia-delay-10 { --reia-delay: 5s; }
+
+.reia-linear { --reia-easing: linear; }
+.reia-ease { --reia-easing: ease; }
+.reia-ease-in { --reia-easing: ease-in; }
+.reia-ease-out { --reia-easing: ease-out; }
+.reia-ease-in-out { --reia-easing: ease-in-out; }
+.reia-bounce { --reia-easing: cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+.reia-elastic { --reia-easing: cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+
+.reia-repeat-infinite { --reia-iteration: infinite; }
+.reia-repeat-1 { --reia-iteration: 1; }
+.reia-repeat-2 { --reia-iteration: 2; }
+.reia-repeat-3 { --reia-iteration: 3; }
+
+.reia-normal { --reia-direction: normal; }
+.reia-reverse { --reia-direction: reverse; }
+.reia-alternate { --reia-direction: alternate; }
+.reia-alternate-reverse { --reia-direction: alternate-reverse; }
+
+.reia-origin-center { transform-origin: center; }
+.reia-origin-top { transform-origin: top; }
+.reia-origin-top-left { transform-origin: top left; }
+.reia-origin-top-right { transform-origin: top right; }
+.reia-origin-bottom { transform-origin: bottom; }
+.reia-origin-bottom-left { transform-origin: bottom left; }
+.reia-origin-bottom-right { transform-origin: bottom right; }
+.reia-origin-left { transform-origin: left; }
+.reia-origin-right { transform-origin: right; }
+
+@keyframes reia-rotateTopLeft {
+  0% {
+    transform: rotate(180deg);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.reia-animated.reia-rotateTopLeft {
+  animation-name: reia-rotateTopLeft;
+  --reia-duration: 2s;
+  --reia-direction: alternate;
+  --reia-iteration: infinite;
+  transform-origin: top left;
+}
+
+@keyframes reia-rotateBottomRight {
+  0% {
+    transform: rotate(360deg);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.reia-animated.reia-rotateBottomRight {
+  animation-name: reia-rotateBottomRight;
+  --reia-duration: 1.5s;
+  --reia-direction: reverse;
+  transform-origin: bottom right;
+}
+
+@keyframes reia-scaleFromTop {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.26);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+.reia-animated.reia-scaleFromTop {
+  animation-name: reia-scaleFromTop;
+  --reia-duration: 1.8s;
+  --reia-direction: alternate-reverse;
+  --reia-iteration: infinite;
+  transform-origin: top;
+}
+
+@keyframes reia-scaleFromBottomLeft {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.reia-animated.reia-scaleFromBottomLeft {
+  animation-name: reia-scaleFromBottomLeft;
+  --reia-duration: 1s;
+  --reia-direction: normal;
+  transform-origin: bottom left;
+}
+
+@keyframes reia-pulseReverse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.reia-animated.reia-pulseReverse {
+  animation-name: reia-pulseReverse;
+  --reia-duration: 1s;
+  --reia-direction: reverse;
+  --reia-iteration: 3;
+}
+
+@keyframes reia-pulseAlternate {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.reia-animated.reia-pulseAlternate {
+  animation-name: reia-pulseAlternate;
+  --reia-duration: 0.8s;
+  --reia-direction: alternate;
+  --reia-iteration: infinite;
+}
+
+@keyframes reia-bounceAlternate {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-60px);
+  }
+  60% {
+    transform: translateY(-30px);
+  }
+}
+
+.reia-animated.reia-bounceAlternate {
+  animation-name: reia-bounceAlternate;
+  --reia-duration: 2s;
+  --reia-direction: alternate;
+  --reia-iteration: infinite;
+}
+
+@keyframes reia-shakeReverse {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-20px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(20px);
+  }
+}
+
+.reia-animated.reia-shakeReverse {
+  animation-name: reia-shakeReverse;
+  --reia-duration: 1.5s;
+  --reia-direction: reverse;
+  --reia-iteration: 2;
+}
+
+@keyframes reia-spinCorner {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+.reia-animated.reia-spinCorner {
+  animation-name: reia-spinCorner;
+  --reia-duration: 2.5s;
+  --reia-direction: alternate;
+  --reia-iteration: infinite;
+  transform-origin: top right;
+}
+
+</style>
+
+<h2>Animation Data with Direction and Transform-Origin</h2>
+<pre>
+Animation: rotateTopLeft
+  Properties:
+    transform-origin: top left
+  Overrides:
+    duration: 2
+    direction: alternate
+    iteration: infinite
+
+Animation: rotateBottomRight
+  Properties:
+    transform-origin: bottom right
+  Overrides:
+    duration: 1.5
+    direction: reverse
+
+Animation: scaleFromTop
+  Properties:
+    transform-origin: top
+  Overrides:
+    duration: 1.8
+    direction: alternate-reverse
+    iteration: infinite
+
+Animation: scaleFromBottomLeft
+  Properties:
+    transform-origin: bottom left
+  Overrides:
+    duration: 1
+    direction: normal
+
+Animation: pulseReverse
+  Overrides:
+    duration: 1
+    direction: reverse
+    iteration: 3
+
+Animation: pulseAlternate
+  Overrides:
+    duration: 0.8
+    direction: alternate
+    iteration: infinite
+
+Animation: bounceAlternate
+  Overrides:
+    duration: 2
+    direction: alternate
+    iteration: infinite
+
+Animation: shakeReverse
+  Overrides:
+    duration: 1.5
+    direction: reverse
+    iteration: 2
+
+Animation: spinCorner
+  Properties:
+    transform-origin: top right
+  Overrides:
+    duration: 2.5
+    direction: alternate
+    iteration: infinite
+
+</pre>
+
+<h2>HTML Examples with Direction and Transform-Origin</h2>
+<div class="reia-animated reia-rotateTopLeft" style="--reia-duration: 2s; --reia-direction: alternate; --reia-iteration: infinite">
+  <p>Infinite alternating rotation from top-left corner (2s)</p>
+</div>
+
+<div class="reia-animated reia-rotateBottomRight" style="--reia-duration: 1.5s; --reia-direction: reverse">
+  <p>Reverse rotation from bottom-right corner (1.5s)</p>
+</div>
+
+<div class="reia-animated reia-scaleFromTop" style="--reia-duration: 1.8s; --reia-direction: alternate-reverse; --reia-iteration: infinite">
+  <p>Infinite alternate-reverse scaling from top (1.8s)</p>
+</div>
+
+<div class="reia-animated reia-scaleFromBottomLeft" style="--reia-duration: 1s; --reia-direction: normal">
+  <p>Normal scaling from bottom-left corner (1s)</p>
+</div>
+
+<div class="reia-animated reia-pulseReverse" style="--reia-duration: 1s; --reia-direction: reverse; --reia-iteration: 3">
+  <p>Reverse pulse, repeats 3x (1s)</p>
+</div>
+
+<div class="reia-animated reia-pulseAlternate" style="--reia-duration: 0.8s; --reia-direction: alternate; --reia-iteration: infinite">
+  <p>Infinite alternating pulse (0.8s)</p>
+</div>
+
+<div class="reia-animated reia-bounceAlternate" style="--reia-duration: 2s; --reia-direction: alternate; --reia-iteration: infinite">
+  <p>Infinite alternating strong bounce (2s)</p>
+</div>
+
+<div class="reia-animated reia-shakeReverse" style="--reia-duration: 1.5s; --reia-direction: reverse; --reia-iteration: 2">
+  <p>Reverse shake, repeats 2x (1.5s)</p>
+</div>
+
+<div class="reia-animated reia-spinCorner" style="--reia-duration: 2.5s; --reia-direction: alternate; --reia-iteration: infinite">
+  <p>Custom spin with scale from top-right, infinite alternate (2.5s)</p>
+</div>
+
+<h2>Utility Class Examples</h2>
+<p>You can also use utility classes for runtime control:</p>
+<div class="reia-animated reia-fadeIn reia-alternate reia-repeat-infinite reia-origin-top-left">
+  <p>Fade with alternating direction, infinite repeat, top-left origin</p>
+</div>
+
+<div class="reia-animated reia-pulseQuick reia-reverse reia-repeat-3 reia-origin-bottom-right">
+  <p>Pulse with reverse direction, 3 repeats, bottom-right origin</p>
+</div>
+
+<div class="reia-animated reia-rotateTopLeft reia-origin-center">
+  <p>Override transform-origin with utility class (center overrides top-left)</p>
+</div>
+
+<h2>Available Direction Values</h2>
+<ul>
+<li><strong>normal</strong> - Default direction (forward)</li>
+<li><strong>reverse</strong> - Animation plays backwards</li>
+<li><strong>alternate</strong> - Animation alternates forward/backward each iteration</li>
+<li><strong>alternate-reverse</strong> - Animation alternates backward/forward each iteration</li>
+</ul>
+
+<h2>Available Transform-Origin Values</h2>
+<ul>
+<li><strong>center</strong> - Default center point</li>
+<li><strong>top, bottom, left, right</strong> - Edge-based origins</li>
+<li><strong>top-left, top-right, bottom-left, bottom-right</strong> - Corner origins</li>
+<li><strong>Custom values</strong> - e.g., '25% 75%', '10px 20px'</li>
+</ul>
+
+<h2>Performance Notes</h2>
+<ul>
+<li>Animation direction is controlled via CSS custom properties for easy runtime modification</li>
+<li>Transform-origin is set as a static property on animation classes</li>
+<li>Utility classes provide alternative control methods</li>
+<li>Direction is particularly useful for infinite and repeating animations</li>
+<li>Transform-origin greatly enhances visual effects for rotation and scaling</li>
+</ul>
+
+<h2>Generated Files</h2>
+<ul>
+<li><strong>direction-origin-output.css</strong> - Complete CSS with direction and transform-origin support</li>
+<li><strong>direction-origin-test.php</strong> - This test file</li>
+</ul>
+<p><em>Test completed: 2025-07-07 20:15:30</em></p>

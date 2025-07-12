@@ -1,0 +1,686 @@
+/* Style Voter Frontend Styles */
+
+.style-voter-container {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.style-voter-demo h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+
+.slogan-demo {
+    padding: 20px;
+    margin: 15px 0;
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    background: #f9f9f9;
+    text-align: center;
+    font-size: 1.4em;
+    font-weight: 600;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.style-voter-form {
+    margin: 20px 0;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 6px;
+}
+
+.style-voter-form p {
+    margin: 0 0 15px 0;
+    font-weight: 600;
+    color: #555;
+}
+
+.vote-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.vote-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+.like-btn {
+    background: #28a745;
+    color: white;
+}
+
+.like-btn:hover {
+    background: #218838;
+    transform: translateY(-2px);
+}
+
+.dislike-btn {
+    background: #dc3545;
+    color: white;
+}
+
+.dislike-btn:hover {
+    background: #c82333;
+    transform: translateY(-2px);
+}
+
+.vote-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.style-voter-voted {
+    padding: 15px;
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    border-radius: 6px;
+    color: #155724;
+    text-align: center;
+    margin: 15px 0;
+}
+
+.style-voter-stats {
+    margin: 20px 0;
+    padding: 15px;
+    background: #fff;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+}
+
+.vote-stats {
+    text-align: center;
+}
+
+.stats-bar {
+    width: 100%;
+    height: 20px;
+    background: #e9ecef;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px 0;
+    position: relative;
+}
+
+.like-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #28a745, #20c997);
+    transition: width 0.5s ease;
+    border-radius: 10px;
+}
+
+.stats-text {
+    font-size: 14px;
+    color: #666;
+    margin-top: 8px;
+}
+
+.no-votes {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+}
+
+.style-voter-message {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.style-voter-message.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.style-voter-message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.style-voter-error {
+    color: #dc3545;
+    font-weight: 600;
+    padding: 10px;
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+}
+
+/* Results Grid */
+.style-voter-results {
+    margin: 20px 0;
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.result-item {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    background: #fff;
+}
+
+.result-item h4 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.1em;
+}
+
+/* Showcase Grid */
+.slogan-showcase {
+    margin: 20px 0;
+}
+
+.showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.showcase-item {
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.style-demo h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .vote-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .vote-btn {
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    .showcase-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Loading State */
+.style-voter-loading .vote-btn {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.style-voter-loading .vote-btn::after {
+    content: " ⏳";
+}
+
+/* ==========================================================================
+   Advanced Slogan Styles - Integrated from _slogans.scss
+   ========================================================================== */
+
+/**
+ * Multiple styling options for company slogans and text demonstrations.
+ * These styles are used in the Style Voter plugin for voting demonstrations.
+ * Each class can be applied to elements containing slogans for different effects.
+ */
+
+/* CSS Custom Properties for theming */
+:root {
+    --primary: #002d5f;
+    --accent: #0073e6;
+    --card-radius: 12px;
+    --font-heading: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Base slogan styling - applies to any element with the slogan */
+.company-slogan,
+.smart-move-slogan,
+[data-slogan*="Smart Move"] {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--primary);
+    text-align: center;
+    margin: 1.5rem 0;
+}
+
+/* === OPTION 1: Gradient Text with Glow === */
+.slogan-gradient {
+    background: linear-gradient(45deg, var(--primary), var(--accent), #ff6b35, var(--primary));
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 4s ease-in-out infinite;
+    text-shadow: 0 0 20px rgba(0, 45, 95, 0.3);
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 700;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* === OPTION 2: Highlighted/Boxed Style === */
+.slogan-highlighted {
+    background: linear-gradient(135deg, #fff9e6, #fffbe7);
+    border: 3px solid var(--accent);
+    border-radius: var(--card-radius);
+    padding: clamp(1rem, 3vw, 2rem);
+    box-shadow:
+        0 4px 20px rgba(0, 45, 95, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    position: relative;
+    overflow: hidden;
+    transform: perspective(1000px) rotateX(2deg);
+    transition: transform 0.3s ease;
+}
+
+.slogan-highlighted:hover {
+    transform: perspective(1000px) rotateX(0deg) scale(1.02);
+}
+
+.slogan-highlighted::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(0, 115, 230, 0.1), transparent);
+    transform: rotate(45deg);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+/* === OPTION 3: Handwritten/Script Style === */
+.slogan-handwritten {
+    font-family: 'Caveat', 'Dancing Script', cursive, var(--font-heading);
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    color: #2c3e50;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    transform: rotate(-1deg);
+    letter-spacing: 0.02em;
+    position: relative;
+}
+
+.slogan-handwritten::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 10%;
+    right: 10%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    border-radius: 2px;
+    opacity: 0.7;
+}
+
+/* === OPTION 4: Bold Statement with Smart Move Emphasis === */
+.slogan-emphasis {
+    font-size: clamp(1.3rem, 3.5vw, 2.2rem);
+    color: #333;
+}
+
+.slogan-emphasis .smart-move {
+    color: var(--accent);
+    font-weight: 800;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: linear-gradient(135deg, var(--accent), #005bb5);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 10px rgba(0, 115, 230, 0.3);
+    position: relative;
+}
+
+.slogan-emphasis .smart-move::after {
+    content: '™';
+    position: absolute;
+    top: -0.5em;
+    right: -0.8em;
+    font-size: 0.4em;
+    color: var(--accent);
+    font-weight: 400;
+}
+
+.slogan-emphasis .guarantee {
+    color: var(--primary);
+    font-weight: 700;
+    font-style: italic;
+    text-decoration: underline;
+    text-decoration-color: #ff6b35;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}
+
+/* === OPTION 5: Modern Card Style === */
+.slogan-card {
+    background: linear-gradient(135deg, #f8f9fa, #fff);
+    border-radius: 20px;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    box-shadow:
+        0 10px 30px rgba(0, 45, 95, 0.08),
+        0 1px 8px rgba(0, 45, 95, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 115, 230, 0.1);
+    position: relative;
+    backdrop-filter: blur(10px);
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.slogan-card::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    font-size: 4rem;
+    color: var(--accent);
+    opacity: 0.3;
+    font-family: Georgia, serif;
+}
+
+.slogan-card::after {
+    content: '"';
+    position: absolute;
+    bottom: -30px;
+    right: 20px;
+    font-size: 4rem;
+    color: var(--accent);
+    opacity: 0.3;
+    font-family: Georgia, serif;
+}
+
+/* === OPTION 6: Animated Typewriter Effect === */
+.slogan-typewriter {
+    font-family: 'Courier New', monospace;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    border-right: 3px solid var(--accent);
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typewriter 4s steps(50, end), blinkCursor 1s step-end infinite;
+    max-width: fit-content;
+    margin: 2rem auto;
+}
+
+@keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blinkCursor {
+    0%, 50% { border-color: var(--accent); }
+    51%, 100% { border-color: transparent; }
+}
+
+/* === OPTION 7: 3D Text Effect === */
+.slogan-3d {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 800;
+    color: var(--primary);
+    text-shadow:
+        1px 1px 0 var(--accent),
+        2px 2px 0 var(--accent),
+        3px 3px 0 var(--accent),
+        4px 4px 0 var(--accent),
+        5px 5px 10px rgba(0, 45, 95, 0.3);
+    transform: perspective(1000px) rotateX(15deg);
+    letter-spacing: 0.02em;
+}
+
+/* === UTILITY CLASSES === */
+.slogan-center { text-align: center; }
+.slogan-large { font-size: clamp(1.8rem, 5vw, 3rem); }
+.slogan-xl { font-size: clamp(2rem, 6vw, 4rem); }
+.slogan-animate { animation: bounceIn 1s ease-out; }
+
+@keyframes bounceIn {
+    0% { transform: scale(0.3); opacity: 0; }
+    50% { transform: scale(1.05); }
+    70% { transform: scale(0.9); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* === COMBINATION CLASSES === */
+.slogan-premium {
+    /* Combines slogan-card + slogan-gradient + slogan-large */
+    background: linear-gradient(135deg, #f8f9fa, #fff);
+    border-radius: 20px;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    box-shadow:
+        0 10px 30px rgba(0, 45, 95, 0.08),
+        0 1px 8px rgba(0, 45, 95, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 115, 230, 0.1);
+    position: relative;
+    backdrop-filter: blur(10px);
+    max-width: 800px;
+    margin: 2rem auto;
+    background: linear-gradient(45deg, var(--primary), var(--accent), #ff6b35, var(--primary));
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 4s ease-in-out infinite;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-weight: 700;
+}
+
+.slogan-statement {
+    /* Combines slogan-highlighted + slogan-emphasis + slogan-animate */
+    background: linear-gradient(135deg, #fff9e6, #fffbe7);
+    border: 3px solid var(--accent);
+    border-radius: var(--card-radius);
+    padding: clamp(1rem, 3vw, 2rem);
+    box-shadow:
+        0 4px 20px rgba(0, 45, 95, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    position: relative;
+    overflow: hidden;
+    transform: perspective(1000px) rotateX(2deg);
+    transition: transform 0.3s ease;
+    font-size: clamp(1.3rem, 3.5vw, 2.2rem);
+    color: #333;
+    animation: bounceIn 1s ease-out;
+}
+
+/* === BACKGROUND VARIANTS FOR SECTIONS === */
+.slogan-bg-light {
+    background: linear-gradient(135deg, #f8f9fa, #fff);
+    border-radius: 15px;
+    padding: 3rem 1rem;
+    margin: 2rem 0;
+}
+
+.slogan-bg-primary {
+    background: linear-gradient(135deg, var(--primary), #1a3a6b);
+    color: white;
+    border-radius: 15px;
+    padding: 3rem 1rem;
+    margin: 2rem 0;
+}
+
+.slogan-bg-accent {
+    background: linear-gradient(135deg, var(--accent), #005bb5);
+    color: white;
+    border-radius: 15px;
+    padding: 3rem 1rem;
+    margin: 2rem 0;
+}
+
+/* === SPACING UTILITIES === */
+.slogan-spacing-sm { margin: 1rem 0; }
+.slogan-spacing-md { margin: 2rem 0; }
+.slogan-spacing-lg { margin: 3rem 0; }
+.slogan-spacing-xl { margin: 4rem 0; }
+
+.slogan-padding-sm { padding: 1rem; }
+.slogan-padding-md { padding: 2rem; }
+.slogan-padding-lg { padding: 3rem; }
+
+/* === DECORATIVE ELEMENTS === */
+.slogan-wrapper,
+.smart-move-container {
+    position: relative;
+}
+
+.slogan-wrapper::before,
+.smart-move-container::before {
+    content: '⭐';
+    position: absolute;
+    left: -2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5em;
+    color: #ffd700;
+    animation: twinkle 2s infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 1; transform: translateY(-50%) scale(1); }
+    50% { opacity: 0.5; transform: translateY(-50%) scale(1.2); }
+}
+
+/* === RESPONSIVE ADJUSTMENTS === */
+@media (max-width: 768px) {
+    .slogan-3d {
+        text-shadow:
+            1px 1px 0 var(--accent),
+            2px 2px 0 var(--accent),
+            3px 3px 5px rgba(0, 45, 95, 0.3);
+        transform: perspective(500px) rotateX(10deg);
+    }
+
+    .slogan-highlighted {
+        padding: clamp(0.8rem, 2vw, 1.5rem);
+        transform: perspective(500px) rotateX(1deg);
+    }
+
+    .slogan-card {
+        padding: clamp(1rem, 3vw, 2rem);
+        margin: 1rem auto;
+    }
+
+    .slogan-bg-light,
+    .slogan-bg-primary,
+    .slogan-bg-accent {
+        padding: 2rem 1rem;
+        margin: 1rem 0;
+    }
+
+    .company-slogan {
+        word-spacing: 0.05em;
+        line-height: 1.4;
+    }
+}
+
+/* === ACCESSIBILITY IMPROVEMENTS === */
+@media (prefers-reduced-motion: reduce) {
+    .slogan-gradient,
+    .slogan-typewriter,
+    .slogan-animate,
+    .slogan-wrapper::before {
+        animation: none !important;
+    }
+
+    .slogan-highlighted::before {
+        animation: none !important;
+    }
+}
+
+@media (prefers-contrast: high) {
+    .company-slogan {
+        color: black !important;
+        background: white !important;
+        border: 2px solid black !important;
+        -webkit-text-fill-color: black !important;
+    }
+
+    .smart-move,
+    .guarantee {
+        color: black !important;
+        background: yellow !important;
+        -webkit-text-fill-color: black !important;
+    }
+}
+
+/* Focus states for interactive elements */
+.company-slogan:focus-within {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+/* === PRINT STYLES === */
+@media print {
+    .company-slogan {
+        color: black !important;
+        background: none !important;
+        -webkit-text-fill-color: black !important;
+        text-shadow: none !important;
+        box-shadow: none !important;
+    }
+
+    .slogan-gradient,
+    .slogan-3d,
+    .slogan-typewriter {
+        animation: none !important;
+        border: none !important;
+    }
+}
+
+/* === ENHANCED TYPOGRAPHY === */
+.company-slogan {
+    word-spacing: 0.1em;
+    hyphens: none;
+    word-break: keep-all;
+}
+
+/* Alignment utilities */
+.slogan-left { text-align: left !important; }
+.slogan-right { text-align: right !important; }
+.slogan-justify { text-align: justify !important; }

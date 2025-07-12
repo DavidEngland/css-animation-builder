@@ -1,0 +1,167 @@
+/* ==========================================================================
+   Connections Directory: Responsive Layout & Elementor Compatibility
+   ========================================================================== */
+
+/* 
+   1. Default Directory Layout (non-home)
+   --------------------------------------
+   Stack entries vertically. Remove floats for Flexbox compatibility.
+*/
+#cn-cmap .cn-list-row,
+#cn-cmap .cn-list-row-alternate {
+    display: block;
+    width: 100%;
+    margin: 0 0 1.5rem 0;
+    box-sizing: border-box;
+}
+
+/* 
+   2. Home Page Card Layout & Styling
+   ----------------------------------
+   Center directory, use flex column for cards, and remove default styling.
+*/
+.home #cn-cmap #cn-list-body {
+    text-align: center;
+}
+
+.home #cn-cmap .cn-list-row,
+.home #cn-cmap .cn-list-row-alternate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 190px;
+    margin: 0 15px;
+    vertical-align: top;
+}
+
+.home #cn-cmap .cn-list-row .cn-entry,
+.home #cn-cmap .cn-list-row-alternate .cn-entry {
+    border: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: none !important;
+}
+
+/* 
+   3. Image and Text Styling
+   -------------------------
+   Style images and center text on home page.
+*/
+.home #cn-cmap span.cn-image-style {
+    border-radius: 0;
+    background: rgba(255, 255, 255, 0.25);
+    border: 2px solid #fff;
+    padding: 0;
+}
+/* Center .cn-left on the home page */
+.home #cn-cmap .cn-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center !important;
+    justify-content: center;
+    text-align: center !important;
+}
+/* Always center .cn-right on the home page, regardless of screen size */
+.home #cn-cmap .cn-right {
+    text-align: center !important;
+    align-self: center !important;
+}
+
+/* Center and style text in Connections rows on home */
+.home #cn-cmap .cn-right,
+.home #cn-cmap .cn-list-row a,
+.home #cn-cmap .cn-list-row h2 .fn,
+.home #cn-cmap .cn-list-row-alternate h2 .fn {
+    text-align: center;
+    color: #fff !important;
+    font-weight: 500;
+    margin-top: 15px;
+}
+
+/* Italicize the title span in Connections list */
+.home #cn-list span.title {
+    font-style: italic;
+}
+
+/* Style phone numbers on home */
+.home #cn-cmap .cn-phone-number,
+.home #cn-cmap .cn-phone-number a {
+    color: #fff !important;
+    font-weight: 500;
+}
+
+/* 
+   4. Elementor & Theme Compatibility
+   ----------------------------------
+   Prevent Elementor or theme from hiding overflow.
+*/
+.elementor-widget-container,
+.elementor-section,
+.elementor-container {
+    overflow: visible !important;
+}
+
+/* Hide scrollbars for a cleaner look (optional) */
+#cn-cmap::-webkit-scrollbar {
+    display: none;
+}
+
+/* 
+   5. Responsive Alignment for .cn-right (non-home)
+   -----------------------------------------------
+   Use media queries to align .cn-right based on device/screen size.
+   These are overridden on .home by the rule above.
+*/
+@media only screen and (min-width: 321px) {
+    #cn-cmap .cn-right {
+        text-align: left;
+        align-self: flex-start;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    #cn-cmap .cn-right {
+        text-align: left;
+        align-self: flex-start;
+    }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    #cn-cmap .cn-right {
+        text-align: right;
+        align-self: flex-end;
+    }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+    #cn-cmap .cn-right {
+        text-align: right;
+        align-self: flex-end;
+    }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+    #cn-cmap .cn-right {
+        text-align: right;
+        align-self: flex-end;
+    }
+}
+
+@media only screen and (min-width: 1224px) {
+    #cn-cmap .cn-right {
+        text-align: right;
+        align-self: flex-end;
+    }
+}
+
+@media only screen and (min-width: 1824px) {
+    #cn-cmap .cn-right {
+        text-align: right;
+        align-self: flex-end;
+    }
+}
+
+/* ==========================================================================
+   End Connections Directory Custom Styles
+   ========================================================================== */

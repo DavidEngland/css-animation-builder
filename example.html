@@ -8,55 +8,55 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             margin: 0;
-            padding: 20px;
-            background: #f5f5f5;
+            padding: var(--transform-translate-md);
+            background: var(--bg-light);
         }
         
         .demo-header {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: var(--font-size-xxxl);
         }
         
         .demo-header h1 {
-            color: #2c3e50;
+            color: var(--text-dark);
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
         }
         
         .demo-header p {
             color: #7f8c8d;
-            font-size: 1.2rem;
+            font-size: 1.var(--font-size-xxxl);
         }
         
         .usage-info {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-            max-width: 1200px;
+            background: var(--bg-primary);
+            padding: var(--font-size-xxxl);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 var(--border-width-medium) 4px rgba(0,0,0,0.1);
+            margin-bottom: var(--font-size-xxxl);
+            max-width: 1var(--layout-min-height-xxl);
             margin-left: auto;
             margin-right: auto;
         }
         
         .usage-info h2 {
-            color: #2c3e50;
-            margin-bottom: 1rem;
+            color: var(--text-dark);
+            margin-bottom: var(--font-size-md);
         }
         
         .usage-tabs {
             display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
+            gap: var(--font-size-md);
+            margin-bottom: var(--font-size-md);
         }
         
         .usage-tab {
-            padding: 0.5rem 1rem;
+            padding: 0.5rem var(--font-size-md);
             background: #ecf0f1;
             border: none;
-            border-radius: 4px;
+            border-radius: var(--radius-sm);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all var(--duration-fast) ease;
         }
         
         .usage-tab.active {
@@ -73,10 +73,10 @@
         }
         
         .usage-content pre {
-            background: #2c3e50;
+            background: var(--text-dark);
             color: #ecf0f1;
-            padding: 1rem;
-            border-radius: 4px;
+            padding: var(--font-size-md);
+            border-radius: var(--radius-sm);
             overflow-x: auto;
         }
         
@@ -84,6 +84,9 @@
             font-family: 'Courier New', monospace;
         }
     </style>
+<!-- CSS Variables Import -->
+<link rel="stylesheet" href="src/variables.css">
+<!-- End CSS Variables Import -->
 </head>
 <body>
     <div class="demo-header">
@@ -597,23 +600,23 @@ ${this.getKeyframes(animationType)}`;
 
             getKeyframes(animationType) {
                 const keyframes = {
-                    fadeIn: '0% { opacity: 0; }\n    100% { opacity: 1; }',
-                    fadeOut: '0% { opacity: 1; }\n    100% { opacity: 0; }',
-                    slideInLeft: '0% { transform: translateX(-100%); opacity: 0; }\n    100% { transform: translateX(0); opacity: 1; }',
-                    slideInRight: '0% { transform: translateX(100%); opacity: 0; }\n    100% { transform: translateX(0); opacity: 1; }',
-                    slideInUp: '0% { transform: translateY(100%); opacity: 0; }\n    100% { transform: translateY(0); opacity: 1; }',
-                    slideInDown: '0% { transform: translateY(-100%); opacity: 0; }\n    100% { transform: translateY(0); opacity: 1; }',
-                    zoomIn: '0% { transform: scale(0); opacity: 0; }\n    100% { transform: scale(1); opacity: 1; }',
-                    zoomOut: '0% { transform: scale(1); opacity: 1; }\n    100% { transform: scale(0); opacity: 0; }',
-                    bounceIn: '0% { transform: scale(0.3); opacity: 0; }\n    50% { transform: scale(1.05); opacity: 0.8; }\n    70% { transform: scale(0.9); opacity: 0.9; }\n    100% { transform: scale(1); opacity: 1; }',
-                    rotateIn: '0% { transform: rotate(-200deg); opacity: 0; }\n    100% { transform: rotate(0); opacity: 1; }',
-                    pulse: '0% { transform: scale(1); }\n    50% { transform: scale(1.1); }\n    100% { transform: scale(1); }',
-                    shake: '0%, 100% { transform: translateX(0); }\n    10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }\n    20%, 40%, 60%, 80% { transform: translateX(10px); }',
-                    wobble: '0% { transform: translateX(0%); }\n    15% { transform: translateX(-25%) rotate(-5deg); }\n    30% { transform: translateX(20%) rotate(3deg); }\n    45% { transform: translateX(-15%) rotate(-3deg); }\n    60% { transform: translateX(10%) rotate(2deg); }\n    75% { transform: translateX(-5%) rotate(-1deg); }\n    100% { transform: translateX(0%); }',
-                    swing: '20% { transform: rotate(15deg); }\n    40% { transform: rotate(-10deg); }\n    60% { transform: rotate(5deg); }\n    80% { transform: rotate(-5deg); }\n    100% { transform: rotate(0deg); }'
+                    fadeIn: '0% { opacity: var(--opacity-transparent); }\n    var(--element-width-full) { opacity: var(--opacity-opaque); }',
+                    fadeOut: '0% { opacity: var(--opacity-opaque); }\n    var(--element-width-full) { opacity: var(--opacity-transparent); }',
+                    slideInLeft: '0% { transform: translateX(-var(--element-width-full)); opacity: var(--opacity-transparent); }\n    var(--element-width-full) { transform: translateX(0); opacity: var(--opacity-opaque); }',
+                    slideInRight: '0% { transform: translateX(var(--element-width-full)); opacity: var(--opacity-transparent); }\n    var(--element-width-full) { transform: translateX(0); opacity: var(--opacity-opaque); }',
+                    slideInUp: '0% { transform: translateY(var(--element-width-full)); opacity: var(--opacity-transparent); }\n    var(--element-width-full) { transform: translateY(0); opacity: var(--opacity-opaque); }',
+                    slideInDown: '0% { transform: translateY(-var(--element-width-full)); opacity: var(--opacity-transparent); }\n    var(--element-width-full) { transform: translateY(0); opacity: var(--opacity-opaque); }',
+                    zoomIn: '0% { transform: scale(0); opacity: var(--opacity-transparent); }\n    var(--element-width-full) { transform: scale(var(--transform-scale-md)); opacity: var(--opacity-opaque); }',
+                    zoomOut: '0% { transform: scale(var(--transform-scale-md)); opacity: var(--opacity-opaque); }\n    var(--element-width-full) { transform: scale(0); opacity: var(--opacity-transparent); }',
+                    bounceIn: '0% { transform: scale(var(--transform-scale-xs)); opacity: var(--opacity-transparent); }\n    50% { transform: scale(var(--transform-scale-lg)); opacity: var(--opacity-transparent).8; }\n    70% { transform: scale(0.9); opacity: var(--opacity-transparent).9; }\n    var(--element-width-full) { transform: scale(var(--transform-scale-md)); opacity: var(--opacity-opaque); }',
+                    rotateIn: '0% { transform: rotate(-200deg); opacity: var(--opacity-transparent); }\n    var(--element-width-full) { transform: rotate(0); opacity: var(--opacity-opaque); }',
+                    pulse: '0% { transform: scale(var(--transform-scale-md)); }\n    50% { transform: scale(var(--transform-scale-xl)); }\n    var(--element-width-full) { transform: scale(var(--transform-scale-md)); }',
+                    shake: '0%, var(--element-width-full) { transform: translateX(0); }\n    var(--spacing-sm), 30%, 50%, 70%, 90% { transform: translateX(-var(--transform-translate-sm)); }\n    var(--element-width-20), var(--element-width-40), var(--element-width-60), var(--element-width-80) { transform: translateX(var(--transform-translate-sm)); }',
+                    wobble: '0% { transform: translateX(0%); }\n    15% { transform: translateX(-25%) rotate(calc(-1 * var(--transform-rotate-sm))); }\n    30% { transform: translateX(var(--element-width-20)) rotate(3deg); }\n    45% { transform: translateX(-15%) rotate(-3deg); }\n    var(--element-width-60) { transform: translateX(var(--spacing-sm)) rotate(2deg); }\n    75% { transform: translateX(-5%) rotate(-1deg); }\n    var(--element-width-full) { transform: translateX(0%); }',
+                    swing: 'var(--element-width-20) { transform: rotate(15deg); }\n    var(--element-width-40) { transform: rotate(calc(-1 * var(--transform-rotate-md))); }\n    var(--element-width-60) { transform: rotate(var(--transform-rotate-sm)); }\n    var(--element-width-80) { transform: rotate(calc(-1 * var(--transform-rotate-sm))); }\n    var(--element-width-full) { transform: rotate(0deg); }'
                 };
                 
-                const keyframeContent = keyframes[animationType] || '0% { opacity: 0; } 100% { opacity: 1; }';
+                const keyframeContent = keyframes[animationType] || '0% { opacity: var(--opacity-transparent); } var(--element-width-full) { opacity: var(--opacity-opaque); }';
                 
                 return `@keyframes ${animationType} {\n    ${keyframeContent}\n}`;
             }
@@ -740,13 +743,13 @@ ${this.getKeyframes(animationType)}`;
                     .css-animation-builder {
                         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
                         line-height: 1.6;
-                        color: #333;
-                        max-width: 1200px;
+                        color: var(--text-primary);
+                        max-width: 1var(--layout-min-height-xxl);
                         margin: 0 auto;
-                        padding: 2rem;
-                        background: #fff;
-                        border-radius: 12px;
-                        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+                        padding: var(--font-size-xxxl);
+                        background: var(--bg-primary);
+                        border-radius: 1var(--border-width-medium);
+                        box-shadow: 0 8px 3var(--border-width-medium) rgba(0,0,0,0.1);
                     }
 
                     .builder-header {
@@ -756,51 +759,51 @@ ${this.getKeyframes(animationType)}`;
 
                     .builder-header h1 {
                         font-size: 2.5rem;
-                        margin-bottom: 1rem;
-                        color: #2c3e50;
+                        margin-bottom: var(--font-size-md);
+                        color: var(--text-dark);
                     }
 
                     .builder-wrapper {
                         display: grid;
                         grid-template-columns: 1fr 1fr;
-                        gap: 2rem;
-                        margin-bottom: 2rem;
+                        gap: var(--font-size-xxxl);
+                        margin-bottom: var(--font-size-xxxl);
                     }
 
                     .animation-controls,
                     .preview-area {
-                        background: #f8f9fa;
-                        padding: 2rem;
-                        border-radius: 8px;
-                        border: 1px solid #e9ecef;
+                        background: var(--bg-secondary);
+                        padding: var(--font-size-xxxl);
+                        border-radius: var(--radius-lg);
+                        border: var(--border-width-thin) solid var(--bg-tertiary);
                     }
 
                     .css-output {
-                        background: #f8f9fa;
-                        padding: 2rem;
-                        border-radius: 8px;
-                        border: 1px solid #e9ecef;
+                        background: var(--bg-secondary);
+                        padding: var(--font-size-xxxl);
+                        border-radius: var(--radius-lg);
+                        border: var(--border-width-thin) solid var(--bg-tertiary);
                     }
 
                     .control-tabs {
                         display: flex;
-                        margin-bottom: 1.5rem;
-                        border-bottom: 2px solid #dee2e6;
+                        margin-bottom: var(--font-size-xxl);
+                        border-bottom: var(--border-width-medium) solid var(--border-secondary);
                     }
 
                     .tab-button {
                         background: none;
                         border: none;
-                        padding: 0.75rem 1.5rem;
+                        padding: 0.75rem var(--font-size-xxl);
                         cursor: pointer;
-                        border-bottom: 2px solid transparent;
-                        transition: all 0.3s ease;
+                        border-bottom: var(--border-width-medium) solid transparent;
+                        transition: all var(--duration-fast) ease;
                         font-weight: 500;
                     }
 
                     .tab-button.active {
-                        border-bottom-color: #007cba;
-                        color: #007cba;
+                        border-bottom-color: var(--primary-color);
+                        color: var(--primary-color);
                     }
 
                     .tab-content {
@@ -812,36 +815,36 @@ ${this.getKeyframes(animationType)}`;
                     }
 
                     .control-group {
-                        margin-bottom: 1.5rem;
+                        margin-bottom: var(--font-size-xxl);
                     }
 
                     .control-group label {
                         display: block;
                         margin-bottom: 0.5rem;
                         font-weight: 600;
-                        color: #495057;
+                        color: var(--typewriter-secondary);
                     }
 
                     .control-group input,
                     .control-group select {
-                        width: 100%;
+                        width: var(--element-width-full);
                         padding: 0.75rem;
-                        border: 2px solid #dee2e6;
+                        border: var(--border-width-medium) solid var(--border-secondary);
                         border-radius: 6px;
-                        font-size: 1rem;
-                        transition: border-color 0.3s ease;
+                        font-size: var(--font-size-md);
+                        transition: border-color var(--duration-fast) ease;
                     }
 
                     .control-group input:focus,
                     .control-group select:focus {
                         outline: none;
-                        border-color: #007cba;
-                        box-shadow: 0 0 0 3px rgba(0, 124, 186, 0.1);
+                        border-color: var(--primary-color);
+                        box-shadow: 0 0 0 var(--element-height-divider) rgba(0, 124, 186, 0.1);
                     }
 
                     .control-group input[type="range"] {
-                        width: calc(100% - 60px);
-                        margin-right: 10px;
+                        width: calc(var(--element-width-full) - var(--layout-min-height-sm));
+                        margin-right: var(--transform-translate-sm);
                         padding: 0;
                     }
 
@@ -849,117 +852,117 @@ ${this.getKeyframes(animationType)}`;
                         display: inline-block;
                         min-width: 50px;
                         font-weight: 600;
-                        color: #007cba;
-                        background: #e3f2fd;
+                        color: var(--primary-color);
+                        background: var(--primary-color-light);
                         padding: 0.25rem 0.5rem;
-                        border-radius: 4px;
+                        border-radius: var(--radius-sm);
                         font-size: 0.9rem;
                     }
 
                     .preset-grid {
                         display: grid;
-                        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-                        gap: 1rem;
+                        grid-template-columns: repeat(auto-fit, minmax(var(--layout-min-height-lg), 1fr));
+                        gap: var(--font-size-md);
                     }
 
                     .preset-button {
-                        padding: 1rem 0.5rem;
-                        background: #fff;
-                        border: 2px solid #dee2e6;
-                        border-radius: 8px;
+                        padding: var(--font-size-md) 0.5rem;
+                        background: var(--bg-primary);
+                        border: var(--border-width-medium) solid var(--border-secondary);
+                        border-radius: var(--radius-lg);
                         cursor: pointer;
-                        transition: all 0.3s ease;
+                        transition: all var(--duration-fast) ease;
                         font-weight: 500;
                         text-align: center;
                     }
 
                     .preset-button:hover {
-                        border-color: #007cba;
-                        background: #e3f2fd;
-                        transform: translateY(-2px);
+                        border-color: var(--primary-color);
+                        background: var(--primary-color-light);
+                        transform: translateY(-var(--border-width-medium));
                     }
 
                     .action-buttons {
                         display: flex;
-                        gap: 1rem;
-                        margin-top: 2rem;
+                        gap: var(--font-size-md);
+                        margin-top: var(--font-size-xxxl);
                     }
 
                     .button {
-                        padding: 0.75rem 1.5rem;
+                        padding: 0.75rem var(--font-size-xxl);
                         border: none;
                         border-radius: 6px;
                         cursor: pointer;
-                        font-size: 1rem;
+                        font-size: var(--font-size-md);
                         font-weight: 500;
-                        transition: all 0.3s ease;
+                        transition: all var(--duration-fast) ease;
                         text-transform: uppercase;
-                        letter-spacing: 0.5px;
+                        letter-spacing: 0.var(--transform-translate-xs);
                     }
 
                     .button.primary {
-                        background: #007cba;
+                        background: var(--primary-color);
                         color: white;
                     }
 
                     .button.secondary {
-                        background: #6c757d;
+                        background: var(--secondary-color);
                         color: white;
                     }
 
                     .button:hover {
-                        transform: translateY(-2px);
-                        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                        transform: translateY(-var(--border-width-medium));
+                        box-shadow: 0 4px 1var(--border-width-medium) rgba(0,0,0,0.2);
                     }
 
                     .preview-container {
-                        background: #fff;
+                        background: var(--bg-primary);
                         padding: 3rem;
-                        border-radius: 8px;
-                        margin: 1rem 0;
+                        border-radius: var(--radius-lg);
+                        margin: var(--font-size-md) 0;
                         text-align: center;
-                        min-height: 200px;
+                        min-height: var(--layout-min-height-xxl);
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        border: 2px dashed #dee2e6;
+                        border: var(--border-width-medium) dashed var(--border-secondary);
                     }
 
                     .preview-element {
-                        background: linear-gradient(135deg, #007cba, #00a0d2);
+                        background: linear-gradient(135deg, var(--primary-color), #00a0d2);
                         color: white;
-                        padding: 2rem;
-                        border-radius: 8px;
+                        padding: var(--font-size-xxxl);
+                        border-radius: var(--radius-lg);
                         box-shadow: 0 8px 24px rgba(0,0,0,0.2);
                         transform-origin: center;
-                        min-width: 200px;
+                        min-width: var(--layout-min-height-xxl);
                     }
 
                     .preview-controls {
                         display: flex;
-                        gap: 1rem;
+                        gap: var(--font-size-md);
                         justify-content: center;
                     }
 
                     .output-tabs {
                         display: flex;
-                        margin-bottom: 1rem;
-                        border-bottom: 2px solid #dee2e6;
+                        margin-bottom: var(--font-size-md);
+                        border-bottom: var(--border-width-medium) solid var(--border-secondary);
                     }
 
                     .output-tab {
                         background: none;
                         border: none;
-                        padding: 0.75rem 1.5rem;
+                        padding: 0.75rem var(--font-size-xxl);
                         cursor: pointer;
-                        border-bottom: 2px solid transparent;
+                        border-bottom: var(--border-width-medium) solid transparent;
                         font-weight: 500;
-                        transition: all 0.3s ease;
+                        transition: all var(--duration-fast) ease;
                     }
 
                     .output-tab.active {
-                        border-bottom-color: #007cba;
-                        color: #007cba;
+                        border-bottom-color: var(--primary-color);
+                        color: var(--primary-color);
                     }
 
                     .output-content {
@@ -972,10 +975,10 @@ ${this.getKeyframes(animationType)}`;
                     }
 
                     .output-content pre {
-                        background: #2d3748;
-                        color: #e2e8f0;
-                        padding: 1.5rem;
-                        border-radius: 8px;
+                        background: var(--bg-dark);
+                        color: var(--text-light);
+                        padding: var(--font-size-xxl);
+                        border-radius: var(--radius-lg);
                         overflow-x: auto;
                         font-family: 'Courier New', monospace;
                         margin: 0;
@@ -985,36 +988,36 @@ ${this.getKeyframes(animationType)}`;
 
                     .copy-button {
                         position: absolute;
-                        top: 1rem;
-                        right: 1rem;
-                        background: #28a745;
+                        top: var(--font-size-md);
+                        right: var(--font-size-md);
+                        background: var(--animation-success);
                         color: white;
                         border: none;
-                        padding: 0.5rem 1rem;
-                        border-radius: 4px;
+                        padding: 0.5rem var(--font-size-md);
+                        border-radius: var(--radius-sm);
                         cursor: pointer;
                         font-size: 0.875rem;
                         font-weight: 500;
-                        transition: all 0.3s ease;
+                        transition: all var(--duration-fast) ease;
                     }
 
                     .copy-button:hover {
                         background: #218838;
-                        transform: translateY(-1px);
+                        transform: translateY(-var(--border-width-thin));
                     }
 
                     .usage-instructions {
-                        padding: 1rem 0;
+                        padding: var(--font-size-md) 0;
                     }
 
                     .usage-instructions h4 {
-                        color: #2c3e50;
-                        margin-bottom: 1rem;
+                        color: var(--text-dark);
+                        margin-bottom: var(--font-size-md);
                     }
 
                     .usage-instructions ol,
                     .usage-instructions ul {
-                        margin-left: 1.5rem;
+                        margin-left: var(--font-size-xxl);
                     }
 
                     .usage-instructions li {
@@ -1023,7 +1026,7 @@ ${this.getKeyframes(animationType)}`;
 
                     @media (max-width: 768px) {
                         .css-animation-builder {
-                            padding: 1rem;
+                            padding: var(--font-size-md);
                         }
                         
                         .builder-wrapper {

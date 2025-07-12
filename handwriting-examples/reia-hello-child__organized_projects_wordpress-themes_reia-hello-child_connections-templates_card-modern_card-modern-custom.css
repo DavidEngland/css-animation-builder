@@ -1,0 +1,185 @@
+/* Remove default card styling on home for a clean look */
+.home #cn-modern .cn-entry {
+    border: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+}
+
+/* 3. Image Styling (Home) */
+.home #cn-modern span.cn-image-style {
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.10);
+    border: none !important;
+    padding: 0;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: var(--card-img-size) !important;
+    height: var(--card-img-size) !important;
+    overflow: hidden;
+}
+
+.home #cn-modern .cn-left > .cn-image-style > span,
+.home #cn-modern .cn-left .cn-image-style,
+.home #cn-modern .cn-left img.cn-image {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    object-fit: cover;
+    border: none !important;
+}
+
+/* 4. Centering & Alignment on Home */
+.home #cn-modern .cn-entry,
+.home #cn-modern .cn-left,
+.home #cn-modern .cn-right {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin-inline: auto !important;
+}
+
+/* 5. Text & Link Styling on Home */
+.home #cn-modern .fn,
+.home #cn-modern .title,
+.home #cn-modern .cn-phone-number,
+.home #cn-modern .cn-phone-number a,
+.home #cn-modern .cn-list-row a,
+.home #cn-modern .cn-list-row h2 .fn,
+.home #cn-modern .cn-list-row-alternate h2 .fn {
+    text-align: center !important;
+    color: var(--text-color) !important;
+    font-weight: 500;
+    margin-top: 10px;
+    background: transparent !important;
+    font-size: var(--fn-size);
+}
+
+.home #cn-list span.title {
+    font-style: italic;
+    font-size: var(--title-size);
+}
+
+.home #cn-modern .cn-list-row a,
+.home #cn-modern .cn-list-row h2 .fn,
+.home #cn-modern .cn-list-row-alternate h2 .fn {
+    margin-top: 15px;
+}
+
+/* 6. Link hover effects */
+.home #cn-modern a,
+.home #cn-modern .cn-phone-number a {
+    color: var(--text-color) !important;
+    background: transparent !important;
+    transition: color 0.2s;
+    text-decoration: none;
+}
+
+.home #cn-modern a:hover,
+.home #cn-modern .cn-phone-number a:hover {
+    color: var(--link-hover) !important;
+    text-decoration: underline;
+}
+
+/* 7. Elementor & Theme Compatibility */
+.elementor-widget-container,
+.elementor-section,
+.elementor-container {
+    overflow: visible !important;
+}
+/* 10. Mobile Adjustments (Home) */
+@container (max-width: 700px) {
+    .home #cn-modern #cn-list-body {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--card-gap);
+    }
+
+    .home #cn-modern .cn-list-row,
+    .home #cn-modern .cn-list-row-alternate {
+        max-width: 100vw;
+        min-width: min(220px, 90vw);
+        padding: clamp(0.5rem, 2vw, 1rem);
+    }
+
+    .home #cn-modern .cn-left img.cn-image {
+        max-width: var(--card-img-size) !important;
+    }
+}
+
+/* 11. Tablet and Above: Horizontal Card Flow (Home) */
+@container (min-width: 701px) {
+    .home #cn-modern #cn-list-body {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--card-gap);
+    }
+
+    .home #cn-modern .cn-list-row,
+    .home #cn-modern .cn-list-row-alternate {
+        max-width: var(--card-max-width);
+        margin-left: 0;
+        margin-right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+/* 10. Mobile Adjustments (Home) */
+@container (max-width: 700px) {
+    .home #cn-modern #cn-list-body {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--card-gap);
+    }
+
+    .home #cn-modern .cn-list-row,
+    .home #cn-modern .cn-list-row-alternate {
+        max-width: 100vw;
+        min-width: min(220px, 90vw);
+        padding: clamp(0.5rem, 2vw, 1rem);
+    }
+
+    .home #cn-modern .cn-left img.cn-image {
+        max-width: var(--card-img-size) !important;
+    }
+}
+
+/* 11. Tablet and Above: Horizontal Card Flow (Home) */
+@container (min-width: 701px) {
+    .home #cn-modern #cn-list-body {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--card-gap);
+    }
+
+    .home #cn-modern .cn-list-row,
+    .home #cn-modern .cn-list-row-alternate {
+        max-width: var(--card-max-width);
+        margin-left: 0;
+        margin-right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Test custom style for card-modern template (should apply everywhere, not just .home) */
+#cn-modern .test-custom-style {
+  background: #ffeedd;
+  color: #222;
+  border: 2px dashed #e67c00;
+  padding: 1em;
+  margin: 1em 0;
+  font-size: 1.1em;
+  text-align: center;
+}

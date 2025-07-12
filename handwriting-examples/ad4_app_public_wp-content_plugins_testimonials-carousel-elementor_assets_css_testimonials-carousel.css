@@ -1,0 +1,749 @@
+@font-face {
+    font-family: 'icomoon';
+    src:  url('fonts/icomoon.eot?8dc08x');
+    src:  url('fonts/icomoon.eot?8dc08x#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?8dc08x') format('truetype'),
+    url('fonts/icomoon.woff?8dc08x') format('woff'),
+    url('fonts/icomoon.svg?8dc08x#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-close:before {
+    content: "\e900";
+}
+.icon-star-empty:before {
+    content: "\e9d7";
+}
+.icon-star-full:before {
+    content: "\e9d9";
+}
+.icon-arrow-right2:before {
+    content: "\ea3c";
+}
+.icon-arrow-left2:before {
+    content: "\ea40";
+}
+
+/* Testimonial Carousel with Rating styles */
+.mySwiper {
+    position: static;
+    width: calc(100% - 200px);
+    height: 100%;
+    padding-bottom: 50px;
+}
+
+.swiper-arrows-position-inside .mySwiper {
+    position: relative;
+    width: 100%;
+}
+
+.swiper-arrows-position-outside .mySwiper {
+    position: static;
+    width: calc(100% - 200px);
+}
+
+.mySwiper .swiper-wrapper {
+    padding: 0;
+}
+
+.mySwiper .swiper-slide {
+    padding: 2px;
+    height: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.mySwiper .block-shadow {
+    font-size: 18px;
+    flex-direction: column;
+    width: 100%;
+    padding: 25px 30px;
+    background-color: #FFF;
+    box-shadow: 0 0 7.27941px rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.slider-modal .slide-block,
+.mySwiper .slide-block {
+    display: flex;
+    border-bottom: 1px solid #C4C4C4;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.slider-modal .slide-info span,
+.mySwiper .slide-info span {
+    display: block;
+}
+
+.slider-modal .slide-title,
+.mySwiper .slide-title {
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 21px;
+    color: #474747;
+}
+
+.slider-modal .slide-subtitle,
+.mySwiper .slide-subtitle {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 13px;
+    color: #5C5C5C;
+}
+
+.slider-modal .slide-basic-info,
+.mySwiper .slide-basic-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.slider-modal .slide-image,
+.mySwiper .slide-image {
+    width: 80px;
+    height: 80px;
+    margin-right: 15px;
+    font-size: 12px;
+}
+
+.slider-modal .swiper-slide img,
+.mySwiper .swiper-slide img {
+    border-radius: 4px;
+}
+
+.mySwiper .slide-content {
+    width: 100%;
+}
+
+.slider-modal .slide-description,
+.mySwiper .slide-description {
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 22px;
+    color: #2C2C2C;
+}
+
+.slider-modal .icon-star-full,
+.mySwiper .icon-star-full {
+    color: #FABF35;
+    font-size: 12px;
+}
+
+.slider-modal .icon-star-empty,
+.mySwiper .icon-star-empty {
+    color: #E8E8E8;
+    font-size: 12px;
+}
+
+.slider-modal .slide-read-more {
+    display: none;
+}
+
+.mySwiper .slide-read-more {
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    width: 100%;
+    color: #A3A3A3;
+    line-height: 1.5;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.mySwiper .disable-button {
+    display: none;
+}
+
+.mySwiper .crop-content {
+    display: -webkit-box !important;
+    display: -moz-box !important;
+    display: box !important;
+    overflow: hidden;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    box-orient: vertical;
+    -webkit-line-clamp: 7;
+}
+
+.mySwiper .swiper-button-next,
+.mySwiper .swiper-button-prev {
+    background-color: #FFF;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-image: none;
+}
+
+.mySwiper .swiper-button-next:after,
+.mySwiper .swiper-button-prev:after {
+    font-size: 15px;
+    color: #A9A9A9;
+    font-weight: bold;
+}
+
+.mySwiper .swiper-button-next:hover::after,
+.mySwiper .swiper-button-prev:hover::after {
+    color: #000;
+}
+
+.mySwiper .swiper-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mySwiper .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    background-color: #C4C4C4;
+    opacity: 1;
+}
+
+.mySwiper .swiper-pagination-bullet-active {
+    width: 12px;
+    height: 12px;
+    background-color: #979797;
+}
+
+.slider-modal {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.slider-modal.open {
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0s;
+}
+
+.slider-modal-bg {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+}
+
+.slider-modal-container .icon-close:before {
+    width: 9px;
+    height: 9px;
+}
+.slider-modal-container {
+    border-radius: 10px;
+    position: relative;
+    padding: 30px;
+    width: 550px;
+    max-height: 370px;
+    overflow-y: scroll;
+    background-color: #fff;
+}
+
+.slider-modal-container::-webkit-scrollbar {
+    width: 4px;
+}
+.slider-modal-container::-webkit-scrollbar-thumb {
+    background-color: #C4C4C4;
+    border-radius: 4px;
+}
+
+#slider-modal .slider-modal-close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    outline: none;
+    appearance: none;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    font-size: 9px;
+    color: #474747;
+}
+
+#slider-modal .slider-modal-container-info .slider-container-block-background {
+    background: none;
+}
+
+@media (max-width: 1024px) {
+    .mySwiper {
+        width: calc(100% - 120px);
+        padding-bottom: 40px;
+    }
+
+    .swiper-arrows-position-outside .mySwiper {
+        position: static;
+        width: calc(100% - 120px);
+    }
+
+    .slider-modal-container {
+        width: 550px;
+        max-height: 370px;
+    }
+}
+
+@media (max-width: 767px) {
+    .mySwiper {
+        width: 100%;
+    }
+
+    .swiper-arrows-position-outside .mySwiper {
+        position: static;
+        width: 100%;
+    }
+
+    .mySwiper .swiper-button-next,
+    .mySwiper .swiper-button-prev {
+        display: none;
+    }
+
+    .slider-modal-container {
+        width: calc(100% - 40px);
+        max-height: calc(100% - 120px);
+    }
+}
+
+
+.mySwiper.slider-arrows-disabled .swiper-button-next,
+.mySwiper.slider-arrows-disabled .swiper-button-prev {
+    display: none;
+}
+
+.mySwiper.slider-arrows-disabled,
+.mySwiper.slider-arrows-disabled {
+    width: 100%;
+}
+
+/* Testimonial Carousel with Logo styles */
+.slider-logo-container-background {
+    background-color: #b5e7c9;
+}
+
+.slider-modal-container.slider-logo-container-background,
+.mySwiperLogo .slider-logo-container {
+    padding: 30px;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.slider-logo-container-background .slide-logo-main-block,
+.slider-logo-container-background .slide-logo-block,
+.slider-logo-container-background .slide-logo-image,
+.slider-logo-container-background .slide-logo,
+.mySwiperLogo .slide-logo-main-block,
+.mySwiperLogo .slide-logo-block,
+.mySwiperLogo .slide-logo-image,
+.mySwiperLogo .slide-logo {
+    display: flex;
+    align-items: center;
+}
+
+.slider-logo-container-background .slide-logo-block,
+.mySwiperLogo .slide-logo-block {
+    justify-content: space-between;
+    margin-bottom: 25px;
+    overflow: hidden;
+}
+
+.slider-logo-container-background .slide-logo-image,
+.mySwiperLogo .slide-logo-image {
+    width: 70px;
+    height: 70px;
+    min-width: 70px;
+    font-size: 12px;
+}
+
+.slider-logo-container-background .slide-logo-image img,
+.mySwiperLogo .slide-logo-image img {
+    border-radius: 35px;
+}
+
+.slider-logo-container-background .slide-logotype img,
+.mySwiperLogo .slide-logotype img {
+    font-size: 12px;
+    max-width: 100px;
+    max-height: 70px;
+    min-width: 50px;
+}
+
+.slider-logo-container-background .slide-logo-basic-info,
+.mySwiperLogo .slide-logo-basic-info {
+    margin-left: 15px;
+    margin-right: 5px;
+}
+
+.slider-logo-container-background .slide-logo-title,
+.mySwiperLogo .slide-logo-title {
+    color: #334A48;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 23px;
+}
+
+.slider-logo-container-background .slider-logo-container .slide-description,
+.mySwiperLogo .slider-logo-container .slide-description {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #414141;
+    margin-bottom: 10px;
+}
+
+.slider-logo-container-background .slider-logo-container .slide-read-more,
+.mySwiperLogo .slider-logo-container .slide-read-more {
+    color: #08433C;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.5;
+    text-decoration: underline;
+    text-transform: none;
+    text-align: right;
+}
+
+.mySwiperLogo .swiper-logo-buttons-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.mySwiperLogo .swiper-logo-pagination,
+.mySwiperLogo .swiper-logo-button-next,
+.mySwiperLogo .swiper-logo-button-prev {
+    position: unset;
+}
+
+.mySwiperLogo .swiper-logo-button-next,
+.mySwiperLogo .swiper-logo-button-prev {
+    background: transparent;
+    margin-top: 0;
+}
+
+.mySwiperLogo .swiper-logo-button-next {
+    margin-left: 50px;
+}
+.mySwiperLogo .swiper-logo-button-prev {
+    margin-right: 50px;
+}
+
+.mySwiperLogo .swiper-logo-button-next:after,
+.mySwiperLogo .swiper-logo-button-prev:after {
+    font-family: 'icomoon';
+    font-size: 16px;
+    color: #4ABE80;
+}
+
+.swiper-logo-button-prev:after {
+    content: "\ea40";
+}
+
+.swiper-logo-button-next:after {
+    content: "\ea3c";
+}
+
+.mySwiperLogo .swiper-logo-pagination {
+    width: auto;
+}
+
+.mySwiperLogo .swiper-logo-pagination .swiper-pagination-bullet {
+    margin: 0 5px;
+    background-color: #9C9C9C;
+}
+
+.mySwiperLogo .swiper-logo-pagination .swiper-pagination-bullet-active {
+    background-color: #4ABE80;
+}
+
+.swiper.mySwiperLogo {
+    width: 100%;
+}
+
+@media (max-width: 767px) {
+    .slider-logo-container-background .slide-logo-block,
+    .mySwiperLogo .slide-logo-block {
+        flex-direction: column;
+    }
+
+    .slider-logo-container-background .slide-logo-main-block,
+    .mySwiperLogo .slide-logo-main-block {
+        width: 100%;
+    }
+
+    .slider-logo-container-background .slide-logotype,
+    .mySwiperLogo .slide-logotype {
+        display: flex;
+        width: 100%;
+        justify-content: end;
+    }
+}
+
+/* Testimonial Carousel with Rating Centered styles */
+.slider-rating-centered-modal .slide-block,
+.mySwiperCentered .slide-block {
+    flex-direction: column;
+    align-items: center;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.slider-rating-centered-modal .slide-image,
+.mySwiperCentered .slide-image {
+    margin-right: 0;
+}
+
+.slider-rating-centered-modal .slide-image img,
+.mySwiperCentered .swiper-slide img {
+    border-radius: 40px;
+}
+
+.slider-rating-centered-modal .slide-basic-info,
+.mySwiperCentered .slide-basic-info {
+    align-items: center;
+}
+
+.slider-rating-centered-modal .slide-info,
+.mySwiperCentered .slide-info {
+    text-align: center;
+}
+
+.slider-rating-centered-modal .slide-title,
+.mySwiperCentered .slide-title {
+    color: #160F68;
+    margin-bottom: 5px;
+}
+
+.slider-rating-centered-modal .icon-star-full,
+.mySwiperCentered .icon-star-full,
+.slider-rating-centered-modal .icon-star-empty,
+.mySwiperCentered .icon-star-empty {
+    color: #147EC0;
+    font-size: 15px;
+}
+
+.slider-rating-centered-modal .slide-icons,
+.mySwiperCentered .slide-icons {
+    line-height: 1;
+    margin: 15px 0;
+}
+
+.mySwiperCentered .slide-read-more {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.mySwiperCentered .swiper-rating-centered-buttons-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.mySwiperCentered .swiper-rating-centered-pagination,
+.mySwiperCentered .swiper-rating-centered-button-next,
+.mySwiperCentered .swiper-rating-centered-button-prev {
+    position: unset;
+}
+
+.mySwiperCentered .swiper-rating-centered-button-next,
+.mySwiperCentered .swiper-rating-centered-button-prev {
+    background: transparent;
+    margin-top: 0;
+}
+
+.mySwiperCentered .swiper-rating-centered-button-next {
+    margin-left: 50px;
+}
+.mySwiperCentered .swiper-rating-centered-button-prev {
+    margin-right: 50px;
+}
+
+.mySwiperCentered .swiper-rating-centered-button-next:after,
+.mySwiperCentered .swiper-rating-centered-button-prev:after {
+    font-family: 'icomoon';
+    font-size: 16px;
+    color: #147EC0;
+}
+
+.swiper-rating-centered-button-prev:after {
+    content: "\ea40";
+}
+
+.swiper-rating-centered-button-next:after {
+    content: "\ea3c";
+}
+
+.mySwiperCentered .swiper-rating-centered-pagination {
+    width: auto;
+}
+
+.mySwiperCentered .swiper-rating-centered-pagination .swiper-pagination-bullet {
+    margin: 0 5px;
+    background-color: #8DC4EB;
+}
+
+.elementor-widget-container .mySwiperCentered .swiper-rating-centered-buttons-block .swiper-rating-centered-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    width: 28px;
+    border-radius: 8px;
+    background: linear-gradient(109.37deg, #147EC0 12.53%, #59A7EF 91.8%);
+}
+
+.swiper.mySwiperCentered {
+    width: 100%;
+}
+
+/* Testimonial Carousel with Centered Slides styles */
+.slider-bottom-modal .slider-modal-container,
+.mySwiperBottom .block-shadow {
+    background-color: #b018ef;
+    justify-content: space-between;
+    border-radius: 0;
+}
+
+.slider-bottom-modal .slide-description,
+.mySwiperBottom .slide-description {
+    color: #D0D0D0;
+    margin-bottom: 26px;
+}
+
+.slider-bottom-modal .slide-image,
+.mySwiperBottom .slide-image {
+    width: 48px;
+    height: 48px;
+}
+
+.slider-bottom-modal .slide-image img,
+.mySwiperBottom .swiper-slide img {
+    border-radius: 24px;
+    color: #D0D0D0;
+}
+
+.slider-bottom-modal .slide-title,
+.mySwiperBottom .slide-title {
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.slider-bottom-modal .slide-subtitle,
+.mySwiperBottom .slide-subtitle {
+    color: #D9D9D9;
+    font-size: 12px;
+}
+
+.mySwiperBottom .slide-read-more {
+    color: #F69587;
+    text-decoration: underline;
+    font-size: 12px;
+    text-transform: none;
+    width: auto;
+    margin-top: 0;
+    margin-left: 5px;
+}
+
+.slider-bottom-modal .slide-basic-info,
+.mySwiperBottom .slide-basic-info {
+    flex-direction: row;
+}
+
+.slider-bottom-modal .slide-block,
+.mySwiperBottom .slide-block {
+    border-bottom: none;
+    padding: 0;
+    margin: 0;
+    justify-content: space-between;
+}
+
+.mySwiperBottom .swiper-bottom-buttons-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.mySwiperBottom .swiper-bottom-pagination,
+.mySwiperBottom .swiper-bottom-button-next,
+.mySwiperBottom .swiper-bottom-button-prev {
+    position: unset;
+}
+
+.mySwiperBottom .swiper-bottom-button-next,
+.mySwiperBottom .swiper-bottom-button-prev {
+    background: transparent;
+    margin-top: 0;
+}
+
+.mySwiperBottom .swiper-bottom-button-next {
+    margin-left: 50px;
+}
+.mySwiperBottom .swiper-bottom-button-prev {
+    margin-right: 50px;
+}
+
+.mySwiperBottom .swiper-bottom-button-next:after,
+.mySwiperBottom .swiper-bottom-button-prev:after {
+    font-size: 14px;
+    color: #CC5A51;
+}
+
+.mySwiperBottom .swiper-bottom-pagination {
+    width: auto;
+}
+
+.mySwiperBottom .swiper-bottom-pagination .swiper-pagination-bullet {
+    margin: 0 5px;
+    background-color: #848484;
+}
+
+.elementor-widget-container .mySwiperBottom .swiper-bottom-buttons-block .swiper-bottom-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background: #CC5A51;
+    width: 8px;
+    height: 8px;
+}
+
+.swiper.mySwiperBottom {
+    width: 100%;
+}
+
+#slider-modal .slider-modal-close.slider-bottom-modal-exit {
+    color: #fff;
+}

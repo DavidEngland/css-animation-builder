@@ -1,0 +1,98 @@
+/*!
+Theme Name: REIA
+Theme URI:  http://www.RealEstate-Huntsville.com
+Description:  Child theme for the updated wpCasa theme
+Author: David E. England
+Author URI: http://about.me/DavidEngland
+Template: wpcasa
+Version:  0.3.3
+*/
+/*!
+@import url("../wpcasa/style.css");@import url("http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css");@import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700,700italic,400italic|Roboto:300italic,900,400italic,400,300,500italic,700italic,700,500,900italic|Roboto+Condensed:400italic,700italic,700,400);@import url("css/bs_mod.css");*/
+@charset "UTF-8";
+:root {--reia-body-color:#212529}
+body {font-size:100%;quotes:"“" "”";background-color:#d1d1d1}
+.hoods button {font-size:larger;margin-bottom:5px;margin-right:8px;padding:8px}
+a {color:#000075}
+.lead {font-size:21px;font-size:1.3125rem;font-weight:200;line-height:30px;line-height:1.875rem;margin-bottom:20px}
+.footnote {
+    font-size: 0.8em;
+    font-style: italic;
+    text-align: right;
+    color: #666;
+}
+.footnote {
+    font-size: 0.8em;
+}
+.flex-direction-nav {z-index:10}
+#reia-geo-places > a {font-size:1.5em}
+.thumbnails {display:flex;flex-flow:row wrap}
+.tab-pane .address {line-height:1.25}
+.tab-pane .description {line-height:1.25}
+.alert .alert-heading {color:#c09853}
+.alert-warning ol {color:#000}
+.alert.alert-warning > .alert-heading {color:#000}
+.alert.alert-warning p {color:#000}
+#subpages p {line-height:1.5}
+ul li ul {margin-bottom:1em}
+ul li ul li {line-height:1.5;list-style:circle}
+ul.unstyled li {line-height:1.5;margin-bottom:2em}
+.tabbable .nav-tabs li {font-size:larger}
+embed, iframe, object {max-width:100%}
+.centre {display:block;float:none;margin-right:auto;margin-left:auto}
+.dsidx-media .dsidx-photo img:hover {-webkit-filter:brightness(110%);filter:brightness(110%)}
+.ds-idx-listings-page [id^=wpsight-featured-agent--] .listing-agent .listing-agent-url {display:none}
+.ds-idx-listings-page [id^=wpsight-featured-agent--] .listing-agent a.btn {display:none}
+p.dsidx-error {display:none}
+details {line-height:1.5}
+details > summary {cursor:pointer;padding:0.5rem 1rem}
+details > summary > * {display:inline}
+details > div {margin-top:0;line-height:1.25;padding:1rem;border-bottom:2px solid}
+#dsidx-search-form .dsidx-widget {margin:0 1rem}
+.dsidx-search-widget select {float:right}
+.zipcodes-with-counts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.zipcodes-with-counts.zip {
+    flex-flow: row wrap;
+}
+
+.zipcodes-with-counts.other {
+    flex-flow: column wrap;
+}
+
+.zipcodes-with-counts .zipcodes .btn {
+    min-width: 75px;
+}
+.table {--reia-table-color:var(--reia-body-color);--reia-table-bg:transparent;--reia-table-border-color:var(--reia-border-color);--reia-table-accent-bg:transparent;--reia-table-striped-color:var(--reia-body-color);--reia-table-striped-bg:rgba(0, 0, 0, 0.05);--reia-table-active-color:var(--reia-body-color);--reia-table-active-bg:rgba(0, 0, 0, 0.1);--reia-table-hover-color:var(--reia-body-color);--reia-table-hover-bg:rgba(0, 0, 0, 0.075);width:100%;margin-bottom:1rem;color:var(--reia-table-color);vertical-align:top;border-color:var(--reia-table-border-color)}
+.table > :not(caption) > * > * {padding:0.5rem 0.5rem;background-color:var(--reia-table-bg);border-bottom-width:1px;box-shadow:inset 0 0 0 9999px var(--reia-table-accent-bg)}
+.table > tbody {vertical-align:inherit}
+.table > thead {vertical-align:bottom}
+.table-group-divider {border-top:2px solid currentcolor}
+.caption-top {caption-side:top}
+.table-sm > :not(caption) > * > * {padding:0.25rem 0.25rem}
+.table-bordered > :not(caption) > * {border-width:1px 0}
+.table-bordered > :not(caption) > * > * {border-width:0 1px}
+.table-borderless > :not(caption) > * > * {border-bottom-width:0.table-borderless > :not(:first-child) {border-top-width:0}
+.table-striped > tbody > tr:nth-of-type(odd) > * {--reia-table-accent-bg:var(--reia-table-striped-bg);color:var(--reia-table-striped-color)}
+.table-striped-columns > :not(caption) > tr > :nth-child(even) {--reia-table-accent-bg:var(--reia-table-striped-bg);color:var(--reia-table-striped-color)}
+.table-active {--reia-table-accent-bg:var(--reia-table-active-bg);color:var(--reia-table-active-color)}
+.table-hover > tbody > tr:hover > * {--reia-table-accent-bg:var(--reia-table-hover-bg);color:var(--reia-table-hover-color)}
+.table-primary {--reia-table-color:#000;--reia-table-bg:#cfe2ff;--reia-table-border-color:#bacbe6;--reia-table-striped-bg:#c5d7f2;--reia-table-striped-color:#000;--reia-table-active-bg:#bacbe6;--reia-table-active-color:#000;--reia-table-hover-bg:#bfd1ec;--reia-table-hover-color:#000;color:var(--reia-table-color);border-color:var(--reia-table-border-color)}
+.table-secondary {--reia-table-color:#000;--reia-table-bg:#e2e3e5;--reia-table-border-color:#cbccce;--reia-table-striped-bg:#d7d8da;--reia-table-striped-color:#000;--reia-table-active-bg:#cbccce;--reia-table-active-color:#000;--reia-table-hover-bg:#d1d2d4;--reia-table-hover-color:#000;color:var(--reia-table-color);border-color:var(--reia-table-border-color)}
+.table-success {--reia-table-color:#000;--reia-table-bg:#d1e7dd;--reia-table-border-color:#bcd0c7;--reia-table-striped-bg:#c7dbd2;--reia-table-striped-color:#000;--reia-table-active-bg:#bcd0c7;--reia-table-active-color:#000;--reia-table-hover-bg:#c1d6cc;--reia-table-hover-color:#000;color:var(--reia-table-color);border-color:var(--reia-table-border-color)}
+.table-info {--reia-table-color:#000;--reia-table-bg:#cff4fc;--reia-table-border-color:#badce3;--reia-table-striped-bg:#c5e8ef;--reia-table-striped-color:#000;--reia-table-active-bg:#badce3;--reia-table-active-color:#000;--reia-table-hover-bg:#bfe2e9;--reia-table-hover-color:#000;color:var(--reia-table-color);border-color:var(--reia-table-border-color)}
+.table-warning {--reia-table-color:#000;--reia-table-bg:#fff3cd;--reia-table-border-color:#e6dbb9;--reia-table-striped-bg:#f2e7c3;--reia-table-striped-color:#000;--reia-table-active-bg:#e6dbb9;--reia-table-active-color:#000;--reia-table-hover-bg:#ece1be;--reia-table-hover-color:#000;color:var(--reia-table-color);border-color:var(--reia-table-border-color)}
+.table-danger {--reia-table-color:#000;--reia-table-bg:#f8d7da;--reia-table-border-color:#dfc2c4;--reia-table-striped-bg:#eccccf;--reia-table-striped-color:#000;--reia-table-active-bg:#dfc2c4;--reia-table-active-color:#000;--reia-table-hover-bg:#e5c7ca;--reia-table-hover-color:#000;color:var(--reia-table-color);border-color:var(--reia-table-border-color)}
+.table-light {--reia-table-color:#000;--reia-table-bg:#f8f9fa;--reia-table-border-color:#dfe0e1;--reia-table-striped-bg:#ecedee;--reia-table-striped-color:#000;--reia-table-active-bg:#dfe0e1;--reia-table-active-color:#000;--reia-table-hover-bg:#e5e6e7;--reia-table-hover-color:#000;color:var(--reia-table-color);border-color:var(--reia-table-border-color)}
+.table-dark {--reia-table-color:#fff;--reia-table-bg:#212529;--reia-table-border-color:#373b3e;--reia-table-striped-bg:#2c3034;--reia-table-striped-color:#fff;--reia-table-active-bg:#373b3e;--reia-table-active-color:#fff;--reia-table-hover-bg:#323539;--reia-table-hover-color:#fff;color:var(--reia-table-color);border-color:var(--reia-table-border-color)}
+.table-responsive {overflow-x:auto;-webkit-overflow-scrolling:touch}
+@media (max-width:575.98px) {.table-responsive-sm {overflow-x:auto;-webkit-overflow-scrolling:touch}}
+@media (max-width:767.98px) {.table-responsive-md {overflow-x:auto;-webkit-overflow-scrolling:touch}}
+@media (max-width:991.98px) {.table-responsive-lg {overflow-x:auto;-webkit-overflow-scrolling:touch}}
+@media (max-width:1199.98px) {.table-responsive-xl {overflow-x:auto;-webkit-overflow-scrolling:touch}}
+@media (max-width:1399.98px) {.table-responsive-xxl {overflow-x:auto;-webkit-overflow-scrolling:touch}}
+

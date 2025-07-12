@@ -9,7 +9,7 @@ namespace Reia\CSSAnimationBuilder;
  * Developed by Real Estate Intelligence Agency (REIA)
  * 
  * @package Reia\CSSAnimationBuilder
- * @version 1.0.0
+ * @version 1.1.0
  * @author David England <DavidEngland@hotmail.com>
  */
 class WordPressPlugin
@@ -54,7 +54,7 @@ class WordPressPlugin
     private function __construct()
     {
         $this->config = [
-            'version' => '1.0.0',
+            'version' => '1.1.0',
             'plugin_dir' => plugin_dir_path(__FILE__),
             'plugin_url' => plugin_dir_url(__FILE__),
             'text_domain' => 'css-animation-builder'
@@ -139,10 +139,52 @@ class WordPressPlugin
             true
         );
 
+        // Enqueue typewriter animation
+        wp_enqueue_script(
+            'css-animation-builder-typewriter',
+            $this->config['plugin_url'] . 'assets/js/typewriter-animation.js',
+            ['css-animation-builder'],
+            $this->config['version'],
+            true
+        );
+
+        // Enqueue handwriting animation
+        wp_enqueue_script(
+            'css-animation-builder-handwriting',
+            $this->config['plugin_url'] . 'assets/js/handwriting-animation.js',
+            ['css-animation-builder'],
+            $this->config['version'],
+            true
+        );
+
         wp_enqueue_style(
             'css-animation-builder',
             $this->config['plugin_url'] . 'assets/css/animation-builder.css',
             [],
+            $this->config['version']
+        );
+
+        // Enqueue Google Fonts for handwriting effects
+        wp_enqueue_style(
+            'css-animation-builder-google-fonts',
+            'https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Great+Vibes&family=Allura&family=Alex+Brush&family=Pacifico&family=Kaushan+Script&family=Caveat:wght@400;600;700&family=Tangerine:wght@400;700&display=swap',
+            [],
+            $this->config['version']
+        );
+
+        // Enqueue text animations CSS
+        wp_enqueue_style(
+            'css-animation-builder-text',
+            $this->config['plugin_url'] . 'assets/css/text-animations.css',
+            ['css-animation-builder'],
+            $this->config['version']
+        );
+
+        // Enqueue handwriting animations CSS
+        wp_enqueue_style(
+            'css-animation-builder-handwriting',
+            $this->config['plugin_url'] . 'assets/css/handwriting-animations.css',
+            ['css-animation-builder-google-fonts'],
             $this->config['version']
         );
 

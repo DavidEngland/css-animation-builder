@@ -1,0 +1,424 @@
+/**
+ * Typewriter & Handwriting Animation Styles
+ * CSS styles for typewriter and handwriting effects
+ * Developed by Real Estate Intelligence Agency (REIA)
+ * 
+ * @author David England <DavidEngland@hotmail.com>
+ * @version 1.0.0
+ * @license MIT
+ */
+
+/* ==============================================
+   TYPEWRITER ANIMATIONS
+   ============================================== */
+
+/* Base typewriter container */
+.typewriter {
+  position: relative;
+  display: inline-block;
+  font-family: 'Courier New', monospace;
+  line-height: 1.6;
+}
+
+/* Typewriter text wrapper */
+.typewriter-text {
+  overflow: hidden;
+  border-right: 2px solid transparent;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 0.1em;
+  animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+/* Typewriter cursor */
+.typewriter-cursor {
+  display: inline-block;
+  background-color: currentColor;
+  width: 2px;
+  animation: blink 1s infinite;
+}
+
+/* Typewriter cursor variations */
+.typewriter-cursor.block {
+  width: 0.6em;
+  height: 1.2em;
+  background-color: rgba(0, 0, 0, 0.8);
+  margin-left: 2px;
+}
+
+.typewriter-cursor.underline {
+  width: 0.6em;
+  height: 2px;
+  background-color: currentColor;
+  margin-left: 2px;
+  margin-bottom: -2px;
+}
+
+/* Typewriter themes */
+.typewriter.theme-classic {
+  font-family: 'Courier New', monospace;
+  color: #333;
+  background: #f8f8f8;
+  padding: 1rem;
+  border-radius: 4px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.typewriter.theme-terminal {
+  font-family: 'Consolas', 'Monaco', monospace;
+  color: #0f0;
+  background: #000;
+  padding: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+}
+
+.typewriter.theme-retro {
+  font-family: 'Courier New', monospace;
+  color: #ff6b35;
+  background: #2d1b0e;
+  padding: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+}
+
+.typewriter.theme-modern {
+  font-family: 'SF Mono', 'Monaco', monospace;
+  color: #2d3748;
+  background: #f7fafc;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Typewriter effects */
+.typewriter.effect-glitch {
+  animation: glitch 0.3s infinite;
+}
+
+.typewriter.effect-neon {
+  color: #fff;
+  background: #000;
+  text-shadow: 
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 20px currentColor;
+}
+
+.typewriter.effect-matrix {
+  font-family: 'Courier New', monospace;
+  color: #0f0;
+  background: #000;
+  text-shadow: 0 0 10px #0f0;
+  animation: matrix-flicker 0.1s infinite;
+}
+
+/* Typewriter sound wave effect */
+.typewriter.effect-sound::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -30px;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, rgba(0, 123, 255, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: sound-wave 0.6s infinite;
+}
+
+/* ==============================================
+   HANDWRITING ANIMATIONS
+   ============================================== */
+
+/* Base handwriting container */
+.handwriting {
+  position: relative;
+  display: inline-block;
+  font-family: 'Brush Script MT', cursive;
+  line-height: 1.8;
+}
+
+/* Handwriting SVG container */
+.handwriting-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+/* Handwriting path styles */
+.handwriting-path {
+  fill: none;
+  stroke: #333;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: handwriting-draw 3s ease-in-out forwards;
+}
+
+/* Handwriting pen styles */
+.handwriting-pen {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+
+.handwriting-pen.fountain {
+  background: linear-gradient(45deg, #8B4513, #654321);
+  border-radius: 2px 2px 10px 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.handwriting-pen.ballpoint {
+  background: linear-gradient(45deg, #4169E1, #1E90FF);
+  border-radius: 2px 2px 8px 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.handwriting-pen.quill {
+  background: linear-gradient(45deg, #D2691E, #8B4513);
+  border-radius: 0 0 15px 15px;
+  position: relative;
+}
+
+.handwriting-pen.quill::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 2px;
+  height: 15px;
+  background: #654321;
+  transform: translateX(-50%);
+}
+
+/* Handwriting themes */
+.handwriting.theme-elegant {
+  font-family: 'Dancing Script', cursive;
+  color: #2c3e50;
+}
+
+.handwriting.theme-casual {
+  font-family: 'Kalam', cursive;
+  color: #34495e;
+}
+
+.handwriting.theme-formal {
+  font-family: 'Cormorant Garamond', serif;
+  color: #1a1a1a;
+}
+
+.handwriting.theme-vintage {
+  font-family: 'Old Standard TT', serif;
+  color: #8B4513;
+  filter: sepia(20%);
+}
+
+/* Handwriting paper effects */
+.handwriting.paper-lined {
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 1.8em,
+    #ccc 1.8em,
+    #ccc calc(1.8em + 1px)
+  );
+  padding: 1em;
+}
+
+.handwriting.paper-grid {
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  padding: 1em;
+}
+
+.handwriting.paper-parchment {
+  background: linear-gradient(45deg, #f4e8d0, #f9f2e7);
+  background-size: 20px 20px;
+  padding: 2em;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Handwriting ink effects */
+.handwriting.ink-flowing path {
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.3));
+}
+
+.handwriting.ink-blot::after {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  width: 4px;
+  height: 4px;
+  background: currentColor;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: ink-blot 4s infinite;
+}
+
+/* ==============================================
+   KEYFRAME ANIMATIONS
+   ============================================== */
+
+/* Typewriter keyframes */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: currentColor; }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes glitch {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+}
+
+@keyframes matrix-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes sound-wave {
+  0% { transform: translateY(-50%) scale(0); opacity: 1; }
+  100% { transform: translateY(-50%) scale(1); opacity: 0; }
+}
+
+/* Handwriting keyframes */
+@keyframes handwriting-draw {
+  0% { stroke-dashoffset: 1000; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes ink-blot {
+  0%, 90% { opacity: 0; transform: scale(0); }
+  95% { opacity: 0.6; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.2); }
+}
+
+/* ==============================================
+   RESPONSIVE DESIGN
+   ============================================== */
+
+@media (max-width: 768px) {
+  .typewriter {
+    font-size: 14px;
+  }
+  
+  .handwriting {
+    font-size: 16px;
+  }
+  
+  .typewriter-text {
+    letter-spacing: 0.05em;
+  }
+}
+
+@media (max-width: 480px) {
+  .typewriter {
+    font-size: 12px;
+  }
+  
+  .handwriting {
+    font-size: 14px;
+  }
+  
+  .typewriter.theme-classic,
+  .typewriter.theme-terminal,
+  .typewriter.theme-retro,
+  .typewriter.theme-modern {
+    padding: 0.5rem;
+  }
+  
+  .handwriting.paper-lined,
+  .handwriting.paper-grid,
+  .handwriting.paper-parchment {
+    padding: 0.5em;
+  }
+}
+
+/* ==============================================
+   ACCESSIBILITY
+   ============================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .typewriter-text,
+  .typewriter-cursor,
+  .handwriting-path,
+  .typewriter.effect-glitch,
+  .typewriter.effect-matrix,
+  .handwriting.ink-blot::after {
+    animation: none !important;
+  }
+  
+  .typewriter-text {
+    border-right: none;
+    overflow: visible;
+    white-space: normal;
+  }
+  
+  .handwriting-path {
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .typewriter.theme-terminal {
+    color: #fff;
+    background: #000;
+  }
+  
+  .typewriter.theme-retro {
+    color: #fff;
+    background: #000;
+  }
+  
+  .handwriting-path {
+    stroke-width: 3;
+  }
+}
+
+/* ==============================================
+   UTILITY CLASSES
+   ============================================== */
+
+/* Speed variations */
+.typewriter.speed-slow .typewriter-text { animation-duration: 6s; }
+.typewriter.speed-normal .typewriter-text { animation-duration: 3s; }
+.typewriter.speed-fast .typewriter-text { animation-duration: 1.5s; }
+
+.handwriting.speed-slow .handwriting-path { animation-duration: 8s; }
+.handwriting.speed-normal .handwriting-path { animation-duration: 4s; }
+.handwriting.speed-fast .handwriting-path { animation-duration: 2s; }
+
+/* Size variations */
+.typewriter.size-small { font-size: 0.8em; }
+.typewriter.size-normal { font-size: 1em; }
+.typewriter.size-large { font-size: 1.2em; }
+
+.handwriting.size-small { font-size: 0.9em; }
+.handwriting.size-normal { font-size: 1em; }
+.handwriting.size-large { font-size: 1.1em; }

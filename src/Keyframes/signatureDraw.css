@@ -1,0 +1,25 @@
+0% { 
+    opacity: 0; 
+    stroke-dashoffset: 500; 
+    transform: translateX(-5px) translateY(3px) rotate(-3deg); 
+}
+25% { 
+    opacity: 0.3; 
+    stroke-dashoffset: 375; 
+    transform: translateX(-3px) translateY(2px) rotate(-2deg); 
+}
+50% { 
+    opacity: 0.6; 
+    stroke-dashoffset: 250; 
+    transform: translateX(-1px) translateY(1px) rotate(-1deg); 
+}
+75% { 
+    opacity: 0.8; 
+    stroke-dashoffset: 125; 
+    transform: translateX(0px) translateY(0px) rotate(0deg); 
+}
+100% { 
+    opacity: 1; 
+    stroke-dashoffset: 0; 
+    transform: translateX(0px) translateY(0px) rotate(0deg); 
+}

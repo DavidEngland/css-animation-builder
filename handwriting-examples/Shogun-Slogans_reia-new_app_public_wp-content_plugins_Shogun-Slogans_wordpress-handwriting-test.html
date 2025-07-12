@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WordPress Handwriting Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .demo-section {
+            background: #f9f9f9;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .code-example {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🖋️ WordPress Handwriting Typewriter Test</h1>
+    
+    <div class="demo-section">
+        <h2>📋 WordPress Shortcodes for Handwriting Effects</h2>
+        
+        <h3>🖋️ Quill Writing Style</h3>
+        <div class="code-example">
+[typewriter_text text="We will help you make The Smart Move — I guarantee it!" speed="120" cursor="🖋️" class="quill-writing" style="font-family: 'Caveat', cursive; font-size: 2rem; color: #2c3e50; text-align: center;"]
+        </div>
+        
+        <h3>✒️ Fountain Pen Style</h3>
+        <div class="code-example">
+[typewriter_text text="We will help you make The Smart Move — I guarantee it!" speed="140" cursor="🖋️" class="fountain-pen-writing" style="font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: #1a1a2e; text-align: center;"]
+        </div>
+        
+        <h3>🎨 Using Custom HTML Block in WordPress</h3>
+        <p><strong>Copy this HTML into a Custom HTML block:</strong></p>
+        <div class="code-example">
+&lt;div class="shogun-typewriter quill-writing" 
+     data-text="We will help you make The Smart Move — I guarantee it!"
+     data-speed="120"
+     data-cursor="🖋️"
+     data-loop="true"
+     style="font-family: 'Caveat', cursive; font-size: clamp(1.5rem, 3.5vw, 2.5rem); color: #2c3e50; text-align: center; padding: 2rem;"&gt;
+    &lt;span class="typewriter-text"&gt;&lt;/span&gt;
+    &lt;span class="typewriter-cursor"&gt;🖋️&lt;/span&gt;
+&lt;/div&gt;
+        </div>
+        
+        <h3>📝 Step-by-Step WordPress Instructions</h3>
+        <ol>
+            <li><strong>Make sure the Shogun Slogans plugin is activated</strong></li>
+            <li><strong>Edit a page or post</strong> in WordPress</li>
+            <li><strong>Add a Shortcode block</strong> and paste one of the shortcodes above</li>
+            <li><strong>OR add a Custom HTML block</strong> and paste the HTML code</li>
+            <li><strong>Preview or publish</strong> to see the handwriting typewriter effect!</li>
+        </ol>
+        
+        <h3>✨ Available Classes</h3>
+        <ul>
+            <li><code>quill-writing</code> - Floating quill pen with ink flow effect</li>
+            <li><code>fountain-pen-writing</code> - Elegant fountain pen with Spencerian ink effects</li>
+            <li><code>shogun-handwriting-caveat</code> - Forces Caveat font</li>
+            <li><code>shogun-handwriting-dancing</code> - Forces Dancing Script font</li>
+            <li><code>shogun-handwriting-tangerine</code> - Forces Tangerine font</li>
+        </ul>
+        
+        <h3>🎯 Tips for Best Results</h3>
+        <ul>
+            <li>Use speed between 120-140ms for elegant handwriting feel</li>
+            <li>The 🖋️ cursor works best for both quill and fountain pen styles</li>
+            <li>Use center alignment for dramatic effect</li>
+            <li>Add padding for better visual spacing</li>
+            <li>Use clamp() for responsive font sizes</li>
+        </ul>
+    </div>
+
+</body>
+</html>

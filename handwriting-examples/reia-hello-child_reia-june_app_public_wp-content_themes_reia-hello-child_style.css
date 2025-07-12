@@ -1,0 +1,1038 @@
+﻿/*
+Theme Name: Hello Elementor Child
+Theme URI: https://github.com/elementor/hello-theme-child/
+Description: Hello Elementor Child is a child theme of Hello Elementor, created by Elementor team
+Author: Elementor Team
+Author URI: https://elementor.com/
+Template: hello-elementor
+Version: 2.2.3
+Text Domain: hello-elementor-child
+License: GNU General Public License v3 or later.
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
+Tags: flexible-header, custom-colors, custom-menu, custom-logo, editor-style, featured-images, rtl-language-support, threaded-comments, translation-ready
+*/
+
+/* ==========================================================================
+   CSS LAYERS ARCHITECTURE
+   Modern CSS organization using @layer for better cascade control
+   ========================================================================== */
+
+@layer reset, typography, base, components, layout, utilities, overrides;
+
+/* ==========================================================================
+   0. RESET & FOUNDATION LAYER
+   Base resets and foundational styles
+   ========================================================================== */
+
+@layer reset {
+    /* Import Google Fonts: Roboto for body, Roboto Slab for headings */
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Slab:wght@400;700&display=swap');
+
+    /* Modern CSS Reset additions */
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+
+    img, picture, video, canvas, svg {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+}
+
+/* ==========================================================================
+   1. CSS CUSTOM PROPERTIES (Design Tokens)
+   Centralized design system with logical property names
+   ========================================================================== */
+
+@layer base {
+    :root {
+        /* Layout & Spacing Design Tokens */
+        --layout-max-width-desktop: 1400px;
+        --layout-max-width-tablet: 1100px;
+        --layout-max-width-mobile: 800px;
+        --layout-max-width-small: 100%;
+
+        /* Fluid spacing using clamp() for better responsiveness */
+        --content-padding-fluid: clamp(0.5rem, 4vw, 2.5rem);
+        --content-gap-fluid: clamp(1rem, 3vw, 2.5rem);
+        --card-gap-fluid: clamp(0.5rem, 2vw, 1.5rem);
+
+        /* Legacy spacing for backwards compatibility */
+        --content-padding-desktop: 2.5rem;
+        --content-padding-tablet: 2rem;
+        --content-padding-mobile: 1rem;
+        --content-padding-small: 0.5rem;
+
+        /* Color System */
+        --color-primary: #002D5F;
+        --color-accent: #0073e6;
+        --color-accent-light: #005bb5;
+        --color-surface: #fff;
+        --color-surface-alt: #fafbfc;
+        --color-surface-accent: #fffbe7;
+        --color-border: #e0e6ed;
+        --color-border-accent: #ffd9b3;
+        --color-text: #333;
+        --color-text-muted: #444;
+        --color-text-light: #bbb;
+
+        /* Typography Scale */
+        --font-family-base: 'Roboto', Arial, Helvetica, sans-serif;
+        --font-family-heading: 'Roboto Slab', 'Times New Roman', Times, serif;
+        --font-size-fluid-sm: clamp(0.9rem, 1.5vw, 1rem);
+        --font-size-fluid-base: clamp(1rem, 2vw, 1.2rem);
+        --font-size-fluid-lg: clamp(1.1rem, 2.5vw, 1.5rem);
+        --font-size-fluid-xl: clamp(1.3rem, 3.5vw, 2.2rem);
+        --font-size-fluid-2xl: clamp(1.5rem, 4vw, 2.5rem);
+        --font-size-fluid-3xl: clamp(1.8rem, 5vw, 3rem);
+
+        /* Shadow System */
+        --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.06);
+        --shadow-base: 0 2px 12px rgba(0, 0, 0, 0.07);
+        --shadow-lg: 0 4px 16px rgba(0, 45, 95, 0.08);
+        --shadow-xl: 0 10px 30px rgba(0, 45, 95, 0.08);
+
+        /* Border Radius Scale */
+        --radius-sm: 0.25rem;
+        --radius-base: 0.5rem;
+        --radius-lg: 1rem;
+        --radius-xl: 1.5rem;
+        --radius-full: 50%;
+
+        /* Transition System */
+        --transition-fast: 0.15s ease;
+        --transition-base: 0.2s ease;
+        --transition-slow: 0.3s ease;
+
+        /* Container Query Breakpoints */
+        --container-sm: 400px;
+        --container-md: 600px;
+        --container-lg: 900px;
+        --container-xl: 1200px;
+
+        /* Z-index Scale */
+        --z-dropdown: 1000;
+        --z-sticky: 1020;
+        --z-fixed: 1030;
+        --z-modal: 1040;
+        --z-popover: 1050;
+        --z-tooltip: 1060;
+    }
+}
+
+/* ==========================================================================
+   2. TYPOGRAPHY LAYER
+   Modern typography system with fluid scaling
+   ========================================================================== */
+
+@layer typography {
+    /* Base typography with modern font loading */
+    body {
+        font-family: var(--font-family-base);
+        font-size: var(--font-size-fluid-base);
+        line-height: 1.6;
+        background: var(--color-surface);
+        color: var(--color-text);
+        font-optical-sizing: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Heading system with logical hierarchy */
+    :is(h1, h2, h3, h4, h5, h6) {
+        font-family: var(--font-family-heading);
+        line-height: 1.2;
+        font-weight: 600;
+        margin-block: 0 0.5em;
+        text-wrap: balance; /* Modern text wrapping */
+    }
+
+    h1 { font-size: var(--font-size-fluid-3xl); }
+    h2 { font-size: var(--font-size-fluid-2xl); }
+    h3 { font-size: var(--font-size-fluid-xl); }
+    h4 { font-size: var(--font-size-fluid-lg); }
+    h5, h6 { font-size: var(--font-size-fluid-base); }
+
+    /* Text elements */
+    p {
+        margin-block: 0 1em;
+        text-wrap: pretty; /* Modern paragraph wrapping */
+    }
+
+    /* Modern link styling */
+    a {
+        color: var(--color-accent);
+        text-decoration-thickness: 0.1em;
+        text-underline-offset: 0.2em;
+        transition: color var(--transition-base);
+    }
+
+    a:hover, a:focus-visible {
+        color: var(--color-accent-light);
+        text-decoration-thickness: 0.15em;
+    }
+}
+
+/* ==========================================================================
+   3. BASE COMPONENTS LAYER
+   Reusable UI components with container queries
+   ========================================================================== */
+
+@layer components {
+    /* Modern form controls */
+    input[type="checkbox"] {
+        accent-color: var(--color-accent);
+        scale: 1.2;
+    }
+
+    /* Focus management system */
+    :focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 2px;
+        border-radius: var(--radius-sm);
+    }
+
+    /* Button system (if needed) */
+    .btn {
+        padding: 0.5em 1em;
+        border-radius: var(--radius-base);
+        border: 1px solid transparent;
+        background: var(--color-accent);
+        color: white;
+        cursor: pointer;
+        transition: all var(--transition-base);
+        font-family: inherit;
+        font-size: inherit;
+    }
+
+    .btn:hover, .btn:focus-visible {
+        background: var(--color-accent-light);
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-base);
+    }
+}
+
+/* ==========================================================================
+   4. LAYOUT LAYER
+   Container queries for responsive layouts
+   ========================================================================== */
+
+@layer layout {
+    /* Modern container with container queries */
+    .content-container {
+        container-type: inline-size;
+        container-name: content;
+        width: 100%;
+        max-width: var(--layout-max-width-desktop);
+        margin-inline: auto;
+        padding-inline: var(--content-padding-fluid);
+        background: var(--color-surface);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-sm);
+    }
+
+    /* Legacy content areas with container queries */
+    .site-main,
+    .single-post-content,
+    .page .single-post-content,
+    .entry-content {
+        container-type: inline-size;
+        max-width: var(--layout-max-width-desktop);
+        padding-inline: var(--content-padding-fluid);
+        margin-inline: auto;
+        background: var(--color-surface);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-sm);
+    }
+
+    /* Container query responsive adjustments */
+    @container content (max-width: 1399px) {
+        .site-main,
+        .single-post-content,
+        .page .single-post-content,
+        .entry-content {
+            max-width: var(--layout-max-width-tablet);
+        }
+    }
+
+    @container content (max-width: 900px) {
+        .site-main,
+        .single-post-content,
+        .page .single-post-content,
+        .entry-content {
+            max-width: var(--layout-max-width-mobile);
+        }
+    }
+
+    @container content (max-width: 600px) {
+        .site-main,
+        .single-post-content,
+        .page .single-post-content,
+        .entry-content {
+            max-width: var(--layout-max-width-small);
+        }
+    }
+
+    /* Entry title normalization */
+    .entry-title,
+    h1.entry-title,
+    h2.entry-title,
+    h3.entry-title {
+        text-transform: none !important;
+    }
+}
+
+/* ==========================================================================
+   5. CARD COMPONENTS
+   Modern card system with container queries and CSS Grid
+   ========================================================================== */
+
+@layer components {
+    /* Modern Grid System with CSS Grid */
+    .post-grid {
+        container-type: inline-size;
+        container-name: grid;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+        gap: var(--content-gap-fluid);
+        margin-block: var(--content-gap-fluid);
+        align-items: start;
+        max-width: var(--layout-max-width-desktop);
+        margin-inline: auto;
+    }
+
+    /* Container query responsive grid */
+    @container grid (min-width: 1200px) {
+        .post-grid {
+            grid-template-columns: repeat(4, 1fr);
+            max-width: var(--layout-max-width-desktop);
+        }
+    }
+
+    @container grid (min-width: 900px) and (max-width: 1199px) {
+        .post-grid {
+            grid-template-columns: repeat(3, 1fr);
+            max-width: var(--layout-max-width-tablet);
+        }
+    }
+
+    @container grid (max-width: 899px) {
+        .post-grid {
+            grid-template-columns: 1fr;
+            max-width: 100%;
+        }
+    }
+
+    /* Modern Card Component */
+    .post-card {
+        container-type: inline-size;
+        container-name: card;
+        background: var(--color-surface);
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        box-shadow: var(--shadow-base);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        transition: all var(--transition-slow);
+        border: 1px solid transparent;
+    }
+
+    .post-card:hover {
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-2px);
+        border-color: var(--color-border);
+    }
+
+    /* Card thumbnail with aspect ratio */
+    .post-card-thumb {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        background: var(--color-surface-alt);
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+
+    .post-card-thumb img,
+    .post-card-thumb--placeholder {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        background: var(--color-border);
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+
+    /* Container query adjustments for card thumbnails */
+    @container card (max-width: 300px) {
+        .post-card-thumb {
+            aspect-ratio: 4 / 3;
+        }
+    }
+
+    /* Card content */
+    .post-card-content {
+        padding: var(--card-gap-fluid);
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+        background: var(--color-surface);
+    }
+
+    .post-card .entry-title {
+        font-size: var(--font-size-fluid-lg);
+        margin-block-end: 0.75rem;
+        line-height: 1.2;
+        font-family: var(--font-family-heading);
+    }
+
+    .post-card .entry-title a {
+        color: var(--color-primary);
+        text-decoration: none;
+        transition: color var(--transition-base);
+    }
+
+    .post-card .entry-title a:hover,
+    .post-card .entry-title a:focus-visible {
+        color: var(--color-accent);
+    }
+
+    .post-card-excerpt {
+        color: var(--color-text-muted);
+        font-size: var(--font-size-fluid-base);
+        margin-top: auto;
+        line-height: 1.5;
+    }
+}
+
+/* ==========================================================================
+   6. SINGLE POST LAYOUT
+   Modern single post card with container queries
+   ========================================================================== */
+
+@layer layout {
+    .single-post-card {
+        container-type: inline-size;
+        container-name: single-post;
+        background: var(--color-surface);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-base);
+        margin: var(--content-gap-fluid) auto;
+        max-width: 800px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .single-post-thumb {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .single-post-thumb img {
+        width: 100%;
+        max-height: 400px;
+        height: auto;
+        object-fit: contain;
+        object-position: center;
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        background: var(--color-border);
+    }
+
+    .single-post-content {
+        padding: var(--content-padding-fluid);
+    }
+
+    @container single-post (max-width: 600px) {
+        .single-post-card {
+            margin: 1rem;
+        }
+
+        .single-post-content {
+            padding: 1rem;
+        }
+    }
+}
+
+/* ==========================================================================
+   7. SVG FEATURED IMAGES AS ICONS
+   Modern approach to SVG handling with container queries
+   ========================================================================== */
+
+@layer components {
+    /* Base SVG icon styling */
+    .post-featured-image img[src$=".svg"],
+    .post-thumbnail img[src$=".svg"],
+    .wp-post-image[src$=".svg"],
+    .single-post-thumb img[src$=".svg"],
+    .post-card-thumb img[src$=".svg"] {
+        width: 80px !important;
+        height: 80px !important;
+        max-width: 80px !important;
+        max-height: 80px !important;
+        float: right;
+        margin: 0 0 1rem 1.5rem;
+        object-fit: contain;
+        background: transparent;
+        border-radius: var(--radius-base);
+        box-shadow: var(--shadow-sm);
+        clear: none;
+    }
+
+    /* Alternative float direction */
+    .svg-icon-left .post-featured-image img[src$=".svg"],
+    .svg-icon-left .post-thumbnail img[src$=".svg"],
+    .svg-icon-left .wp-post-image[src$=".svg"] {
+        float: left;
+        margin: 0 1.5rem 1rem 0;
+    }
+
+    /* Single post SVG positioning */
+    .single-post-card .single-post-thumb img[src$=".svg"] {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        width: 60px !important;
+        height: 60px !important;
+        max-width: 60px !important;
+        max-height: 60px !important;
+        float: none;
+        margin: 0;
+        z-index: var(--z-dropdown);
+        background: color-mix(in srgb, var(--color-surface) 90%, transparent);
+        padding: 0.5rem;
+        border-radius: var(--radius-base);
+        backdrop-filter: blur(4px);
+    }
+
+    /* Grid card SVG icons */
+    .post-grid .post-card .post-card-thumb img[src$=".svg"] {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        width: 40px !important;
+        height: 40px !important;
+        max-width: 40px !important;
+        max-height: 40px !important;
+        float: none;
+        margin: 0;
+        z-index: var(--z-dropdown);
+        background: color-mix(in srgb, var(--color-surface) 90%, transparent);
+        padding: 0.25rem;
+        border-radius: var(--radius-sm);
+        object-fit: contain;
+        backdrop-filter: blur(4px);
+    }
+
+    /* Container positioning */
+    .single-post-thumb,
+    .post-card-thumb {
+        position: relative;
+    }
+
+    /* Container query responsive SVG sizing */
+    @container (max-width: 600px) {
+        .post-featured-image img[src$=".svg"],
+        .post-thumbnail img[src$=".svg"],
+        .wp-post-image[src$=".svg"] {
+            width: 60px !important;
+            height: 60px !important;
+            max-width: 60px !important;
+            max-height: 60px !important;
+            margin: 0 0 1rem 1rem;
+        }
+
+        .single-post-card .single-post-thumb img[src$=".svg"] {
+            width: 50px !important;
+            height: 50px !important;
+            max-width: 50px !important;
+            max-height: 50px !important;
+        }
+    }
+}
+
+/* ==========================================================================
+   8. SPECIAL COMPONENTS
+   Zillow Review Link and other special components
+   ========================================================================== */
+
+@layer components {
+    .zillow-review-link {
+        display: inline-block;
+        text-align: center;
+        margin: 1em auto;
+    }
+
+    .zillow-review-link a {
+        display: block;
+        text-decoration: none;
+        background: var(--color-surface);
+        border-radius: var(--radius-sm);
+        box-shadow: var(--shadow-sm);
+        transition: all var(--transition-base);
+        padding: 0.75em 1.5em;
+    }
+
+    .zillow-review-link a:hover,
+    .zillow-review-link a:focus-visible {
+        background-color: var(--color-primary);
+        box-shadow: var(--shadow-base);
+    }
+
+    .zillow-review-link figcaption {
+        font-size: 1.2em;
+        margin-bottom: 0.5em;
+        color: var(--color-primary);
+        font-weight: bold;
+        transition: color var(--transition-base);
+    }
+
+    .zillow-review-link a:hover figcaption,
+    .zillow-review-link a:focus figcaption {
+        color: white;
+    }
+
+    .zillow-review-link img {
+        vertical-align: middle;
+        transition: filter var(--transition-base);
+        max-width: 100%;
+        height: auto;
+    }
+
+    .zillow-review-link a:hover img,
+    .zillow-review-link a:focus img {
+        filter: brightness(0) invert(1);
+    }
+}
+
+/* ==========================================================================
+   9. MODERN CSS FEATURES & UTILITIES
+   Advanced CSS features and utility classes
+   ========================================================================== */
+
+@layer utilities {
+    /* Modern CSS features */
+    .card:has(img) {
+        border: 2px solid var(--color-accent);
+    }
+
+    .slider {
+        scroll-snap-type: x mandatory;
+        overflow-x: auto;
+        display: flex;
+        gap: 1rem;
+    }
+
+    .slide {
+        scroll-snap-align: start;
+        flex: 0 0 auto;
+    }
+
+    /* Container query utilities */
+    @container (min-width: 400px) {
+        .card {
+            flex-direction: row;
+        }
+    }
+
+    /* Color mixing utilities */
+    .bg-surface-tinted {
+        background: color-mix(in srgb, var(--color-surface) 95%, var(--color-accent));
+    }
+
+    /* Logical properties utilities */
+    .padding-inline-fluid {
+        padding-inline: var(--content-padding-fluid);
+    }
+
+    .margin-block-fluid {
+        margin-block: var(--content-gap-fluid);
+    }
+}
+
+/* ==========================================================================
+   10. RESPONSIVE MAP EMBEDS
+   Modern responsive map system with container queries
+   ========================================================================== */
+
+@layer components {
+    .responsive-map-embeds {
+        container-type: inline-size;
+        container-name: maps;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-block: var(--content-gap-fluid);
+        gap: 1rem;
+    }
+
+    .map-embed {
+        display: none;
+        margin-inline: auto;
+        box-shadow: var(--shadow-base);
+        border-radius: var(--radius-lg);
+        width: 100%;
+        max-width: 100%;
+        border: 0;
+        max-height: 70vh;
+        aspect-ratio: 16 / 9;
+    }
+
+    /* Container query based map display */
+    @container maps (max-width: 599px) {
+        .map-embed--small {
+            display: block;
+        }
+    }
+
+    @container maps (min-width: 600px) and (max-width: 1023px) {
+        .map-embed--medium {
+            display: block;
+        }
+    }
+
+    @container maps (min-width: 1024px) {
+        .map-embed--large {
+            display: block;
+        }
+    }
+
+    .map-embed:focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 2px;
+    }
+}
+
+/* ==========================================================================
+   11. DETAILS/SUMMARY COMPONENTS
+   Modern disclosure widgets with advanced styling
+   ========================================================================== */
+
+@layer components {
+    details {
+        container-type: inline-size;
+        container-name: details;
+        width: 100%;
+        max-width: 700px;
+        margin-block-end: 1.5em;
+        border-radius: var(--radius-base);
+        border: 1px solid var(--color-border);
+        background: var(--color-surface-alt);
+        padding: 0;
+        box-shadow: var(--shadow-sm);
+        position: relative;
+        transition: all var(--transition-base);
+    }
+
+    details[open] {
+        box-shadow: var(--shadow-lg);
+        background: var(--color-surface-accent);
+        border-color: var(--color-border-accent);
+    }
+
+    summary {
+        font-weight: 700;
+        color: var(--color-primary);
+        cursor: pointer;
+        padding: 0.7em 1.2em;
+        margin-block-end: 0.5em;
+        font-size: 1.13em;
+        letter-spacing: 0.01em;
+        border-block-end: 1px solid var(--color-border);
+        transition: all var(--transition-base);
+        list-style: none;
+        background: transparent;
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+    }
+
+    summary::-webkit-details-marker,
+    summary::marker {
+        display: none;
+    }
+
+    details[open] summary {
+        color: var(--color-accent);
+        border-block-end-color: var(--color-border-accent);
+        background: var(--color-surface-accent);
+    }
+
+    summary::after {
+        content: "▼";
+        margin-inline-start: auto;
+        font-size: 0.9em;
+        color: var(--color-text-light);
+        transition: all var(--transition-base);
+    }
+
+    details[open] summary::after {
+        transform: rotate(-180deg);
+        color: var(--color-accent);
+    }
+
+    details > *:not(summary) {
+        margin: 0.7em 1.2em;
+    }
+
+    details:last-child {
+        margin-block-end: 0;
+    }
+
+    summary:focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 2px;
+        background: color-mix(in srgb, var(--color-surface-accent) 50%, transparent);
+        border-radius: var(--radius-sm);
+    }
+}
+
+/* ==========================================================================
+   12. FAQ COMPONENTS
+   Enhanced FAQ styling with modern CSS
+   ========================================================================== */
+
+@layer components {
+    .reia-faq-item {
+        border: 1px solid transparent;
+        transition: all var(--transition-slow);
+        box-shadow: var(--shadow-sm);
+        background: var(--color-surface);
+        border-radius: var(--radius-base);
+    }
+
+    .reia-faq-item:hover {
+        border-color: color-mix(in srgb, var(--color-primary) 20%, transparent);
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-2px);
+    }
+
+    .reia-faq-item summary {
+        cursor: pointer;
+        list-style: none;
+        position: relative;
+        padding-inline-end: 2rem;
+        transition: color var(--transition-slow);
+    }
+
+    .reia-faq-item summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .reia-faq-item summary::after {
+        content: "+";
+        position: absolute;
+        inset-inline-end: 0;
+        inset-block-start: 50%;
+        transform: translateY(-50%);
+        font-size: 1.5rem;
+        font-weight: 300;
+        color: var(--color-primary);
+        transition: transform var(--transition-slow);
+    }
+
+    .reia-faq-item summary:hover {
+        color: var(--color-accent);
+    }
+
+    .reia-faq-item[open] {
+        border-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
+        box-shadow: var(--shadow-xl);
+    }
+
+    .reia-faq-item[open] summary {
+        color: var(--color-accent);
+        margin-block-end: 0.5rem;
+    }
+
+    .reia-faq-item[open] summary::after {
+        content: "−";
+        transform: translateY(-50%) rotate(180deg);
+    }
+
+    .reia-faq-item p {
+        animation: fadeInUp var(--transition-slow) ease-out;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
+/* ==========================================================================
+   13. SLOGAN COMPONENTS
+   Modern slogan styling with advanced CSS features
+   ========================================================================== */
+
+@layer components {
+    .company-slogan,
+    .smart-move-slogan,
+    [data-slogan*="Smart Move"] {
+        font-weight: 600;
+        line-height: 1.3;
+        color: var(--color-primary);
+        text-align: center;
+        margin-block: 1.5rem;
+        text-wrap: balance;
+    }
+
+    /* Gradient animated slogan */
+    .slogan-gradient {
+        background: linear-gradient(45deg, var(--color-primary), var(--color-accent), #ff6b35, var(--color-primary));
+        background-size: 300% 300%;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        animation: gradientShift 4s ease-in-out infinite;
+        text-shadow: 0 0 20px color-mix(in srgb, var(--color-primary) 30%, transparent);
+        font-size: var(--font-size-fluid-2xl);
+        font-weight: 700;
+    }
+
+    @keyframes gradientShift {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+    }
+
+    /* Highlighted card slogan */
+    .slogan-highlighted {
+        background: linear-gradient(135deg, #fff9e6, var(--color-surface-accent));
+        border: 3px solid var(--color-accent);
+        border-radius: var(--radius-xl);
+        padding: clamp(1rem, 3vw, 2rem);
+        box-shadow: var(--shadow-xl), inset 0 1px 0 color-mix(in srgb, white 60%, transparent);
+        position: relative;
+        overflow: hidden;
+        transform: perspective(1000px) rotateX(2deg);
+        transition: transform var(--transition-slow);
+    }
+
+    .slogan-highlighted:hover {
+        transform: perspective(1000px) rotateX(0deg) scale(1.02);
+    }
+
+    /* Modern shimmer effect using color-mix */
+    .slogan-highlighted::before {
+        content: "";
+        position: absolute;
+        inset: -50%;
+        background: linear-gradient(45deg, transparent, color-mix(in srgb, var(--color-accent) 10%, transparent), transparent);
+        transform: rotate(45deg);
+        animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+        0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+        100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+}
+
+/* ==========================================================================
+   14. FOOTER & NAVIGATION
+   Modern footer components
+   ========================================================================== */
+
+@layer layout {
+    footer .hfe-nav-menu .sub-arrow {
+        display: none;
+    }
+}
+
+/* ==========================================================================
+   15. OVERRIDES LAYER
+   Legacy support and important overrides
+   ========================================================================== */
+
+@layer overrides {
+    /* Ensure backwards compatibility */
+    .post-grid .post-card {
+        box-shadow: var(--shadow-base) !important;
+    }
+
+    .post-card,
+    .post-card-content {
+        box-shadow: none !important;
+        border-radius: 0 0 var(--radius-lg) var(--radius-lg) !important;
+    }
+}
+
+/* ==========================================================================
+   DOCUMENTATION & ARCHITECTURE NOTES
+   ========================================================================== */
+
+/*
+MODERN CSS ARCHITECTURE FEATURES IMPLEMENTED:
+
+1. CSS LAYERS (@layer):
+   - Organized cascade control with semantic layer names
+   - reset -> typography -> base -> components -> layout -> utilities -> overrides
+   - Better maintainability and specificity management
+
+2. CONTAINER QUERIES (@container):
+   - Component-based responsive design
+   - Self-contained responsive components
+   - Better than viewport-based media queries for component design
+
+3. CSS CUSTOM PROPERTIES (Design Tokens):
+   - Centralized design system with semantic naming
+   - Logical property names (--color-primary vs --primary)
+   - Fluid sizing using clamp() for better responsiveness
+
+4. MODERN CSS FEATURES:
+   - Logical properties (margin-inline, padding-block, etc.)
+   - color-mix() for dynamic color generation
+   - text-wrap: balance and pretty for better typography
+   - aspect-ratio for consistent image sizing
+   - backdrop-filter for modern glass effects
+
+5. PERFORMANCE OPTIMIZATIONS:
+   - font-optical-sizing for better font rendering
+   - font-smoothing for crisp text
+   - Efficient animations with transform/opacity
+   - Reduced reflows with logical properties
+
+6. ACCESSIBILITY IMPROVEMENTS:
+   - :focus-visible for better keyboard navigation
+   - Improved color contrast with color-mix()
+   - Semantic layer organization
+   - Better outline management
+
+7. MAINTAINABILITY:
+   - Verbose documentation for each section
+   - Clear component organization
+   - Design token system for consistency
+   - Future-proof architecture
+
+USAGE GUIDELINES:
+- Use container queries for component responsiveness
+- Leverage design tokens for consistent styling
+- Utilize logical properties for better internationalization
+- Apply modern CSS features progressively
+- Maintain backwards compatibility where needed
+
+COMPONENT EXAMPLES:
+- .post-grid: Modern CSS Grid with container queries
+- .post-card: Self-contained responsive card component
+- .slogan-*: Advanced typography with modern effects
+- .map-embed: Responsive maps with container queries
+- details/summary: Modern disclosure widgets
+
+BROWSER SUPPORT:
+- Modern evergreen browsers (Chrome 105+, Firefox 110+, Safari 16+)
+- Graceful degradation for older browsers
+- Progressive enhancement approach
+*/

@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handwriting Animation Demo - CSS Animation Builder</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Kalam:wght@300;400;700&family=Cormorant+Garamond:wght@300;400;700&family=Old+Standard+TT:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/text-animations.css">
+    <link rel="stylesheet" href="../css/handwriting-animations.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, var(--handwriting-primary) 0%, #D2691E var(--element-width-full));
+            min-height: 100vh;
+            padding: var(--font-size-xxxl);
+        }
+        
+        .container {
+            max-width: 1var(--layout-min-height-xxl);
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: var(--transform-translate-md);
+            padding: var(--font-size-xxxl);
+            box-shadow: 0 var(--transform-translate-md) 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: var(--text-dark);
+            margin-bottom: var(--font-size-xxxl);
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        .demo-section {
+            margin-bottom: 3rem;
+            padding: var(--font-size-xxxl);
+            background: var(--bg-secondary);
+            border-radius: 1var(--border-width-medium);
+            border-left: 4px solid var(--handwriting-primary);
+        }
+        
+        .demo-section h2 {
+            color: var(--text-dark);
+            margin-bottom: var(--font-size-md);
+            font-size: 1.8rem;
+        }
+        
+        .demo-section p {
+            color: var(--text-secondary);
+            margin-bottom: var(--font-size-xxl);
+            line-height: 1.6;
+        }
+        
+        .demo-container {
+            background: white;
+            padding: var(--font-size-xxxl);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--font-size-xxl);
+            box-shadow: 0 var(--border-width-medium) var(--transform-translate-sm) rgba(0, 0, 0, 0.1);
+            position: relative;
+            min-height: var(--layout-min-height-xl);
+        }
+        
+        .controls {
+            display: flex;
+            gap: var(--font-size-md);
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: var(--font-size-xxxl);
+            padding: var(--font-size-md);
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-lg);
+        }
+        
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .control-group label {
+            font-weight: 600;
+            color: var(--typewriter-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .control-group input,
+        .control-group select,
+        .control-group button {
+            padding: 0.5rem;
+            border: var(--border-width-thin) solid var(--border-tertiary);
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+        }
+        
+        .control-group button {
+            background: var(--handwriting-primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background var(--duration-fast) ease;
+        }
+        
+        .control-group button:hover {
+            background: var(--handwriting-secondary);
+        }
+        
+        .control-group button:disabled {
+            background: var(--secondary-color);
+            cursor: not-allowed;
+        }
+        
+        .handwriting-demo {
+            min-height: var(--layout-min-height-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-xxl);
+            position: relative;
+            overflow: visible;
+        }
+        
+        .paper-demo {
+            background: var(--handwriting-background);
+            background-image: 
+                linear-gradient(rgba(139, 69, 19, 0.1) var(--border-width-thin), transparent var(--border-width-thin));
+            background-size: var(--element-width-full) 2em;
+            padding: var(--font-size-xxxl);
+            border-radius: var(--radius-lg);
+            position: relative;
+        }
+        
+        .paper-demo::before {
+            content: '';
+            position: absolute;
+            left: 3rem;
+            top: 0;
+            bottom: 0;
+            width: var(--border-width-medium);
+            background: var(--animation-error);
+        }
+        
+        .signature-demo {
+            background: white;
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: visible;
+        }
+        
+        .signature-demo::after {
+            content: 'X';
+            position: absolute;
+            bottom: var(--font-size-md);
+            left: var(--font-size-xxxl);
+            color: var(--text-light);
+            font-size: var(--font-size-xxl);
+        }
+        
+        .code-section {
+            margin-top: var(--font-size-xxxl);
+            background: var(--bg-dark);
+            color: var(--text-light);
+            padding: var(--font-size-xxl);
+            border-radius: var(--radius-lg);
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+        
+        .code-section h3 {
+            color: var(--text-light);
+            margin-bottom: var(--font-size-md);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: var(--font-size-xxxl);
+            color: var(--text-secondary);
+            border-top: var(--border-width-thin) solid var(--bg-tertiary);
+            margin-top: 3rem;
+        }
+        
+        .footer a {
+            color: var(--handwriting-primary);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .control-group {
+                width: var(--element-width-full);
+            }
+        }
+    </style>
+<!-- CSS Variables Import -->
+<link rel="stylesheet" href="src/variables.css">
+<!-- End CSS Variables Import -->
+</head>
+<body>
+    <div class="container">
+        <h1>✍️ Handwriting Animation Demo</h1>
+        
+        <!-- Basic Handwriting Demo -->
+        <div class="demo-section">
+            <h2>Basic Handwriting Effect</h2>
+            <p>SVG-based handwriting animation with realistic pen movement and ink flow.</p>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label for="basic-text">Text to Write:</label>
+                    <input type="text" id="basic-text" value="Hello, World!" />
+                </div>
+                <div class="control-group">
+                    <label for="basic-speed">Speed (ms):</label>
+                    <input type="number" id="basic-speed" min="10" max="200" value="50" />
+                </div>
+                <div class="control-group">
+                    <label for="basic-pen">Pen Type:</label>
+                    <select id="basic-pen">
+                        <option value="fountain">Fountain Pen</option>
+                        <option value="ballpoint">Ballpoint</option>
+                        <option value="marker">Marker</option>
+                        <option value="pencil">Pencil</option>
+                        <option value="quill">Quill</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>&nbsp;</label>
+                    <button onclick="startBasicDemo()">Start Demo</button>
+                </div>
+            </div>
+            
+            <div class="demo-container">
+                <div id="basic-demo" class="handwriting-demo handwriting theme-elegant"></div>
+            </div>
+        </div>
+        
+        <!-- Themed Handwriting Demo -->
+        <div class="demo-section">
+            <h2>Themed Handwriting Styles</h2>
+            <p>Different handwriting styles with themed backgrounds and effects.</p>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label for="themed-style">Style:</label>
+                    <select id="themed-style">
+                        <option value="elegant">Elegant</option>
+                        <option value="casual">Casual</option>
+                        <option value="formal">Formal</option>
+                        <option value="vintage">Vintage</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="themed-paper">Paper:</label>
+                    <select id="themed-paper">
+                        <option value="">None</option>
+                        <option value="lined">Lined Paper</option>
+                        <option value="grid">Grid Paper</option>
+                        <option value="parchment">Parchment</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="themed-ink">Ink Effects:</label>
+                    <input type="checkbox" id="themed-ink" checked />
+                </div>
+                <div class="control-group">
+                    <label>&nbsp;</label>
+                    <button onclick="startThemedDemo()">Start Demo</button>
+                </div>
+            </div>
+            
+            <div class="demo-container">
+                <div id="themed-demo" class="handwriting-demo handwriting paper-demo"></div>
+            </div>
+        </div>
+        
+        <!-- Signature Demo -->
+        <div class="demo-section">
+            <h2>Signature Animation</h2>
+            <p>Realistic signature writing with flourishes and personal touches.</p>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label for="signature-name">Signature:</label>
+                    <input type="text" id="signature-name" value="David England" />
+                </div>
+                <div class="control-group">
+                    <label for="signature-style">Style:</label>
+                    <select id="signature-style">
+                        <option value="formal">Formal</option>
+                        <option value="casual">Casual</option>
+                        <option value="artistic">Artistic</option>
+                        <option value="initials">Initials Only</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="signature-flourish">Flourish:</label>
+                    <input type="checkbox" id="signature-flourish" checked />
+                </div>
+                <div class="control-group">
+                    <label>&nbsp;</label>
+                    <button onclick="startSignatureDemo()">Start Demo</button>
+                </div>
+            </div>
+            
+            <div class="demo-container signature-demo">
+                <div id="signature-demo" class="handwriting-demo handwriting theme-formal"></div>
+            </div>
+        </div>
+        
+        <!-- Code Examples -->
+        <div class="demo-section">
+            <h2>Usage Examples</h2>
+            
+            <div class="code-section">
+                <h3>JavaScript Usage</h3>
+                <pre><code>// Basic handwriting effect
+const handwriting = new HandwritingAnimation('#my-element', {
+    speed: 50,
+    penType: 'fountain',
+    strokeColor: 'var(--text-primary)',
+    strokeWidth: 2,
+    showPen: true
+});
+
+handwriting.writeText('Hello, World!');
+
+// Advanced signature animation
+const signature = new HandwritingAnimation('#signature-element', {
+    speed: 30,
+    penType: 'quill',
+    strokeColor: '#1a1a1a',
+    strokeWidth: 3,
+    showPen: true,
+    penSize: 25,
+    inkFlow: true,
+    pressure: 1.5,
+    shakiness: 0.2,
+    style: 'signature',
+    onComplete: () => console.log('Signature complete!')
+});
+
+signature.writeText('David England');
+
+// Method chaining
+handwriting
+    .writeText('First line')
+    .pause()
+    .resume()
+    .reset();</code></pre>
+            </div>
+            
+            <div class="code-section">
+                <h3>CSS Configuration</h3>
+                <pre><code>/* Handwriting container */
+.handwriting-container {
+    position: relative;
+    font-family: 'Dancing Script', cursive;
+    font-size: var(--font-size-xxl);
+    color: var(--text-primary);
+}
+
+/* Custom pen styles */
+.handwriting-path {
+    stroke: #1a1a1a;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}
+
+/* Paper effects */
+.lined-paper {
+    background-image: repeating-linear-gradient(
+        transparent,
+        transparent 1.8em,
+        var(--text-light) 1.8em,
+        var(--text-light) calc(1.8em + var(--border-width-thin))
+    );
+}
+
+/* Ink effects */
+.ink-flowing path {
+    filter: drop-shadow(0 0 var(--border-width-medium) rgba(0, 0, 0, 0.3));
+}</code></pre>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>
+                <strong>CSS Animation Builder</strong> - 
+                Developed by <a href="https://github.com/DavidEngland">Real Estate Intelligence Agency (REIA)</a>
+            </p>
+            <p>
+                <a href="https://github.com/DavidEngland/css-animation-builder">GitHub Repository</a> |
+                <a href="typewriter-demo.html">Typewriter Demo</a> |
+                <a href="../index.html">Main Demo</a>
+            </p>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="../js/handwriting-animation.js"></script>
+    <script>
+        let basicHandwriting, themedHandwriting, signatureHandwriting;
+        
+        function startBasicDemo() {
+            const element = document.getElementById('basic-demo');
+            const text = document.getElementById('basic-text').value;
+            const speed = parseInt(document.getElementById('basic-speed').value);
+            const penType = document.getElementById('basic-pen').value;
+            
+            if (basicHandwriting) {
+                basicHandwriting.destroy();
+            }
+            
+            element.innerHTML = '';
+            
+            basicHandwriting = new HandwritingAnimation(element, {
+                speed: speed,
+                penType: penType,
+                strokeColor: 'var(--text-dark)',
+                strokeWidth: 2,
+                showPen: true,
+                inkFlow: true
+            });
+            
+            basicHandwriting.writeText(text);
+        }
+        
+        function startThemedDemo() {
+            const element = document.getElementById('themed-demo');
+            const style = document.getElementById('themed-style').value;
+            const paper = document.getElementById('themed-paper').value;
+            const ink = document.getElementById('themed-ink').checked;
+            
+            if (themedHandwriting) {
+                themedHandwriting.destroy();
+            }
+            
+            element.innerHTML = '';
+            element.className = `handwriting-demo handwriting theme-${style}`;
+            
+            if (paper) {
+                element.classList.add(`paper-${paper}`);
+            }
+            
+            if (ink) {
+                element.classList.add('ink-flowing');
+            }
+            
+            themedHandwriting = new HandwritingAnimation(element, {
+                speed: 40,
+                penType: 'fountain',
+                strokeColor: style === 'vintage' ? 'var(--handwriting-primary)' : 'var(--text-primary)',
+                strokeWidth: style === 'casual' ? 3 : 2,
+                showPen: true,
+                inkFlow: ink,
+                shakiness: style === 'casual' ? 0.2 : 0.1
+            });
+            
+            themedHandwriting.writeText('Beautiful handwriting animation');
+        }
+        
+        function startSignatureDemo() {
+            const element = document.getElementById('signature-demo');
+            const name = document.getElementById('signature-name').value;
+            const style = document.getElementById('signature-style').value;
+            const flourish = document.getElementById('signature-flourish').checked;
+            
+            if (signatureHandwriting) {
+                signatureHandwriting.destroy();
+            }
+            
+            element.innerHTML = '';
+            
+            const signatureText = style === 'initials' ? 
+                name.split(' ').map(n => n[0]).join('') : 
+                name;
+            
+            signatureHandwriting = new HandwritingAnimation(element, {
+                speed: 25,
+                penType: 'quill',
+                strokeColor: '#1a1a1a',
+                strokeWidth: style === 'artistic' ? 4 : 3,
+                showPen: true,
+                inkFlow: true,
+                pressure: 1.5,
+                shakiness: 0.15,
+                style: 'signature'
+            });
+            
+            signatureHandwriting.writeText(signatureText);
+        }
+        
+        // Initialize demos on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            startBasicDemo();
+            
+            // Auto-start themed demo after 3 seconds
+            setTimeout(startThemedDemo, 3000);
+            
+            // Auto-start signature demo after 6 seconds
+            setTimeout(startSignatureDemo, 6000);
+        });
+    </script>
+</body>
+</html>

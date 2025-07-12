@@ -1,0 +1,370 @@
+<h1>Animation Override Test</h1>
+<p>Testing per-animation overrides for duration, delay, and easing...</p>
+
+<!-- CSS Generated with Per-Animation Overrides -->
+<style>
+:root {
+  --reia-duration: 0.6s;
+  --reia-delay: 0s;
+  --reia-easing: ease-out;
+  --reia-iteration: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reia-animated,
+  [class*="reia-"] {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+.reia-animated {
+  animation-duration: var(--reia-duration);
+  animation-delay: var(--reia-delay);
+  animation-timing-function: var(--reia-easing);
+  animation-iteration-count: var(--reia-iteration);
+  animation-fill-mode: both;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.reia-duration-1 { --reia-duration: 0.5s; }
+.reia-duration-2 { --reia-duration: 1s; }
+.reia-duration-3 { --reia-duration: 1.5s; }
+.reia-duration-4 { --reia-duration: 2s; }
+.reia-duration-5 { --reia-duration: 2.5s; }
+.reia-duration-6 { --reia-duration: 3s; }
+.reia-duration-7 { --reia-duration: 3.5s; }
+.reia-duration-8 { --reia-duration: 4s; }
+.reia-duration-9 { --reia-duration: 4.5s; }
+.reia-duration-10 { --reia-duration: 5s; }
+
+.reia-delay-1 { --reia-delay: 0.5s; }
+.reia-delay-2 { --reia-delay: 1s; }
+.reia-delay-3 { --reia-delay: 1.5s; }
+.reia-delay-4 { --reia-delay: 2s; }
+.reia-delay-5 { --reia-delay: 2.5s; }
+.reia-delay-6 { --reia-delay: 3s; }
+.reia-delay-7 { --reia-delay: 3.5s; }
+.reia-delay-8 { --reia-delay: 4s; }
+.reia-delay-9 { --reia-delay: 4.5s; }
+.reia-delay-10 { --reia-delay: 5s; }
+
+.reia-linear { --reia-easing: linear; }
+.reia-ease { --reia-easing: ease; }
+.reia-ease-in { --reia-easing: ease-in; }
+.reia-ease-out { --reia-easing: ease-out; }
+.reia-ease-in-out { --reia-easing: ease-in-out; }
+.reia-bounce { --reia-easing: cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+.reia-elastic { --reia-easing: cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+
+.reia-repeat-infinite { --reia-iteration: infinite; }
+.reia-repeat-1 { --reia-iteration: 1; }
+.reia-repeat-2 { --reia-iteration: 2; }
+.reia-repeat-3 { --reia-iteration: 3; }
+
+@keyframes reia-fadeInFast {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reia-animated.reia-fadeInFast {
+  animation-name: reia-fadeInFast;
+  --reia-duration: 0.3s;
+  --reia-easing: ease-in;
+}
+
+@keyframes reia-slideInSlowDelayed {
+  0% {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.reia-animated.reia-slideInSlowDelayed {
+  animation-name: reia-slideInSlowDelayed;
+  --reia-duration: 2s;
+  --reia-delay: 0.5s;
+  --reia-easing: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes reia-bounceInfinite {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-40px);
+  }
+  60% {
+    transform: translateY(-20px);
+  }
+}
+
+.reia-animated.reia-bounceInfinite {
+  animation-name: reia-bounceInfinite;
+  --reia-duration: 1.5s;
+  --reia-iteration: infinite;
+  --reia-easing: ease-in-out;
+}
+
+@keyframes reia-zoomInElastic {
+  0% {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.26);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+.reia-animated.reia-zoomInElastic {
+  animation-name: reia-zoomInElastic;
+  --reia-duration: 1s;
+  --reia-easing: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes reia-rotateDelayedSlow {
+  0% {
+    transform: rotate(360deg);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.reia-animated.reia-rotateDelayedSlow {
+  animation-name: reia-rotateDelayedSlow;
+  --reia-duration: 3s;
+  --reia-delay: 1s;
+  --reia-easing: ease-in-out;
+  --reia-iteration: 2;
+}
+
+@keyframes reia-pulseQuick {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.reia-animated.reia-pulseQuick {
+  animation-name: reia-pulseQuick;
+  --reia-duration: 0.4s;
+  --reia-iteration: infinite;
+}
+
+@keyframes reia-shakeIntense {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-15px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(15px);
+  }
+}
+
+.reia-animated.reia-shakeIntense {
+  animation-name: reia-shakeIntense;
+  --reia-duration: 0.8s;
+  --reia-easing: linear;
+  --reia-iteration: 3;
+}
+
+@keyframes reia-flipSlowY {
+  0% {
+    transform: perspective(400px) rotateY(0deg);
+    opacity: 1;
+  }
+  40% {
+    transform: perspective(400px) rotateY(144deg);
+  }
+  70% {
+    transform: perspective(400px) rotateY(162deg);
+  }
+  100% {
+    transform: perspective(400px) rotateY(180deg);
+    opacity: 0;
+  }
+}
+
+.reia-animated.reia-flipSlowY {
+  animation-name: reia-flipSlowY;
+  --reia-duration: 2.5s;
+  --reia-delay: 0.3s;
+  --reia-easing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  backface-visibility: visible !important;
+}
+
+@keyframes reia-typewriterFastCursor {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: currentColor;
+  }
+}
+
+.reia-animated.reia-typewriterFastCursor {
+  animation-name: reia-typewriterFastCursor;
+}
+
+@keyframes reia-typewriterFast {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.reia-animated.reia-typewriterFast {
+  animation-name: reia-typewriterFast;
+  --reia-duration: 1.2s;
+  --reia-easing: linear;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid currentColor;
+  animation-timing-function: steps(20, end);
+}
+
+</style>
+
+<h2>Animation Data with Overrides</h2>
+<pre>
+Animation: fadeInFast
+  Overrides:
+    duration: 0.3
+    easing: ease-in
+
+Animation: slideInSlowDelayed
+  Overrides:
+    duration: 2
+    delay: 0.5
+    easing: cubic-bezier(0.68, -0.55, 0.265, 1.55)
+
+Animation: bounceInfinite
+  Overrides:
+    duration: 1.5
+    iteration: infinite
+    easing: ease-in-out
+
+Animation: zoomInElastic
+  Overrides:
+    duration: 1
+    easing: cubic-bezier(0.175, 0.885, 0.32, 1.275)
+
+Animation: rotateDelayedSlow
+  Overrides:
+    duration: 3
+    delay: 1
+    easing: ease-in-out
+    iteration: 2
+
+Animation: pulseQuick
+  Overrides:
+    duration: 0.4
+    iteration: infinite
+
+Animation: shakeIntense
+  Overrides:
+    duration: 0.8
+    easing: linear
+    iteration: 3
+
+Animation: flipSlowY
+  Overrides:
+    duration: 2.5
+    delay: 0.3
+    easing: cubic-bezier(0.25, 0.46, 0.45, 0.94)
+
+Animation: typewriterFastCursor
+  No overrides (uses global defaults)
+
+Animation: typewriterFast
+  Overrides:
+    duration: 1.2
+    easing: linear
+
+</pre>
+
+<h2>HTML Examples with Override Classes</h2>
+<div class="reia-animated reia-fadeInFast" style="--reia-duration: 0.3s; --reia-easing: ease-in">
+  <p>Fast fade with ease-in (0.3s)</p>
+</div>
+
+<div class="reia-animated reia-slideInSlowDelayed" style="--reia-duration: 2s; --reia-delay: 0.5s; --reia-easing: cubic-bezier(0.68, -0.55, 0.265, 1.55)">
+  <p>Slow slide with delay and bounce easing (2s, 0.5s delay)</p>
+</div>
+
+<div class="reia-animated reia-bounceInfinite" style="--reia-duration: 1.5s; --reia-iteration: infinite; --reia-easing: ease-in-out">
+  <p>Infinite bounce with custom duration (1.5s)</p>
+</div>
+
+<div class="reia-animated reia-zoomInElastic" style="--reia-duration: 1s; --reia-easing: cubic-bezier(0.175, 0.885, 0.32, 1.275)">
+  <p>Elastic zoom with custom easing (1s)</p>
+</div>
+
+<div class="reia-animated reia-rotateDelayedSlow" style="--reia-duration: 3s; --reia-delay: 1s; --reia-easing: ease-in-out; --reia-iteration: 2">
+  <p>Slow rotation with delay, repeats 2x (3s, 1s delay)</p>
+</div>
+
+<div class="reia-animated reia-pulseQuick" style="--reia-duration: 0.4s; --reia-iteration: infinite">
+  <p>Quick infinite pulse (0.4s)</p>
+</div>
+
+<div class="reia-animated reia-shakeIntense" style="--reia-duration: 0.8s; --reia-easing: linear; --reia-iteration: 3">
+  <p>Intense shake, repeats 3x (0.8s)</p>
+</div>
+
+<div class="reia-animated reia-flipSlowY" style="--reia-duration: 2.5s; --reia-delay: 0.3s; --reia-easing: cubic-bezier(0.25, 0.46, 0.45, 0.94)">
+  <p>Slow Y-flip with delay (2.5s, 0.3s delay)</p>
+</div>
+
+<div class="reia-animated reia-typewriterFast" style="--reia-duration: 1.2s; --reia-easing: linear">
+  <p>Fast typewriter effect (1.2s)</p>
+</div>
+
+<h2>Alternative: Using Utility Classes</h2>
+<p>Instead of per-animation overrides, you can also use utility classes:</p>
+<div class="reia-animated reia-fadeIn reia-duration-2 reia-delay-3 reia-bounce">
+  <p>Fade with utility classes for custom timing</p>
+</div>
+
+<h2>Performance Notes</h2>
+<ul>
+<li>Per-animation overrides use CSS custom properties (CSS variables)</li>
+<li>No additional CSS classes are generated - overrides are inline styles or in the animation class</li>
+<li>Utility classes provide an alternative for runtime control</li>
+<li>Override configurations are stored in the animation data for inspection</li>
+</ul>
+
+<h2>Generated Files</h2>
+<ul>
+<li><strong>animation-override-output.css</strong> - Complete CSS with per-animation overrides</li>
+<li><strong>animation-override-test.php</strong> - This test file</li>
+</ul>
+<p><em>Test completed: 2025-07-07 20:10:14</em></p>

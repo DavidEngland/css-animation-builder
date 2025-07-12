@@ -1,0 +1,119 @@
+/* Flexbox layout for Connections cMap template */
+
+/* Card container as flex column for stacking on small screens */
+#cn-cmap .cn-entry-cmap-card {
+    display: flex;
+    flex-direction: column;
+    background: none;
+    font-size: 14px;
+    margin: 10px 4px;
+    padding: 12px;
+    position: relative;
+    gap: 1rem;
+}
+
+/* Main row: flex row for left/right columns */
+#cn-cmap .cn-entry-cmap-card .cn-flex-row {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: flex-start;
+    width: 100%;
+}
+
+/* Left column (image, etc.) */
+#cn-cmap .cn-left {
+    flex: 0 0 120px;
+    max-width: 120px;
+    margin: 0;
+    /* Remove float */
+    float: none !important;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Right column (content) */
+#cn-cmap .cn-right {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    gap: 0.5em;
+    /* Remove float */
+    float: none !important;
+}
+
+/* Responsive: stack columns on small screens */
+@media (max-width: 900px) {
+    #cn-cmap .cn-entry-cmap-card .cn-flex-row {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    #cn-cmap .cn-left,
+    #cn-cmap .cn-right {
+        max-width: 100%;
+        align-items: flex-start;
+        text-align: left;
+    }
+}
+
+/* Other cMap styles (keep as needed, update selectors for flex if necessary) */
+#cn-cmap .cn-entry-cmap-card h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0 0 6px;
+}
+
+#cn-cmap .cn-entry-cmap-card h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 0 6px;
+}
+
+#cn-cmap .cn-label {
+    font-weight: bold;
+}
+
+#cn-cmap .link-block,
+#cn-cmap .link {
+    display: inline;
+    margin-bottom: 0;
+}
+
+#cn-cmap span.cn-image-style {
+    border-radius: 4px;
+    background: #f1f1f1;
+    border: 1px solid #e3e3e3;
+    margin: 0;
+    padding: 5px;
+}
+
+#cn-cmap .cn-bio-tray,
+#cn-cmap .cn-note-tray,
+#cn-cmap .cn-gmap,
+#cn-cmap .cn-gmap-single {
+    border-radius: 4px;
+    border: 1px solid #d3d3d3;
+    margin: 10px 0 6px;
+    padding: 6px;
+    text-align: left;
+}
+
+#cn-cmap .cn-bio-tray .cn-image-style,
+#cn-cmap .cn-bio-single .cn-image-style {
+    float: right;
+    margin-left: 12px;
+}
+
+/* Clearfix not needed with flex, but keep for legacy support */
+#cn-cmap .cn-clear {
+    clear: both;
+    display: none;
+}
+
+/* Hide scrollbars for a cleaner look (optional) */
+#cn-cmap::-webkit-scrollbar {
+    display: none;
+}

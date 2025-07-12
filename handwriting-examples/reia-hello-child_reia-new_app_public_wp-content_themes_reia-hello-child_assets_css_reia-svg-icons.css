@@ -1,0 +1,358 @@
+/* REIA SVG Icons CSS */
+
+/* Base icon container */
+.reia-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+/* SVG element styling */
+.reia-svg-icon {
+    display: block;
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+    stroke: none;
+    overflow: visible;
+}
+
+/* Size variants */
+.reia-icon-xs { width: 12px; height: 12px; }
+.reia-icon-sm { width: 16px; height: 16px; }
+.reia-icon-md { width: 24px; height: 24px; }
+.reia-icon-lg { width: 32px; height: 32px; }
+.reia-icon-xl { width: 48px; height: 48px; }
+.reia-icon-2xl { width: 64px; height: 64px; }
+.reia-icon-3xl { width: 96px; height: 96px; }
+
+/* Animation base */
+.reia-icon-animated {
+    transition: all 0.3s ease;
+}
+
+/* Hover effects */
+.reia-icon-hover:hover {
+    transform: scale(1.1);
+    color: var(--reia-primary-color, #007cba);
+}
+
+.reia-icon-hover-rotate:hover {
+    transform: rotate(15deg);
+}
+
+.reia-icon-hover-bounce:hover {
+    animation: reia-bounce 0.6s ease;
+}
+
+.reia-icon-hover-pulse:hover {
+    animation: reia-pulse 0.6s ease;
+}
+
+/* Continuous animations */
+.reia-icon-pulse {
+    animation: reia-pulse 2s infinite ease-in-out;
+}
+
+.reia-icon-bounce {
+    animation: reia-bounce 1s infinite ease-in-out;
+}
+
+.reia-icon-rotate {
+    animation: reia-rotate 2s linear infinite;
+}
+
+.reia-icon-fade {
+    animation: reia-fade 2s ease-in-out infinite;
+}
+
+.reia-icon-slide {
+    animation: reia-slide 1s ease-in-out infinite;
+}
+
+.reia-icon-float {
+    animation: reia-float 3s ease-in-out infinite;
+}
+
+.reia-icon-wobble {
+    animation: reia-wobble 1s ease-in-out infinite;
+}
+
+/* Color variations */
+.reia-icon-primary { color: var(--reia-primary-color, #007cba); }
+.reia-icon-secondary { color: var(--reia-secondary-color, #6c757d); }
+.reia-icon-success { color: var(--reia-success-color, #28a745); }
+.reia-icon-danger { color: var(--reia-danger-color, #dc3545); }
+.reia-icon-warning { color: var(--reia-warning-color, #ffc107); }
+.reia-icon-info { color: var(--reia-info-color, #17a2b8); }
+.reia-icon-light { color: var(--reia-light-color, #f8f9fa); }
+.reia-icon-dark { color: var(--reia-dark-color, #343a40); }
+.reia-icon-muted { color: var(--reia-muted-color, #6c757d); }
+
+/* Background variations */
+.reia-icon-bg-circle {
+    background: var(--reia-bg-color, #f8f9fa);
+    border-radius: 50%;
+    padding: 0.5em;
+}
+
+.reia-icon-bg-square {
+    background: var(--reia-bg-color, #f8f9fa);
+    border-radius: 0.25em;
+    padding: 0.5em;
+}
+
+.reia-icon-bg-rounded {
+    background: var(--reia-bg-color, #f8f9fa);
+    border-radius: 0.5em;
+    padding: 0.5em;
+}
+
+/* Border variations */
+.reia-icon-border {
+    border: 2px solid currentColor;
+    border-radius: 0.25em;
+    padding: 0.5em;
+}
+
+.reia-icon-border-circle {
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    padding: 0.5em;
+}
+
+/* Shadow effects */
+.reia-icon-shadow {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.reia-icon-shadow-lg {
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+}
+
+/* Real Estate specific styles */
+.reia-icon-property {
+    color: var(--reia-property-color, #2c5aa0);
+}
+
+.reia-icon-listing {
+    color: var(--reia-listing-color, #28a745);
+}
+
+.reia-icon-contact {
+    color: var(--reia-contact-color, #17a2b8);
+}
+
+.reia-icon-feature {
+    color: var(--reia-feature-color, #fd7e14);
+}
+
+/* Icon groups */
+.reia-icon-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.reia-icon-group .reia-icon {
+    margin: 0;
+}
+
+.reia-icon-stack {
+    position: relative;
+    display: inline-block;
+}
+
+.reia-icon-stack .reia-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.reia-icon-stack .reia-icon:first-child {
+    position: relative;
+}
+
+/* Responsive helpers */
+@media (max-width: 768px) {
+    .reia-icon-responsive {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (min-width: 769px) {
+    .reia-icon-responsive {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .reia-icon-responsive {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+/* Keyframe animations */
+@keyframes reia-pulse {
+    0%, 100% { 
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% { 
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+}
+
+@keyframes reia-bounce {
+    0%, 100% { 
+        transform: translateY(0);
+    }
+    50% { 
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes reia-rotate {
+    from { 
+        transform: rotate(0deg);
+    }
+    to { 
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes reia-fade {
+    0%, 100% { 
+        opacity: 1;
+    }
+    50% { 
+        opacity: 0.3;
+    }
+}
+
+@keyframes reia-slide {
+    0%, 100% { 
+        transform: translateX(0);
+    }
+    50% { 
+        transform: translateX(5px);
+    }
+}
+
+@keyframes reia-float {
+    0%, 100% { 
+        transform: translateY(0px);
+    }
+    50% { 
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes reia-wobble {
+    0%, 100% { 
+        transform: rotate(0deg);
+    }
+    25% { 
+        transform: rotate(-5deg);
+    }
+    75% { 
+        transform: rotate(5deg);
+    }
+}
+
+/* List styling with icons */
+.reia-icon-list {
+    list-style: none;
+    padding: 0;
+}
+
+.reia-icon-list li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+}
+
+.reia-icon-list .reia-icon {
+    margin-right: 0.75rem;
+    margin-top: 0.125rem;
+    flex-shrink: 0;
+}
+
+/* Feature boxes with icons */
+.reia-feature-box {
+    text-align: center;
+    padding: 2rem 1rem;
+    border-radius: 0.5rem;
+    background: var(--reia-bg-light, #f8f9fa);
+}
+
+.reia-feature-box .reia-icon {
+    margin-bottom: 1rem;
+    color: var(--reia-primary-color, #007cba);
+}
+
+.reia-feature-box h3 {
+    margin-bottom: 0.5rem;
+    color: var(--reia-heading-color, #343a40);
+}
+
+.reia-feature-box p {
+    color: var(--reia-text-color, #6c757d);
+    margin: 0;
+}
+
+/* Icon picker styles (for admin) */
+.reia-icon-picker {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 1rem;
+    background: #fff;
+}
+
+.reia-icon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 0.5rem;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 1rem;
+}
+
+.reia-icon-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.75rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.reia-icon-option:hover {
+    border-color: #007cba;
+    background: #f0f8ff;
+}
+
+.reia-icon-option.selected {
+    border-color: #007cba;
+    background: #e3f2fd;
+}
+
+.reia-icon-option .reia-icon {
+    margin-bottom: 0.5rem;
+}
+
+.reia-icon-option span {
+    font-size: 0.75rem;
+    color: #666;
+    line-height: 1.2;
+}

@@ -1,0 +1,267 @@
+/* ==========================================================================
+   Connections Directory: Responsive Layout & Elementor Compatibility
+   ========================================================================== */
+
+/* 
+   Root variables for colors and spacing
+   -------------------------------------
+   Use these for consistent sizing and color throughout the template.
+*/
+:root {
+    --card-gap: 15px;
+    --text-color: #fff;
+    --link-hover: #ffd700; /* Gold hover */
+    --image-border: 2px solid #fff;
+    --card-max-width: 300px; /* Card width for home page */
+}
+
+/* ==========================================================================
+   1. Default Directory Layout (non-home)
+   -------------------------------------------------------------------------- */
+#cn-cmap .cn-list-row,
+#cn-cmap .cn-list-row-alternate {
+    display: block;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow: visible;
+}
+
+/* ==========================================================================
+   2. Home Page Card Layout & Styling
+   -------------------------------------------------------------------------- */
+.home #cn-cmap #cn-list-body {
+    text-align: center;
+}
+
+/* Card container for home page: vertical by default, horizontal on tablet+ */
+.home #cn-cmap .cn-list-row,
+.home #cn-cmap .cn-list-row-alternate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: var(--card-max-width);
+    margin-left: auto;
+    margin-right: auto;
+    gap: var(--card-gap);
+    box-sizing: border-box;
+    background: transparent !important;
+}
+
+/* Remove default card styling on home for a clean look */
+.home #cn-cmap .cn-entry {
+    border: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+}
+
+/* ==========================================================================
+   3. Image Styling (Home)
+   -------------------------------------------------------------------------- */
+.home #cn-cmap span.cn-image-style {
+    border-radius: 0;
+    background: rgba(255,255,255,0.10);
+    border: var(--image-border);
+    padding: 0;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.home #cn-cmap .cn-left > .cn-image-style > span,
+.home #cn-cmap .cn-left .cn-image-style,
+.home #cn-cmap .cn-left img.cn-image {
+    width: 100% !important;
+    height: auto !important;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+   4. Centering & Alignment on Home
+   -------------------------------------------------------------------------- */
+.home #cn-cmap .cn-entry,
+.home #cn-cmap .cn-left,
+.home #cn-cmap .cn-right {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin-inline: auto !important;
+}
+
+/* ==========================================================================
+   5. Text & Link Styling on Home
+   -------------------------------------------------------------------------- */
+.home #cn-cmap .fn,
+.home #cn-cmap .title,
+.home #cn-cmap .cn-phone-number,
+.home #cn-cmap .cn-phone-number a,
+.home #cn-cmap .cn-list-row a,
+.home #cn-cmap .cn-list-row h2 .fn,
+.home #cn-cmap .cn-list-row-alternate h2 .fn {
+    text-align: center !important;
+    color: var(--text-color) !important;
+    font-weight: 500;
+    margin-top: 10px;
+    background: transparent !important;
+}
+
+/* Italicize the job title in the directory list */
+.home #cn-list span.title {
+    font-style: italic;
+}
+
+/* Add spacing above links and names for visual separation */
+.home #cn-cmap .cn-list-row a,
+.home #cn-cmap .cn-list-row h2 .fn,
+.home #cn-cmap .cn-list-row-alternate h2 .fn {
+    margin-top: 15px;
+}
+
+/* ==========================================================================
+   6. Link hover effects (no underline by default, underline on hover)
+   -------------------------------------------------------------------------- */
+.home #cn-cmap a,
+.home #cn-cmap .cn-phone-number a {
+    color: var(--text-color) !important;
+    background: transparent !important;
+    transition: color 0.2s;
+    text-decoration: none;
+}
+.home #cn-cmap a:hover,
+.home #cn-cmap .cn-phone-number a:hover {
+    color: var(--link-hover) !important;
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   7. Elementor & Theme Compatibility
+   -------------------------------------------------------------------------- */
+.elementor-widget-container,
+.elementor-section,
+.elementor-container {
+    overflow: visible !important;
+}
+
+/* ==========================================================================
+   8. Hide scrollbars for a cleaner look (optional)
+   -------------------------------------------------------------------------- */
+#cn-cmap {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+}
+#cn-cmap::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+}
+
+/* ==========================================================================
+   9. Responsive Alignment for .cn-right (non-home)
+   -------------------------------------------------------------------------- */
+@media only screen and (max-width: 1024px) {
+    #cn-cmap .cn-right {
+        text-align: right;
+        align-self: flex-end;
+    }
+}
+@media only screen and (max-width: 320px) {
+    #cn-cmap .cn-right {
+        text-align: left;
+        align-self: flex-start;
+    }
+}
+@media only screen and (min-width: 1224px) {
+    #cn-cmap .cn-right {
+        text-align: right;
+        align-self: flex-end;
+    }
+}
+@media only screen and (min-width: 1824px) {
+    #cn-cmap .cn-right {
+        text-align: right;
+        align-self: flex-end;
+    }
+}
+
+/* ==========================================================================
+   10. Mobile Adjustments (Home)
+   -------------------------------------------------------------------------- */
+@media (max-width: 700px) {
+    /* Stack cards vertically and make images smaller */
+    .home #cn-cmap #cn-list-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--card-gap);
+    }
+    .home #cn-cmap .cn-list-row,
+    .home #cn-cmap .cn-list-row-alternate {
+        width: 100%;
+        max-width: var(--card-max-width);
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .home #cn-cmap .cn-left img.cn-image {
+        max-width: 120px !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+}
+
+/* ==========================================================================
+   11. Tablet and Above: Horizontal Card Flow (Home)
+   -------------------------------------------------------------------------- */
+@media (min-width: 701px) {
+    /* Cards flow horizontally and wrap, each card is column-styled inside */
+    .home #cn-cmap #cn-list-body {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--card-gap);
+    }
+    .home #cn-cmap .cn-list-row,
+    .home #cn-cmap .cn-list-row-alternate {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* ==========================================================================
+   12. Universal Fixes for All Pages (not just .home)
+   Prevent image overflow and float issues.
+   Ensure .cn-left and .cn-list-row are always responsive.
+   -------------------------------------------------------------------------- */
+#cn-cmap .cn-left > .cn-image-style > span,
+#cn-cmap .cn-left .cn-image-style,
+#cn-cmap .cn-left img.cn-image {
+    max-width: 100% !important;
+    width: 100% !important;
+    height: auto !important;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+#cn-cmap .cn-left {
+    float: none !important;
+    margin-right: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+/* ==========================================================================
+   End Connections Directory Custom Styles
+   ========================================================================== */

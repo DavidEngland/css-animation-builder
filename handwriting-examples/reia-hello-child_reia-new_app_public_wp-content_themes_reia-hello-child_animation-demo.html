@@ -1,0 +1,391 @@
+<?php
+/**
+ * REIA Animation Integration Demo
+ * 
+ * This file demonstrates how to use the refactored animation integration
+ * with all the enhanced features of the CSSAnimationBuilder.
+ */
+
+// Include the refactored integration
+require_once __DIR__ . '/inc/class-css-animation-builder.php';
+require_once __DIR__ . '/reia-animation-integration-refactored.php';
+
+// Get the animation manager instance
+$manager = reia_get_animation_manager();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REIA Animation Integration Demo</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .demo-section {
+            margin: 40px 0;
+            padding: 30px;
+            border: 2px dashed #e0e0e0;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        
+        .property-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: 20px 0;
+            max-width: 400px;
+        }
+        
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c5aa0;
+            margin: 10px 0;
+        }
+        
+        .location {
+            display: inline-block;
+            padding: 5px 10px;
+            background: #e8f4fd;
+            border-radius: 15px;
+            color: #1a365d;
+            font-size: 14px;
+        }
+        
+        .property-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .mortgage-calc {
+            background: #f0f8ff;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #2c5aa0;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .stagger-animations {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .stagger-animations .property-card {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        h1, h2, h3 {
+            color: #333;
+        }
+        
+        .code-block {
+            background: #f8f8f8;
+            padding: 15px;
+            border-radius: 4px;
+            border-left: 4px solid #2c5aa0;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        
+        .animation-demo {
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        /* Generate the CSS from our animation builder */
+        <?php echo $manager->get_builder()->generateCSS(false); ?>
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>REIA Animation Integration Demo</h1>
+        <p>This demo showcases the enhanced animation integration with per-animation overrides, 
+           direction support, transform-origin, custom keyframes, and comprehensive validation.</p>
+
+        <!-- Demo 1: Enhanced Shortcode with Overrides -->
+        <div class="demo-section">
+            <h2>1. Enhanced Animation Shortcode with Overrides</h2>
+            <p>The enhanced shortcode now supports all animation parameters including duration, delay, 
+               direction, transform-origin, and iteration overrides.</p>
+            
+            <div class="code-block">
+[reia_animate type="propertyReveal" duration="2s" delay="1s" direction="normal" 
+             transform_origin="center" iteration="1" trigger="scroll"]
+    Property content with custom animation settings
+[/reia_animate]
+            </div>
+            
+            <?php echo $manager->animate_shortcode([
+                'type' => 'propertyReveal',
+                'duration' => '2s',
+                'delay' => '0.5s',
+                'direction' => 'normal',
+                'transform_origin' => 'center',
+                'trigger' => 'scroll'
+            ], '<div class="property-card">
+                <h3>Beautiful Family Home</h3>
+                <div class="price">$450,000</div>
+                <span class="location">📍 123 Oak Street</span>
+                <p>Stunning 4BR/3BA home with modern amenities.</p>
+            </div>'); ?>
+        </div>
+
+        <!-- Demo 2: Property-Specific Animations -->
+        <div class="demo-section">
+            <h2>2. Property-Specific Animations</h2>
+            <p>Real estate focused animations with enhanced features and stagger support.</p>
+            
+            <div class="stagger-animations">
+                <?php 
+                echo $manager->property_card_shortcode([
+                    'animation' => 'propertyReveal',
+                    'stagger' => 'true',
+                    'delay' => '0s'
+                ], '<div class="property-card">
+                    <h4>Modern Condo</h4>
+                    <div class="price">$275,000</div>
+                    <span class="location">📍 Downtown District</span>
+                </div>');
+                
+                echo $manager->property_card_shortcode([
+                    'animation' => 'propertyReveal',
+                    'stagger' => 'true',
+                    'delay' => '0.2s'
+                ], '<div class="property-card">
+                    <h4>Luxury Villa</h4>
+                    <div class="price">$850,000</div>
+                    <span class="location">📍 Hillside Heights</span>
+                </div>');
+                
+                echo $manager->property_card_shortcode([
+                    'animation' => 'propertyReveal',
+                    'stagger' => 'true',
+                    'delay' => '0.4s'
+                ], '<div class="property-card">
+                    <h4>Cozy Cottage</h4>
+                    <div class="price">$320,000</div>
+                    <span class="location">📍 Riverside Park</span>
+                </div>');
+                ?>
+            </div>
+        </div>
+
+        <!-- Demo 3: Enhanced Handwriting Effects -->
+        <div class="demo-section">
+            <h2>3. Enhanced Handwriting Effects</h2>
+            <p>Multiple handwriting styles with speed control and cursor options.</p>
+            
+            <div class="code-block">
+[reia_handwrite style="quill" duration="3s" speed="normal" cursor="true"]
+    Elegantly handwritten text
+[/reia_handwrite]
+            </div>
+            
+            <div style="font-size: 24px; margin: 30px 0;">
+                <?php echo $manager->handwrite_shortcode([
+                    'style' => 'quill',
+                    'duration' => '4s',
+                    'speed' => 'normal',
+                    'cursor' => 'true'
+                ], 'Welcome to REIA Properties'); ?>
+            </div>
+            
+            <div style="font-family: 'Courier New', monospace; font-size: 18px; margin: 30px 0;">
+                <?php echo $manager->handwrite_shortcode([
+                    'style' => 'typewriter',
+                    'duration' => '3s',
+                    'speed' => 'fast',
+                    'cursor' => 'true'
+                ], 'Find your dream home today...'); ?>
+            </div>
+        </div>
+
+        <!-- Demo 4: Advanced Animation Types -->
+        <div class="demo-section">
+            <h2>4. Advanced Animation Types with Direction & Transform Origin</h2>
+            <p>Enhanced animations with direction and transform-origin support.</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <?php echo $manager->animate_shortcode([
+                    'type' => 'zoomIn',
+                    'duration' => '1.5s',
+                    'transform_origin' => 'top left',
+                    'trigger' => 'scroll'
+                ], '<div class="animation-demo">Zoom from Top Left</div>'); ?>
+                
+                <?php echo $manager->animate_shortcode([
+                    'type' => 'rotateIn',
+                    'duration' => '2s',
+                    'transform_origin' => 'center',
+                    'direction' => 'normal',
+                    'trigger' => 'scroll'
+                ], '<div class="animation-demo">Rotate In Center</div>'); ?>
+                
+                <?php echo $manager->animate_shortcode([
+                    'type' => 'slideInLeft',
+                    'duration' => '1s',
+                    'transform_origin' => 'left center',
+                    'trigger' => 'scroll'
+                ], '<div class="animation-demo">Slide from Left</div>'); ?>
+            </div>
+        </div>
+
+        <!-- Demo 5: Mortgage Calculator Animation -->
+        <div class="demo-section">
+            <h2>5. Custom Real Estate Animations</h2>
+            <p>Specialized animations for real estate elements.</p>
+            
+            <?php echo $manager->animate_shortcode([
+                'type' => 'mortgageCalc',
+                'duration' => '2s',
+                'delay' => '0.5s',
+                'trigger' => 'scroll'
+            ], '<div class="mortgage-calc">
+                <h3>💰 Mortgage Calculator</h3>
+                <p>Calculate your monthly payments</p>
+                <button style="padding: 10px 20px; background: #2c5aa0; color: white; border: none; border-radius: 4px;">
+                    Calculate Now
+                </button>
+            </div>'); ?>
+        </div>
+
+        <!-- Demo 6: Animation Triggers -->
+        <div class="demo-section">
+            <h2>6. Multiple Animation Triggers</h2>
+            <p>Animations can be triggered by scroll, click, hover, or immediately.</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                <?php echo $manager->animate_shortcode([
+                    'type' => 'pulse',
+                    'iteration' => 'infinite',
+                    'trigger' => 'immediate'
+                ], '<div class="animation-demo">Always Pulsing</div>'); ?>
+                
+                <?php echo $manager->animate_shortcode([
+                    'type' => 'bounceIn',
+                    'trigger' => 'click'
+                ], '<div class="animation-demo" style="cursor: pointer;">Click Me!</div>'); ?>
+                
+                <?php echo $manager->animate_shortcode([
+                    'type' => 'shakeHorizontal',
+                    'trigger' => 'hover'
+                ], '<div class="animation-demo" style="cursor: pointer;">Hover Me!</div>'); ?>
+            </div>
+        </div>
+
+        <!-- Demo 7: Auto-Detected Content -->
+        <div class="demo-section">
+            <h2>7. Auto-Detected Content Animation</h2>
+            <p>The system automatically detects and animates property-related content.</p>
+            
+            <div class="property-card">
+                <h3>Auto-Animated Property</h3>
+                <div class="price">$425,000</div>
+                <span class="location">📍 Maple Avenue</span>
+                <img class="property-image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200'%3E%3Crect width='400' height='200' fill='%23ddd'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23999'%3EProperty Image%3C/text%3E%3C/svg%3E" alt="Property">
+                <div class="mortgage-calc">
+                    <strong>Monthly Payment: $2,150</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Usage Instructions -->
+        <div class="demo-section">
+            <h2>How to Use in WordPress</h2>
+            <div class="code-block">
+// 1. Include in your theme's functions.php:
+require_once get_template_directory() . '/reia-animation-integration-refactored.php';
+
+// 2. Use shortcodes in your content:
+[reia_animate type="propertyReveal" duration="2s"]Your content[/reia_animate]
+
+// 3. Or add data attributes for auto-detection:
+&lt;div class="property-card" data-animate="propertyReveal"&gt;...&lt;/div&gt;
+
+// 4. Access the animation manager programmatically:
+$manager = reia_get_animation_manager();
+$builder = $manager->get_builder();
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for demonstration -->
+    <script>
+        // Simulate the animation system JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('REIA Animation Demo loaded');
+            
+            // Add classes to trigger CSS animations for demo
+            const animatedElements = document.querySelectorAll('[data-animate-trigger="scroll"]');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const element = entry.target;
+                        const classes = element.className.split(' ');
+                        const animationClass = classes.find(cls => cls.startsWith('reia-') && cls !== 'reia-animated');
+                        
+                        if (animationClass) {
+                            element.classList.add('reia-animated');
+                            console.log('Triggered animation:', animationClass);
+                        }
+                        
+                        observer.unobserve(element);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            animatedElements.forEach(el => observer.observe(el));
+            
+            // Click animations
+            document.querySelectorAll('[data-animate-trigger="click"]').forEach(el => {
+                el.addEventListener('click', function() {
+                    this.classList.add('reia-animated');
+                });
+            });
+            
+            // Hover animations
+            document.querySelectorAll('[data-animate-trigger="hover"]').forEach(el => {
+                el.addEventListener('mouseenter', function() {
+                    this.classList.add('reia-animated');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

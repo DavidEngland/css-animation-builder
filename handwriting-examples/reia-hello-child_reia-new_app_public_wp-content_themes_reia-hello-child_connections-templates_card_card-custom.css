@@ -1,0 +1,257 @@
+/* ===========================================================================
+   Connections Directory: Modern Responsive Card Layout (card-custom.css)
+   Refactored June 2025 — Parity with cmap-custom.css, modern CSS best practices
+   ---------------------------------------------------------------------------
+   - Uses CSS custom properties for colors, spacing, and card sizing
+   - Uses clamp(), min(), max() for fluid gaps, font sizes, image sizes
+   - Uses @container queries for card and row responsiveness
+   - All sections are commented for clarity and maintainability
+   ========================================================================= */
+
+:root {
+    --card-gap: clamp(10px, 2vw, 24px);
+    --text-color: #fff;
+    --link-hover: #ffd700;
+    --image-border: 2px solid #fff;
+    --card-max-width: min(300px, 90vw);
+    --card-radius: 0.75rem;
+    --card-padding: clamp(0.5rem, 2vw, 1.5rem);
+    --card-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    --card-shadow-hover: 0 4px 16px rgba(0,45,95,0.08);
+    --card-img-size: clamp(80px, 30vw, 160px);
+    --fn-size: clamp(1.1rem, 2vw, 1.4rem);
+    --title-size: clamp(1rem, 1.5vw, 1.2rem);
+}
+
+/* 1. Card Layout */
+.card-list-row,
+.card-list-row-alternate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: var(--card-max-width);
+    margin-left: auto;
+    margin-right: auto;
+    gap: var(--card-gap);
+    box-sizing: border-box;
+    background: transparent !important;
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
+    padding: var(--card-padding);
+    transition: box-shadow 0.2s;
+}
+.card-list-row:hover,
+.card-list-row-alternate:hover {
+    box-shadow: var(--card-shadow-hover);
+}
+
+/* Remove default card styling for a clean look */
+.card-entry {
+    border: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+}
+
+/* 2. Image Styling */
+.card-image-style {
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.10);
+    border: var(--image-border);
+    padding: 0;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: var(--card-img-size) !important;
+    height: var(--card-img-size) !important;
+    overflow: hidden;
+}
+.card-image-style > span,
+.card-image-style img {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    object-fit: cover;
+}
+
+/* 3. Centering & Alignment */
+.card-entry,
+.card-left,
+.card-right {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin-inline: auto !important;
+}
+
+/* 4. Text & Link Styling */
+.card-fn,
+.card-title,
+.card-phone-number,
+.card-phone-number a,
+.card-list-row a,
+.card-list-row h2 .card-fn,
+.card-list-row-alternate h2 .card-fn {
+    text-align: center !important;
+    color: var(--text-color) !important;
+    font-weight: 500;
+    margin-top: 10px;
+    background: transparent !important;
+    font-size: var(--fn-size);
+}
+.card-title {
+    font-style: italic;
+    font-size: var(--title-size);
+}
+.card-list-row a,
+.card-list-row h2 .card-fn,
+.card-list-row-alternate h2 .card-fn {
+    margin-top: 15px;
+}
+
+/* 5. Link hover effects */
+.card-list-row a,
+.card-phone-number a {
+    color: var(--text-color) !important;
+    background: transparent !important;
+    transition: color 0.2s;
+    text-decoration: none;
+}
+.card-list-row a:hover,
+.card-phone-number a:hover {
+    color: var(--link-hover) !important;
+    text-decoration: underline;
+}
+
+/* 6. Hide scrollbars for a cleaner look (optional) */
+.card-list {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.card-list::-webkit-scrollbar {
+    display: none;
+}
+
+/* 7. Responsive Alignment for .card-right */
+@container (max-width: 700px) {
+    .card-right {
+        text-align: left;
+        align-self: flex-start;
+    }
+}
+@container (min-width: 701px) {
+    .card-right {
+        text-align: right;
+        align-self: flex-end;
+    }
+}
+
+/* 8. Mobile Adjustments */
+@container (max-width: 700px) {
+    .card-list {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--card-gap);
+    }
+    .card-list-row,
+    .card-list-row-alternate {
+        max-width: 100vw;
+        min-width: min(220px, 90vw);
+        padding: clamp(0.5rem, 2vw, 1rem);
+    }
+    .card-image-style img {
+        max-width: var(--card-img-size) !important;
+    }
+}
+
+/* 9. Tablet and Above: Horizontal Card Flow */
+@container (min-width: 701px) {
+    .card-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--card-gap);
+    }
+    .card-list-row,
+    .card-list-row-alternate {
+        max-width: var(--card-max-width);
+        margin-left: 0;
+        margin-right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* 10. Universal Fixes */
+.card-image-style > span,
+.card-image-style img {
+    max-width: 100% !important;
+    width: 100% !important;
+    height: auto !important;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+.card-left {
+    float: none !important;
+    margin-right: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+/*
+ * Flexbox column layout for Connections card
+ * Ensures card-left and card-right stack vertically on mobile, side-by-side on larger screens
+ */
+.card-list-row,
+.card-list-row-alternate {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--card-gap);
+}
+
+@media (min-width: 600px) {
+  .card-list-row,
+  .card-list-row-alternate {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .card-left, .card-right {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 50%;
+  }
+}
+
+.card-left, .card-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.card-left {
+    /* Optionally align left content to start on desktop */
+    align-items: flex-start;
+}
+.card-right {
+    /* Optionally align right content to end on desktop */
+    align-items: flex-end;
+}
+
+/* ===========================================================================
+   End Connections Card Custom Styles
+   =========================================================================== */

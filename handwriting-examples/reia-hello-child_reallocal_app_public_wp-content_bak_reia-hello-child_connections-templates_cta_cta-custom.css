@@ -1,0 +1,24 @@
+/* Style for test header */
+.cta-test-header {
+    color: #0073e6;
+    font-size: 2em;
+    margin-bottom: 0.5em;
+}
+
+/* Style for found/not found messages */
+.cta-css-found {
+    color: green;
+    font-weight: bold;
+}
+.cta-css-not-found {
+    color: red;
+    font-weight: bold;
+}
+
+/* Optional: Style for code block */
+code {
+    background: #f4f4f4;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 1em;
+}

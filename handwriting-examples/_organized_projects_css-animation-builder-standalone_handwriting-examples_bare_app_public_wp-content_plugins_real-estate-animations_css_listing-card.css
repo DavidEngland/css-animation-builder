@@ -1,0 +1,401 @@
+/* 
+ * Modern, Responsive Styles for Real Estate Listing Cards
+ */
+
+/* CSS Custom Properties */
+:root {
+    --card-border-radius: 12px;
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --card-shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
+    --primary-color: #007cba;
+    --success-color: #46b450;
+    --warning-color: #ffb900;
+    --error-color: #dc3232;
+    --text-primary: #2c3e50;
+    --text-secondary: #7f8c8d;
+    --background-light: #f8f9fa;
+    --border-light: #e9ecef;
+}
+
+/* Base Listing Card */
+.listing-card {
+    position: relative;
+    background: #fff;
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    will-change: transform, box-shadow;
+}
+
+.listing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--card-shadow-hover);
+}
+
+/* Photo Container */
+.listing-photo-container {
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+    background: var(--background-light);
+}
+
+.listing-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.listing-card:hover .listing-photo {
+    transform: scale(1.05);
+}
+
+/* Lazy Loading Placeholder */
+.listing-photo[loading="lazy"] {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200px 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+/* Status Overlay */
+.status-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.listing-card.sold .status-overlay,
+.listing-card.pending .status-overlay {
+    opacity: 1;
+}
+
+.status-badge {
+    background: var(--error-color);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    animation: sold-celebration 1s ease-out;
+}
+
+.status-badge.status-pending {
+    background: var(--warning-color);
+}
+
+.status-badge.status-available {
+    background: var(--success-color);
+}
+
+.status-badge.status-off_market {
+    background: var(--text-secondary);
+}
+
+/* Content Area */
+.listing-details {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.listing-title {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.4;
+}
+
+.listing-title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.listing-title a:hover {
+    color: var(--primary-color);
+}
+
+.listing-price {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-color);
+    line-height: 1.2;
+}
+
+.price-amount {
+    background: linear-gradient(45deg, var(--primary-color), #0096c7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.price-on-request {
+    font-size: 16px;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.listing-beds-baths {
+    display: flex;
+    gap: 15px;
+    margin: 5px 0;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.beds, .baths {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.listing-sqft,
+.listing-address {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin: 2px 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.listing-description {
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.5;
+    margin-top: 10px;
+}
+
+/* Icon styling for details */
+.icon-bed::before { content: "🛏️"; }
+.icon-bath::before { content: "🛁"; }
+.icon-sqft::before { content: "📐"; }
+.icon-location::before { content: "📍"; }
+
+/* Animation Container */
+.animation-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* SOLD Sign */
+.sold-sign {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--error-color);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    animation: sold-celebration 1.5s ease-out, sold-glow 2s infinite alternate;
+    box-shadow: 0 4px 15px rgba(220, 50, 50, 0.4);
+}
+
+/* Floating Hearts */
+.floating-hearts {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.heart {
+    position: absolute;
+    font-size: 20px;
+    color: #e74c3c;
+    animation: heart-float-complex 3s infinite ease-in-out;
+}
+
+.heart:nth-child(1) { left: -20px; animation-delay: 0s; }
+.heart:nth-child(2) { left: -10px; animation-delay: 0.5s; }
+.heart:nth-child(3) { left: 0px; animation-delay: 1s; }
+.heart:nth-child(4) { left: 10px; animation-delay: 1.5s; }
+.heart:nth-child(5) { left: 20px; animation-delay: 2s; }
+
+.heart::before {
+    content: "❤️";
+    animation: heart-pulse 1s infinite alternate;
+}
+
+/* Thumbs Up Animation */
+.thumbs-up-animation {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+.thumbs-up {
+    font-size: 30px;
+    animation: thumbs-up-bounce 2s ease-out, thumbs-wiggle 3s infinite ease-in-out 2s;
+}
+
+.thumbs-up::before {
+    content: "👍";
+}
+
+/* Five Gold Stars */
+.five-gold-stars {
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    display: flex;
+    gap: 5px;
+}
+
+.star {
+    font-size: 18px;
+    color: #f1c40f;
+    animation: star-sparkle 1.5s ease-out, star-twinkle-complex 2s infinite alternate 1.5s;
+}
+
+.star::before {
+    content: "⭐";
+}
+
+/* Actions */
+.listing-actions {
+    padding: 15px 20px;
+    border-top: 1px solid var(--border-light);
+    background: var(--background-light);
+}
+
+.view-details-btn {
+    display: inline-block;
+    width: 100%;
+    padding: 10px 20px;
+    background: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.view-details-btn:hover {
+    background: #005a87;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 124, 186, 0.3);
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .listing-card {
+        min-height: 320px;
+    }
+    
+    .listing-photo-container {
+        height: 160px;
+    }
+    
+    .listing-details {
+        padding: 15px;
+    }
+    
+    .listing-price {
+        font-size: 20px;
+    }
+    
+    .sold-sign {
+        top: 10px;
+        right: 10px;
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+    
+    .floating-hearts .heart {
+        font-size: 16px;
+    }
+    
+    .thumbs-up {
+        font-size: 24px;
+    }
+    
+    .five-gold-stars .star {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .listing-details {
+        padding: 12px;
+    }
+    
+    .listing-beds-baths {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .listing-price {
+        font-size: 18px;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-primary: #e9ecef;
+        --text-secondary: #adb5bd;
+        --background-light: #343a40;
+        --border-light: #495057;
+    }
+    
+    .listing-card {
+        background: #2c3e50;
+        color: var(--text-primary);
+    }
+    
+    .listing-actions {
+        background: var(--background-light);
+        border-color: var(--border-light);
+    }
+}
+
+/* Print Styles */
+@media print {
+    .listing-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+    
+    .animation-container {
+        display: none;
+    }
+    
+    .view-details-btn {
+        display: none;
+    }
+}

@@ -1,0 +1,268 @@
+/* Admin styles for Real Estate Animations plugin */
+
+.status-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.status-available {
+    background-color: #46b450;
+}
+
+.status-pending {
+    background-color: #ffb900;
+}
+
+.status-sold {
+    background-color: #dc3232;
+}
+
+.status-off_market {
+    background-color: #72777c;
+}
+
+/* Meta box styling improvements */
+.listing-meta-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.listing-meta-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.listing-meta-field.full-width {
+    grid-column: 1 / -1;
+}
+
+.listing-meta-field label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #23282d;
+}
+
+.listing-meta-field input,
+.listing-meta-field select,
+.listing-meta-field textarea {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.listing-meta-field textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.listing-meta-field .description {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+/* Character counter styling */
+.char-counter {
+    text-align: right;
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Error message styling */
+.error-msg {
+    color: #d63384;
+    font-size: 12px;
+    margin-top: 3px;
+}
+
+/* Admin column improvements */
+.column-listing_photo {
+    width: 80px;
+}
+
+.column-listing_price {
+    width: 100px;
+}
+
+.column-listing_details {
+    width: 150px;
+}
+
+.column-listing_status {
+    width: 100px;
+}
+
+.column-listing_animation {
+    width: 100px;
+}
+
+/* Settings page styling */
+.real-estate-settings .form-table th {
+    width: 200px;
+}
+
+.real-estate-settings .form-table td {
+    padding-left: 20px;
+}
+
+/* Import/Export page styling */
+.card {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 4px;
+    padding: 20px;
+    margin: 20px 0;
+    max-width: none;
+}
+
+.bulk-operations h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #23282d;
+}
+
+.bulk-operations form {
+    margin-bottom: 15px;
+}
+
+.bulk-operations select,
+.bulk-operations input[type="submit"] {
+    margin-right: 10px;
+}
+
+/* Welcome notice styling */
+.notice h3 {
+    margin-top: 0;
+}
+
+/* Responsive design for admin */
+@media (max-width: 782px) {
+    .listing-meta-fields {
+        grid-template-columns: 1fr;
+    }
+    
+    .bulk-operations select,
+    .bulk-operations input[type="submit"] {
+        display: block;
+        width: 100%;
+        margin: 5px 0;
+    }
+}
+
+/* Loading states */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #0073aa;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Validation styling */
+.field-error {
+    border-color: #d63384 !important;
+    box-shadow: 0 0 2px rgba(214, 51, 132, 0.5);
+}
+
+.field-success {
+    border-color: #46b450 !important;
+    box-shadow: 0 0 2px rgba(70, 180, 80, 0.5);
+}
+
+/* Admin menu icon improvements */
+.wp-menu-image.dashicons-admin-home::before {
+    content: '\f102';
+    font-family: dashicons;
+}
+
+/* Custom buttons */
+.button-real-estate {
+    background: #0073aa;
+    border-color: #0073aa;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 3px;
+    padding: 6px 12px;
+    font-size: 13px;
+    line-height: 1.5;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.button-real-estate:hover {
+    background: #005a87;
+    border-color: #005a87;
+    color: #fff;
+}
+
+/* Listing preview in admin */
+.listing-preview {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    background: #f9f9f9;
+    margin: 15px 0;
+}
+
+.listing-preview h4 {
+    margin-top: 0;
+    color: #23282d;
+}
+
+.listing-preview .preview-image {
+    max-width: 100px;
+    height: auto;
+    border-radius: 4px;
+    float: left;
+    margin-right: 15px;
+}
+
+.listing-preview .preview-details {
+    overflow: hidden;
+}
+
+.listing-preview .preview-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0073aa;
+    margin-bottom: 5px;
+}
+
+.listing-preview .preview-meta {
+    color: #666;
+    font-size: 13px;
+}
+
+/* Clear floats */
+.listing-preview::after {
+    content: "";
+    display: table;
+    clear: both;
+}

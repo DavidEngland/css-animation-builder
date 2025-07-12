@@ -1,0 +1,538 @@
+/**
+ * Admin Styles for CSS Animation Builder
+ * 
+ * Styles for the WordPress admin interface
+ * 
+ * @package CSSAnimationBuilder
+ * @since 1.0.0
+ */
+
+/* Admin Page Layout */
+.css-animation-builder-admin {
+    margin: 20px 0;
+}
+
+.css-animation-builder-admin .wrap {
+    max-width: none;
+}
+
+.css-animation-builder-admin h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+.css-animation-builder-admin h2 {
+    margin: 20px 0 15px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* Form Styles */
+.css-animation-builder-form {
+    background: #ffffff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.css-animation-builder-form table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.css-animation-builder-form table th {
+    width: 200px;
+    padding: 15px 10px 15px 0;
+    text-align: left;
+    vertical-align: top;
+    font-weight: 600;
+}
+
+.css-animation-builder-form table td {
+    padding: 15px 0;
+    vertical-align: top;
+}
+
+.css-animation-builder-form input[type="text"],
+.css-animation-builder-form input[type="number"],
+.css-animation-builder-form select,
+.css-animation-builder-form textarea {
+    width: 100%;
+    max-width: 400px;
+    padding: 8px 12px;
+    border: 1px solid #8c8f94;
+    border-radius: 3px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.css-animation-builder-form input[type="text"]:focus,
+.css-animation-builder-form input[type="number"]:focus,
+.css-animation-builder-form select:focus,
+.css-animation-builder-form textarea:focus {
+    border-color: #007cba;
+    outline: none;
+    box-shadow: 0 0 0 1px #007cba;
+}
+
+.css-animation-builder-form textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+.css-animation-builder-form .description {
+    font-size: 13px;
+    color: #646970;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+.css-animation-builder-form .button-primary {
+    background: #007cba;
+    border-color: #007cba;
+    color: #ffffff;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.css-animation-builder-form .button-primary:hover {
+    background: #005a87;
+    border-color: #005a87;
+}
+
+.css-animation-builder-form .button-secondary {
+    background: #f6f7f7;
+    border-color: #8c8f94;
+    color: #2c3338;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.css-animation-builder-form .button-secondary:hover {
+    background: #f0f0f1;
+    border-color: #8c8f94;
+}
+
+/* Sidebar Layout */
+.css-animation-builder-main {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.css-animation-builder-content {
+    flex: 1;
+}
+
+.css-animation-builder-sidebar {
+    width: 300px;
+    flex-shrink: 0;
+}
+
+.css-animation-builder-sidebar .postbox {
+    background: #ffffff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.css-animation-builder-sidebar .postbox-header {
+    background: #f6f7f7;
+    border-bottom: 1px solid #c3c4c7;
+    padding: 12px 16px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.css-animation-builder-sidebar .inside {
+    padding: 16px;
+}
+
+.css-animation-builder-sidebar .inside p {
+    margin: 0 0 12px;
+    line-height: 1.5;
+}
+
+.css-animation-builder-sidebar .inside p:last-child {
+    margin-bottom: 0;
+}
+
+.css-animation-builder-sidebar .inside ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.css-animation-builder-sidebar .inside li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.css-animation-builder-sidebar .inside code {
+    background: #f0f0f1;
+    padding: 2px 4px;
+    border-radius: 2px;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+}
+
+.css-animation-builder-sidebar .inside pre {
+    background: #f0f0f1;
+    padding: 12px;
+    border-radius: 4px;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+/* Stats Display */
+.css-animation-builder-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.css-animation-builder-stat {
+    background: #ffffff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    padding: 20px;
+    text-align: center;
+}
+
+.css-animation-builder-stat .stat-number {
+    font-size: 32px;
+    font-weight: 600;
+    color: #007cba;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.css-animation-builder-stat .stat-label {
+    font-size: 14px;
+    color: #646970;
+    font-weight: 500;
+}
+
+/* Debug Section */
+.css-animation-builder-debug {
+    background: #f8f9fa;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.css-animation-builder-debug h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.css-animation-builder-debug-info {
+    background: #ffffff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.css-animation-builder-debug-info h4 {
+    margin: 0 0 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2c3338;
+}
+
+.css-animation-builder-debug-info ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.css-animation-builder-debug-info li {
+    margin-bottom: 5px;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.css-animation-builder-debug-info code {
+    background: #f0f0f1;
+    padding: 2px 4px;
+    border-radius: 2px;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+}
+
+.css-animation-builder-debug-log {
+    background: #2c3338;
+    color: #ffffff;
+    padding: 15px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    line-height: 1.4;
+    max-height: 300px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+}
+
+/* Preview Section */
+.css-animation-builder-preview {
+    background: #ffffff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.css-animation-builder-preview h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.css-animation-builder-preview-area {
+    min-height: 200px;
+    border: 2px dashed #c3c4c7;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.css-animation-builder-preview-element {
+    background: #007cba;
+    color: #ffffff;
+    padding: 20px 30px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.css-animation-builder-preview-controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.css-animation-builder-preview-controls .button {
+    padding: 6px 12px;
+    font-size: 13px;
+}
+
+/* Notices */
+.css-animation-builder-notice {
+    background: #ffffff;
+    border-left: 4px solid #007cba;
+    padding: 12px;
+    margin: 15px 0;
+    border-radius: 0 4px 4px 0;
+}
+
+.css-animation-builder-notice.notice-error {
+    border-left-color: #dc3232;
+}
+
+.css-animation-builder-notice.notice-success {
+    border-left-color: #46b450;
+}
+
+.css-animation-builder-notice.notice-warning {
+    border-left-color: #ffb900;
+}
+
+.css-animation-builder-notice p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .css-animation-builder-main {
+        flex-direction: column;
+    }
+    
+    .css-animation-builder-sidebar {
+        width: 100%;
+        order: -1;
+    }
+    
+    .css-animation-builder-stats {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+}
+
+@media (max-width: 782px) {
+    .css-animation-builder-admin {
+        margin: 10px 0;
+    }
+    
+    .css-animation-builder-form {
+        padding: 15px;
+    }
+    
+    .css-animation-builder-form table th {
+        width: 100%;
+        display: block;
+        padding: 10px 0 5px;
+    }
+    
+    .css-animation-builder-form table td {
+        display: block;
+        padding: 5px 0 15px;
+    }
+    
+    .css-animation-builder-form input[type="text"],
+    .css-animation-builder-form input[type="number"],
+    .css-animation-builder-form select,
+    .css-animation-builder-form textarea {
+        max-width: 100%;
+    }
+    
+    .css-animation-builder-preview-controls {
+        justify-content: center;
+    }
+    
+    .css-animation-builder-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .css-animation-builder-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .css-animation-builder-preview-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .css-animation-builder-preview-controls .button {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .css-animation-builder-form,
+    .css-animation-builder-sidebar .postbox,
+    .css-animation-builder-stat,
+    .css-animation-builder-debug-info,
+    .css-animation-builder-preview,
+    .css-animation-builder-notice {
+        background: #1e1e1e;
+        color: #ffffff;
+        border-color: #444;
+    }
+    
+    .css-animation-builder-sidebar .postbox-header {
+        background: #2c2c2c;
+        border-color: #444;
+    }
+    
+    .css-animation-builder-debug {
+        background: #2c2c2c;
+        border-color: #444;
+    }
+    
+    .css-animation-builder-form input[type="text"],
+    .css-animation-builder-form input[type="number"],
+    .css-animation-builder-form select,
+    .css-animation-builder-form textarea {
+        background: #2c2c2c;
+        color: #ffffff;
+        border-color: #444;
+    }
+    
+    .css-animation-builder-sidebar .inside code,
+    .css-animation-builder-debug-info code {
+        background: #2c2c2c;
+        color: #ffffff;
+    }
+    
+    .css-animation-builder-sidebar .inside pre {
+        background: #2c2c2c;
+        color: #ffffff;
+    }
+}
+
+/* Accessibility */
+.css-animation-builder-form input[type="text"]:focus,
+.css-animation-builder-form input[type="number"]:focus,
+.css-animation-builder-form select:focus,
+.css-animation-builder-form textarea:focus {
+    outline: 2px solid #007cba;
+    outline-offset: 2px;
+}
+
+.css-animation-builder-form .button-primary:focus,
+.css-animation-builder-form .button-secondary:focus {
+    outline: 2px solid #007cba;
+    outline-offset: 2px;
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .css-animation-builder-form,
+    .css-animation-builder-sidebar .postbox,
+    .css-animation-builder-stat,
+    .css-animation-builder-debug-info,
+    .css-animation-builder-preview {
+        border-width: 2px;
+    }
+    
+    .css-animation-builder-form input[type="text"],
+    .css-animation-builder-form input[type="number"],
+    .css-animation-builder-form select,
+    .css-animation-builder-form textarea {
+        border-width: 2px;
+    }
+    
+    .css-animation-builder-form .button-primary,
+    .css-animation-builder-form .button-secondary {
+        border-width: 2px;
+        font-weight: 600;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .css-animation-builder-sidebar,
+    .css-animation-builder-preview-controls,
+    .css-animation-builder-form .button-primary,
+    .css-animation-builder-form .button-secondary {
+        display: none;
+    }
+    
+    .css-animation-builder-main {
+        flex-direction: column;
+    }
+    
+    .css-animation-builder-content {
+        width: 100%;
+    }
+}

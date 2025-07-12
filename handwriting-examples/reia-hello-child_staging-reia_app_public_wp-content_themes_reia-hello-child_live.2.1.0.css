@@ -1,0 +1,327 @@
+/*
+Theme Name: REIA Hello Elementor Child
+Theme URI: https://github.com/elementor/hello-theme-child/
+Description: Hello Elementor Child is a child theme of Hello Elementor, created by Elementor team
+Author: Elementor Team
+Author URI: https://elementor.com/
+Template: hello-elementor
+Version: 2.1.0
+Text Domain: hello-elementor-child
+License: GNU General Public License v3 or later.
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
+Tags: flexible-header, custom-colors, custom-menu, custom-logo, editor-style, featured-images, rtl-language-support, threaded-comments, translation-ready
+*/
+
+/* ==========================================================================
+   1. Zillow Review Link Block
+   ========================================================================== */
+
+/* Zillow review link block styling */
+.zillow-review-link {
+    display: inline-block;
+    text-align: center;
+    margin: 1em auto;
+}
+.zillow-review-link a {
+    display: block;
+    text-decoration: none;
+    background: #fff;
+    border-radius: 0.25rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.2s, background-color 0.2s;
+    padding: 0.75em 1.5em;
+}
+.zillow-review-link a:hover,
+.zillow-review-link a:focus {
+    background-color: var(--wp--preset--color--primary, #002D5F);
+    box-shadow: 0 2px 8px rgba(0, 45, 95, 0.15);
+    outline: none;
+}
+.zillow-review-link figcaption {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+    color: var(--wp--preset--color--primary, #002D5F);
+    font-weight: bold;
+    transition: color 0.2s;
+}
+.zillow-review-link a:hover figcaption,
+.zillow-review-link a:focus figcaption {
+    color: var(--wp--preset--color--background, #fff);
+}
+.zillow-review-link img {
+    vertical-align: middle;
+    transition: filter 0.2s;
+    max-width: 100%;
+    height: auto;
+}
+.zillow-review-link a:hover img,
+.zillow-review-link a:focus img {
+    filter: brightness(0) invert(1);
+}
+
+/* ==========================================================================
+   2. Single Post Card Layout - Responsive
+   ========================================================================== */
+
+/* Card container for single post view */
+.single-post-card {
+    background: #000;
+    border-radius: 1rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+    margin: 2rem auto;
+    max-width: 1100px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+/* Medium screens */
+@media (max-width: 1200px) {
+    .single-post-card { max-width: 900px; }
+}
+/* Tablets */
+@media (max-width: 900px) {
+    .single-post-card {
+        max-width: 100%;
+        margin: 1.5rem;
+    }
+}
+/* Mobile */
+@media (max-width: 600px) {
+    .single-post-card {
+        max-width: 100%;
+        margin: 1rem 0.5rem;
+    }
+}
+
+/* Featured image for single post */
+.single-post-thumb img {
+    width: 100%;
+    max-width: 100%;
+    max-height: 400px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    background: #000;
+}
+
+/* Content area for single post */
+.single-post-content {
+    padding: 2rem;
+}
+@media (max-width: 600px) {
+    .single-post-content { padding: 1rem; }
+}
+
+/* ==========================================================================
+   3. Archive Grid Card Layout & Styles
+   ========================================================================== */
+
+/* Responsive grid for archive cards */
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin: 2rem 0;
+}
+@media (max-width: 1200px) {
+    .post-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 900px) {
+    .post-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+    .post-grid { grid-template-columns: 1fr; }
+}
+
+/* Card container for each post in the grid */
+.post-card {
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.2s;
+}
+.post-card:hover {
+    box-shadow: 0 6px 24px rgba(0, 45, 95, 0.12);
+}
+
+/* Thumbnail area for the card */
+.post-card-thumb {
+    display: block;
+    width: 100%;
+    height: 180px;
+    background: #f4f4f4;
+    position: relative;
+    overflow: hidden;
+}
+.post-card-thumb img,
+.post-card-thumb--placeholder {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    background: #e0e6ed;
+}
+.post-card-thumb img[src$=".svg"] {
+    object-fit: contain;
+    background: #000;
+}
+.post-card-thumb--placeholder {
+    background: #e0e6ed;
+}
+@media (max-width: 600px) {
+    .post-card-thumb,
+    .post-card-thumb img,
+    .post-card-thumb--placeholder {
+        height: 120px;
+    }
+    .post-card-content { padding: 1rem; }
+}
+
+/* Card content area */
+.post-card-content {
+    padding: 1.25rem 1.25rem 1.5rem 1.25rem;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Post title styling in card */
+.post-card .entry-title {
+    font-size: 1.25rem;
+    margin: 0 0 0.75rem 0;
+    line-height: 1.2;
+}
+.post-card .entry-title a {
+    color: var(--wp--preset--color--primary, #002D5F);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.post-card .entry-title a:hover {
+    color: var(--wp--preset--color--accent, #0073e6);
+}
+
+/* Excerpt styling in card */
+.post-card-excerpt {
+    color: #444;
+    font-size: 1rem;
+    margin-top: auto;
+}
+
+/* ==========================================================================
+   4. Homepage Connections
+   ========================================================================== */
+
+/* Center the Connections list body on the homepage */
+.home #cn-cmap #cn-list-body {
+    text-align: center;
+}
+/* Display Connections list rows inline with spacing */
+.home #cn-cmap .cn-list-row,
+.home #cn-cmap .cn-list-row-alternate {
+    display: inline-block;
+    width: 190px;
+    margin: 0 15px;
+}
+/* Remove borders, padding, and backgrounds from Connections entries */
+.home #cn-cmap .cn-list-row .cn-entry,
+.home #cn-cmap .cn-list-row-alternate .cn-entry {
+    border: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: none !important;
+}
+/* Style the Connections image span */
+.home #cn-cmap span.cn-image-style {
+    border-radius: 0;
+    background: none;
+    border: 2px solid #fff;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.25);
+}
+/* Center and style text in Connections rows */
+.home #cn-cmap .cn-right,
+.home #cn-cmap .cn-list-row a,
+.home #cn-cmap .cn-list-row h2 .fn,
+.home #cn-cmap .cn-list-row-alternate h2 .fn {
+    text-align: center;
+    color: #fff !important;
+    font-weight: 500;
+    margin-top: 15px;
+}
+/* Italicize the title span in Connections list */
+.home #cn-list span.title {
+    font-style: italic;
+}
+
+/* ==========================================================================
+   5. Testimonial Slider
+   ========================================================================== */
+
+/* Hide slide images in testimonial slider */
+.slider-bottom-modal .slide-image,
+.mySwiperBottom .slide-image {
+    display: none;
+}
+
+/* ==========================================================================
+   6. Responsive Map Embeds
+   ========================================================================== */
+
+/**
+ * Responsive Google Maps embeds for different device sizes.
+ * Only one iframe is shown at a time, based on screen width.
+ */
+.responsive-map-embeds {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.responsive-map-embeds iframe {
+    max-width: 100%;
+    height: auto;
+	min-height: 300px
+}
+/* Hide all map iframes by default */
+.responsive-map-embeds .map-embed {
+    display: none;
+}
+/* Show small map on mobile */
+@media (max-width: 600px) {
+    .responsive-map-embeds .map-embed--small { display: block; }
+}
+/* Show medium map on tablets/small desktops */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .responsive-map-embeds .map-embed--medium { display: block; }
+}
+/* Show large map on large screens */
+@media (min-width: 1025px) {
+    .responsive-map-embeds .map-embed--large { display: block; }
+}
+
+/* ==========================================================================
+   7. Footer Navigation
+   ========================================================================== */
+
+/* Hide sub-menu in footer navigation menu with submenu arrow */
+footer nav.hfe-nav-menu__submenu-arrow ul li ul.sub-menu {
+    display: none;
+}
+/* Hide sub-arrow in footer navigation menu */
+footer .hfe-nav-menu .sub-arrow {
+    display: none;
+}
+blockquote > city { text-align: right}
+/* ==========================================================================
+   End of Stylesheet
+   ========================================================================== */

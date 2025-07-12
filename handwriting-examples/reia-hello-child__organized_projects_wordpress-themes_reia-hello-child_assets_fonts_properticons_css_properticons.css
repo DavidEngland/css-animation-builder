@@ -1,0 +1,141 @@
+/*
+ * Properticons Icon Font — Modernized for WordPress & Elementor
+ * ------------------------------------------------------------
+ * Usage:
+ *   <span class="properticons properticons-home" aria-hidden="true"></span>
+ *   <span class="properticons properticons-beds properticons--lg" style="color:#0073e6"></span>
+ *
+ * Utility classes:
+ *   .properticons--sm  (24px)
+ *   .properticons--md  (32px)
+ *   .properticons--lg  (48px)
+ *   .properticons--color (inherits parent color)
+ *
+ * Accessibility:
+ *   Use aria-hidden="true" for decorative icons, aria-label for meaningful icons.
+ *
+ * For best performance, use WOFF. TTF/SVG/EOT included for legacy support.
+ */
+
+@font-face {
+    font-family: 'properticons';
+    src: url('../fonts/properticons.woff') format('woff'),
+         url('../fonts/properticons.ttf') format('truetype'),
+         url('../fonts/properticons.svg#properticons') format('svg'),
+         url('../fonts/properticons.eot');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+.properticons,
+.properticons-before:before {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    font-size: 2em;
+    line-height: 1;
+    font-family: "properticons";
+    text-decoration: inherit;
+    font-weight: normal;
+    font-style: normal;
+    vertical-align: middle;
+    text-align: center;
+    transition: color .1s ease-in 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Sizing utilities */
+.properticons--sm { font-size: 1.5em; }
+.properticons--md { font-size: 2em; }
+.properticons--lg { font-size: 3em; }
+
+/* Color utility */
+.properticons--color { color: inherit; }
+
+/* All */
+
+.properticons-beds:before {
+	content: "\e001";
+}
+
+.properticons-building:before {
+	content: "\e002";
+}
+
+.properticons-message:before {
+	content: "\e003";
+}
+
+.properticons-search:before {
+	content: "\e004";
+}
+
+.properticons-home:before {
+	content: "\e005";
+}
+
+.properticons-map-marker-home:before {
+	content: "\e006";
+}
+
+.properticons-mobile:before {
+	content: "\e007";
+}
+
+.properticons-key:before {
+	content: "\e008";
+}
+
+.properticons-graph-line:before {
+	content: "\e009";
+}
+
+.properticons-mail:before {
+	content: "\e010";
+}
+
+.properticons-mailbox:before {
+	content: "\e011";
+}
+
+.properticons-phone:before {
+	content: "\e012";
+}
+
+.properticons-graph-pie:before {
+	content: "\e013";
+}
+
+.properticons-map-marker:before {
+	content: "\e014";
+}
+
+.properticons-question:before {
+	content: "\e015";
+}
+
+.properticons-baths:before {
+	content: "\e016";
+}
+
+.properticons-pushpin:before {
+	content: "\e017";
+}
+
+.properticons-graph-bar:before {
+	content: "\e018";
+}
+
+.properticons-logo-eho:before {
+	content: "\e019";
+}
+
+.properticons-logo-realtor:before {
+	content: "\e020";
+}
+
+.properticons-logo-idx:before {
+	content: "\e021";
+}

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WordPress Custom HTML Blocks - Ready to Copy</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .block-section {
+            background: white;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .block-title {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .copy-area {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .copy-area:hover {
+            background: #e9ecef;
+        }
+        
+        .copy-instruction {
+            background: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+        
+        .quick-guide {
+            background: #fff3cd;
+            color: #856404;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚀 WordPress Custom HTML Blocks - Ready to Copy</h1>
+    
+    <div class="quick-guide">
+        <strong>Quick Guide:</strong> Click any code block below to select it, then copy (Ctrl+C) and paste into a WordPress Custom HTML block!
+    </div>
+
+    <div class="block-section">
+        <h3 class="block-title">📝 Basic Typewriter</h3>
+        <div class="copy-instruction">Click to select, then copy this code:</div>
+        <div class="copy-area" onclick="selectText(this)">
+&lt;div class="shogun-typewriter" 
+     data-text="Hello! This is working in WordPress!"
+     data-speed="100"
+     data-cursor="|"
+     data-loop="true"&gt;
+    &lt;span class="typewriter-text"&gt;&lt;/span&gt;
+    &lt;span class="typewriter-cursor"&gt;|&lt;/span&gt;
+&lt;/div&gt;
+        </div>
+    </div>
+
+    <div class="block-section">
+        <h3 class="block-title">⚡ Fast Typing</h3>
+        <div class="copy-instruction">Click to select, then copy this code:</div>
+        <div class="copy-area" onclick="selectText(this)">
+&lt;div class="shogun-typewriter" 
+     data-text="Super fast typing in WordPress!"
+     data-speed="30"
+     data-cursor="▌"
+     data-loop="true"&gt;
+    &lt;span class="typewriter-text"&gt;&lt;/span&gt;
+    &lt;span class="typewriter-cursor"&gt;▌&lt;/span&gt;
+&lt;/div&gt;
+        </div>
+    </div>
+
+    <div class="block-section">
+        <h3 class="block-title">🐌 Slow & Dramatic</h3>
+        <div class="copy-instruction">Click to select, then copy this code:</div>
+        <div class="copy-area" onclick="selectText(this)">
+&lt;div class="shogun-typewriter" 
+     data-text="Slow... dramatic... WordPress... effect..."
+     data-speed="200"
+     data-cursor="_"
+     data-loop="true"
+     style="font-size: 18px; color: #8e44ad; font-weight: bold;"&gt;
+    &lt;span class="typewriter-text"&gt;&lt;/span&gt;
+    &lt;span class="typewriter-cursor"&gt;_&lt;/span&gt;
+&lt;/div&gt;
+        </div>
+    </div>
+
+    <div class="block-section">
+        <h3 class="block-title">💻 Code Style</h3>
+        <div class="copy-instruction">Click to select, then copy this code:</div>
+        <div class="copy-area" onclick="selectText(this)">
+&lt;div class="shogun-typewriter" 
+     data-text="console.log('WordPress typewriter works!');"
+     data-speed="60"
+     data-cursor="█"
+     data-loop="true"
+     style="font-family: monospace; background: #2c3e50; color: #2ecc71; padding: 15px; border-radius: 5px;"&gt;
+    &lt;span class="typewriter-text"&gt;&lt;/span&gt;
+    &lt;span class="typewriter-cursor"&gt;█&lt;/span&gt;
+&lt;/div&gt;
+        </div>
+    </div>
+
+    <div class="block-section">
+        <h3 class="block-title">🔄 No Loop (Types Once)</h3>
+        <div class="copy-instruction">Click to select, then copy this code:</div>
+        <div class="copy-area" onclick="selectText(this)">
+&lt;div class="shogun-typewriter" 
+     data-text="This types once and stops in WordPress."
+     data-speed="80"
+     data-cursor="|"
+     data-loop="false"&gt;
+    &lt;span class="typewriter-text"&gt;&lt;/span&gt;
+    &lt;span class="typewriter-cursor"&gt;|&lt;/span&gt;
+&lt;/div&gt;
+        </div>
+    </div>
+
+    <div class="block-section">
+        <h3 class="block-title">💬 Quote Style</h3>
+        <div class="copy-instruction">Click to select, then copy this code:</div>
+        <div class="copy-area" onclick="selectText(this)">
+&lt;div class="shogun-typewriter" 
+     data-text="&amp;quot;The future belongs to those who believe in the beauty of their dreams.&amp;quot; - Eleanor Roosevelt"
+     data-speed="70"
+     data-cursor="❘"
+     data-loop="true"
+     style="font-style: italic; text-align: center; font-size: 18px; color: #34495e;"&gt;
+    &lt;span class="typewriter-text"&gt;&lt;/span&gt;
+    &lt;span class="typewriter-cursor"&gt;❘&lt;/span&gt;
+&lt;/div&gt;
+        </div>
+    </div>
+
+    <div class="block-section">
+        <h3 class="block-title">🌈 Colorful & Styled</h3>
+        <div class="copy-instruction">Click to select, then copy this code:</div>
+        <div class="copy-area" onclick="selectText(this)">
+&lt;div class="shogun-typewriter" 
+     data-text="Colorful typewriter effect with custom styling!"
+     data-speed="80"
+     data-cursor="▌"
+     data-loop="true"
+     style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 10px; text-align: center; font-size: 18px; font-weight: bold;"&gt;
+    &lt;span class="typewriter-text"&gt;&lt;/span&gt;
+    &lt;span class="typewriter-cursor"&gt;▌&lt;/span&gt;
+&lt;/div&gt;
+        </div>
+    </div>
+
+    <div class="block-section">
+        <h3 class="block-title">🚀 Hero Section Style</h3>
+        <div class="copy-instruction">Click to select, then copy this code:</div>
+        <div class="copy-area" onclick="selectText(this)">
+&lt;div style="text-align: center; padding: 40px; background: #f8f9fa; border-radius: 10px;"&gt;
+    &lt;h2 style="margin-bottom: 20px; color: #2c3e50;"&gt;Welcome to Our Website&lt;/h2&gt;
+    &lt;div class="shogun-typewriter" 
+         data-text="We create amazing digital experiences that inspire and engage..."
+         data-speed="60"
+         data-cursor="▌"
+         data-loop="true"
+         style="font-size: 24px; color: #3498db; font-weight: 300;"&gt;
+        &lt;span class="typewriter-text"&gt;&lt;/span&gt;
+        &lt;span class="typewriter-cursor"&gt;▌&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+        </div>
+    </div>
+
+    <div class="block-section">
+        <h3 class="block-title">⏰ With Delay (3 seconds)</h3>
+        <div class="copy-instruction">Click to select, then copy this code:</div>
+        <div class="copy-area" onclick="selectText(this)">
+&lt;div class="shogun-typewriter" 
+     data-text="This text appears after a 3-second delay!"
+     data-speed="100"
+     data-cursor="|"
+     data-loop="true"
+     data-delay="3000"&gt;
+    &lt;span class="typewriter-text"&gt;&lt;/span&gt;
+    &lt;span class="typewriter-cursor"&gt;|&lt;/span&gt;
+&lt;/div&gt;
+        </div>
+    </div>
+
+    <div class="block-section">
+        <h3 class="block-title">📱 Mobile Friendly</h3>
+        <div class="copy-instruction">Click to select, then copy this code:</div>
+        <div class="copy-area" onclick="selectText(this)">
+&lt;div class="shogun-typewriter" 
+     data-text="Mobile responsive typewriter for WordPress!"
+     data-speed="90"
+     data-cursor="❘"
+     data-loop="true"
+     style="font-size: 16px; text-align: center; padding: 10px;"&gt;
+    &lt;span class="typewriter-text"&gt;&lt;/span&gt;
+    &lt;span class="typewriter-cursor"&gt;❘&lt;/span&gt;
+&lt;/div&gt;
+        </div>
+    </div>
+
+    <div class="quick-guide">
+        <strong>How to Use in WordPress:</strong><br>
+        1. Click any code block above to select it<br>
+        2. Copy the code (Ctrl+C or Cmd+C)<br>
+        3. In WordPress editor, add a "Custom HTML" block<br>
+        4. Paste the code into the Custom HTML block<br>
+        5. Preview or publish to see the typewriter effect!<br><br>
+        
+        <strong>Customization:</strong><br>
+        • <code>data-text</code> - Change the text<br>
+        • <code>data-speed</code> - Typing speed (30=fast, 200=slow)<br>
+        • <code>data-cursor</code> - Cursor character<br>
+        • <code>data-loop</code> - "true" for loop, "false" for once<br>
+        • <code>style</code> - Add custom CSS styling
+    </div>
+
+    <script>
+        function selectText(element) {
+            const range = document.createRange();
+            range.selectNodeContents(element);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1265 @@
+/*
+Theme Name: Hello Elementor Child
+Theme URI: https://github.com/elementor/hello-theme-child/
+Description: Hello Elementor Child is a child theme of Hello Elementor, created by Elementor team
+Author: Elementor Team
+Author URI: https://elementor.com/
+Template: hello-elementor
+Version: 2.3.0
+Text Domain: hello-elementor-child
+License: GNU General Public License v3 or later.
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
+Tags: flexible-header, custom-colors, custom-menu, custom-logo, editor-style, featured-images, rtl-language-support, threaded-comments, translation-ready
+*/
+
+/* ==========================================================================
+   Theme: Hello Elementor Child (Modernized June 2025)
+   Modern CSS: Container Queries, clamp(), min(), max(), Variables, Docs
+   ==========================================================================
+   - Uses CSS custom properties for breakpoints, paddings, and colors
+   - Uses clamp(), min(), max() for fluid font sizes, gaps, paddings, heights
+   - Uses @container queries for .post-grid and .post-card responsiveness
+   - Responsive Google Maps: .map-embed--small/medium/large shown by viewport
+   - Modern line-clamp for excerpts
+   - Utility classes for Elementor and custom layouts
+   - All sections are commented for clarity and maintainability
+   ==========================================================================
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Slab:wght@400;700&display=swap');
+
+/* =============================
+   Root Custom Properties (Variables)
+   =============================
+   - All :root variables are now grouped together for clarity and maintainability.
+   - Use only one :root block at the top of the file.
+   - Media queries are moved to the end for best practice and easier scanning.
+   ============================= */
+:root {
+    --max-width-desktop: 980px;
+    --max-width-tablet: 800px;
+    --max-width-mobile: 600px;
+    --max-width-small: 100%;
+    --content-padding-desktop: clamp(1.5rem, 4vw, 2.5rem);
+    --content-padding-tablet: clamp(1rem, 3vw, 2rem);
+    --content-padding-mobile: clamp(0.5rem, 2vw, 1rem);
+    --content-padding-small: 0.5rem;
+    --primary: #002D5F;
+    --accent: #0073e6;
+    --excerpt-lines: 3;
+    --gap-grid: clamp(1rem, 3vw, 2.5rem);
+    --card-radius: 1.5rem;
+    --card-bg: hsl(40 75% 96%);
+    --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+    --card-shadow-hover: 0 4px 16px rgba(0, 45, 95, 0.08);
+    --gap-cards: 2rem;
+    --heading-size: clamp(1.25rem, 2vw, 2.25rem);
+    --body-size: clamp(1rem, 1.5vw, 1.125rem);
+    --card-thumb-height: clamp(120px, 20vw, 300px);
+    --font-main: 'Inter', Arial, sans-serif;
+    --font-heading: 'Merriweather', serif;
+}
+
+/* =============================
+   Modern CSS Custom Properties with @property
+   =============================
+   - @property enables type safety, inheritance, and animation for custom properties
+   - Supported in Chromium and Safari (progressive enhancement)
+   - Use for animatable or type-sensitive variables (e.g., --card-radius, --card-bg)
+   ============================= */
+@property --card-radius {
+    syntax: '<length>';
+    inherits: true;
+    initial-value: 1.5rem;
+}
+
+@property --card-bg {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: hsl(40 75% 96%);
+}
+
+@property --card-shadow {
+    syntax: '<shadow>';
+    inherits: true;
+    initial-value: 0 2px 12px rgba(0, 0, 0, 0.07);
+}
+
+@property --gap-cards {
+    syntax: '<length>';
+    inherits: true;
+    initial-value: 2rem;
+}
+
+@property --excerpt-lines {
+    syntax: '<integer>';
+    inherits: true;
+    initial-value: 3;
+}
+
+:root {
+    /* Card/Grid System Variables (type-safe via @property) */
+    --card-radius: 1.5rem;
+    --card-bg: hsl(40 75% 96%);
+    --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+    --card-shadow-hover: 0 4px 16px rgba(0, 45, 95, 0.08);
+    --gap-cards: 2rem;
+    --excerpt-lines: 3;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* Usage Example: Animate card radius on hover */
+.card {
+    transition: box-shadow 0.2s, --card-radius 0.3s;
+}
+
+.card:hover {
+    --card-radius: 2.5rem;
+}
+
+/* Documentation:
+   - @property is used above for key custom properties.
+   - This enables type safety, inheritance, and animation for these variables.
+   - Use transitions on custom properties for smooth UI effects.
+   - See https://developer.mozilla.org/en-US/docs/Web/CSS/@property for details.
+*/
+
+body {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-size: var(--body-size);
+    background: #fff;
+}
+
+:is(h1, h2, h3, h4, h5, h6) {
+    font-family: 'Roboto Slab', 'Times New Roman', Times, serif;
+    font-size: var(--heading-size);
+}
+
+input[type="checkbox"] {
+    accent-color: var(--accent);
+}
+
+.site-main,
+.single-post-content,
+.page .single-post-content,
+.entry-content {
+    max-width: var(--max-width-desktop);
+    padding-left: var(--content-padding-desktop);
+    padding-right: var(--content-padding-desktop);
+    margin-left: auto;
+    margin-right: auto;
+    background: #fff;
+    border-radius: var(--card-radius);
+}
+
+@media (max-width: 1399px) {
+
+    .site-main,
+    .single-post-content,
+    .page .single-post-content,
+    .entry-content {
+        max-width: var(--max-width-tablet);
+        padding-left: var(--content-padding-tablet);
+        padding-right: var(--content-padding-tablet);
+    }
+}
+
+@media (max-width: 900px) {
+
+    .site-main,
+    .single-post-content,
+    .page .single-post-content,
+    .entry-content {
+        max-width: var(--max-width-mobile);
+        padding-left: var(--content-padding-mobile);
+        padding-right: var(--content-padding-mobile);
+    }
+}
+
+@media (max-width: 600px) {
+
+    .site-main,
+    .single-post-content,
+    .page .single-post-content,
+    .entry-content {
+        max-width: var(--max-width-small);
+        padding-left: var(--content-padding-small);
+        padding-right: var(--content-padding-small);
+    }
+}
+
+.entry-title,
+h1.entry-title,
+h2.entry-title,
+h3.entry-title {
+    text-transform: none !important;
+}
+
+.footer-flex .elementor-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: clamp(1rem, 3vw, 2rem);
+}
+
+.footer-flex .elementor-top-column {
+    flex: 1 1 0;
+    min-width: 240px;
+    max-width: 33%;
+}
+
+@media (max-width: 1024px) {
+    .footer-flex .elementor-top-column {
+        max-width: 48%;
+        flex-basis: 48%;
+    }
+
+    .footer-flex .elementor-top-column:last-child {
+        max-width: 100%;
+        flex-basis: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    .footer-flex .elementor-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer-flex .elementor-top-column {
+        max-width: 100%;
+        flex-basis: 100%;
+    }
+}
+
+.ba-animated-solid {
+    border: var(--ba-width, 4px) solid var(--ba-color, #0073e6);
+    border-radius: var(--ba-radius, 1em);
+    animation: ba-pulse 1.2s infinite alternate;
+    background: #fff;
+    position: relative;
+    display: inline-block;
+    padding-block: 1.5em;
+    padding-inline: 2em;
+    overflow: hidden;
+    z-index: 1;
+    transition: box-shadow 0.2s, border-radius 0.3s;
+    box-sizing: border-box;
+}
+
+@keyframes ba-pulse {
+    0% {
+        box-shadow: 0 0 0 0 var(--ba-color, #0073e6);
+    }
+
+    100% {
+        box-shadow: 0 0 0 8px color-mix(in srgb, var(--ba-color, #0073e6) 30%, transparent);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ba-animated-solid {
+        animation: none !important;
+        box-shadow: none !important;
+    }
+}
+
+.ba-block {
+    display: block;
+    width: 100%;
+}
+
+.ba-center {
+    margin-inline: auto;
+    display: block;
+}
+
+.single-post-card {
+    background: #fff;
+    border-radius: var(--card-radius);
+    margin: clamp(1rem, 4vw, 2rem) auto;
+    max-width: var(--max-width-desktop);
+    width: 90vw;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.single-post-thumb img {
+    width: 100%;
+    max-width: 100%;
+    max-height: 400px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+    border-top-left-radius: var(--card-radius);
+    border-top-right-radius: var(--card-radius);
+}
+
+.single-post-content {
+    padding: clamp(1rem, 3vw, 2rem);
+}
+
+@media (max-width: 600px) {
+    .single-post-card {
+        margin: 1rem;
+    }
+
+    .single-post-content {
+        padding: 1rem;
+    }
+}
+
+/* Responsive grid columns for .post-grid (blog archive)
+   - 1 column on mobile (<=600px)
+   - 3 columns on tablets (<=1200px)
+   - 4 columns on desktop
+*/
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Default: desktop (3 columns) */
+    gap: var(--gap-grid);
+    margin: clamp(1.5rem, 4vw, 2.5rem) 0;
+    align-items: start;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    container-type: inline-size;
+}
+
+@media (min-width: 1400px) {
+    .post-grid {
+        grid-template-columns: repeat(4, 1fr);
+        /* 4 columns for extra wide screens */
+    }
+}
+
+@media (max-width: 900px) {
+    .post-grid {
+        grid-template-columns: 1fr 1fr;
+        /* 2 columns for tablet portrait */
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .post-grid {
+        grid-template-columns: 1fr;
+        /* 1 column for mobile */
+        max-width: 100%;
+    }
+}
+
+.post-grid .post-card {
+    box-shadow: var(--card-shadow);
+}
+
+.post-card {
+    background: #fff;
+    border-radius: var(--card-radius) var(--card-radius) 0 0;
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    border-bottom: none;
+    transition: box-shadow 0.2s;
+    container-type: inline-size;
+}
+
+@container (max-width: 400px) {
+    .post-card {
+        flex-direction: column;
+        padding: 0.5rem;
+    }
+
+    .post-card-thumb {
+        height: min(100px, 30vw);
+    }
+}
+
+.post-card:hover {
+    box-shadow: var(--card-shadow-hover);
+}
+
+.post-card-thumb {
+    display: block;
+    width: 100%;
+    height: var(--card-thumb-height);
+    background: #f4f4f4;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--card-radius) var(--card-radius) 0 0;
+    margin-bottom: 0;
+}
+
+.post-card-thumb img,
+.post-card-thumb--placeholder {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    background: #e0e6ed;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--card-radius) var(--card-radius) 0 0;
+}
+
+@media (max-width: 900px) {
+
+    .post-card-thumb,
+    .post-card-thumb img,
+    .post-card-thumb--placeholder {
+        height: 150px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .post-card-thumb,
+    .post-card-thumb img,
+    .post-card-thumb--placeholder {
+        height: 120px;
+    }
+}
+
+.post-card-content {
+    padding: clamp(1rem, 3vw, 2rem);
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0 0 var(--card-radius) var(--card-radius);
+    background: #fff;
+    box-shadow: none;
+}
+
+.post-card .entry-title {
+    font-size: clamp(1.1rem, 1.5vw, 1.5rem);
+    margin: 0 0 0.75rem 0;
+    line-height: 1.2;
+    font-family: 'Roboto Slab', 'Times New Roman', Times, serif;
+}
+
+.post-card .entry-title a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.post-card .entry-title a:hover {
+    color: var(--accent);
+}
+
+.post-card-excerpt {
+    color: #444;
+    font-size: 1rem;
+    margin-top: auto;
+    display: -webkit-box;
+    -webkit-line-clamp: var(--excerpt-lines);
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: box;
+    line-clamp: var(--excerpt-lines);
+    box-orient: vertical;
+}
+
+@media (max-width: 600px) {
+    :root {
+        --excerpt-lines: 2;
+    }
+}
+
+/* ==========================================================================
+   10. Responsive Google Map Embeds
+   ========================================================================== */
+
+/**
+ * Responsive container for Google Maps embeds.
+ * - Shows different map sizes based on screen width.
+ * - Focus style for accessibility.
+ */
+
+@layer components {
+    .responsive-map-embeds {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin: 2rem 0;
+        gap: 1rem;
+    }
+
+    .map-embed {
+        display: none;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        border-radius: 1rem;
+        width: 100%;
+        max-width: 100%;
+        border: 0;
+        max-height: 70vh;
+    }
+
+    @media (max-width: 599px) {
+        .map-embed--small {
+            display: block;
+        }
+    }
+
+    @media (min-width: 600px) and (max-width: 1023px) {
+        .map-embed--medium {
+            display: block;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .map-embed--large {
+            display: block;
+        }
+    }
+
+    .map-embed:focus {
+        outline: 2px solid var(--accent, #ac3033);
+        outline-offset: 2px;
+    }
+}
+
+details {
+    width: 100%;
+    max-width: 700px; // Set to 100% for container width, or adjust as needed
+    margin: 0 0 1.5em 0;
+    border-radius: 0.5em;
+    border: 1px solid #e0e6ed;
+    background: var(--muted, #fafbfc);
+    padding: 0; // Remove container padding to prevent horizontal shift
+    box-shadow: 0 1px 4px rgba(0, 45, 95, 0.04);
+    position: relative;
+    transition: box-shadow 0.2s, background 0.2s;
+}
+
+details[open] {
+    box-shadow: 0 4px 16px rgba(0, 45, 95, 0.10);
+    background: #fffbe7;
+}
+
+summary {
+    font-weight: 700;
+    color: var(--primary, #002d5f);
+    cursor: pointer;
+    outline: none;
+    padding: 0.7em 1.2em; // Horizontal padding only on summary
+    margin-bottom: 0.5em;
+    font-size: 1.13em;
+    letter-spacing: 0.01em;
+    border-bottom: 1px solid #e0e6ed;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+    list-style: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+// Hide default marker for all browsers
+summary::-webkit-details-marker,
+summary::marker {
+    display: none;
+}
+
+details[open] summary {
+    color: var(--accent, #ac3033);
+    border-bottom: 1px solid #ffd9b3;
+}
+
+// Custom arrow indicator for summary (rotates on open)
+summary::after {
+    content: "▼";
+    margin-left: auto;
+    font-size: 0.9em;
+    color: #bbb;
+    transition: transform 0.2s, color 0.2s;
+}
+
+details[open] summary::after {
+    transform: rotate(-180deg);
+    color: var(--accent, #ac3033);
+}
+
+// Content inside details: left-aligned, no extra horizontal movement
+// Use margin for spacing, not padding, to avoid shifting
+// Applies to all direct children except summary
+//
+details > *:not(summary) {
+    margin: 0.7em 1.2em 0.7em 1.2em;
+}
+
+details:last-child {
+    margin-bottom: 0;
+}
+
+// Focus style for accessibility (keyboard users)
+summary:focus {
+    outline: 2px solid var(--accent, #ac3033);
+    outline-offset: 2px;
+    background: #fbeaea;
+    border-radius: 0.3em;
+}
+
+.zillow-review-link {
+    display: inline-block;
+    text-align: center;
+    margin: 1em auto;
+}
+
+.zillow-review-link a {
+    display: block;
+    text-decoration: none;
+    background: #fff;
+    border-radius: 0.25rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.2s, background-color 0.2s;
+    padding: clamp(0.5em, 2vw, 1.5em) clamp(1em, 4vw, 2em);
+}
+
+.zillow-review-link a:hover,
+.zillow-review-link a:focus {
+    background-color: var(--primary);
+    box-shadow: 0 2px 8px rgba(0, 45, 95, 0.15);
+    outline: none;
+}
+
+.zillow-review-link figcaption {
+    font-size: clamp(1em, 1.5vw, 1.2em);
+    margin-bottom: 0.5em;
+    color: var(--primary);
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.zillow-review-link a:hover figcaption,
+.zillow-review-link a:focus figcaption {
+    color: #fff;
+}
+
+.zillow-review-link img {
+    vertical-align: middle;
+    transition: filter 0.2s;
+    max-width: 100%;
+    height: auto;
+}
+
+.zillow-review-link a:hover img,
+.zillow-review-link a:focus img {
+    filter: brightness(0) invert(1);
+}
+
+/* =============================
+   Media Queries (all at end for clarity)
+   ============================= */
+@media (max-width: 1399px) {
+
+    .site-main,
+    .single-post-content,
+    .page .single-post-content,
+    .entry-content {
+        max-width: var(--max-width-tablet);
+        padding-left: var(--content-padding-tablet);
+        padding-right: var(--content-padding-tablet);
+    }
+}
+
+@media (max-width: 1200px) {
+    .post-grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1100px;
+    }
+}
+
+@media (max-width: 900px) {
+
+    .site-main,
+    .single-post-content,
+    .page .single-post-content,
+    .entry-content {
+        max-width: var(--max-width-mobile);
+        padding-left: var(--content-padding-mobile);
+        padding-right: var(--content-padding-mobile);
+    }
+
+    .post-grid {
+        grid-template-columns: 1fr 1fr;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    .footer-flex .elementor-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer-flex .elementor-top-column {
+        max-width: 100%;
+        flex-basis: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .site-main,
+    .single-post-content,
+    .page .single-post-content,
+    .entry-content {
+        max-width: var(--max-width-small);
+        padding-left: var(--content-padding-small);
+        padding-right: var(--content-padding-small);
+    }
+
+    .single-post-card {
+        margin: 1rem;
+    }
+
+    .single-post-content {
+        padding: 1rem;
+    }
+
+    :root {
+        --excerpt-lines: 2;
+    }
+}
+
+@media (max-width: 400px) {
+    .post-card {
+        flex-direction: column;
+        padding: 0.5rem;
+    }
+
+    .post-card-thumb {
+        height: min(100px, 30vw);
+    }
+}
+
+@media (max-width: 900px) {
+
+    .post-card-thumb,
+    .post-card-thumb img,
+    .post-card-thumb--placeholder {
+        height: 150px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .post-card-thumb,
+    .post-card-thumb img,
+    .post-card-thumb--placeholder {
+        height: 120px;
+    }
+}
+
+@media (max-width: 599px) {
+    .map-embed--small {
+        display: block;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 1023px) {
+    .map-embed--medium {
+        display: block;
+    }
+}
+
+@media (min-width: 1024px) {
+    .map-embed--large {
+        display: block;
+    }
+}
+
+/* ==========================================================================
+   11. Company Slogan Styles - Make "Smart Move" Stand Out!
+   ========================================================================== */
+
+/**
+ * Multiple styling options for the company slogan:
+ * "We will help you make the Smart Move — I guarantee it!"
+ *
+ * Each class can be applied to elements containing the slogan for different effects.
+ * Mix and match these classes or use them individually based on context.
+ */
+
+/* Base slogan styling - applies to any element with the slogan */
+.company-slogan,
+.smart-move-slogan,
+[data-slogan*="Smart Move"] {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--primary);
+    text-align: center;
+    margin: 1.5rem 0;
+}
+
+/* === OPTION 1: Gradient Text with Glow === */
+.slogan-gradient {
+    background: linear-gradient(45deg, var(--primary), var(--accent), #ff6b35, var(--primary));
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 4s ease-in-out infinite;
+    text-shadow: 0 0 20px rgba(0, 45, 95, 0.3);
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 700;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* === OPTION 2: Highlighted/Boxed Style === */
+.slogan-highlighted {
+    background: linear-gradient(135deg, #fff9e6, #fffbe7);
+    border: 3px solid var(--accent);
+    border-radius: var(--card-radius);
+    padding: clamp(1rem, 3vw, 2rem);
+    box-shadow:
+        0 4px 20px rgba(0, 45, 95, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    position: relative;
+    overflow: hidden;
+    transform: perspective(1000px) rotateX(2deg);
+    transition: transform 0.3s ease;
+}
+
+.slogan-highlighted:hover {
+    transform: perspective(1000px) rotateX(0deg) scale(1.02);
+}
+
+.slogan-highlighted::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(0, 115, 230, 0.1), transparent);
+    transform: rotate(45deg);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+/* === OPTION 3: Handwritten/Script Style === */
+.slogan-handwritten {
+    font-family: 'Caveat', 'Dancing Script', cursive, var(--font-heading);
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    color: #2c3e50;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    transform: rotate(-1deg);
+    letter-spacing: 0.02em;
+    position: relative;
+}
+
+.slogan-handwritten::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 10%;
+    right: 10%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    border-radius: 2px;
+    opacity: 0.7;
+}
+
+/* === OPTION 4: Bold Statement with Smart Move Emphasis === */
+.slogan-emphasis {
+    font-size: clamp(1.3rem, 3.5vw, 2.2rem);
+    color: #333;
+}
+
+.slogan-emphasis .smart-move {
+    color: var(--accent);
+    font-weight: 800;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: linear-gradient(135deg, var(--accent), #005bb5);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 10px rgba(0, 115, 230, 0.3);
+    position: relative;
+}
+
+.slogan-emphasis .smart-move::after {
+    content: '™';
+    position: absolute;
+    top: -0.5em;
+    right: -0.8em;
+    font-size: 0.4em;
+    color: var(--accent);
+    font-weight: 400;
+}
+
+.slogan-emphasis .guarantee {
+    color: var(--primary);
+    font-weight: 700;
+    font-style: italic;
+    text-decoration: underline;
+    text-decoration-color: #ff6b35;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}
+
+/* === OPTION 5: Modern Card Style === */
+.slogan-card {
+    background: linear-gradient(135deg, #f8f9fa, #fff);
+    border-radius: 20px;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    box-shadow:
+        0 10px 30px rgba(0, 45, 95, 0.08),
+        0 1px 8px rgba(0, 45, 95, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 115, 230, 0.1);
+    position: relative;
+    backdrop-filter: blur(10px);
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.slogan-card::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    font-size: 4rem;
+    color: var(--accent);
+    opacity: 0.3;
+    font-family: Georgia, serif;
+}
+
+.slogan-card::after {
+    content: '"';
+    position: absolute;
+    bottom: -30px;
+    right: 20px;
+    font-size: 4rem;
+    color: var(--accent);
+    opacity: 0.3;
+    font-family: Georgia, serif;
+}
+
+/* === OPTION 6: Animated Typewriter Effect === */
+.slogan-typewriter {
+    font-family: 'Courier New', monospace;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    border-right: 3px solid var(--accent);
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typewriter 4s steps(50, end), blinkCursor 1s step-end infinite;
+    max-width: fit-content;
+    margin: 2rem auto;
+}
+
+@keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blinkCursor {
+    0%, 50% { border-color: var(--accent); }
+    51%, 100% { border-color: transparent; }
+}
+
+/* === OPTION 7: 3D Text Effect === */
+.slogan-3d {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 800;
+    color: var(--primary);
+    text-shadow:
+        1px 1px 0 var(--accent),
+        2px 2px 0 var(--accent),
+        3px 3px 0 var(--accent),
+        4px 4px 0 var(--accent),
+        5px 5px 10px rgba(0, 45, 95, 0.3);
+    transform: perspective(1000px) rotateX(15deg);
+    letter-spacing: 0.02em;
+}
+
+/* === UTILITY CLASSES === */
+.slogan-center { text-align: center; }
+.slogan-large { font-size: clamp(1.8rem, 5vw, 3rem); }
+.slogan-xl { font-size: clamp(2rem, 6vw, 4rem); }
+.slogan-animate { animation: bounceIn 1s ease-out; }
+
+@keyframes bounceIn {
+    0% { transform: scale(0.3); opacity: 0; }
+    50% { transform: scale(1.05); }
+    70% { transform: scale(0.9); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* === RESPONSIVE ADJUSTMENTS === */
+@media (max-width: 768px) {
+    .slogan-3d {
+        text-shadow:
+            1px 1px 0 var(--accent),
+            2px 2px 0 var(--accent),
+            3px 3px 5px rgba(0, 45, 95, 0.3);
+        transform: perspective(500px) rotateX(10deg);
+    }
+
+    .slogan-highlighted {
+        padding: clamp(0.8rem, 2vw, 1.5rem);
+        transform: perspective(500px) rotateX(1deg);
+    }
+
+    .slogan-card {
+        padding: clamp(1rem, 3vw, 2rem);
+        margin: 1rem auto;
+    }
+}
+
+/* === COMBINATION CLASSES === */
+.slogan-premium {
+    /* Combines slogan-card + slogan-gradient + slogan-large */
+    background: linear-gradient(135deg, #f8f9fa, #fff);
+    border-radius: 20px;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    box-shadow:
+        0 10px 30px rgba(0, 45, 95, 0.08),
+        0 1px 8px rgba(0, 45, 95, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 115, 230, 0.1);
+    position: relative;
+    backdrop-filter: blur(10px);
+    max-width: 800px;
+    margin: 2rem auto;
+    background: linear-gradient(45deg, var(--primary), var(--accent), #ff6b35, var(--primary));
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 4s ease-in-out infinite;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-weight: 700;
+}
+
+.slogan-statement {
+    /* Combines slogan-highlighted + slogan-emphasis + slogan-animate */
+    background: linear-gradient(135deg, #fff9e6, #fffbe7);
+    border: 3px solid var(--accent);
+    border-radius: var(--card-radius);
+    padding: clamp(1rem, 3vw, 2rem);
+    box-shadow:
+        0 4px 20px rgba(0, 45, 95, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    position: relative;
+    overflow: hidden;
+    transform: perspective(1000px) rotateX(2deg);
+    transition: transform 0.3s ease;
+    font-size: clamp(1.3rem, 3.5vw, 2.2rem);
+    color: #333;
+    animation: bounceIn 1s ease-out;
+}
+
+/* === CSS CUSTOM PROPERTIES FOR DYNAMIC THEMING === */
+@property --slogan-accent {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #0073e6;
+}
+
+@property --slogan-glow {
+    syntax: '<length>';
+    inherits: true;
+    initial-value: 10px;
+}
+
+/* Target existing Elementor headings that contain the slogan */
+.elementor-heading-title[data-slogan*="Smart Move"],
+h1[data-slogan*="Smart Move"],
+h2[data-slogan*="Smart Move"],
+h3[data-slogan*="Smart Move"] {
+    font-size: clamp(1.3rem, 3.5vw, 2.2rem);
+    color: #333;
+}
+
+/* Enhanced targeting for elements containing the slogan */
+.slogan-wrapper,
+.smart-move-container {
+    position: relative;
+}
+
+.slogan-wrapper::before,
+.smart-move-container::before {
+    content: '⭐';
+    position: absolute;
+    left: -2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5em;
+    color: #ffd700;
+    animation: twinkle 2s infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 1; transform: translateY(-50%) scale(1); }
+    50% { opacity: 0.5; transform: translateY(-50%) scale(1.2); }
+}
+
+/* ==========================================================================
+   12. Enhanced Typography & Spacing for Custom HTML Blocks
+   ========================================================================== */
+
+/**
+ * Additional utility classes for better typography control
+ * Designed to work with the custom HTML blocks for the slogan
+ */
+
+/* Alignment utilities */
+.slogan-left { text-align: left !important; }
+.slogan-right { text-align: right !important; }
+.slogan-justify { text-align: justify !important; }
+
+/* Spacing utilities for custom HTML blocks */
+.slogan-spacing-sm { margin: 1rem 0; }
+.slogan-spacing-md { margin: 2rem 0; }
+.slogan-spacing-lg { margin: 3rem 0; }
+.slogan-spacing-xl { margin: 4rem 0; }
+
+/* Padding utilities for containers */
+.slogan-padding-sm { padding: 1rem; }
+.slogan-padding-md { padding: 2rem; }
+.slogan-padding-lg { padding: 3rem; }
+
+/* Background variants for sections */
+.slogan-bg-light {
+    background: linear-gradient(135deg, #f8f9fa, #fff);
+    border-radius: 15px;
+    padding: 3rem 1rem;
+    margin: 2rem 0;
+}
+
+.slogan-bg-primary {
+    background: linear-gradient(135deg, var(--primary), #1a3a6b);
+    color: white;
+    border-radius: 15px;
+    padding: 3rem 1rem;
+    margin: 2rem 0;
+}
+
+.slogan-bg-accent {
+    background: linear-gradient(135deg, var(--accent), #005bb5);
+    color: white;
+    border-radius: 15px;
+    padding: 3rem 1rem;
+    margin: 2rem 0;
+}
+
+/* Enhanced non-breaking space handling */
+.company-slogan {
+    word-spacing: 0.1em; /* Slight increase in word spacing for readability */
+    hyphens: none; /* Prevent hyphenation in slogans */
+    word-break: keep-all; /* Keep words together */
+}
+
+/* Mobile-specific typography improvements */
+@media (max-width: 768px) {
+    .company-slogan {
+        word-spacing: 0.05em; /* Tighter spacing on mobile */
+        line-height: 1.4; /* Better line height for small screens */
+    }
+
+    .slogan-bg-light,
+    .slogan-bg-primary,
+    .slogan-bg-accent {
+        padding: 2rem 1rem;
+        margin: 1rem 0;
+    }
+}
+
+/* Print styles for the slogan */
+@media print {
+    .company-slogan {
+        color: black !important;
+        background: none !important;
+        -webkit-text-fill-color: black !important;
+        text-shadow: none !important;
+        box-shadow: none !important;
+    }
+
+    .slogan-gradient,
+    .slogan-3d,
+    .slogan-typewriter {
+        animation: none !important;
+        border: none !important;
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    .slogan-gradient,
+    .slogan-typewriter,
+    .slogan-animate,
+    .slogan-wrapper::before {
+        animation: none !important;
+    }
+
+    .slogan-highlighted::before {
+        animation: none !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .company-slogan {
+        color: black !important;
+        background: white !important;
+        border: 2px solid black !important;
+        -webkit-text-fill-color: black !important;
+    }
+
+    .smart-move,
+    .guarantee {
+        color: black !important;
+        background: yellow !important;
+        -webkit-text-fill-color: black !important;
+    }
+}
+
+/* Focus states for interactive elements */
+.company-slogan:focus-within {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+/* Custom HTML block container improvements */
+.wp-block-html .company-slogan {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.wp-block-html + .wp-block-html .company-slogan {
+    margin-top: 2rem;
+}

@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Handwriting Animations - CSS Animation Builder</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Great+Vibes&family=Caveat:wght@400;600;700&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/handwriting-animations.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            font-size: 3rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 3rem;
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+        
+        .demo-section {
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #8B4513;
+        }
+        
+        .demo-section h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .demo-section p {
+            color: #5d6d7e;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .demo-container {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            position: relative;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .handwriting-text {
+            font-size: 2.5rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: #ecf0f1;
+            border-radius: 10px;
+        }
+        
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .control-group label {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 0.9rem;
+        }
+        
+        .control-group input,
+        .control-group select,
+        .control-group button {
+            padding: 0.75rem;
+            border: 1px solid #bdc3c7;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        
+        .control-group button {
+            background: #8B4513;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .control-group button:hover {
+            background: #A0522D;
+            transform: translateY(-2px);
+        }
+        
+        .control-group button:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .paper-background {
+            background: #fefefe;
+            background-image: 
+                linear-gradient(rgba(139, 69, 19, 0.1) 1px, transparent 1px);
+            background-size: 100% 2em;
+            position: relative;
+        }
+        
+        .paper-background::before {
+            content: '';
+            position: absolute;
+            left: 3rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e74c3c;
+        }
+        
+        .signature-demo {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: visible;
+        }
+        
+        .signature-demo::after {
+            content: '✗';
+            position: absolute;
+            bottom: 1rem;
+            left: 2rem;
+            color: #bdc3c7;
+            font-size: 2rem;
+        }
+        
+        .code-section {
+            margin-top: 2rem;
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 2rem;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+        
+        .code-section h3 {
+            color: #3498db;
+            margin-bottom: 1rem;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #7f8c8d;
+            border-top: 1px solid #ecf0f1;
+            margin-top: 3rem;
+        }
+        
+        .footer a {
+            color: #8B4513;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .animation-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .preview-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .preview-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .animation-example {
+            font-size: 2rem;
+            margin: 1rem 0;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .handwriting-text {
+                font-size: 1.8rem;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .control-group {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>✍️ Professional Handwriting Animations</h1>
+        <p class="subtitle">Clean typewriter-style handwriting animations - Professional quality like Shakespeare writing Coca-Cola</p>
+        <div style="background: #e8f4f8; padding: 1rem; border-radius: 10px; margin-bottom: 2rem; text-align: center;">
+            <p style="color: #2c3e50; font-weight: 600; margin: 0;">
+                🎬 Click any demo container to restart the animation | ✍️ Watch letters appear one by one
+            </p>
+        </div>
+        
+        <!-- Quill Writing Demo -->
+        <div class="demo-section">
+            <h2>🪶 Quill Writing Effect</h2>
+            <p>Experience the elegance of traditional quill writing with floating pen animations and ink flow effects.</p>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label for="quill-text">Text to Write:</label>
+                    <input type="text" id="quill-text" value="Coca-Cola" />
+                </div>
+                <div class="control-group">
+                    <label for="quill-font">Font Style:</label>
+                    <select id="quill-font">
+                        <option value="Dancing Script">Dancing Script</option>
+                        <option value="Great Vibes">Great Vibes</option>
+                        <option value="Caveat">Caveat</option>
+                        <option value="Tangerine">Tangerine</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>&nbsp;</label>
+                    <button onclick="startQuillDemo()">Start Writing</button>
+                </div>
+            </div>
+            
+            <div class="demo-container paper-background">
+                <div id="quill-demo" class="handwriting-text handwriting-quill">Coca-Cola</div>
+            </div>
+            
+            <div class="code-section">
+                <h3>CSS Code:</h3>
+                <pre><code>.handwriting-quill {
+    font-family: 'Dancing Script', cursive;
+    color: #8B4513;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    animation: typewriter 4s steps(40, end) forwards;
+}
+
+.handwriting-quill::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(139, 69, 19, 0.4), transparent);
+    border-radius: 1px;
+    animation: inkTrail 4s ease-out forwards;
+}
+
+@keyframes typewriter {
+    0% { width: 0; }
+    100% { width: 100%; }
+}</code></pre>
+            </div>
+        </div>
+        
+        <!-- Fountain Pen Demo -->
+        <div class="demo-section">
+            <h2>🖋️ Fountain Pen Effect</h2>
+            <p>Sophisticated fountain pen writing with blue ink flow and professional penmanship.</p>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label for="fountain-text">Text to Write:</label>
+                    <input type="text" id="fountain-text" value="Shakespeare" />
+                </div>
+                <div class="control-group">
+                    <label for="fountain-ink">Ink Color:</label>
+                    <select id="fountain-ink">
+                        <option value="blue">Royal Blue</option>
+                        <option value="black">Jet Black</option>
+                        <option value="green">Forest Green</option>
+                        <option value="purple">Royal Purple</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>&nbsp;</label>
+                    <button onclick="startFountainDemo()">Start Writing</button>
+                </div>
+            </div>
+            
+            <div class="demo-container">
+                <div id="fountain-demo" class="handwriting-text handwriting-fountain">Shakespeare</div>
+            </div>
+            
+            <div class="code-section">
+                <h3>CSS Code:</h3>
+                <pre><code>.handwriting-fountain {
+    font-family: 'Great Vibes', cursive;
+    color: #191970;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    animation: typewriter 4s steps(40, end) forwards;
+}
+
+.handwriting-fountain::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(25, 25, 112, 0.5), transparent);
+    border-radius: 1px;
+    animation: inkTrail 4s ease-out forwards;
+}
+
+@keyframes inkTrail {
+    0% { width: 0; opacity: 0; }
+    10% { opacity: 0.8; }
+    100% { width: 100%; opacity: 0.6; }
+}</code></pre>
+            </div>
+        </div>
+        
+        <!-- Signature Demo -->
+        <div class="demo-section">
+            <h2>📝 Signature Effect</h2>
+            <p>Professional signature animation with authentic flourishes and personal touch.</p>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label for="signature-text">Signature:</label>
+                    <input type="text" id="signature-text" value="William Shakespeare" />
+                </div>
+                <div class="control-group">
+                    <label for="signature-style">Style:</label>
+                    <select id="signature-style">
+                        <option value="elegant">Elegant</option>
+                        <option value="bold">Bold</option>
+                        <option value="cursive">Cursive</option>
+                        <option value="formal">Formal</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>&nbsp;</label>
+                    <button onclick="startSignatureDemo()">Start Writing</button>
+                </div>
+            </div>
+            
+            <div class="demo-container signature-demo">
+                <div id="signature-demo" class="handwriting-text handwriting-signature">William Shakespeare</div>
+            </div>
+        </div>
+        
+        <!-- Animation Showcase -->
+        <div class="demo-section">
+            <h2>🎨 Animation Showcase</h2>
+            <p>See all handwriting styles in action with different fonts and effects.</p>
+            
+            <div class="animation-preview">
+                <div class="preview-card">
+                    <h3>Quill Writing</h3>
+                    <div class="animation-example handwriting-quill" style="font-family: 'Dancing Script', cursive;">Elegant</div>
+                </div>
+                
+                <div class="preview-card">
+                    <h3>Fountain Pen</h3>
+                    <div class="animation-example handwriting-fountain" style="font-family: 'Great Vibes', cursive;">Sophisticated</div>
+                </div>
+                
+                <div class="preview-card">
+                    <h3>Casual Script</h3>
+                    <div class="animation-example handwriting-casual" style="font-family: 'Caveat', cursive;">Friendly</div>
+                </div>
+                
+                <div class="preview-card">
+                    <h3>Formal Script</h3>
+                    <div class="animation-example handwriting-formal" style="font-family: 'Tangerine', cursive;">Professional</div>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label>&nbsp;</label>
+                    <button onclick="startAllAnimations()">Start All Animations</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Created with <a href="#" onclick="window.open('https://github.com/reia-dev/css-animation-builder', '_blank')">CSS Animation Builder</a></p>
+            <p>Professional handwriting animations for modern web development</p>
+        </div>
+    </div>
+    
+    <script>
+        function startQuillDemo() {
+            const element = document.getElementById('quill-demo');
+            const text = document.getElementById('quill-text').value;
+            const font = document.getElementById('quill-font').value;
+            
+            element.textContent = text;
+            element.style.fontFamily = font + ', cursive';
+            element.className = 'handwriting-text handwriting-quill';
+            element.style.animation = 'none';
+            element.style.width = '0';
+            
+            // Trigger reflow
+            element.offsetHeight;
+            
+            // Start typewriter animation
+            element.style.animation = 'typewriter 4s steps(' + (text.length * 2) + ', end) forwards';
+        }
+        
+        function startFountainDemo() {
+            const element = document.getElementById('fountain-demo');
+            const text = document.getElementById('fountain-text').value;
+            const ink = document.getElementById('fountain-ink').value;
+            
+            element.textContent = text;
+            element.className = 'handwriting-text handwriting-fountain';
+            element.style.animation = 'none';
+            element.style.width = '0';
+            
+            // Set ink color
+            const colors = {
+                blue: '#191970',
+                black: '#2c3e50',
+                green: '#27ae60',
+                purple: '#8e44ad'
+            };
+            element.style.color = colors[ink];
+            
+            // Trigger reflow
+            element.offsetHeight;
+            
+            // Start typewriter animation
+            element.style.animation = 'typewriter 4s steps(' + (text.length * 2) + ', end) forwards';
+        }
+        
+        function startSignatureDemo() {
+            const element = document.getElementById('signature-demo');
+            const text = document.getElementById('signature-text').value;
+            const style = document.getElementById('signature-style').value;
+            
+            element.textContent = text;
+            element.className = 'handwriting-text handwriting-signature';
+            element.style.animation = 'none';
+            element.style.width = '0';
+            
+            // Set style
+            const styles = {
+                elegant: { fontFamily: 'Great Vibes, cursive', transform: 'rotate(-2deg)' },
+                bold: { fontFamily: 'Dancing Script, cursive', fontWeight: '700' },
+                cursive: { fontFamily: 'Tangerine, cursive', fontSize: '3rem' },
+                formal: { fontFamily: 'Caveat, cursive', letterSpacing: '0.05em' }
+            };
+            
+            Object.assign(element.style, styles[style]);
+            
+            // Trigger reflow
+            element.offsetHeight;
+            
+            // Start typewriter animation
+            element.style.animation = 'typewriter 5s steps(' + (text.length * 2) + ', end) forwards';
+        }
+        
+        function startAllAnimations() {
+            const elements = document.querySelectorAll('.animation-example');
+            
+            elements.forEach((element, index) => {
+                element.style.animation = 'none';
+                element.style.width = '0';
+                element.offsetHeight; // Trigger reflow
+                
+                setTimeout(() => {
+                    const textLength = element.textContent.length;
+                    if (element.classList.contains('handwriting-quill')) {
+                        element.style.animation = 'typewriter 3s steps(' + (textLength * 2) + ', end) forwards';
+                    } else if (element.classList.contains('handwriting-fountain')) {
+                        element.style.animation = 'typewriter 3.5s steps(' + (textLength * 2) + ', end) forwards';
+                    } else if (element.classList.contains('handwriting-casual')) {
+                        element.style.animation = 'typewriter 3s steps(' + (textLength * 2) + ', end) forwards';
+                    } else if (element.classList.contains('handwriting-formal')) {
+                        element.style.animation = 'typewriter 3.5s steps(' + (textLength * 2) + ', end) forwards';
+                    }
+                }, index * 500);
+            });
+        }
+        
+        function restartAnimation(elementId) {
+            const element = document.getElementById(elementId);
+            element.style.animation = 'none';
+            element.style.width = '0';
+            element.offsetHeight; // Trigger reflow
+            
+            const textLength = element.textContent.length;
+            element.style.animation = 'typewriter 4s steps(' + (textLength * 2) + ', end) forwards';
+        }
+        
+        // Auto-start some animations on page load
+        window.addEventListener('load', function() {
+            setTimeout(startAllAnimations, 2000);
+        });
+        
+        // Add restart buttons functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add restart functionality to demo containers
+            const demoContainers = document.querySelectorAll('.demo-container');
+            demoContainers.forEach(container => {
+                container.addEventListener('click', function() {
+                    const textElement = container.querySelector('.handwriting-text');
+                    if (textElement) {
+                        textElement.style.animation = 'none';
+                        textElement.style.width = '0';
+                        textElement.offsetHeight; // Trigger reflow
+                        
+                        const textLength = textElement.textContent.length;
+                        textElement.style.animation = 'typewriter 4s steps(' + (textLength * 2) + ', end) forwards';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

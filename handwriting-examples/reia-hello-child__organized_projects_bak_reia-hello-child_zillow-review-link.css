@@ -1,0 +1,16 @@
+.zillow-review-link {
+    text-align: center;
+    display: inline-block;
+}
+
+.zillow-review-link a {
+    display: block;
+    text-decoration: none;
+}
+
+.zillow-review-link figcaption {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: bold;
+}

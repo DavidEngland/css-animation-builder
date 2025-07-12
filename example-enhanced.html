@@ -14,30 +14,30 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: #f5f5f5;
+            color: var(--text-primary);
+            background: var(--bg-light);
         }
 
         .reia-animation-generator {
-            max-width: 1200px;
+            max-width: 1var(--layout-min-height-xxl);
             margin: 0 auto;
-            padding: 2rem;
+            padding: var(--font-size-xxxl);
         }
 
         .generator-header {
             text-align: center;
             margin-bottom: 3rem;
             background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: var(--font-size-xxxl);
+            border-radius: 1var(--border-width-medium);
+            box-shadow: 0 var(--border-width-medium) var(--transform-translate-sm) rgba(0,0,0,0.1);
         }
 
         .generator-header h1 {
             font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #2c3e50;
-            background: linear-gradient(45deg, #007cba, #00a0d2);
+            margin-bottom: var(--font-size-md);
+            color: var(--text-dark);
+            background: linear-gradient(45deg, var(--primary-color), #00a0d2);
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -46,17 +46,17 @@
         .generator-wrapper {
             display: grid;
             grid-template-columns: 350px 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
+            gap: var(--font-size-xxxl);
+            margin-bottom: var(--font-size-xxxl);
         }
 
         .animation-controls,
         .preview-area,
         .css-output {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            background: var(--bg-primary);
+            padding: var(--font-size-xxxl);
+            border-radius: 1var(--border-width-medium);
+            box-shadow: 0 4px 1var(--transform-translate-xs) rgba(0,0,0,0.1);
         }
 
         .css-output {
@@ -65,28 +65,28 @@
 
         .control-tabs {
             display: flex;
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid #eee;
+            margin-bottom: var(--font-size-xxl);
+            border-bottom: var(--border-width-medium) solid #eee;
         }
 
         .tab-button {
             background: none;
             border: none;
-            padding: 0.75rem 1.5rem;
+            padding: 0.75rem var(--font-size-xxl);
             cursor: pointer;
-            border-bottom: 2px solid transparent;
-            transition: all 0.3s ease;
+            border-bottom: var(--border-width-medium) solid transparent;
+            transition: all var(--duration-fast) ease;
             font-size: 0.9rem;
             font-weight: 500;
         }
 
         .tab-button:hover {
-            background: #f8f9fa;
+            background: var(--bg-secondary);
         }
 
         .tab-button.active {
-            border-bottom-color: #007cba;
-            color: #007cba;
+            border-bottom-color: var(--primary-color);
+            color: var(--primary-color);
         }
 
         .tab-content {
@@ -98,65 +98,65 @@
         }
 
         .control-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: var(--font-size-xxl);
         }
 
         .control-group label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 600;
-            color: #2c3e50;
+            color: var(--text-dark);
         }
 
         .control-group input,
         .control-group select {
-            width: 100%;
+            width: var(--element-width-full);
             padding: 0.75rem;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
+            border: var(--border-width-medium) solid var(--border-primary);
+            border-radius: var(--radius-lg);
+            font-size: var(--font-size-md);
+            transition: border-color var(--duration-fast) ease;
         }
 
         .control-group input:focus,
         .control-group select:focus {
             outline: none;
-            border-color: #007cba;
+            border-color: var(--primary-color);
         }
 
         .control-group input[type='range'] {
-            width: calc(100% - 60px);
-            margin-right: 10px;
+            width: calc(var(--element-width-full) - var(--layout-min-height-sm));
+            margin-right: var(--transform-translate-sm);
         }
 
         .value-display {
             display: inline-block;
             min-width: 50px;
             font-weight: 600;
-            color: #007cba;
+            color: var(--primary-color);
         }
 
         .preset-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(var(--layout-min-height-lg), 1fr));
+            gap: var(--font-size-md);
         }
 
         .preset-button {
-            background: linear-gradient(45deg, #007cba, #00a0d2);
+            background: linear-gradient(45deg, var(--primary-color), #00a0d2);
             color: white;
             border: none;
-            padding: 0.75rem 1rem;
-            border-radius: 8px;
+            padding: 0.75rem var(--font-size-md);
+            border-radius: var(--radius-lg);
             cursor: pointer;
             font-size: 0.9rem;
             font-weight: 500;
-            transition: all 0.3s ease;
+            transition: all var(--duration-fast) ease;
         }
 
         .preset-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0,124,186,0.3);
+            transform: translateY(-var(--border-width-medium));
+            box-shadow: 0 4px 1var(--transform-translate-xs) rgba(0,124,186,0.3);
         }
 
         .preview-area {
@@ -164,65 +164,65 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--animation-secondary) 0%, #764ba2 var(--element-width-full));
             position: relative;
             overflow: hidden;
         }
 
         .preview-element {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            border-radius: 12px;
+            width: var(--layout-min-height-md);
+            height: var(--layout-min-height-md);
+            background: linear-gradient(45deg, var(--animation-error), #4ecdc4);
+            border-radius: 1var(--border-width-medium);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
             color: white;
             font-size: 0.9rem;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 2var(--transform-translate-xs) rgba(0,0,0,0.2);
         }
 
         .control-buttons {
             display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
+            gap: var(--font-size-md);
+            margin-top: var(--font-size-xxl);
         }
 
         .control-buttons button {
             flex: 1;
-            padding: 0.75rem 1.5rem;
+            padding: 0.75rem var(--font-size-xxl);
             border: none;
-            border-radius: 8px;
+            border-radius: var(--radius-lg);
             cursor: pointer;
-            font-size: 1rem;
+            font-size: var(--font-size-md);
             font-weight: 500;
-            transition: all 0.3s ease;
+            transition: all var(--duration-fast) ease;
         }
 
         .play-btn {
-            background: linear-gradient(45deg, #28a745, #20c997);
+            background: linear-gradient(45deg, var(--animation-success), #20c997);
             color: white;
         }
 
         .play-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(40,167,69,0.3);
+            transform: translateY(-var(--border-width-medium));
+            box-shadow: 0 4px 1var(--transform-translate-xs) rgba(40,167,69,0.3);
         }
 
         .reset-btn {
-            background: #6c757d;
+            background: var(--secondary-color);
             color: white;
         }
 
         .reset-btn:hover {
-            background: #5a6268;
+            background: var(--secondary-color-dark);
         }
 
         .code-section {
             display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
+            gap: var(--font-size-md);
+            margin-bottom: var(--font-size-md);
         }
 
         .code-tabs {
@@ -231,19 +231,19 @@
         }
 
         .code-tab {
-            background: #f8f9fa;
-            border: 1px solid #dee2e6;
-            padding: 0.5rem 1rem;
-            border-radius: 8px 8px 0 0;
+            background: var(--bg-secondary);
+            border: var(--border-width-thin) solid var(--border-secondary);
+            padding: 0.5rem var(--font-size-md);
+            border-radius: var(--radius-lg) 8px 0 0;
             cursor: pointer;
             font-size: 0.9rem;
-            transition: all 0.3s ease;
+            transition: all var(--duration-fast) ease;
         }
 
         .code-tab.active {
-            background: #007cba;
+            background: var(--primary-color);
             color: white;
-            border-color: #007cba;
+            border-color: var(--primary-color);
         }
 
         .code-container {
@@ -252,37 +252,37 @@
         }
 
         .code-container pre {
-            background: #f8f9fa;
-            border: 1px solid #dee2e6;
-            border-radius: 8px;
-            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border: var(--border-width-thin) solid var(--border-secondary);
+            border-radius: var(--radius-lg);
+            padding: var(--font-size-xxl);
             overflow-x: auto;
             font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
             font-size: 0.9rem;
             line-height: 1.5;
-            min-height: 200px;
+            min-height: var(--layout-min-height-xxl);
         }
 
         .copy-btn {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #007cba;
+            top: var(--transform-translate-sm);
+            right: var(--transform-translate-sm);
+            background: var(--primary-color);
             color: white;
             border: none;
-            padding: 0.5rem 1rem;
+            padding: 0.5rem var(--font-size-md);
             border-radius: 6px;
             cursor: pointer;
             font-size: 0.8rem;
-            transition: all 0.3s ease;
+            transition: all var(--duration-fast) ease;
         }
 
         .copy-btn:hover {
-            background: #005a8b;
+            background: var(--primary-color-dark);
         }
 
         .copy-btn.copied {
-            background: #28a745;
+            background: var(--animation-success);
         }
 
         /* Responsive Design */
@@ -303,88 +303,91 @@
 
         /* Animation Keyframes */
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from { opacity: var(--opacity-transparent); }
+            to { opacity: var(--opacity-opaque); }
         }
 
         @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; }
+            from { opacity: var(--opacity-opaque); }
+            to { opacity: var(--opacity-transparent); }
         }
 
         @keyframes slideInLeft {
-            from { transform: translateX(-100%); }
+            from { transform: translateX(-var(--element-width-full)); }
             to { transform: translateX(0); }
         }
 
         @keyframes slideInRight {
-            from { transform: translateX(100%); }
+            from { transform: translateX(var(--element-width-full)); }
             to { transform: translateX(0); }
         }
 
         @keyframes slideInUp {
-            from { transform: translateY(100%); }
+            from { transform: translateY(var(--element-width-full)); }
             to { transform: translateY(0); }
         }
 
         @keyframes slideInDown {
-            from { transform: translateY(-100%); }
+            from { transform: translateY(-var(--element-width-full)); }
             to { transform: translateY(0); }
         }
 
         @keyframes zoomIn {
             from { transform: scale(0); }
-            to { transform: scale(1); }
+            to { transform: scale(var(--transform-scale-md)); }
         }
 
         @keyframes zoomOut {
-            from { transform: scale(1); }
+            from { transform: scale(var(--transform-scale-md)); }
             to { transform: scale(0); }
         }
 
         @keyframes bounceIn {
-            0%, 20%, 40%, 60%, 80%, 100% { animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); }
-            0% { opacity: 0; transform: scale3d(.3, .3, .3); }
-            20% { transform: scale3d(1.1, 1.1, 1.1); }
-            40% { transform: scale3d(.9, .9, .9); }
-            60% { opacity: 1; transform: scale3d(1.03, 1.03, 1.03); }
-            80% { transform: scale3d(.97, .97, .97); }
-            100% { opacity: 1; transform: scale3d(1, 1, 1); }
+            0%, var(--element-width-20), var(--element-width-40), var(--element-width-60), var(--element-width-80), var(--element-width-full) { animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); }
+            0% { opacity: var(--opacity-transparent); transform: scale3d(.3, .3, .3); }
+            var(--element-width-20) { transform: scale3d(1.1, 1.1, 1.1); }
+            var(--element-width-40) { transform: scale3d(.9, .9, .9); }
+            var(--element-width-60) { opacity: var(--opacity-opaque); transform: scale3d(1.03, 1.03, 1.03); }
+            var(--element-width-80) { transform: scale3d(.97, .97, .97); }
+            var(--element-width-full) { opacity: var(--opacity-opaque); transform: scale3d(1, 1, 1); }
         }
 
         @keyframes rotateIn {
-            from { transform: rotate(-360deg); opacity: 0; }
-            to { transform: rotate(0deg); opacity: 1; }
+            from { transform: rotate(-360deg); opacity: var(--opacity-transparent); }
+            to { transform: rotate(0deg); opacity: var(--opacity-opaque); }
         }
 
         @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            0%, var(--element-width-full) { transform: scale(var(--transform-scale-md)); }
+            50% { transform: scale(var(--transform-scale-lg)); }
         }
 
         @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
-            20%, 40%, 60%, 80% { transform: translateX(10px); }
+            0%, var(--element-width-full) { transform: translateX(0); }
+            var(--spacing-sm), 30%, 50%, 70%, 90% { transform: translateX(-var(--transform-translate-sm)); }
+            var(--element-width-20), var(--element-width-40), var(--element-width-60), var(--element-width-80) { transform: translateX(var(--transform-translate-sm)); }
         }
 
         @keyframes wobble {
-            0%, 100% { transform: translateX(0%); }
-            15% { transform: translateX(-25%) rotate(-5deg); }
-            30% { transform: translateX(20%) rotate(3deg); }
+            0%, var(--element-width-full) { transform: translateX(0%); }
+            15% { transform: translateX(-25%) rotate(calc(-1 * var(--transform-rotate-sm))); }
+            30% { transform: translateX(var(--element-width-20)) rotate(3deg); }
             45% { transform: translateX(-15%) rotate(-3deg); }
-            60% { transform: translateX(10%) rotate(2deg); }
+            var(--element-width-60) { transform: translateX(var(--spacing-sm)) rotate(2deg); }
             75% { transform: translateX(-5%) rotate(-1deg); }
         }
 
         @keyframes swing {
-            0%, 100% { transform: rotate(0deg); }
-            20% { transform: rotate(15deg); }
-            40% { transform: rotate(-10deg); }
-            60% { transform: rotate(5deg); }
-            80% { transform: rotate(-5deg); }
+            0%, var(--element-width-full) { transform: rotate(0deg); }
+            var(--element-width-20) { transform: rotate(15deg); }
+            var(--element-width-40) { transform: rotate(calc(-1 * var(--transform-rotate-md))); }
+            var(--element-width-60) { transform: rotate(var(--transform-rotate-sm)); }
+            var(--element-width-80) { transform: rotate(calc(-1 * var(--transform-rotate-sm))); }
         }
     </style>
+<!-- CSS Variables Import -->
+<link rel="stylesheet" href="src/variables.css">
+<!-- End CSS Variables Import -->
 </head>
 <body>
     <div class="reia-animation-generator">
@@ -727,75 +730,75 @@
             generateKeyframesCode(animationType) {
                 const keyframes = {
                     fadeIn: `@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from { opacity: var(--opacity-transparent); }
+    to { opacity: var(--opacity-opaque); }
 }`,
                     fadeOut: `@keyframes fadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
+    from { opacity: var(--opacity-opaque); }
+    to { opacity: var(--opacity-transparent); }
 }`,
                     slideInLeft: `@keyframes slideInLeft {
-    from { transform: translateX(-100%); }
+    from { transform: translateX(-var(--element-width-full)); }
     to { transform: translateX(0); }
 }`,
                     slideInRight: `@keyframes slideInRight {
-    from { transform: translateX(100%); }
+    from { transform: translateX(var(--element-width-full)); }
     to { transform: translateX(0); }
 }`,
                     slideInUp: `@keyframes slideInUp {
-    from { transform: translateY(100%); }
+    from { transform: translateY(var(--element-width-full)); }
     to { transform: translateY(0); }
 }`,
                     slideInDown: `@keyframes slideInDown {
-    from { transform: translateY(-100%); }
+    from { transform: translateY(-var(--element-width-full)); }
     to { transform: translateY(0); }
 }`,
                     zoomIn: `@keyframes zoomIn {
     from { transform: scale(0); }
-    to { transform: scale(1); }
+    to { transform: scale(var(--transform-scale-md)); }
 }`,
                     zoomOut: `@keyframes zoomOut {
-    from { transform: scale(1); }
+    from { transform: scale(var(--transform-scale-md)); }
     to { transform: scale(0); }
 }`,
                     bounceIn: `@keyframes bounceIn {
-    0%, 20%, 40%, 60%, 80%, 100% { 
+    0%, var(--element-width-20), var(--element-width-40), var(--element-width-60), var(--element-width-80), var(--element-width-full) { 
         animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); 
     }
-    0% { opacity: 0; transform: scale3d(.3, .3, .3); }
-    20% { transform: scale3d(1.1, 1.1, 1.1); }
-    40% { transform: scale3d(.9, .9, .9); }
-    60% { opacity: 1; transform: scale3d(1.03, 1.03, 1.03); }
-    80% { transform: scale3d(.97, .97, .97); }
-    100% { opacity: 1; transform: scale3d(1, 1, 1); }
+    0% { opacity: var(--opacity-transparent); transform: scale3d(.3, .3, .3); }
+    var(--element-width-20) { transform: scale3d(1.1, 1.1, 1.1); }
+    var(--element-width-40) { transform: scale3d(.9, .9, .9); }
+    var(--element-width-60) { opacity: var(--opacity-opaque); transform: scale3d(1.03, 1.03, 1.03); }
+    var(--element-width-80) { transform: scale3d(.97, .97, .97); }
+    var(--element-width-full) { opacity: var(--opacity-opaque); transform: scale3d(1, 1, 1); }
 }`,
                     rotateIn: `@keyframes rotateIn {
-    from { transform: rotate(-360deg); opacity: 0; }
-    to { transform: rotate(0deg); opacity: 1; }
+    from { transform: rotate(-360deg); opacity: var(--opacity-transparent); }
+    to { transform: rotate(0deg); opacity: var(--opacity-opaque); }
 }`,
                     pulse: `@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+    0%, var(--element-width-full) { transform: scale(var(--transform-scale-md)); }
+    50% { transform: scale(var(--transform-scale-lg)); }
 }`,
                     shake: `@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
-    20%, 40%, 60%, 80% { transform: translateX(10px); }
+    0%, var(--element-width-full) { transform: translateX(0); }
+    var(--spacing-sm), 30%, 50%, 70%, 90% { transform: translateX(-var(--transform-translate-sm)); }
+    var(--element-width-20), var(--element-width-40), var(--element-width-60), var(--element-width-80) { transform: translateX(var(--transform-translate-sm)); }
 }`,
                     wobble: `@keyframes wobble {
-    0%, 100% { transform: translateX(0%); }
-    15% { transform: translateX(-25%) rotate(-5deg); }
-    30% { transform: translateX(20%) rotate(3deg); }
+    0%, var(--element-width-full) { transform: translateX(0%); }
+    15% { transform: translateX(-25%) rotate(calc(-1 * var(--transform-rotate-sm))); }
+    30% { transform: translateX(var(--element-width-20)) rotate(3deg); }
     45% { transform: translateX(-15%) rotate(-3deg); }
-    60% { transform: translateX(10%) rotate(2deg); }
+    var(--element-width-60) { transform: translateX(var(--spacing-sm)) rotate(2deg); }
     75% { transform: translateX(-5%) rotate(-1deg); }
 }`,
                     swing: `@keyframes swing {
-    0%, 100% { transform: rotate(0deg); }
-    20% { transform: rotate(15deg); }
-    40% { transform: rotate(-10deg); }
-    60% { transform: rotate(5deg); }
-    80% { transform: rotate(-5deg); }
+    0%, var(--element-width-full) { transform: rotate(0deg); }
+    var(--element-width-20) { transform: rotate(15deg); }
+    var(--element-width-40) { transform: rotate(calc(-1 * var(--transform-rotate-md))); }
+    var(--element-width-60) { transform: rotate(var(--transform-rotate-sm)); }
+    var(--element-width-80) { transform: rotate(calc(-1 * var(--transform-rotate-sm))); }
 }`
                 };
                 

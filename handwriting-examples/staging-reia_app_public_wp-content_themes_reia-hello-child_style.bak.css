@@ -1,0 +1,426 @@
+/*
+Theme Name: Hello Elementor Child
+Theme URI: https://github.com/elementor/hello-theme-child/
+Description: Hello Elementor Child is a child theme of Hello Elementor, created by Elementor team
+Author: Elementor Team
+Author URI: https://elementor.com/
+Template: hello-elementor
+Version: 2.1.4
+Text Domain: hello-elementor-child
+License: GNU General Public License v3 or later.
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
+Tags: flexible-header, custom-colors, custom-menu, custom-logo, editor-style, featured-images, rtl-language-support, threaded-comments, translation-ready
+*/
+
+/* ==========================================================================
+   0. Fonts & CSS Custom Properties
+   ========================================================================== */
+
+/* Import Google Fonts: Roboto for body, Roboto Slab for headings */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Slab:wght@400;700&display=swap');
+
+:root {
+    --primary: #002D5F;
+    --accent: #0073e6;
+}
+
+/* ==========================================================================
+   1. Base Typography & Utilities
+   ========================================================================== */
+
+/* Set base font family for body and general text */
+body {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    background:white;
+}
+
+/* Use Roboto Slab for all headings */
+:is(h1, h2, h3, h4, h5, h6) {
+    font-family: 'Roboto Slab', 'Times New Roman', Times, serif;
+}
+
+/* Accent color for form elements */
+input[type="checkbox"] {
+    accent-color: var(--accent);
+}
+
+/* ==========================================================================
+   2. Content Area: White Background & Wider Layout
+   ========================================================================== */
+
+/* Make main content area white and wider on desktop+ */
+.site-main,
+.single-post-content,
+.page .single-post-content,
+.entry-content {
+    background: #fff;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2rem 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+/* Ensure post titles display as output by PHP, not forced to Capitalize */
+.entry-title,
+h1.entry-title,
+h2.entry-title,
+h3.entry-title {
+    text-transform: none !important;
+}
+/* Responsive adjustments for mobile/tablet */
+@media (max-width: 900px) {
+    .site-main,
+    .single-post-content,
+    .page .single-post-content,
+    .entry-content {
+        max-width: 100%;
+        padding: 1rem 0.5rem;
+        border-radius: 0.5rem;
+    }
+}
+
+/* ==========================================================================
+   3. Zillow Review Link Block
+   ========================================================================== */
+
+.zillow-review-link {
+    display: inline-block;
+    text-align: center;
+    margin: 1em auto;
+}
+.zillow-review-link a {
+    display: block;
+    text-decoration: none;
+    background: #fff;
+    border-radius: 0.25rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.2s, background-color 0.2s;
+    padding: 0.75em 1.5em;
+}
+.zillow-review-link a:hover,
+.zillow-review-link a:focus {
+    background-color: var(--primary);
+    box-shadow: 0 2px 8px rgba(0, 45, 95, 0.15);
+    outline: none;
+}
+.zillow-review-link figcaption {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+    color: var(--primary);
+    font-weight: bold;
+    transition: color 0.2s;
+}
+.zillow-review-link a:hover figcaption,
+.zillow-review-link a:focus figcaption {
+    color: #fff;
+}
+.zillow-review-link img {
+    vertical-align: middle;
+    transition: filter 0.2s;
+    max-width: 100%;
+    height: auto;
+}
+.zillow-review-link a:hover img,
+.zillow-review-link a:focus img {
+    filter: brightness(0) invert(1);
+}
+/* ==========================================================================
+   4. Homepage Connections
+   ========================================================================== */
+
+/* Center the Connections list body on the homepage */
+.home #cn-cmap #cn-list-body {
+    text-align: center;
+}
+
+/* Display Connections list rows inline with spacing */
+.home #cn-cmap .cn-list-row,
+.home #cn-cmap .cn-list-row-alternate {
+    display: inline-block;
+    width: 190px;
+    margin: 0 15px;
+}
+
+/* Remove borders, padding, and backgrounds from Connections entries */
+.home #cn-cmap .cn-list-row .cn-entry,
+.home #cn-cmap .cn-list-row-alternate .cn-entry {
+    border: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: none !important;
+}
+
+/* Style the Connections image span */
+.home #cn-cmap span.cn-image-style {
+    border-radius: 0;
+    background: none;
+    border: 2px solid #fff;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Center and style text in Connections rows */
+.home #cn-cmap .cn-right,
+.home #cn-cmap .cn-list-row a,
+.home #cn-cmap .cn-list-row h2 .fn,
+.home #cn-cmap .cn-list-row-alternate h2 .fn {
+    text-align: center;
+    color: #fff !important;
+    font-weight: 500;
+    margin-top: 15px;
+}
+
+/* Italicize the title span in Connections list */
+.home #cn-list span.title {
+    font-style: italic;
+}
+/* Hide testimonial slide images if there are no people images present */
+/* This targets .slide-image inside .slide-basic-info inside .slide-block */
+.slide-block .slide-basic-info .slide-image > img {
+    display: none !important;
+}
+/* ==========================================================================
+   4. Single Post Card Layout
+   ========================================================================== */
+
+.single-post-card {
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+    margin: 2rem auto;
+    max-width: 800px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+.single-post-thumb img {
+    width: 100%;
+    max-width: 100%;
+    max-height: 400px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    background: #e0e6ed;
+}
+.single-post-content {
+    padding: 2rem;
+}
+@media (max-width: 600px) {
+    .single-post-card {
+        margin: 1rem;
+    }
+    .single-post-content {
+        padding: 1rem;
+    }
+}
+
+/* ==========================================================================
+   5. Archive Grid Card Layout & Styles
+   ========================================================================== */
+
+/* Responsive grid for archive cards */
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin: 2rem 0;
+}
+@media (max-width: 1200px) {
+    .post-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 900px) {
+    .post-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+    .post-grid { grid-template-columns: 1fr; }
+}
+
+.post-card {
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.2s;
+}
+.post-card .entry-title {
+    font-size: clamp(1.2rem, 2vw, 2rem);
+    margin: 0 0 0.75rem 0;
+    line-height: 1.2;
+    font-family: 'Roboto Slab', 'Times New Roman', Times, serif;
+}
+.post-card:hover {
+    box-shadow: 0 6px 24px rgba(0, 45, 95, 0.12);
+}
+.post-card-thumb {
+    display: block;
+    width: 100%;
+    height: 180px;
+    background: #f4f4f4;
+    position: relative;
+    overflow: hidden;
+}
+.post-card-thumb img,
+.post-card-thumb--placeholder {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    background: #e0e6ed;
+    aspect-ratio: 16 / 9;
+}
+.post-card-thumb img[src$=".svg"] {
+    object-fit: contain;
+    background: #e0e6ed;
+}
+.post-card-thumb--placeholder {
+    background: #e0e6ed;
+}
+@media (max-width: 600px) {
+    .post-card-thumb,
+    .post-card-thumb img,
+    .post-card-thumb--placeholder {
+        height: 120px;
+    }
+    .post-card-content {
+        padding: 1rem;
+    }
+}
+.post-card-content {
+    padding: 1.25rem 1.25rem 1.5rem 1.25rem;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+.post-card .entry-title {
+    font-size: clamp(1.2rem, 2vw, 2rem);
+    margin: 0 0 0.75rem 0;
+    line-height: 1.2;
+    font-family: 'Roboto Slab', 'Times New Roman', Times, serif;
+}
+.post-card .entry-title a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.post-card .entry-title a:hover {
+    color: var(--accent);
+}
+.post-card-excerpt {
+    color: #444;
+    font-size: 1rem;
+    margin-top: auto;
+}
+
+/* ==========================================================================
+   6. Modern CSS Features & Utilities
+   ========================================================================== */
+
+/* Parent selector with :has() for cards containing images */
+.card:has(img) {
+    border: 2px solid var(--accent);
+}
+
+/* Scroll snap for sliders */
+.slider {
+    scroll-snap-type: x mandatory;
+}
+.slide {
+    scroll-snap-align: start;
+}
+
+/* Container queries for cards (modern browsers) */
+@container (min-width: 400px) {
+    .card {
+        flex-direction: row;
+    }
+}
+
+/* ==========================================================================
+   7. Footer Navigation
+   ========================================================================== */
+
+/* Hide sub-arrow in footer navigation menu */
+footer .hfe-nav-menu .sub-arrow {
+    display: none;
+}
+/* ==========================================================================
+   Responsive Google Map Embeds
+   ========================================================================== */
+
+/**
+ * Responsive wrapper for Google Maps embeds.
+ * - Only one map iframe is visible at a time, based on viewport width.
+ * - Maps are always centered horizontally.
+ * - Add gap for vertical spacing between maps if multiple are ever visible.
+ */
+.responsive-map-embeds {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 2rem 0;
+    gap: 1rem;
+}
+
+/**
+ * Base map embed styling:
+ * - Hide all by default, only show one via media queries.
+ * - Centered horizontally.
+ * - Rounded corners and subtle shadow for modern look.
+ * - Responsive width.
+ */
+.map-embed {
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-radius: 1rem;
+    width: 100%;
+    max-width: 100%;
+    border: 0;
+    /* Remove inline border styles from HTML if possible */
+}
+
+/* Show small map on mobile devices */
+@media (max-width: 599px) {
+    .map-embed--small { display: block; }
+}
+
+/* Show medium map on tablets */
+@media (min-width: 600px) and (max-width: 1023px) {
+    .map-embed--medium { display: block; }
+}
+
+/* Show large map on desktop and above */
+@media (min-width: 1024px) {
+    .map-embed--large { display: block; }
+}
+
+/* Optional: Ensure iframe is never taller than viewport */
+.map-embed {
+    max-height: 70vh;
+}
+
+/* Optional: Add focus style for accessibility */
+.map-embed:focus {
+    outline: 2px solid var(--accent, #0073e6);
+    outline-offset: 2px;
+}
+
+/* ==========================================================================
+   End of Responsive Google Map Embeds
+   ========================================================================== */==========================================================================
+   End of Stylesheet
+   ========================================================================== */

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typewriter Animation Demo - CSS Animation Builder</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Courier+New:wght@400;700&family=Consolas:wght@400;700&family=SF+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/text-animations.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, var(--animation-secondary) 0%, #764ba2 var(--element-width-full));
+            min-height: 100vh;
+            padding: var(--font-size-xxxl);
+        }
+        
+        .container {
+            max-width: 1var(--layout-min-height-xxl);
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: var(--transform-translate-md);
+            padding: var(--font-size-xxxl);
+            box-shadow: 0 var(--transform-translate-md) 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: var(--text-dark);
+            margin-bottom: var(--font-size-xxxl);
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        .demo-section {
+            margin-bottom: 3rem;
+            padding: var(--font-size-xxxl);
+            background: var(--bg-secondary);
+            border-radius: 1var(--border-width-medium);
+            border-left: 4px solid var(--animation-secondary);
+        }
+        
+        .demo-section h2 {
+            color: var(--text-dark);
+            margin-bottom: var(--font-size-md);
+            font-size: 1.8rem;
+        }
+        
+        .demo-section p {
+            color: var(--text-secondary);
+            margin-bottom: var(--font-size-xxl);
+            line-height: 1.6;
+        }
+        
+        .demo-container {
+            background: white;
+            padding: var(--font-size-xxxl);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--font-size-xxl);
+            box-shadow: 0 var(--border-width-medium) var(--transform-translate-sm) rgba(0, 0, 0, 0.1);
+        }
+        
+        .controls {
+            display: flex;
+            gap: var(--font-size-md);
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: var(--font-size-xxxl);
+            padding: var(--font-size-md);
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-lg);
+        }
+        
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .control-group label {
+            font-weight: 600;
+            color: var(--typewriter-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .control-group input,
+        .control-group select,
+        .control-group button {
+            padding: 0.5rem;
+            border: var(--border-width-thin) solid var(--border-tertiary);
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+        }
+        
+        .control-group button {
+            background: var(--animation-secondary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background var(--duration-fast) ease;
+        }
+        
+        .control-group button:hover {
+            background: #5a6fd8;
+        }
+        
+        .control-group button:disabled {
+            background: var(--secondary-color);
+            cursor: not-allowed;
+        }
+        
+        .typewriter-demo {
+            min-height: var(--layout-min-height-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.var(--font-size-xxxl);
+        }
+        
+        .code-section {
+            margin-top: var(--font-size-xxxl);
+            background: var(--bg-dark);
+            color: var(--text-light);
+            padding: var(--font-size-xxl);
+            border-radius: var(--radius-lg);
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+        
+        .code-section h3 {
+            color: var(--text-light);
+            margin-bottom: var(--font-size-md);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: var(--font-size-xxxl);
+            color: var(--text-secondary);
+            border-top: var(--border-width-thin) solid var(--bg-tertiary);
+            margin-top: 3rem;
+        }
+        
+        .footer a {
+            color: var(--animation-secondary);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .control-group {
+                width: var(--element-width-full);
+            }
+        }
+    </style>
+<!-- CSS Variables Import -->
+<link rel="stylesheet" href="src/variables.css">
+<!-- End CSS Variables Import -->
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Typewriter Animation Demo</h1>
+        
+        <!-- Basic Typewriter Demo -->
+        <div class="demo-section">
+            <h2>Basic Typewriter Effect</h2>
+            <p>Simple character-by-character typing animation with customizable speed and cursor.</p>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label for="basic-text">Text to Type:</label>
+                    <input type="text" id="basic-text" value="Hello, World! This is a typewriter effect." />
+                </div>
+                <div class="control-group">
+                    <label for="basic-speed">Speed (ms):</label>
+                    <input type="number" id="basic-speed" min="10" max="500" value="100" />
+                </div>
+                <div class="control-group">
+                    <label for="basic-cursor">Cursor:</label>
+                    <select id="basic-cursor">
+                        <option value="|">| (Pipe)</option>
+                        <option value="_">_ (Underscore)</option>
+                        <option value="█">█ (Block)</option>
+                        <option value="▌">▌ (Half Block)</option>
+                        <option value="">None</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>&nbsp;</label>
+                    <button onclick="startBasicDemo()">Start Demo</button>
+                </div>
+            </div>
+            
+            <div class="demo-container">
+                <div id="basic-demo" class="typewriter-demo typewriter theme-classic"></div>
+            </div>
+        </div>
+        
+        <!-- Advanced Typewriter Demo -->
+        <div class="demo-section">
+            <h2>Advanced Typewriter Effects</h2>
+            <p>Multiple text sequences with delete effects, humanization, and theme variations.</p>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label for="advanced-theme">Theme:</label>
+                    <select id="advanced-theme">
+                        <option value="classic">Classic</option>
+                        <option value="terminal">Terminal</option>
+                        <option value="retro">Retro</option>
+                        <option value="modern">Modern</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="advanced-effect">Effect:</label>
+                    <select id="advanced-effect">
+                        <option value="">None</option>
+                        <option value="glitch">Glitch</option>
+                        <option value="neon">Neon</option>
+                        <option value="matrix">Matrix</option>
+                        <option value="sound">Sound Wave</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="advanced-humanize">Humanize:</label>
+                    <input type="checkbox" id="advanced-humanize" checked />
+                </div>
+                <div class="control-group">
+                    <label for="advanced-mistakes">Mistakes:</label>
+                    <input type="checkbox" id="advanced-mistakes" />
+                </div>
+                <div class="control-group">
+                    <label>&nbsp;</label>
+                    <button onclick="startAdvancedDemo()">Start Demo</button>
+                </div>
+            </div>
+            
+            <div class="demo-container">
+                <div id="advanced-demo" class="typewriter-demo typewriter"></div>
+            </div>
+        </div>
+        
+        <!-- Multiple Sequences Demo -->
+        <div class="demo-section">
+            <h2>Multiple Text Sequences</h2>
+            <p>Cycling through multiple text strings with delete and retype effects.</p>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label for="sequence-loop">Loop:</label>
+                    <input type="checkbox" id="sequence-loop" checked />
+                </div>
+                <div class="control-group">
+                    <label for="sequence-delete">Delete All:</label>
+                    <input type="checkbox" id="sequence-delete" checked />
+                </div>
+                <div class="control-group">
+                    <label>&nbsp;</label>
+                    <button onclick="startSequenceDemo()">Start Demo</button>
+                </div>
+            </div>
+            
+            <div class="demo-container">
+                <div id="sequence-demo" class="typewriter-demo typewriter theme-modern"></div>
+            </div>
+        </div>
+        
+        <!-- Code Examples -->
+        <div class="demo-section">
+            <h2>Usage Examples</h2>
+            
+            <div class="code-section">
+                <h3>JavaScript Usage</h3>
+                <pre><code>// Basic typewriter effect
+const typewriter = new TypewriterAnimation('#my-element', {
+    speed: 100,
+    cursor: '|',
+    cursorBlink: true,
+    humanize: true
+});
+
+typewriter.type('Hello, World!');
+
+// Multiple sequences
+typewriter.type([
+    'Welcome to our website!',
+    'We create amazing animations.',
+    'Try our CSS Animation Builder!'
+]);
+
+// Advanced options
+const advancedTypewriter = new TypewriterAnimation('#advanced-element', {
+    speed: 80,
+    deleteSpeed: 40,
+    pauseTime: 2000,
+    loop: true,
+    deleteAll: true,
+    humanize: true,
+    mistakes: true,
+    mistakeChance: 0.1,
+    onComplete: () => console.log('Animation complete!')
+});
+
+// Method chaining
+typewriter
+    .type('First message')
+    .pause()
+    .resume()
+    .reset();</code></pre>
+            </div>
+            
+            <div class="code-section">
+                <h3>CSS-Only Alternative</h3>
+                <pre><code>/* CSS-only typewriter effect */
+.typewriter-text {
+    overflow: hidden;
+    border-right: var(--border-width-medium) solid;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: 0.1em;
+    animation: 
+        typing 3s steps(40, end),
+        blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: var(--element-width-full) }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: currentColor }
+}</code></pre>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>
+                <strong>CSS Animation Builder</strong> - 
+                Developed by <a href="https://github.com/DavidEngland">Real Estate Intelligence Agency (REIA)</a>
+            </p>
+            <p>
+                <a href="https://github.com/DavidEngland/css-animation-builder">GitHub Repository</a> |
+                <a href="handwriting-demo.html">Handwriting Demo</a> |
+                <a href="../index.html">Main Demo</a>
+            </p>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="../js/typewriter-animation.js"></script>
+    <script>
+        let basicTypewriter, advancedTypewriter, sequenceTypewriter;
+        
+        function startBasicDemo() {
+            const element = document.getElementById('basic-demo');
+            const text = document.getElementById('basic-text').value;
+            const speed = parseInt(document.getElementById('basic-speed').value);
+            const cursor = document.getElementById('basic-cursor').value;
+            
+            if (basicTypewriter) {
+                basicTypewriter.destroy();
+            }
+            
+            element.textContent = '';
+            
+            basicTypewriter = new TypewriterAnimation(element, {
+                speed: speed,
+                cursor: cursor,
+                cursorBlink: true,
+                autoStart: false
+            });
+            
+            basicTypewriter.type(text);
+        }
+        
+        function startAdvancedDemo() {
+            const element = document.getElementById('advanced-demo');
+            const theme = document.getElementById('advanced-theme').value;
+            const effect = document.getElementById('advanced-effect').value;
+            const humanize = document.getElementById('advanced-humanize').checked;
+            const mistakes = document.getElementById('advanced-mistakes').checked;
+            
+            if (advancedTypewriter) {
+                advancedTypewriter.destroy();
+            }
+            
+            element.textContent = '';
+            element.className = `typewriter-demo typewriter theme-${theme}`;
+            
+            if (effect) {
+                element.classList.add(`effect-${effect}`);
+            }
+            
+            advancedTypewriter = new TypewriterAnimation(element, {
+                speed: 120,
+                deleteSpeed: 60,
+                pauseTime: 1500,
+                humanize: humanize,
+                mistakes: mistakes,
+                mistakeChance: 0.08,
+                autoStart: false
+            });
+            
+            advancedTypewriter.type([
+                'Welcome to REIA!',
+                'Real Estate Intelligence Agency',
+                'Advanced CSS Animation Builder',
+                'Create stunning typewriter effects!'
+            ]);
+        }
+        
+        function startSequenceDemo() {
+            const element = document.getElementById('sequence-demo');
+            const loop = document.getElementById('sequence-loop').checked;
+            const deleteAll = document.getElementById('sequence-delete').checked;
+            
+            if (sequenceTypewriter) {
+                sequenceTypewriter.destroy();
+            }
+            
+            element.textContent = '';
+            
+            sequenceTypewriter = new TypewriterAnimation(element, {
+                speed: 100,
+                deleteSpeed: 50,
+                pauseTime: 2000,
+                loop: loop,
+                deleteAll: deleteAll,
+                humanize: true,
+                autoStart: false
+            });
+            
+            sequenceTypewriter.type([
+                'Building amazing animations...',
+                'Powered by JavaScript...',
+                'Easy to customize...',
+                'Try it yourself!'
+            ]);
+        }
+        
+        // Initialize demos on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            startBasicDemo();
+            
+            // Auto-start advanced demo after 2 seconds
+            setTimeout(startAdvancedDemo, 2000);
+            
+            // Auto-start sequence demo after 4 seconds
+            setTimeout(startSequenceDemo, 4000);
+        });
+    </script>
+</body>
+</html>
