@@ -1,7 +1,7 @@
 {
     "name": "reia/css-animation-builder",
     "description": "A standalone CSS Animation Builder library for creating beautiful animations with interactive controls - developed by Real Estate Intelligence Agency (REIA)",
-    "version": "1.5.0",
+    "version": "1.6.0",
     "type": "library",
     "license": "MIT",
     "authors": [

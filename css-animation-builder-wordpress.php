@@ -3,7 +3,7 @@
  * Plugin Name: CSS Animation Builder
  * Plugin URI: https://github.com/DavidEngland/css-animation-builder
  * Description: Advanced CSS animation builder with typewriter and handwriting effects. Developed by Real Estate Intelligence Agency (REIA).
- * Version: 1.5.0
+ * Version: 1.6.0
  * Author: David England
  * Author URI: https://github.com/DavidEngland
  * License: MIT

@@ -5,7 +5,7 @@
   - Fountain Pen Writing with enhanced shadows
   - Calligraphy Writing with letter-spacing animation
   - Handwriting Reveal with blur-to-sharp transition
-  - Ink Drip with realistic ink flowds.io/badge/version-1.5.0-blue.svg)](https://github.com/DavidEngland/css-animation-builder)
+  - Ink Drip with realistic ink flowds.io/badge/version-1.6.0-blue.svg)](https://github.com/DavidEngland/css-animation-builder)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Build Status](https://github.com/DavidEngland/css-animation-builder/workflows/CI/badge.svg)](https://github.com/DavidEngland/css-animation-builder/actions)
 
