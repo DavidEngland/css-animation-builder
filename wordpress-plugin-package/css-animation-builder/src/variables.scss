@@ -1,0 +1,447 @@
+/* CSS Animation Builder - SCSS Variables System */
+/* Version: 1.2.0 */
+
+// Color Palette
+$primary-colors: (
+  primary: #007cba,
+  primary-dark: #005a8b,
+  primary-light: #e3f2fd,
+  primary-hover: #0056b3
+);
+
+$secondary-colors: (
+  secondary: #6c757d,
+  secondary-dark: #5a6268,
+  secondary-light: #f8f9fa
+);
+
+$text-colors: (
+  text-primary: #333,
+  text-secondary: #666,
+  text-muted: #999,
+  text-light: #ccc,
+  text-dark: #2c3e50,
+  text-inverse: #fff
+);
+
+$background-colors: (
+  bg-primary: #fff,
+  bg-secondary: #f8f9fa,
+  bg-tertiary: #e9ecef,
+  bg-dark: #2d3748,
+  bg-light: #f5f5f5,
+  bg-code: #f8f9fa,
+  bg-preview: #e9ecef
+);
+
+$border-colors: (
+  border-primary: #ddd,
+  border-secondary: #dee2e6,
+  border-tertiary: #ced4da,
+  border-focus: map-get($primary-colors, primary)
+);
+
+$animation-colors: (
+  animation-primary: map-get($primary-colors, primary),
+  animation-secondary: #667eea,
+  animation-tertiary: #8B4513,
+  animation-error: #ff6b6b,
+  animation-success: #28a745,
+  animation-warning: #ffc107
+);
+
+$handwriting-colors: (
+  handwriting-primary: #8B4513,
+  handwriting-secondary: #654321,
+  handwriting-background: #f9f2e7
+);
+
+$typewriter-colors: (
+  typewriter-primary: map-get($primary-colors, primary),
+  typewriter-secondary: #495057,
+  typewriter-cursor: currentColor
+);
+
+// Spacing System
+$spacing: (
+  xs: 4px,
+  sm: 8px,
+  md: 16px,
+  lg: 24px,
+  xl: 32px,
+  xxl: 48px
+);
+
+$padding: (
+  xs: 4px,
+  sm: 8px,
+  md: 12px,
+  lg: 16px,
+  xl: 20px,
+  xxl: 24px
+);
+
+$margins: (
+  xs: 4px,
+  sm: 8px,
+  md: 12px,
+  lg: 16px,
+  xl: 20px,
+  xxl: 24px
+);
+
+// Border Radius
+$radius: (
+  xs: 2px,
+  sm: 4px,
+  md: 6px,
+  lg: 8px,
+  xl: 12px,
+  xxl: 16px,
+  round: 50%
+);
+
+// Border Widths
+$border-widths: (
+  thin: 1px,
+  medium: 2px,
+  thick: 3px,
+  extra-thick: 4px
+);
+
+// Typography
+$font-sizes: (
+  xs: 0.75rem,
+  sm: 0.875rem,
+  md: 1rem,
+  lg: 1.125rem,
+  xl: 1.25rem,
+  xxl: 1.5rem,
+  xxxl: 2rem
+);
+
+$font-weights: (
+  light: 300,
+  normal: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700
+);
+
+$line-heights: (
+  tight: 1.2,
+  normal: 1.4,
+  relaxed: 1.6,
+  loose: 1.8
+);
+
+// Shadows
+$shadows: (
+  sm: 0 1px 2px rgba(0, 0, 0, 0.1),
+  md: 0 4px 6px rgba(0, 0, 0, 0.1),
+  lg: 0 10px 15px rgba(0, 0, 0, 0.1),
+  xl: 0 20px 25px rgba(0, 0, 0, 0.1),
+  inset: inset 0 2px 4px rgba(0, 0, 0, 0.1)
+);
+
+// Z-Index
+$z-index: (
+  dropdown: 1000,
+  modal: 1050,
+  tooltip: 1100,
+  popover: 1200
+);
+
+// Transitions
+$transitions: (
+  fast: 0.15s ease,
+  normal: 0.3s ease,
+  slow: 0.5s ease,
+  bounce: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55)
+);
+
+// Animation Durations
+$durations: (
+  instant: 0s,
+  fast: 0.2s,
+  normal: 0.5s,
+  slow: 1s,
+  very-slow: 2s
+);
+
+// Animation Easing
+$easing: (
+  linear: linear,
+  ease: ease,
+  ease-in: ease-in,
+  ease-out: ease-out,
+  ease-in-out: ease-in-out,
+  bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55)
+);
+
+// Component Dimensions
+$component-heights: (
+  sm: 32px,
+  md: 40px,
+  lg: 48px,
+  xl: 56px
+);
+
+// Layout Dimensions
+$layout-min-heights: (
+  sm: 60px,
+  md: 100px,
+  lg: 120px,
+  xl: 150px,
+  xxl: 200px
+);
+
+// Element Dimensions
+$element-dimensions: (
+  height-divider: 3px,
+  width-full: 100%,
+  width-80: 80%,
+  width-60: 60%,
+  width-40: 40%,
+  width-20: 20%
+);
+
+// Keyframe Percentages
+$keyframes: (
+  start: 0%,
+  quarter: 25%,
+  half: 50%,
+  three-quarter: 75%,
+  end: 100%
+);
+
+// Transform Values
+$transform-scales: (
+  xs: 0.3,
+  sm: 0.8,
+  md: 1,
+  lg: 1.05,
+  xl: 1.1
+);
+
+$transform-translates: (
+  xs: 5px,
+  sm: 10px,
+  md: 20px,
+  lg: 50px,
+  xl: 100px
+);
+
+$transform-rotates: (
+  xs: 1deg,
+  sm: 5deg,
+  md: 10deg,
+  lg: 15deg,
+  xl: 45deg,
+  full: 360deg
+);
+
+// Opacity Values
+$opacity: (
+  transparent: 0,
+  low: 0.3,
+  medium: 0.6,
+  high: 0.8,
+  opaque: 1
+);
+
+// Stroke Dash Values
+$stroke-dash: (
+  sm: 100,
+  md: 250,
+  lg: 500,
+  xl: 1000,
+  xxl: 2000
+);
+
+// Utility Functions
+@function get-color($color-map, $key) {
+  @return map-get($color-map, $key);
+}
+
+@function get-spacing($size) {
+  @return map-get($spacing, $size);
+}
+
+@function get-radius($size) {
+  @return map-get($radius, $size);
+}
+
+@function get-shadow($size) {
+  @return map-get($shadows, $size);
+}
+
+// Mixins
+@mixin button-style($bg-color, $text-color, $border-color) {
+  background: $bg-color;
+  color: $text-color;
+  border: map-get($border-widths, medium) solid $border-color;
+  border-radius: get-radius(md);
+  padding: map-get($padding, md) map-get($padding, lg);
+  transition: map-get($transitions, normal);
+  
+  &:hover {
+    background: darken($bg-color, 10%);
+    border-color: darken($border-color, 10%);
+  }
+}
+
+@mixin form-control() {
+  background: get-color($background-colors, bg-primary);
+  border: map-get($border-widths, medium) solid get-color($border-colors, border-primary);
+  border-radius: get-radius(md);
+  padding: map-get($padding, md);
+  color: get-color($text-colors, text-primary);
+  transition: map-get($transitions, normal);
+  
+  &:focus {
+    border-color: get-color($border-colors, border-focus);
+    background: get-color($primary-colors, primary-light);
+  }
+}
+
+@mixin preview-area() {
+  background: get-color($background-colors, bg-secondary);
+  border: map-get($border-widths, medium) solid get-color($border-colors, border-primary);
+  border-radius: get-radius(md);
+  min-height: map-get($layout-min-heights, xxl);
+  padding: map-get($padding, lg);
+}
+
+@mixin code-output() {
+  background: get-color($background-colors, bg-code);
+  border: map-get($border-widths, thin) solid get-color($border-colors, border-secondary);
+  border-radius: get-radius(md);
+  padding: map-get($padding, md);
+  color: get-color($text-colors, text-primary);
+  font-family: 'Courier New', monospace;
+}
+
+// CSS Custom Properties Export
+:root {
+  // Export all SCSS variables as CSS custom properties
+  @each $name, $value in $primary-colors {
+    --#{$name}: #{$value};
+  }
+  
+  @each $name, $value in $secondary-colors {
+    --#{$name}: #{$value};
+  }
+  
+  @each $name, $value in $text-colors {
+    --#{$name}: #{$value};
+  }
+  
+  @each $name, $value in $background-colors {
+    --#{$name}: #{$value};
+  }
+  
+  @each $name, $value in $border-colors {
+    --#{$name}: #{$value};
+  }
+  
+  @each $name, $value in $animation-colors {
+    --#{$name}: #{$value};
+  }
+  
+  @each $name, $value in $handwriting-colors {
+    --#{$name}: #{$value};
+  }
+  
+  @each $name, $value in $typewriter-colors {
+    --#{$name}: #{$value};
+  }
+  
+  @each $name, $value in $spacing {
+    --spacing-#{$name}: #{$value};
+  }
+  
+  @each $name, $value in $padding {
+    --padding-#{$name}: #{$value};
+  }
+  
+  @each $name, $value in $margins {
+    --margin-#{$name}: #{$value};
+  }
+  
+  @each $name, $value in $radius {
+    --radius-#{$name}: #{$value};
+  }
+  
+  @each $name, $value in $border-widths {
+    --border-width-#{$name}: #{$value};
+  }
+  
+  @each $name, $value in $font-sizes {
+    --font-size-#{$name}: #{$value};
+  }
+  
+  @each $name, $value in $font-weights {
+    --font-weight-#{$name}: #{$value};
+  }
+  
+  @each $name, $value in $line-heights {
+    --line-height-#{$name}: #{$value};
+  }
+  
+  @each $name, $value in $shadows {
+    --shadow-#{$name}: #{$value};
+  }
+  
+  @each $name, $value in $z-index {
+    --z-index-#{$name}: #{$value};
+  }
+  
+  @each $name, $value in $transitions {
+    --transition-#{$name}: #{$value};
+  }
+  
+  @each $name, $value in $durations {
+    --duration-#{$name}: #{$value};
+  }
+  
+  @each $name, $value in $easing {
+    --easing-#{$name}: #{$value};
+  }
+  
+  @each $name, $value in $component-heights {
+    --component-height-#{$name}: #{$value};
+  }
+  
+  @each $name, $value in $layout-min-heights {
+    --layout-min-height-#{$name}: #{$value};
+  }
+  
+  @each $name, $value in $element-dimensions {
+    --element-#{$name}: #{$value};
+  }
+  
+  @each $name, $value in $keyframes {
+    --keyframe-#{$name}: #{$value};
+  }
+  
+  @each $name, $value in $transform-scales {
+    --transform-scale-#{$name}: #{$value};
+  }
+  
+  @each $name, $value in $transform-translates {
+    --transform-translate-#{$name}: #{$value};
+  }
+  
+  @each $name, $value in $transform-rotates {
+    --transform-rotate-#{$name}: #{$value};
+  }
+  
+  @each $name, $value in $opacity {
+    --opacity-#{$name}: #{$value};
+  }
+  
+  @each $name, $value in $stroke-dash {
+    --stroke-dash-#{$name}: #{$value};
+  }
+}

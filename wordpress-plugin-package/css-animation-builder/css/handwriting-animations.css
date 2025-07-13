@@ -1,0 +1,139 @@
+/* Clean Handwriting Animations with Typewriter Effect */
+
+/* Base handwriting styles */
+.handwriting-quill,
+.handwriting-fountain,
+.handwriting-casual,
+.handwriting-formal,
+.handwriting-signature {
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    animation: typewriter 4s steps(40, end) forwards;
+}
+
+/* Specific font families and colors for different styles */
+.handwriting-quill {
+    font-family: 'Dancing Script', cursive;
+    color: #8B4513;
+}
+
+.handwriting-fountain {
+    font-family: 'Great Vibes', cursive;
+    color: #191970;
+}
+
+.handwriting-casual {
+    font-family: 'Caveat', cursive;
+    color: #228B22;
+}
+
+.handwriting-formal {
+    font-family: 'Tangerine', cursive;
+    color: #800080;
+    font-size: 1.2em;
+}
+
+.handwriting-signature {
+    font-family: 'Great Vibes', cursive;
+    color: #2c3e50;
+    transform: rotate(-2deg);
+}
+
+/* Typewriter animation - clean and smooth */
+@keyframes typewriter {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+/* Simple ink trail effects that appear as text is written */
+.handwriting-quill::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(139, 69, 19, 0.4), transparent);
+    border-radius: 1px;
+    animation: inkTrail 4s ease-out forwards;
+}
+
+.handwriting-fountain::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(25, 25, 112, 0.5), transparent);
+    border-radius: 1px;
+    animation: inkTrail 4s ease-out forwards;
+}
+
+.handwriting-casual::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(34, 139, 34, 0.4), transparent);
+    border-radius: 1px;
+    animation: inkTrail 4s ease-out forwards;
+}
+
+.handwriting-formal::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(128, 0, 128, 0.5), transparent);
+    border-radius: 1px;
+    animation: inkTrail 4s ease-out forwards;
+}
+
+.handwriting-signature::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, rgba(44, 62, 80, 0.4), transparent);
+    border-radius: 1px;
+    animation: inkTrail 5s ease-out forwards;
+}
+
+/* Ink trail animation */
+@keyframes inkTrail {
+    0% {
+        width: 0;
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    100% {
+        width: 100%;
+        opacity: 0.6;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .handwriting-quill,
+    .handwriting-fountain,
+    .handwriting-casual,
+    .handwriting-formal,
+    .handwriting-signature {
+        font-size: 1.5rem;
+    }
+}

@@ -5,67 +5,6 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.7.0] - 2025-07-13
-
-### Custom Release
-- Version update
-
-
-## [1.7.0] - 2025-07-13
-
-### 🚀 Major WordPress Plugin Rewrite - **WORKING VERSION!**
-
-#### ✅ **Critical Fixes**
-- **Fixed WordPress Plugin Structure**: Resolved multiple plugin header conflicts
-- **Working Animations**: Complete frontend animation system with proper JavaScript initialization
-- **Admin Interface**: Professional live preview admin panel with real-time testing
-- **Asset Loading**: Fixed conditional loading - CSS/JS only loads when shortcodes are used
-- **Mobile Compatibility**: Responsive animations with mobile optimization toggle
-
-#### 🎨 **New Features**
-- **Live Preview Admin Panel**: Real-time animation testing with interactive controls
-- **Professional WordPress Integration**: Clean plugin structure following WordPress standards
-- **5 Handwriting Styles**: Quill Pen, Fountain Pen, Casual Script, Formal Script, Signature
-- **Advanced Typewriter Effects**: Customizable cursors, speeds, and backspace effects
-- **Google Fonts Integration**: Automatic loading of handwriting fonts with performance optimization
-- **Intersection Observer**: Viewport-triggered animations for better performance
-- **Copy-to-Clipboard**: One-click shortcode copying in admin interface
-
-#### 🔧 **Technical Improvements**
-- **Single Plugin File**: `css-animation-builder-pro.php` as the main WordPress plugin
-- **Proper Asset Structure**: Organized CSS/JS files with conditional loading
-- **Security Enhancements**: Nonce verification, input sanitization, capability checks
-- **Accessibility Features**: Reduced motion support, keyboard navigation, screen reader compatibility
-- **Performance Optimizations**: Lazy loading, mobile detection, asset minification ready
-
-#### 📁 **File Structure**
-```
-css-animation-builder-pro.php      # Main plugin file
-templates/admin-page.php            # Admin interface template  
-assets/css/animations.css           # Core animation styles
-assets/css/frontend.css             # Frontend layout & utilities
-assets/css/admin.css                # Admin panel styles
-assets/js/frontend.js               # Animation logic & controls
-assets/js/admin.js                  # Admin interface functionality
-```
-
-#### 🎯 **WordPress Shortcodes**
-- `[handwriting style="quill|fountain|casual|formal|signature" text="Your text"]`
-- `[typewriter text="Your text" speed="50-150" cursor="|"]` 
-- `[css-animation-builder type="handwriting|typewriter" style="..." text="..." duration="4s"]`
-
-#### 🐛 **Bug Fixes**
-- Removed conflicting plugin headers from legacy files
-- Fixed JavaScript animation initialization
-- Resolved CSS loading issues
-- Fixed shortcode conflicts on same page
-- Corrected admin menu integration
-
-#### 📚 **Documentation**
-- **WordPress Plugin Setup Guide**: Complete installation instructions
-- **Testing Guide**: Comprehensive testing procedures
-- **Troubleshooting Guide**: Common issues and solutions
-
 ## [1.6.0] - 2025-07-13
 
 ### Minor Release

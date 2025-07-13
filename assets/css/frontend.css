@@ -1,0 +1,555 @@
+/**
+ * CSS Animation Builder Pro - Frontend Styles
+ * Version: 1.4.0
+ * 
+ * General frontend styles and layout
+ */
+
+/* ===============================
+   GENERAL ANIMATION WRAPPER
+   =============================== */
+
+.cab-animation-wrapper {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    line-height: 1.4;
+    vertical-align: baseline;
+    transition: all 0.3s ease;
+}
+
+.cab-animation-wrapper * {
+    box-sizing: border-box;
+}
+
+/* Prevent text selection during animation */
+.cab-animation-wrapper.cab-animating {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+/* Re-enable selection after animation */
+.cab-animation-wrapper.cab-finished {
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+}
+
+/* ===============================
+   LAYOUT UTILITIES
+   =============================== */
+
+.cab-text-center {
+    text-align: center;
+}
+
+.cab-text-left {
+    text-align: left;
+}
+
+.cab-text-right {
+    text-align: right;
+}
+
+.cab-block {
+    display: block;
+    width: 100%;
+}
+
+.cab-inline {
+    display: inline;
+}
+
+.cab-inline-block {
+    display: inline-block;
+}
+
+/* ===============================
+   SPACING UTILITIES
+   =============================== */
+
+.cab-margin-small {
+    margin: 10px;
+}
+
+.cab-margin-medium {
+    margin: 20px;
+}
+
+.cab-margin-large {
+    margin: 30px;
+}
+
+.cab-padding-small {
+    padding: 10px;
+}
+
+.cab-padding-medium {
+    padding: 20px;
+}
+
+.cab-padding-large {
+    padding: 30px;
+}
+
+/* ===============================
+   THEME VARIATIONS
+   =============================== */
+
+/* Dark theme */
+.cab-theme-dark {
+    background: #2c3e50;
+    color: #ecf0f1;
+    padding: 15px 20px;
+    border-radius: 8px;
+}
+
+.cab-theme-dark .cab-handwriting-text,
+.cab-theme-dark .cab-typewriter-text {
+    color: #ecf0f1;
+}
+
+.cab-theme-dark .cab-typewriter-cursor {
+    color: #bdc3c7;
+}
+
+/* Light theme */
+.cab-theme-light {
+    background: #ffffff;
+    color: #2c3e50;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Gradient theme */
+.cab-theme-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #ffffff;
+    padding: 20px 25px;
+    border-radius: 12px;
+}
+
+.cab-theme-gradient .cab-handwriting-text,
+.cab-theme-gradient .cab-typewriter-text {
+    color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+/* Paper theme */
+.cab-theme-paper {
+    background: #f7f3e9;
+    color: #2c3e50;
+    padding: 20px;
+    border: 1px solid #e8e5d8;
+    border-radius: 4px;
+    position: relative;
+}
+
+.cab-theme-paper::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #e74c3c;
+    margin-left: 20px;
+}
+
+/* Vintage theme */
+.cab-theme-vintage {
+    background: #f4f1e8;
+    color: #5d4037;
+    padding: 25px;
+    border: 3px solid #8d6e63;
+    border-radius: 0;
+    position: relative;
+}
+
+.cab-theme-vintage::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 1px solid #a1887f;
+    border-radius: 0;
+    pointer-events: none;
+}
+
+.cab-theme-vintage .cab-handwriting-text,
+.cab-theme-vintage .cab-typewriter-text {
+    color: #5d4037;
+    font-weight: 500;
+}
+
+/* ===============================
+   SIZE VARIATIONS
+   =============================== */
+
+.cab-size-small {
+    font-size: 0.8em;
+}
+
+.cab-size-normal {
+    font-size: 1em;
+}
+
+.cab-size-large {
+    font-size: 1.3em;
+}
+
+.cab-size-xlarge {
+    font-size: 1.6em;
+}
+
+.cab-size-xxlarge {
+    font-size: 2em;
+}
+
+/* ===============================
+   SPEED VARIATIONS
+   =============================== */
+
+.cab-speed-very-slow .cab-handwriting-text.cab-animate {
+    animation-duration: 8s;
+}
+
+.cab-speed-slow .cab-handwriting-text.cab-animate {
+    animation-duration: 6s;
+}
+
+.cab-speed-normal .cab-handwriting-text.cab-animate {
+    animation-duration: 4s;
+}
+
+.cab-speed-fast .cab-handwriting-text.cab-animate {
+    animation-duration: 2s;
+}
+
+.cab-speed-very-fast .cab-handwriting-text.cab-animate {
+    animation-duration: 1s;
+}
+
+/* ===============================
+   INTERACTION STATES
+   =============================== */
+
+/* Hover effects */
+.cab-animation-wrapper:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+}
+
+.cab-animation-wrapper.cab-clickable {
+    cursor: pointer;
+}
+
+.cab-animation-wrapper.cab-clickable:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.cab-animation-wrapper.cab-clickable:active {
+    transform: scale(0.98);
+}
+
+/* Focus styles for accessibility */
+.cab-animation-wrapper:focus {
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
+}
+
+/* ===============================
+   CONTAINER STYLES
+   =============================== */
+
+.cab-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.cab-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.cab-col {
+    flex: 1;
+    padding: 0 15px;
+}
+
+.cab-col-half {
+    flex: 0 0 50%;
+    padding: 0 15px;
+}
+
+.cab-col-third {
+    flex: 0 0 33.333%;
+    padding: 0 15px;
+}
+
+.cab-col-quarter {
+    flex: 0 0 25%;
+    padding: 0 15px;
+}
+
+/* ===============================
+   ANIMATION SHOWCASE
+   =============================== */
+
+.cab-showcase {
+    background: #f8f9fa;
+    padding: 40px 20px;
+    border-radius: 12px;
+    margin: 30px 0;
+    text-align: center;
+}
+
+.cab-showcase-title {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: #2c3e50;
+}
+
+.cab-showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.cab-showcase-item {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.cab-showcase-item:hover {
+    transform: translateY(-5px);
+}
+
+.cab-showcase-item h3 {
+    margin-bottom: 20px;
+    color: #34495e;
+    font-size: 1.3em;
+}
+
+/* ===============================
+   ERROR STATES
+   =============================== */
+
+.cab-error {
+    background: #fee;
+    border: 1px solid #fcc;
+    color: #c33;
+    padding: 15px;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+.cab-error::before {
+    content: '⚠️ ';
+    font-weight: bold;
+}
+
+/* ===============================
+   LOADING STATES
+   =============================== */
+
+.cab-loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.cab-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ===============================
+   RESPONSIVE BREAKPOINTS
+   =============================== */
+
+@media (max-width: 1200px) {
+    .cab-container {
+        max-width: 100%;
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .cab-row {
+        margin: 0 -10px;
+    }
+    
+    .cab-col,
+    .cab-col-half,
+    .cab-col-third,
+    .cab-col-quarter {
+        flex: 0 0 100%;
+        padding: 0 10px;
+        margin-bottom: 20px;
+    }
+    
+    .cab-showcase {
+        padding: 30px 15px;
+    }
+    
+    .cab-showcase-title {
+        font-size: 2em;
+    }
+    
+    .cab-showcase-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .cab-showcase-item {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cab-container {
+        padding: 0 10px;
+    }
+    
+    .cab-showcase {
+        padding: 20px 10px;
+    }
+    
+    .cab-showcase-title {
+        font-size: 1.6em;
+    }
+    
+    .cab-showcase-item {
+        padding: 15px;
+    }
+}
+
+/* ===============================
+   PRINT STYLES
+   =============================== */
+
+@media print {
+    .cab-animation-wrapper {
+        break-inside: avoid;
+    }
+    
+    .cab-showcase {
+        background: transparent;
+        box-shadow: none;
+    }
+    
+    .cab-loading-overlay,
+    .cab-spinner {
+        display: none !important;
+    }
+}
+
+/* ===============================
+   RTL SUPPORT
+   =============================== */
+
+[dir="rtl"] .cab-animation-wrapper {
+    direction: rtl;
+}
+
+[dir="rtl"] .cab-handwriting-text.cab-animate {
+    animation-name: handwriting-reveal-rtl;
+}
+
+@keyframes handwriting-reveal-rtl {
+    0% {
+        opacity: 0;
+        transform: translateX(10px);
+        width: 0;
+    }
+    10% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+        width: 100%;
+    }
+}
+
+/* ===============================
+   UTILITY CLASSES
+   =============================== */
+
+.cab-hidden {
+    display: none !important;
+}
+
+.cab-visible {
+    display: block !important;
+}
+
+.cab-invisible {
+    visibility: hidden;
+}
+
+.cab-transparent {
+    opacity: 0;
+}
+
+.cab-opaque {
+    opacity: 1;
+}
+
+.cab-no-animation {
+    animation: none !important;
+}
+
+.cab-no-transition {
+    transition: none !important;
+}
+
+.cab-relative {
+    position: relative;
+}
+
+.cab-absolute {
+    position: absolute;
+}
+
+.cab-fixed {
+    position: fixed;
+}
+
+.cab-clearfix::after {
+    content: '';
+    display: table;
+    clear: both;
+}

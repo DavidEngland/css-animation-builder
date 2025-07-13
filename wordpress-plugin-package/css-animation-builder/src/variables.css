@@ -1,0 +1,271 @@
+/* CSS Animation Builder - Variables System */
+/* Version: 1.2.0 */
+
+:root {
+  /* Primary Colors */
+  --primary-color: #007cba;
+  --primary-color-dark: #005a8b;
+  --primary-color-light: #e3f2fd;
+  --primary-color-hover: #0056b3;
+  
+  /* Secondary Colors */
+  --secondary-color: #6c757d;
+  --secondary-color-dark: #5a6268;
+  --secondary-color-light: #f8f9fa;
+  
+  /* Text Colors */
+  --text-primary: #333;
+  --text-secondary: #666;
+  --text-muted: #999;
+  --text-light: #ccc;
+  --text-dark: #2c3e50;
+  --text-inverse: #fff;
+  
+  /* Background Colors */
+  --bg-primary: #fff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --bg-dark: #2d3748;
+  --bg-light: #f5f5f5;
+  --bg-code: #f8f9fa;
+  --bg-preview: #e9ecef;
+  
+  /* Border Colors */
+  --border-primary: #ddd;
+  --border-secondary: #dee2e6;
+  --border-tertiary: #ced4da;
+  --border-focus: var(--primary-color);
+  
+  /* Animation Colors */
+  --animation-primary: var(--primary-color);
+  --animation-secondary: #667eea;
+  --animation-tertiary: #8B4513;
+  --animation-error: #ff6b6b;
+  --animation-success: #28a745;
+  --animation-warning: #ffc107;
+  
+  /* Handwriting Colors */
+  --handwriting-primary: #8B4513;
+  --handwriting-secondary: #654321;
+  --handwriting-background: #f9f2e7;
+  
+  /* Typewriter Colors */
+  --typewriter-primary: var(--primary-color);
+  --typewriter-secondary: #495057;
+  --typewriter-cursor: currentColor;
+  
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+  
+  /* Padding */
+  --padding-xs: 4px;
+  --padding-sm: 8px;
+  --padding-md: 12px;
+  --padding-lg: 16px;
+  --padding-xl: 20px;
+  --padding-xxl: 24px;
+  
+  /* Margins */
+  --margin-xs: 4px;
+  --margin-sm: 8px;
+  --margin-md: 12px;
+  --margin-lg: 16px;
+  --margin-xl: 20px;
+  --margin-xxl: 24px;
+  
+  /* Border Radius */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-xxl: 16px;
+  --radius-round: 50%;
+  
+  /* Border Widths */
+  --border-width-thin: 1px;
+  --border-width-medium: 2px;
+  --border-width-thick: 3px;
+  --border-width-extra-thick: 4px;
+  
+  /* Font Sizes */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-xxl: 1.5rem;
+  --font-size-xxxl: 2rem;
+  
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.4;
+  --line-height-relaxed: 1.6;
+  --line-height-loose: 1.8;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+  --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  /* Z-Index */
+  --z-index-dropdown: 1000;
+  --z-index-modal: 1050;
+  --z-index-tooltip: 1100;
+  --z-index-popover: 1200;
+  
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  --transition-bounce: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* Animation Durations */
+  --duration-instant: 0s;
+  --duration-fast: 0.2s;
+  --duration-normal: 0.5s;
+  --duration-slow: 1s;
+  --duration-very-slow: 2s;
+  
+  /* Animation Easing */
+  --easing-linear: linear;
+  --easing-ease: ease;
+  --easing-ease-in: ease-in;
+  --easing-ease-out: ease-out;
+  --easing-ease-in-out: ease-in-out;
+  --easing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* Component Dimensions */
+  --component-height-sm: 32px;
+  --component-height-md: 40px;
+  --component-height-lg: 48px;
+  --component-height-xl: 56px;
+  
+  /* Layout Dimensions */
+  --layout-min-height-sm: 60px;
+  --layout-min-height-md: 100px;
+  --layout-min-height-lg: 120px;
+  --layout-min-height-xl: 150px;
+  --layout-min-height-xxl: 200px;
+  
+  /* Element Dimensions */
+  --element-height-divider: 3px;
+  --element-width-full: 100%;
+  --element-width-80: 80%;
+  --element-width-60: 60%;
+  --element-width-40: 40%;
+  --element-width-20: 20%;
+  
+  /* Keyframe Percentages */
+  --keyframe-start: 0%;
+  --keyframe-quarter: 25%;
+  --keyframe-half: 50%;
+  --keyframe-three-quarter: 75%;
+  --keyframe-end: 100%;
+  
+  /* Transform Values */
+  --transform-scale-xs: 0.3;
+  --transform-scale-sm: 0.8;
+  --transform-scale-md: 1;
+  --transform-scale-lg: 1.05;
+  --transform-scale-xl: 1.1;
+  
+  --transform-translate-xs: 5px;
+  --transform-translate-sm: 10px;
+  --transform-translate-md: 20px;
+  --transform-translate-lg: 50px;
+  --transform-translate-xl: 100px;
+  
+  --transform-rotate-xs: 1deg;
+  --transform-rotate-sm: 5deg;
+  --transform-rotate-md: 10deg;
+  --transform-rotate-lg: 15deg;
+  --transform-rotate-xl: 45deg;
+  --transform-rotate-full: 360deg;
+  
+  /* Opacity Values */
+  --opacity-transparent: 0;
+  --opacity-low: 0.3;
+  --opacity-medium: 0.6;
+  --opacity-high: 0.8;
+  --opacity-opaque: 1;
+  
+  /* Stroke Dash Values */
+  --stroke-dash-sm: 100;
+  --stroke-dash-md: 250;
+  --stroke-dash-lg: 500;
+  --stroke-dash-xl: 1000;
+  --stroke-dash-xxl: 2000;
+}
+
+/* Button Styles Using Variables */
+.button.primary {
+    background: var(--primary-color);
+    color: var(--text-inverse);
+    border: var(--border-width-medium) solid var(--primary-color);
+    border-radius: var(--radius-md);
+    padding: var(--padding-md) var(--padding-lg);
+    transition: var(--transition-normal);
+}
+
+.button.primary:hover {
+    background: var(--primary-color-hover);
+    border-color: var(--primary-color-hover);
+}
+
+.button.secondary {
+    background: var(--secondary-color);
+    color: var(--text-inverse);
+    border: var(--border-width-medium) solid var(--secondary-color);
+    border-radius: var(--radius-md);
+    padding: var(--padding-md) var(--padding-lg);
+    transition: var(--transition-normal);
+}
+
+/* Form Styles Using Variables */
+.form-control {
+    background: var(--bg-primary);
+    border: var(--border-width-medium) solid var(--border-primary);
+    border-radius: var(--radius-md);
+    padding: var(--padding-md);
+    color: var(--text-primary);
+    transition: var(--transition-normal);
+}
+
+.form-control:focus {
+    border-color: var(--border-focus);
+    background: var(--primary-color-light);
+}
+
+/* Preview Styles Using Variables */
+.preview-area {
+    background: var(--bg-secondary);
+    border: var(--border-width-medium) solid var(--border-primary);
+    border-radius: var(--radius-md);
+    min-height: var(--layout-min-height-xxl);
+    padding: var(--padding-lg);
+}
+
+/* Code Output Styles Using Variables */
+.code-output {
+    background: var(--bg-code);
+    border: var(--border-width-thin) solid var(--border-secondary);
+    border-radius: var(--radius-md);
+    padding: var(--padding-md);
+    color: var(--text-primary);
+    font-family: 'Courier New', monospace;
+}

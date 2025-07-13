@@ -1,13 +1,18 @@
 <?php
 /**
- * CSS Animation Builder - WordPress Legacy Version
- * 
- * This is a backup/legacy version. The main plugin is css-animation-builder-pro.php
- * Do not activate this file as a WordPress plugin.
+ * Plugin Name: CSS Animation Builder
+ * Plugin URI: https://github.com/DavidEngland/css-animation-builder
+ * Description: Advanced CSS animation builder with typewriter and handwriting effects. Developed by Real Estate Intelligence Agency (REIA).
+ * Version: 1.6.0
+ * Author: David England
+ * Author URI: https://github.com/DavidEngland
+ * License: MIT
+ * Text Domain: css-animation-builder
+ * Domain Path: /languages
  * 
  * @package CSSAnimationBuilder
- * @author David England
- * @version 1.6.0 (Legacy)
+ * @author David England <DavidEngland@hotmail.com>
+ * @copyright 2025 Real Estate Intelligence Agency (REIA)
  */
 
 // Prevent direct access

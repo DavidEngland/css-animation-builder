@@ -1,0 +1,442 @@
+/**
+ * CSS Animation Builder Pro - Animation Styles
+ * Version: 1.4.0
+ * 
+ * Complete CSS animation library for handwriting and typewriter effects
+ */
+
+/* ===============================
+   HANDWRITING ANIMATIONS
+   =============================== */
+
+/* Base handwriting styles */
+.cab-handwriting-text {
+    position: relative;
+    display: inline-block;
+    opacity: 0;
+    transform: translateX(-10px);
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Handwriting reveal animation */
+.cab-handwriting-text.cab-animate {
+    animation: handwriting-reveal forwards;
+    animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+@keyframes handwriting-reveal {
+    0% {
+        opacity: 0;
+        transform: translateX(-10px);
+        width: 0;
+    }
+    10% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+        width: 100%;
+    }
+}
+
+/* Quill pen style */
+.cab-handwriting-quill .cab-handwriting-text {
+    font-family: 'Dancing Script', cursive;
+    font-weight: 600;
+    color: #2c5aa0;
+    font-size: 1.2em;
+    letter-spacing: 0.5px;
+}
+
+.cab-handwriting-quill .cab-handwriting-text.cab-animate {
+    animation-name: quill-writing;
+    position: relative;
+}
+
+.cab-handwriting-quill .cab-handwriting-text.cab-animate::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent 0%, white 20%, white 80%, transparent 100%);
+    animation: writing-mask forwards;
+    animation-duration: inherit;
+}
+
+@keyframes quill-writing {
+    0% {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes writing-mask {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Fountain pen style */
+.cab-handwriting-fountain .cab-handwriting-text {
+    font-family: 'Great Vibes', cursive;
+    color: #1a472a;
+    font-size: 1.4em;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.cab-handwriting-fountain .cab-handwriting-text.cab-animate {
+    animation-name: fountain-flow;
+}
+
+@keyframes fountain-flow {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+        filter: blur(1px);
+    }
+    50% {
+        filter: blur(0.5px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+}
+
+/* Casual script style */
+.cab-handwriting-casual .cab-handwriting-text {
+    font-family: 'Caveat', cursive;
+    color: #e67e22;
+    font-size: 1.3em;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.cab-handwriting-casual .cab-handwriting-text.cab-animate {
+    animation-name: casual-bounce;
+}
+
+@keyframes casual-bounce {
+    0% {
+        opacity: 0;
+        transform: translateY(10px) rotate(-2deg);
+    }
+    60% {
+        transform: translateY(-2px) rotate(1deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+/* Formal script style */
+.cab-handwriting-formal .cab-handwriting-text {
+    font-family: 'Tangerine', cursive;
+    color: #8e44ad;
+    font-size: 1.8em;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+}
+
+.cab-handwriting-formal .cab-handwriting-text.cab-animate {
+    animation-name: formal-elegant;
+}
+
+@keyframes formal-elegant {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px) skewX(-5deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) skewX(0deg);
+    }
+}
+
+/* Signature style */
+.cab-handwriting-signature .cab-handwriting-text {
+    font-family: 'Great Vibes', cursive;
+    color: #2c3e50;
+    font-size: 1.5em;
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: 2px;
+}
+
+.cab-handwriting-signature .cab-handwriting-text.cab-animate {
+    animation-name: signature-flourish;
+}
+
+@keyframes signature-flourish {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px) rotate(-5deg) scale(0.8);
+    }
+    70% {
+        transform: translateX(5px) rotate(2deg) scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) rotate(0deg) scale(1);
+    }
+}
+
+/* Writing cursor/pen effect */
+.cab-writing-cursor {
+    position: absolute;
+    opacity: 0.8;
+    animation: pen-movement 0.5s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 10;
+}
+
+@keyframes pen-movement {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-2px) rotate(5deg);
+    }
+}
+
+/* ===============================
+   TYPEWRITER ANIMATIONS
+   =============================== */
+
+/* Typewriter container */
+.cab-typewriter-container {
+    display: inline-block;
+    position: relative;
+}
+
+.cab-typewriter-text {
+    display: inline-block;
+    font-family: 'Courier Prime', 'Courier New', monospace;
+    font-size: 1.1em;
+    color: #2c3e50;
+    letter-spacing: 0.1em;
+}
+
+/* Typewriter cursor */
+.cab-typewriter-cursor {
+    display: inline-block;
+    margin-left: 2px;
+    animation: cursor-blink 1s infinite;
+    font-weight: bold;
+    color: #34495e;
+}
+
+.cab-typewriter-cursor.cab-finished {
+    animation: none;
+    opacity: 0;
+}
+
+@keyframes cursor-blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
+/* Different typewriter styles */
+.cab-typewriter-vintage .cab-typewriter-text {
+    font-family: 'Special Elite', 'Courier New', monospace;
+    color: #8b4513;
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
+}
+
+.cab-typewriter-modern .cab-typewriter-text {
+    font-family: 'Source Code Pro', 'Monaco', monospace;
+    color: #27ae60;
+    background: #2c3e50;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+.cab-typewriter-terminal .cab-typewriter-text {
+    font-family: 'Fira Code', 'Consolas', monospace;
+    color: #00ff00;
+    background: #000;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,255,0,0.3);
+}
+
+/* ===============================
+   LOADING AND STATE STYLES
+   =============================== */
+
+/* Loading state */
+.cab-animation-wrapper.cab-loading {
+    opacity: 0.5;
+    transform: scale(0.98);
+    transition: all 0.3s ease;
+}
+
+.cab-animation-wrapper.cab-loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+    animation: loading-shimmer 1.5s infinite;
+}
+
+@keyframes loading-shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Animating state */
+.cab-animation-wrapper.cab-animating {
+    opacity: 1;
+    transform: scale(1);
+    transition: all 0.3s ease;
+}
+
+/* Finished state */
+.cab-animation-wrapper.cab-finished {
+    opacity: 1;
+}
+
+/* ===============================
+   RESPONSIVE DESIGN
+   =============================== */
+
+@media (max-width: 768px) {
+    .cab-handwriting-text {
+        font-size: 0.9em;
+    }
+    
+    .cab-handwriting-formal .cab-handwriting-text {
+        font-size: 1.4em;
+    }
+    
+    .cab-handwriting-signature .cab-handwriting-text {
+        font-size: 1.2em;
+    }
+    
+    .cab-typewriter-text {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .cab-handwriting-text {
+        font-size: 0.8em;
+        letter-spacing: 0.2px;
+    }
+    
+    .cab-typewriter-text {
+        font-size: 0.9em;
+        letter-spacing: 0.05em;
+    }
+}
+
+/* ===============================
+   ACCESSIBILITY
+   =============================== */
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .cab-handwriting-text.cab-animate,
+    .cab-typewriter-cursor {
+        animation: none;
+    }
+    
+    .cab-handwriting-text {
+        opacity: 1;
+        transform: none;
+        width: auto;
+    }
+    
+    .cab-typewriter-cursor {
+        opacity: 1;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .cab-handwriting-text,
+    .cab-typewriter-text {
+        color: inherit;
+        text-shadow: none;
+        background: transparent;
+    }
+}
+
+/* ===============================
+   PRINT STYLES
+   =============================== */
+
+@media print {
+    .cab-animation-wrapper {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    
+    .cab-handwriting-text,
+    .cab-typewriter-text {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        width: auto !important;
+    }
+    
+    .cab-typewriter-cursor,
+    .cab-writing-cursor {
+        display: none !important;
+    }
+}
+
+/* ===============================
+   CUSTOM PROPERTIES (CSS Variables)
+   =============================== */
+
+:root {
+    --cab-primary-color: #2c5aa0;
+    --cab-secondary-color: #e67e22;
+    --cab-success-color: #27ae60;
+    --cab-text-color: #2c3e50;
+    --cab-cursor-color: #34495e;
+    --cab-animation-duration: 4s;
+    --cab-animation-delay: 0s;
+}
+
+/* Allow customization via CSS variables */
+.cab-handwriting-text {
+    color: var(--cab-primary-color, #2c5aa0);
+    animation-duration: var(--cab-animation-duration, 4s);
+    animation-delay: var(--cab-animation-delay, 0s);
+}
+
+.cab-typewriter-text {
+    color: var(--cab-text-color, #2c3e50);
+}
+
+.cab-typewriter-cursor {
+    color: var(--cab-cursor-color, #34495e);
+}

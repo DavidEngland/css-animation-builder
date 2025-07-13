@@ -1,0 +1,2 @@
+0% { opacity: var(--opacity-transparent); }
+100% { opacity: var(--opacity-opaque); }

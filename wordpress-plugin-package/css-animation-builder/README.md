@@ -1,6 +1,6 @@
 # CSS Animation Builder 🎨
 
-[![Version](https://img.shields.io/badge/version-1.7.0-blue.svg)](https://github.com/DavidEngland/css-animation-builder)
+[![Version](https://img.shields.io/badge/version-1.6.0-blue.svg)](https://github.com/DavidEngland/css-animation-builder)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Build Status](https://github.com/DavidEngland/css-animation-builder/workflows/CI/badge.svg)](https://github.com/DavidEngland/css-animation-builder/actions)
 

@@ -1,0 +1,491 @@
+/*
+CSS Animation Builder - Handwriting Animations
+Version: 1.2.0
+Author: David England <DavidEngland@hotmail.com>
+License: MIT
+
+Enhanced handwriting animations with professional fountain pen and quill effects.
+Inspired by high-quality handwriting animations found in previous projects.
+*/
+
+/* ==========================================================================
+   CSS Variables for Handwriting Effects
+   ========================================================================== */
+
+:root {
+  --handwriting-quill-color: #2c3e50;
+  --handwriting-fountain-color: #1a1a2e;
+  --handwriting-ink-color: #8b4513;
+  --handwriting-fountain-ink: linear-gradient(90deg, transparent, #2c3e50, #1a1a2e, transparent);
+  --handwriting-sheen: linear-gradient(45deg, transparent 40%, rgba(26,26,46,0.05) 50%, transparent 60%);
+  --handwriting-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --handwriting-glow: 0 0 10px rgba(74, 144, 226, 0.3);
+  --handwriting-speed-fast: 2s;
+  --handwriting-speed-normal: 3s;
+  --handwriting-speed-slow: 4s;
+}
+
+/* ==========================================================================
+   Enhanced Handwriting Base Styles
+   ========================================================================== */
+
+.handwriting-animation {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    line-height: 1.4;
+    font-family: 'Dancing Script', cursive;
+    font-weight: 600;
+    min-height: 1.2em;
+}
+
+.handwriting-animation .animated-text {
+    position: relative;
+    display: inline-block;
+}
+
+.handwriting-animation .animated-cursor {
+    display: inline-block;
+    vertical-align: baseline;
+    margin-left: 2px;
+    animation: handwritingBlink 1.5s infinite step-end;
+}
+
+@keyframes handwritingBlink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
+/* ==========================================================================
+   Professional Quill Writing Effect
+   ========================================================================== */
+
+.handwriting-quill {
+    font-family: 'Caveat', 'Dancing Script', cursive;
+    color: var(--handwriting-quill-color);
+    transform: rotate(-0.5deg);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.handwriting-quill .animated-cursor {
+    animation: quillFloat 2s ease-in-out infinite, handwritingBlink 1.5s infinite step-end;
+    transform: rotate(15deg);
+    font-size: 1.1em;
+    color: var(--handwriting-ink-color);
+}
+
+.handwriting-quill .animated-text {
+    position: relative;
+}
+
+.handwriting-quill .animated-text::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--handwriting-ink-color), transparent);
+    opacity: 0.3;
+    animation: quillInkFlow 3s ease-in-out infinite;
+}
+
+@keyframes quillFloat {
+    0%, 100% {
+        transform: rotate(15deg) translateY(0px);
+    }
+    50% {
+        transform: rotate(15deg) translateY(-2px);
+    }
+}
+
+@keyframes quillInkFlow {
+    0%, 100% {
+        opacity: 0.2;
+        transform: scaleX(0.8);
+    }
+    50% {
+        opacity: 0.4;
+        transform: scaleX(1.1);
+    }
+}
+
+/* ==========================================================================
+   Professional Fountain Pen Writing Effect
+   ========================================================================== */
+
+.handwriting-fountain {
+    font-family: 'Dancing Script', 'Tangerine', cursive;
+    color: var(--handwriting-fountain-color);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.handwriting-fountain .animated-cursor {
+    animation: fountainFloat 2.5s ease-in-out infinite, handwritingBlink 1.5s infinite step-end;
+    transform: rotate(12deg);
+    font-size: 1.2em;
+    color: var(--handwriting-fountain-color);
+}
+
+.handwriting-fountain .animated-text {
+    position: relative;
+}
+
+.handwriting-fountain .animated-text::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--handwriting-fountain-ink);
+    opacity: 0.2;
+    animation: fountainInk 2.5s ease-in-out infinite;
+    border-radius: 1px;
+}
+
+.handwriting-fountain .animated-text::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--handwriting-sheen);
+    pointer-events: none;
+    animation: fountainSheen 3s ease-in-out infinite;
+}
+
+@keyframes fountainFloat {
+    0%, 100% {
+        transform: rotate(12deg) translateY(0px) translateX(0px);
+    }
+    33% {
+        transform: rotate(12deg) translateY(-1px) translateX(0.5px);
+    }
+    66% {
+        transform: rotate(12deg) translateY(-2px) translateX(-0.5px);
+    }
+}
+
+@keyframes fountainInk {
+    0%, 100% {
+        opacity: 0.15;
+        transform: scaleX(0.9) scaleY(0.8);
+    }
+    50% {
+        opacity: 0.25;
+        transform: scaleX(1.2) scaleY(1.2);
+    }
+}
+
+@keyframes fountainSheen {
+    0%, 100% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    50% {
+        opacity: 0.1;
+        transform: translateX(100%);
+    }
+}
+
+/* ==========================================================================
+   Premium Signature Style
+   ========================================================================== */
+
+.handwriting-signature {
+    font-family: 'Great Vibes', 'Allura', cursive;
+    color: var(--handwriting-fountain-color);
+    font-size: 1.3em;
+    transform: rotate(-1deg);
+    text-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.handwriting-signature .animated-cursor {
+    animation: signatureFloat 2s ease-in-out infinite, handwritingBlink 1.8s infinite step-end;
+    transform: rotate(20deg);
+    font-size: 0.9em;
+    color: var(--handwriting-ink-color);
+}
+
+.handwriting-signature .animated-text {
+    position: relative;
+}
+
+.handwriting-signature .animated-text::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--handwriting-fountain-color), var(--handwriting-ink-color), transparent);
+    opacity: 0.25;
+    animation: signatureInk 3s ease-in-out infinite;
+    border-radius: 2px;
+}
+
+@keyframes signatureFloat {
+    0%, 100% {
+        transform: rotate(20deg) translateY(0px);
+    }
+    50% {
+        transform: rotate(20deg) translateY(-3px);
+    }
+}
+
+@keyframes signatureInk {
+    0%, 100% {
+        opacity: 0.2;
+        transform: scaleX(0.95) scaleY(0.9);
+    }
+    50% {
+        opacity: 0.3;
+        transform: scaleX(1.05) scaleY(1.1);
+    }
+}
+
+/* ==========================================================================
+   Speed Variants
+   ========================================================================== */
+
+.handwriting-speed-fast {
+    --handwriting-speed: var(--handwriting-speed-fast);
+}
+
+.handwriting-speed-normal {
+    --handwriting-speed: var(--handwriting-speed-normal);
+}
+
+.handwriting-speed-slow {
+    --handwriting-speed: var(--handwriting-speed-slow);
+}
+
+/* ==========================================================================
+   Color Variations
+   ========================================================================== */
+
+.handwriting-blue {
+    --handwriting-quill-color: #2980b9;
+    --handwriting-fountain-color: #1e3a8a;
+    --handwriting-ink-color: #3b82f6;
+}
+
+.handwriting-green {
+    --handwriting-quill-color: #27ae60;
+    --handwriting-fountain-color: #065f46;
+    --handwriting-ink-color: #10b981;
+}
+
+.handwriting-red {
+    --handwriting-quill-color: #e74c3c;
+    --handwriting-fountain-color: #991b1b;
+    --handwriting-ink-color: #ef4444;
+}
+
+.handwriting-purple {
+    --handwriting-quill-color: #8e44ad;
+    --handwriting-fountain-color: #581c87;
+    --handwriting-ink-color: #a855f7;
+}
+
+.handwriting-gold {
+    --handwriting-quill-color: #d4af37;
+    --handwriting-fountain-color: #b8860b;
+    --handwriting-ink-color: #eab308;
+}
+
+/* ==========================================================================
+   Font Variations
+   ========================================================================== */
+
+.handwriting-font-dancing {
+    font-family: 'Dancing Script', cursive;
+    font-weight: 600;
+}
+
+.handwriting-font-vibes {
+    font-family: 'Great Vibes', cursive;
+    font-weight: 400;
+}
+
+.handwriting-font-caveat {
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+}
+
+.handwriting-font-tangerine {
+    font-family: 'Tangerine', cursive;
+    font-weight: 700;
+}
+
+.handwriting-font-allura {
+    font-family: 'Allura', cursive;
+    font-weight: 400;
+}
+
+.handwriting-font-brush {
+    font-family: 'Alex Brush', cursive;
+    font-weight: 400;
+}
+
+.handwriting-font-kaushan {
+    font-family: 'Kaushan Script', cursive;
+    font-weight: 400;
+}
+
+.handwriting-font-pacifico {
+    font-family: 'Pacifico', cursive;
+    font-weight: 400;
+}
+
+/* ==========================================================================
+   Coca-Cola Style Typography
+   ========================================================================== */
+
+.handwriting-cola-style {
+    font-family: 'Kaushan Script', 'Pacifico', cursive;
+    font-weight: 400;
+    font-size: 1.5em;
+    color: #dc2626;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    letter-spacing: 0.5px;
+    transform: rotate(-2deg);
+}
+
+.handwriting-cola-style .animated-cursor {
+    color: #dc2626;
+    font-size: 0.8em;
+}
+
+.handwriting-cola-style .animated-text::after {
+    background: linear-gradient(90deg, transparent, #dc2626, #991b1b, transparent);
+    height: 2px;
+    bottom: -2px;
+}
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .handwriting-animation {
+        font-size: clamp(1rem, 4vw, 1.5rem);
+    }
+    
+    .handwriting-quill .animated-cursor,
+    .handwriting-fountain .animated-cursor,
+    .handwriting-signature .animated-cursor {
+        font-size: 1em;
+        margin-left: 1px;
+    }
+    
+    .handwriting-quill .animated-text::after {
+        height: 1px;
+        bottom: -1px;
+    }
+    
+    .handwriting-fountain .animated-text::after {
+        height: 1px;
+        bottom: -2px;
+    }
+    
+    .handwriting-signature .animated-text::after {
+        height: 1px;
+        bottom: -3px;
+    }
+}
+
+/* ==========================================================================
+   Accessibility
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .handwriting-animation *,
+    .handwriting-animation *::before,
+    .handwriting-animation *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .handwriting-quill .animated-cursor,
+    .handwriting-fountain .animated-cursor,
+    .handwriting-signature .animated-cursor {
+        animation: handwritingBlink 1s infinite step-end !important;
+        transform: none !important;
+    }
+}
+
+/* ==========================================================================
+   Dark Mode Support
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --handwriting-quill-color: #e8eaed;
+        --handwriting-fountain-color: #f0f0f0;
+        --handwriting-ink-color: #cd853f;
+        --handwriting-fountain-ink: linear-gradient(90deg, transparent, #e8eaed, #f0f0f0, transparent);
+        --handwriting-sheen: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.1) 50%, transparent 60%);
+        --handwriting-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+        --handwriting-glow: 0 0 10px rgba(138, 180, 248, 0.3);
+    }
+    
+    .handwriting-cola-style {
+        color: #ff6b6b;
+    }
+    
+    .handwriting-cola-style .animated-cursor {
+        color: #ff6b6b;
+    }
+    
+    .handwriting-cola-style .animated-text::after {
+        background: linear-gradient(90deg, transparent, #ff6b6b, #ff5252, transparent);
+    }
+}
+
+/* ==========================================================================
+   WordPress Integration
+   ========================================================================== */
+
+.wp-block-shortcode .handwriting-animation {
+    display: inline-block;
+    margin: 0.5rem 0;
+}
+
+.elementor-widget .handwriting-animation {
+    width: auto;
+    max-width: 100%;
+}
+
+/* ==========================================================================
+   Additional Utility Classes
+   ========================================================================== */
+
+.handwriting-center {
+    text-align: center;
+}
+
+.handwriting-large {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.handwriting-small {
+    font-size: clamp(0.875rem, 2.5vw, 1.25rem);
+}
+
+.handwriting-glow {
+    text-shadow: 0 0 10px currentColor;
+}
+
+.handwriting-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}

@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Animation Builder - dangleFall Animations Demo</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+                <div class="demo-item autumn-theme">
+                <h3>🍁 Maple Leaf Fall</h3>
+                        <div class="demo-item            <div class="demo-item">
+                <h3>🌀 Spiral Descent</h3>
+                <p>Spectacular spiral descent with scaling and full rotation</p>
+                <div class="animation-demo" onclick="animateElement(this, 'dangleFallSpiral')">🌀</div>
+                <div class="specs">er-theme">
+                <h3>🌻 Sunflower Petal</h3>
+                <p>Bold sunflower petal with bright colors and steady rotation</p>
+                <div class="animation-demo" onclick="animateElement(this, 'sunflowerPetal')" style="color: #ffa500;">🌻</div>
+                <div class="specs">p>Realistic autumn maple leaf with wind drift and natural rotation</p>
+                <div class="animation-demo" onclick="animateElement(this, 'mapleLeafFall')" style="color: #dc143c;">🍁</div>
+                <div class="specs">   margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            margin: 10px 0 0 0;
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 40px;
+        }
+        
+        .demo-item {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 300px;
+            border: 2px solid #e9ecef;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .demo-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .demo-item h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .demo-item p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .animation-demo {
+            font-size: 2em;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .animation-demo:hover {
+            color: #ff5252;
+        }
+        
+        .button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        
+        .specs {
+            background: #e3f2fd;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 0.9em;
+        }
+        
+        .specs strong {
+            color: #1976d2;
+        }
+        
+        /* dangleFall Animations */
+        @keyframes dangleFall {
+            0% {
+                transform: rotate3d(0, 0, 1, 0deg) translateY(0);
+                opacity: 1;
+                animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+            15% {
+                transform: rotate3d(0, 0, 1, 25deg) translateY(50px);
+                animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            }
+            30% {
+                transform: rotate3d(0, 0, 1, -15deg) translateY(150px);
+                animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+            45% {
+                transform: rotate3d(0, 0, 1, 35deg) translateY(280px);
+                animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            }
+            60% {
+                transform: rotate3d(0, 0, 1, -25deg) translateY(420px);
+                animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+            75% {
+                transform: rotate3d(0, 0, 1, 20deg) translateY(570px);
+                opacity: 0.7;
+                animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            }
+            90% {
+                transform: rotate3d(0, 0, 1, -10deg) translateY(680px);
+                opacity: 0.3;
+                animation-timing-function: ease-out;
+            }
+            to {
+                transform: rotate3d(0, 0, 1, 5deg) translateY(750px);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes dangleFallSideways {
+            0% {
+                transform: rotate3d(0, 0, 1, 0deg) translate(0, 0);
+                opacity: 1;
+                animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+            20% {
+                transform: rotate3d(0, 0, 1, 45deg) translate(30px, 100px);
+                animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            }
+            40% {
+                transform: rotate3d(0, 0, 1, -30deg) translate(-20px, 250px);
+                animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+            60% {
+                transform: rotate3d(0, 0, 1, 60deg) translate(50px, 400px);
+                animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            }
+            80% {
+                transform: rotate3d(0, 0, 1, -40deg) translate(-30px, 600px);
+                opacity: 0.5;
+                animation-timing-function: ease-out;
+            }
+            to {
+                transform: rotate3d(0, 0, 1, 20deg) translate(10px, 750px);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes dangleFallSpiral {
+            0% {
+                transform: rotate3d(0, 0, 1, 0deg) translate(0, 0) scale(1);
+                opacity: 1;
+                animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+            25% {
+                transform: rotate3d(0, 0, 1, 90deg) translate(40px, 150px) scale(0.9);
+                animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            }
+            50% {
+                transform: rotate3d(0, 0, 1, 180deg) translate(0, 350px) scale(0.8);
+                animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+            75% {
+                transform: rotate3d(0, 0, 1, 270deg) translate(-40px, 550px) scale(0.6);
+                opacity: 0.6;
+                animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            }
+            to {
+                transform: rotate3d(0, 0, 1, 360deg) translate(0, 750px) scale(0.3);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes leafFloat {
+            0% {
+                transform: rotate3d(0, 0, 1, 0deg) translateY(0);
+                opacity: 1;
+                animation-timing-function: ease-in-out;
+            }
+            25% {
+                transform: rotate3d(0, 0, 1, 15deg) translateY(80px) translateX(20px);
+                animation-timing-function: ease-in-out;
+            }
+            50% {
+                transform: rotate3d(0, 0, 1, -10deg) translateY(180px) translateX(-15px);
+                animation-timing-function: ease-in-out;
+            }
+            75% {
+                transform: rotate3d(0, 0, 1, 20deg) translateY(300px) translateX(25px);
+                opacity: 0.8;
+                animation-timing-function: ease-in-out;
+            }
+            to {
+                transform: rotate3d(0, 0, 1, -5deg) translateY(400px) translateX(-10px);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes cascadeFall {
+            0% {
+                transform: rotate3d(0, 0, 1, 0deg) translateY(-50px);
+                opacity: 0;
+                animation-timing-function: ease-out;
+            }
+            10% {
+                opacity: 1;
+                animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+            30% {
+                transform: rotate3d(0, 0, 1, 30deg) translateY(150px);
+                animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            }
+            60% {
+                transform: rotate3d(0, 0, 1, -20deg) translateY(400px);
+                animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+            85% {
+                transform: rotate3d(0, 0, 1, 15deg) translateY(650px);
+                opacity: 0.4;
+                animation-timing-function: ease-out;
+            }
+            to {
+                transform: rotate3d(0, 0, 1, -5deg) translateY(750px);
+                opacity: 0;
+            }
+        }
+        
+        /* Seasonal Animation Suite */
+        
+        /* Autumn Collection */
+        @keyframes mapleLeafFall {
+            0% {
+                transform: translateY(-100px) rotate(0deg) scale(1);
+                opacity: 1;
+            }
+            25% {
+                transform: translateY(20vh) rotate(90deg) translateX(15px) scale(0.95);
+                opacity: 0.9;
+            }
+            50% {
+                transform: translateY(45vh) rotate(180deg) translateX(-10px) scale(0.9);
+                opacity: 0.8;
+            }
+            75% {
+                transform: translateY(70vh) rotate(270deg) translateX(20px) scale(0.85);
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg) translateX(-5px) scale(0.8);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes acornDrop {
+            0% {
+                transform: translateY(-50px) rotate(0deg);
+                opacity: 1;
+            }
+            20% {
+                transform: translateY(15vh) rotate(15deg);
+                opacity: 1;
+            }
+            40% {
+                transform: translateY(35vh) rotate(30deg);
+                opacity: 1;
+            }
+            60% {
+                transform: translateY(55vh) rotate(45deg);
+                opacity: 1;
+            }
+            80% {
+                transform: translateY(75vh) rotate(60deg);
+                opacity: 0.8;
+            }
+            90% {
+                transform: translateY(85vh) rotate(70deg);
+                opacity: 0.6;
+            }
+            95% {
+                transform: translateY(90vh) rotate(75deg);
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(95vh) rotate(80deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Winter Collection */
+        @keyframes snowflakeDrift {
+            0% {
+                transform: translateY(-100px) translateX(0) rotate(0deg);
+                opacity: 1;
+            }
+            25% {
+                transform: translateY(25vh) translateX(30px) rotate(90deg);
+                opacity: 0.9;
+            }
+            50% {
+                transform: translateY(50vh) translateX(-20px) rotate(180deg);
+                opacity: 0.8;
+            }
+            75% {
+                transform: translateY(75vh) translateX(40px) rotate(270deg);
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(100vh) translateX(-10px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes iceCrystalFall {
+            0% {
+                transform: translateY(-80px) rotate(0deg) scale(1);
+                opacity: 1;
+                filter: brightness(1.2);
+            }
+            30% {
+                transform: translateY(30vh) rotate(60deg) scale(0.98);
+                opacity: 0.9;
+                filter: brightness(1.1);
+            }
+            60% {
+                transform: translateY(65vh) rotate(120deg) scale(0.95);
+                opacity: 0.7;
+                filter: brightness(1);
+            }
+            100% {
+                transform: translateY(100vh) rotate(180deg) scale(0.9);
+                opacity: 0;
+                filter: brightness(0.8);
+            }
+        }
+        
+        /* Spring Collection */
+        @keyframes cherryBlossomFloat {
+            0% {
+                transform: translateY(-50px) translateX(0) rotate(0deg);
+                opacity: 1;
+            }
+            30% {
+                transform: translateY(30vh) translateX(25px) rotate(45deg);
+                opacity: 0.9;
+            }
+            60% {
+                transform: translateY(60vh) translateX(-15px) rotate(90deg);
+                opacity: 0.7;
+            }
+            90% {
+                transform: translateY(90vh) translateX(10px) rotate(135deg);
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(100vh) translateX(-5px) rotate(180deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes butterflyFlutter {
+            0% {
+                transform: translateY(-30px) translateX(0) scale(1);
+                opacity: 1;
+            }
+            20% {
+                transform: translateY(15vh) translateX(40px) scale(1.05);
+                opacity: 1;
+            }
+            40% {
+                transform: translateY(25vh) translateX(-30px) scale(0.95);
+                opacity: 0.9;
+            }
+            60% {
+                transform: translateY(45vh) translateX(50px) scale(1.1);
+                opacity: 0.8;
+            }
+            80% {
+                transform: translateY(70vh) translateX(-20px) scale(0.9);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(100vh) translateX(10px) scale(0.8);
+                opacity: 0;
+            }
+        }
+        
+        /* Summer Collection */
+        @keyframes fireflyGlow {
+            0% {
+                transform: translateY(-20px) translateX(0) scale(1);
+                opacity: 1;
+                filter: brightness(1.5) blur(0px);
+            }
+            25% {
+                transform: translateY(20vh) translateX(60px) scale(1.2);
+                opacity: 0.8;
+                filter: brightness(2) blur(1px);
+            }
+            50% {
+                transform: translateY(40vh) translateX(-40px) scale(0.9);
+                opacity: 1;
+                filter: brightness(1.8) blur(0.5px);
+            }
+            75% {
+                transform: translateY(65vh) translateX(30px) scale(1.1);
+                opacity: 0.6;
+                filter: brightness(2.2) blur(1px);
+            }
+            100% {
+                transform: translateY(90vh) translateX(-10px) scale(0.7);
+                opacity: 0;
+                filter: brightness(1) blur(2px);
+            }
+        }
+        
+        @keyframes sunflowerPetal {
+            0% {
+                transform: translateY(-60px) rotate(0deg) scale(1);
+                opacity: 1;
+            }
+            40% {
+                transform: translateY(40vh) rotate(120deg) scale(0.95);
+                opacity: 0.9;
+            }
+            70% {
+                transform: translateY(70vh) rotate(240deg) scale(0.9);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg) scale(0.85);
+                opacity: 0;
+            }
+        }
+        
+        /* Animation Classes */
+        .animate-dangleFall {
+            animation: dangleFall 4s ease-in;
+        }
+        
+        .animate-dangleFallSideways {
+            animation: dangleFallSideways 5s ease-in;
+        }
+        
+        .animate-dangleFallSpiral {
+            animation: dangleFallSpiral 6s ease-in;
+        }
+        
+        .animate-leafFloat {
+            animation: leafFloat 3s ease-in-out;
+        }
+        
+        .animate-cascadeFall {
+            animation: cascadeFall 4s ease-in;
+        }
+        
+        /* Animation Classes for Seasonal Effects */
+        .animate-mapleLeafFall {
+            animation: mapleLeafFall 4s ease-in-out;
+        }
+        
+        .animate-acornDrop {
+            animation: acornDrop 3s ease-in;
+        }
+        
+        .animate-snowflakeDrift {
+            animation: snowflakeDrift 5s linear;
+        }
+        
+        .animate-iceCrystalFall {
+            animation: iceCrystalFall 3.5s ease-in;
+        }
+        
+        .animate-cherryBlossomFloat {
+            animation: cherryBlossomFloat 4.5s ease-out;
+        }
+        
+        .animate-butterflyFlutter {
+            animation: butterflyFlutter 6s ease-in-out;
+        }
+        
+        .animate-fireflyGlow {
+            animation: fireflyGlow 5s ease-in-out;
+        }
+        
+        .animate-sunflowerPetal {
+            animation: sunflowerPetal 3.5s ease-in;
+        }
+        
+        .footer {
+            background: #333;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            color: #764ba2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🍂 Seasonal dangleFall Animations</h1>
+            <p>Enhanced physics-based animations for all seasons - now integrated into CSS Animation Builder</p>
+        </div>
+        
+        <div class="demo-grid">
+            <!-- Autumn Collection -->
+            <div class="demo-item autumn-theme">
+                <h3>🍁 Maple Leaf Fall</h3>
+                <p>Realistic autumn maple leaf with wind drift and natural rotation</p>
+                <div class="animation-demo" onclick="animateElement(this, 'mapleLeafFall')" style="color: #dc143c;">�</div>
+                <div class="specs">
+                    <strong>Duration:</strong> 4s<br>
+                    <strong>Timing:</strong> ease-in-out<br>
+                    <strong>Physics:</strong> Wind drift + rotation + scaling
+                </div>
+                <button class="button" onclick="animateElement(this.previousElementSibling.previousElementSibling.querySelector('.animation-demo'), 'mapleLeafFall')">
+                    Trigger Animation
+                </button>
+            </div>
+            
+            <div class="demo-item autumn-theme">
+                <h3>🌰 Acorn Drop</h3>
+                <p>Heavy acorn with realistic bounce physics and settling effect</p>
+                <div class="animation-demo" onclick="animateElement(this, 'acornDrop')" style="color: #8b4513;">🌰</div>
+                <div class="specs">
+                    <strong>Duration:</strong> 2.5s<br>
+                    <strong>Timing:</strong> cubic-bezier bounce<br>
+                    <strong>Physics:</strong> Gravity + bounce + settle
+                </div>
+                <button class="button" onclick="animateElement(this.previousElementSibling.previousElementSibling.querySelector('.animation-demo'), 'acornDrop')">
+                    Trigger Animation
+                </button>
+            </div>
+            
+            <!-- Winter Collection -->
+            <div class="demo-item winter-theme">
+                <h3>❄️ Snowflake Drift</h3>
+                <p>Delicate snowflake with gentle horizontal drift and rotation</p>
+                <div class="animation-demo" onclick="animateElement(this, 'snowflakeDrift')" style="color: #87ceeb;">❄️</div>
+                <div class="specs">
+                    <strong>Duration:</strong> 5s<br>
+                    <strong>Timing:</strong> linear<br>
+                    <strong>Physics:</strong> Gentle drift + rotation
+                </div>
+                <button class="button" onclick="animateElement(this.previousElementSibling.previousElementSibling.querySelector('.animation-demo'), 'snowflakeDrift')">
+                    Trigger Animation
+                </button>
+            </div>
+            
+            <div class="demo-item winter-theme">
+                <h3>🧊 Ice Crystal Fall</h3>
+                <p>Sharp ice crystal with prismatic light effects and geometric rotation</p>
+                <div class="animation-demo" onclick="animateElement(this, 'iceCrystalFall')" style="color: #b0e0e6;">🧊</div>
+                <div class="specs">
+                    <strong>Duration:</strong> 3.5s<br>
+                    <strong>Timing:</strong> ease-in<br>
+                    <strong>Physics:</strong> Brightness filter + geometric rotation
+                </div>
+                <button class="button" onclick="animateElement(this.previousElementSibling.previousElementSibling.querySelector('.animation-demo'), 'iceCrystalFall')">
+                    Trigger Animation
+                </button>
+            </div>
+            
+            <!-- Spring Collection -->
+            <div class="demo-item spring-theme">
+                <h3>🌸 Cherry Blossom Float</h3>
+                <p>Gentle cherry blossom petal with soft floating motion and fade</p>
+                <div class="animation-demo" onclick="animateElement(this, 'cherryBlossomFloat')" style="color: #ffb6c1;">🌸</div>
+                <div class="specs">
+                    <strong>Duration:</strong> 4.5s<br>
+                    <strong>Timing:</strong> ease-out<br>
+                    <strong>Physics:</strong> Gentle float + fade-out
+                </div>
+                <button class="button" onclick="animateElement(this.previousElementSibling.previousElementSibling.querySelector('.animation-demo'), 'cherryBlossomFloat')">
+                    Trigger Animation
+                </button>
+            </div>
+            
+            <div class="demo-item spring-theme">
+                <h3>🦋 Butterfly Flutter</h3>
+                <p>Graceful butterfly with irregular flight pattern and wing scaling</p>
+                <div class="animation-demo" onclick="animateElement(this, 'butterflyFlutter')" style="color: #32cd32;">🦋</div>
+                <div class="specs">
+                    <strong>Duration:</strong> 6s<br>
+                    <strong>Timing:</strong> ease-in-out<br>
+                    <strong>Physics:</strong> Irregular flight + wing flutter
+                </div>
+                <button class="button" onclick="animateElement(this.previousElementSibling.previousElementSibling.querySelector('.animation-demo'), 'butterflyFlutter')">
+                    Trigger Animation
+                </button>
+            </div>
+            
+            <!-- Summer Collection -->
+            <div class="demo-item summer-theme">
+                <h3>🦗 Firefly Glow</h3>
+                <p>Magical firefly with pulsing glow effect and organic movement</p>
+                <div class="animation-demo" onclick="animateElement(this, 'fireflyGlow')" style="color: #ffd700;">🦗</div>
+                <div class="specs">
+                    <strong>Duration:</strong> 5s<br>
+                    <strong>Timing:</strong> ease-in-out<br>
+                    <strong>Physics:</strong> Brightness glow + blur + organic path
+                </div>
+                <button class="button" onclick="animateElement(this.previousElementSibling.previousElementSibling.querySelector('.animation-demo'), 'fireflyGlow')">
+                    Trigger Animation
+                </button>
+            </div>
+            
+            <div class="demo-item summer-theme">
+                <h3>🌻 Sunflower Petal</h3>
+                <p>Bold sunflower petal with bright colors and steady rotation</p>
+                <div class="animation-demo" onclick="animateElement(this, 'sunflowerPetal')" style="color: #ffa500;">�</div>
+                <div class="specs">
+                    <strong>Duration:</strong> 3.5s<br>
+                    <strong>Timing:</strong> ease-in<br>
+                    <strong>Physics:</strong> Full rotation + scaling
+                </div>
+                <button class="button" onclick="animateElement(this.previousElementSibling.previousElementSibling.querySelector('.animation-demo'), 'sunflowerPetal')">
+                    Trigger Animation
+                </button>
+            </div>
+            
+            <!-- Original dangleFall Collection -->
+            <div class="demo-item">
+                <h3>🍂 Classic Dangle Fall</h3>
+                <p>Original realistic falling motion with natural physics and rotation</p>
+                <div class="animation-demo" onclick="animateElement(this, 'dangleFall')">🍂</div>
+                <div class="specs">
+                    <strong>Duration:</strong> 4s<br>
+                    <strong>Timing:</strong> ease-in<br>
+                    <strong>Physics:</strong> Realistic rotation + translation
+                </div>
+                <button class="button" onclick="animateElement(this.previousElementSibling.previousElementSibling.querySelector('.animation-demo'), 'dangleFall')">
+                    Trigger Animation
+                </button>
+            </div>
+            
+            <div class="demo-item">
+                <h3>🌀 Spiral Descent</h3>
+                <p>Spectacular spiral descent with scaling and full rotation</p>
+                <div class="animation-demo" onclick="animateElement(this, 'dangleFallSpiral')">�</div>
+                <div class="specs">
+                    <strong>Duration:</strong> 6s<br>
+                    <strong>Timing:</strong> ease-in<br>
+                    <strong>Physics:</strong> Full rotation + scaling
+                </div>
+                <button class="button" onclick="animateElement(this.previousElementSibling.previousElementSibling.querySelector('.animation-demo'), 'dangleFallSpiral')">
+                    Trigger Animation
+                </button>
+            </div>
+            
+            <div class="demo-item">
+                <h3>💧 Cascade Effect</h3>
+                <p>Cascading waterfall effect with fade-in and dramatic descent</p>
+                <div class="animation-demo" onclick="animateElement(this, 'cascadeFall')">💧</div>
+                <div class="specs">
+                    <strong>Duration:</strong> 4s<br>
+                    <strong>Timing:</strong> ease-in<br>
+                    <strong>Physics:</strong> Fade-in + cascade motion
+                </div>
+                <button class="button" onclick="animateElement(this.previousElementSibling.previousElementSibling.querySelector('.animation-demo'), 'cascadeFall')">
+                    Trigger Animation
+                </button>
+            </div>
+        </div>
+        
+        <div style="background: #f8f9fa; padding: 30px; text-align: center; border-top: 2px solid #e9ecef;">
+            <h3>🎨 Seasonal Theme Controls</h3>
+            <p>Experience the complete seasonal animation suite</p>
+            <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px;">
+                <button class="button" onclick="switchSeasonalTheme('autumn')" style="background: linear-gradient(135deg, #d2691e 0%, #cd853f 100%);">
+                    🍂 Autumn Demo
+                </button>
+                <button class="button" onclick="switchSeasonalTheme('winter')" style="background: linear-gradient(135deg, #b0e0e6 0%, #87ceeb 100%);">
+                    ❄️ Winter Demo
+                </button>
+                <button class="button" onclick="switchSeasonalTheme('spring')" style="background: linear-gradient(135deg, #98fb98 0%, #90ee90 100%);">
+                    🌸 Spring Demo
+                </button>
+                <button class="button" onclick="switchSeasonalTheme('summer')" style="background: linear-gradient(135deg, #ffd700 0%, #ffa500 100%);">
+                    🦗 Summer Demo
+                </button>
+                <button class="button" onclick="switchSeasonalTheme('default')">
+                    🌀 All Animations
+                </button>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Part of the <a href="../README.md">CSS Animation Builder v1.6.0</a> project</p>
+            <p>🍂 Enhanced with seasonal physics-based animations from Border Animations</p>
+            <p>✨ Features: <strong>11 Seasonal Animations</strong> + <strong>5 Classic DangleFall Effects</strong></p>
+            <p>📚 <a href="ANIMATION_POSSIBILITIES.md">View Complete Animation Guide</a></p>
+        </div>
+    </div>
+    
+    <script>
+        function animateElement(element, animationType) {
+            // Remove any existing animation class
+            element.className = element.className.replace(/animate-\w+/g, '');
+            
+            // Force reflow
+            element.offsetHeight;
+            
+            // Add new animation class
+            element.classList.add('animate-' + animationType);
+            
+            // Remove animation class after animation completes
+            setTimeout(() => {
+                element.classList.remove('animate-' + animationType);
+            }, getAnimationDuration(animationType) * 1000);
+        }
+        
+        function getAnimationDuration(animationType) {
+            const durations = {
+                // Original dangleFall animations
+                'dangleFall': 4,
+                'dangleFallSideways': 5,
+                'dangleFallSpiral': 6,
+                'leafFloat': 3,
+                'cascadeFall': 4,
+                // Seasonal animations
+                'mapleLeafFall': 4,
+                'acornDrop': 3,
+                'snowflakeDrift': 5,
+                'iceCrystalFall': 3.5,
+                'cherryBlossomFloat': 4.5,
+                'butterflyFlutter': 6,
+                'fireflyGlow': 5,
+                'sunflowerPetal': 3.5
+            };
+            return durations[animationType] || 4;
+        }
+        
+        // Enhanced auto-demo with seasonal showcase
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                const demos = document.querySelectorAll('.animation-demo');
+                
+                // Create a seasonal sequence
+                const seasonalSequence = [
+                    { selector: demos[0], delay: 0 },     // Maple Leaf
+                    { selector: demos[2], delay: 1000 },  // Snowflake
+                    { selector: demos[4], delay: 2000 },  // Cherry Blossom
+                    { selector: demos[6], delay: 3000 },  // Firefly
+                    { selector: demos[8], delay: 4000 },  // Classic dangleFall
+                    { selector: demos[9], delay: 5000 },  // Spiral
+                ];
+                
+                seasonalSequence.forEach(item => {
+                    setTimeout(() => {
+                        if (item.selector) {
+                            item.selector.click();
+                        }
+                    }, item.delay);
+                });
+                
+                // Add a final cascade of all animations
+                setTimeout(() => {
+                    demos.forEach((demo, index) => {
+                        setTimeout(() => {
+                            demo.click();
+                        }, index * 300); // Faster cascade
+                    });
+                }, 7000);
+            }, 1000);
+        });
+        
+        // Add seasonal theme switcher
+        function switchSeasonalTheme(season) {
+            const body = document.body;
+            body.className = body.className.replace(/season-\w+/g, '');
+            
+            if (season !== 'default') {
+                body.classList.add(`season-${season}`);
+            }
+            
+            // Trigger appropriate seasonal animations
+            const seasonalAnimations = {
+                'autumn': ['mapleLeafFall', 'acornDrop'],
+                'winter': ['snowflakeDrift', 'iceCrystalFall'],
+                'spring': ['cherryBlossomFloat', 'butterflyFlutter'],
+                'summer': ['fireflyGlow', 'sunflowerPetal']
+            };
+            
+            if (seasonalAnimations[season]) {
+                seasonalAnimations[season].forEach((animType, index) => {
+                    setTimeout(() => {
+                        const demoElement = document.querySelector(`[onclick*="${animType}"]`);
+                        if (demoElement) {
+                            demoElement.click();
+                        }
+                    }, index * 1000);
+                });
+            }
+        }
+    </script>
+</body>
+</html>
