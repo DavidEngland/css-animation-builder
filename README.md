@@ -1,6 +1,11 @@
 # CSS Animation Builder 🎨
 
-[![Version](https://img.shields.io/badge/version-1.3.0-blue.svg)](https://github.com/DavidEngland/css-animation-builder)
+[![Version](https://img- **🚀 5 New Handwriting Animations**:
+  - Quill Writing with ink trail effects
+  - Fountain Pen Writing with enhanced shadows
+  - Calligraphy Writing with letter-spacing animation
+  - Handwriting Reveal with blur-to-sharp transition
+  - Ink Drip with realistic ink flowds.io/badge/version-1.5.0-blue.svg)](https://github.com/DavidEngland/css-animation-builder)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Build Status](https://github.com/DavidEngland/css-animation-builder/workflows/CI/badge.svg)](https://github.com/DavidEngland/css-animation-builder/actions)
 
@@ -11,8 +16,8 @@ A standalone, framework-agnostic CSS Animation Builder library that provides an 
 ## ✨ Features
 
 - 🎨 **Interactive Animation Builder** - Visual interface for creating animations
-- 🎭 **18+ Animation Types** - Fade, slide, zoom, bounce, rotate, shake, and more
-- ✍️ **Professional Handwriting Animations** - Typewriter-style handwriting effects with multiple fonts
+- 🎭 **29+ Animation Types** - Fade, slide, zoom, bounce, rotate, shake, dangleFall effects, and sophisticated handwriting animations
+- ✍️ **Professional Handwriting Animations** - Advanced typewriter-style effects with authentic cursor positioning and ink trails
 - ⚡ **Live Preview** - Real-time animation preview with controls
 - 📋 **Code Generation** - Generate clean CSS and HTML code
 - 🎯 **Framework Agnostic** - Works with any web framework or vanilla HTML
@@ -22,19 +27,48 @@ A standalone, framework-agnostic CSS Animation Builder library that provides an 
 - 🌙 **Multiple Themes** - Default, dark, and minimal themes
 - ♿ **Accessibility** - ARIA attributes, high contrast, reduced motion support
 
-## 🖋️ New in v1.3.0: Professional Handwriting Animations
+## 🖋️ New in v1.5.0: Enhanced Handwriting Integration
 
-Experience sophisticated typewriter-style handwriting animations with authentic fonts and ink trail effects:
+Experience sophisticated handwriting animations integrated from **Shogun Slogans** with superior cursor positioning:
 
-- **Multiple Handwriting Styles**: Quill, Fountain Pen, Casual Script, Formal Script, Signature
-- **Professional Fonts**: Dancing Script, Great Vibes, Caveat, Tangerine
-- **Ink Trail Effects**: Color-coded ink trails that appear as text is written
-- **Interactive Showcase**: Live demo with customizable text, fonts, and colors
-- **Clean CSS Implementation**: Reliable typewriter animation without complex graphics
+- **5 Professional Handwriting Styles**: Quill Writing, Fountain Pen, Calligraphy, Handwriting Reveal, Ink Drip
+- **Superior Cursor Positioning**: 15° rotation for optimal visual appeal (adopted from Quill Typewriter)
+- **Multi-stage Animation Progressions**: Complex keyframes with blur-to-sharp transitions
+- **Authentic Ink Trail Effects**: Progressive ink flows that follow text writing
+- **Enhanced Typography**: Google Fonts integration (Caveat, Dancing Script, Tangerine, Great Vibes)
+- **Live Typewriter Demos**: Interactive showcases with customizable text and timing
 
-[View Handwriting Showcase](handwriting-showcase.html) | [Demo](demo.html)
+[View Handwriting Integration Demo](handwriting-integration-demo.html) | [Demo](demo.html)
 
-## 🚀 Quick Start
+## 🍂 DangleFall Animation Suite
+
+Professional physics-based falling animations:
+
+- **5 Realistic Fall Variants**: Standard, Spiral, Sideways, Cascade, Leaf Float
+- **Authentic Physics**: Gravity, rotation, and trajectory simulation
+- **Seasonal Effects**: Perfect for autumn themes and dynamic content transitions
+
+### � Recent Updates
+
+#### v1.5.0 - Enhanced Handwriting Integration (December 2024)
+
+- **✨ Shogun Slogans Integration**: Successfully integrated sophisticated handwriting animations from Shogun Slogans WordPress plugin
+- **🎯 Superior Cursor Positioning**: Adopted 15° rotation from Quill Typewriter for optimal visual appeal
+- **�🚀 5 New Handwriting Animations**: 
+  - Quill Writing with ink trail effects
+  - Fountain Pen Writing with enhanced shadows
+  - Calligraphy Writing with letter-spacing animation
+  - Handwriting Reveal with blur-to-sharp transition
+  - Ink Drip with realistic ink flow
+- **📊 Animation Library Expansion**: Total animations increased from 18+ to 29+
+- **🎨 Enhanced Demo**: Comprehensive integration showcase with live typewriter examples
+
+#### v1.4.0 - DangleFall Animation Suite
+
+- **🍂 Physics-Based Animations**: 5 realistic falling animation variants
+- **🎪 Enhanced Presets**: Professional autumn and seasonal effects
+- **⚙️ Improved Builder**: Better animation management and organization
+
 
 ### Via npm
 
@@ -429,6 +463,29 @@ npm run docs
 # Start development server
 npm run dev
 ```
+
+### Release Process
+
+The project includes an automated release preparation script that handles version bumping and preparation:
+
+```bash
+# Prepare a new release
+./release.sh
+
+# The script will:
+# 1. Show current version
+# 2. Suggest next version (auto-increment minor)
+# 3. Press Enter to use suggested version or type custom version
+# 4. Update all version references in files
+# 5. Run tests and build
+# 6. Show next steps for git operations
+```
+
+**Version Handling:**
+- **Smart defaults**: Script suggests next version (e.g., 1.3.0 → 1.4.0)
+- **Easy selection**: Press Enter to use suggested version
+- **Custom versions**: Type any version number if needed
+- **Comprehensive updates**: Updates package.json, composer.json, README.md, and all PHP files
 
 ### Testing
 

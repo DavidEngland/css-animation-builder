@@ -1,6 +1,6 @@
 {
   "name": "@reia/css-animation-builder",
-  "version": "1.3.0",
+  "version": "1.5.0",
   "description": "A standalone, framework-agnostic CSS Animation Builder library with interactive interface - developed by Real Estate Intelligence Agency (REIA)",
   "main": "dist/css-animation-builder.js",
   "module": "dist/css-animation-builder.esm.js",

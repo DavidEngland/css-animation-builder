@@ -10,12 +10,17 @@ echo "=============================================="
 CURRENT_VERSION=$(grep '"version"' package.json | head -1 | cut -d'"' -f4)
 echo "Current version: $CURRENT_VERSION"
 
-# Ask for new version
-read -p "Enter new version (e.g., 1.4.0): " NEW_VERSION
+# Calculate suggested next version (increment minor version)
+IFS='.' read -r major minor patch <<< "$CURRENT_VERSION"
+SUGGESTED_VERSION="$major.$((minor + 1)).0"
 
+# Ask for new version with default suggestion
+read -p "Enter new version (default: $SUGGESTED_VERSION): " NEW_VERSION
+
+# Use suggested version if no input provided
 if [ -z "$NEW_VERSION" ]; then
-    echo "❌ No version provided. Exiting."
-    exit 1
+    NEW_VERSION="$SUGGESTED_VERSION"
+    echo "Using default version: $NEW_VERSION"
 fi
 
 echo "🔄 Updating version to $NEW_VERSION..."

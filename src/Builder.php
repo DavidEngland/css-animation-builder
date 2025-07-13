@@ -81,7 +81,17 @@ class Builder
             'typewriter' => ['type' => 'typewriter', 'duration' => 3, 'timing' => 'steps(30, end)'],
             'handwriting' => ['type' => 'handwriting', 'duration' => 2.5, 'timing' => 'ease-in-out'],
             'signature' => ['type' => 'signatureDraw', 'duration' => 4, 'timing' => 'ease-in-out'],
-            'reveal' => ['type' => 'writeText', 'duration' => 2, 'timing' => 'ease-out']
+            'reveal' => ['type' => 'writeText', 'duration' => 2, 'timing' => 'ease-out'],
+            'autumn_leaf' => ['type' => 'leafFloat', 'duration' => 3, 'timing' => 'ease-in-out'],
+            'dramatic_fall' => ['type' => 'dangleFall', 'duration' => 4, 'timing' => 'ease-in'],
+            'spiral_descent' => ['type' => 'dangleFallSpiral', 'duration' => 6, 'timing' => 'ease-in'],
+            'sideways_tumble' => ['type' => 'dangleFallSideways', 'duration' => 5, 'timing' => 'ease-in'],
+            'cascade_effect' => ['type' => 'cascadeFall', 'duration' => 4, 'timing' => 'ease-in'],
+            'elegant_quill' => ['type' => 'quillWriting', 'duration' => 2, 'timing' => 'ease-out'],
+            'fountain_pen' => ['type' => 'fountainPenWriting', 'duration' => 2.5, 'timing' => 'ease-out'],
+            'calligraphy_script' => ['type' => 'calligraphyWriting', 'duration' => 3, 'timing' => 'ease-in-out'],
+            'handwritten_reveal' => ['type' => 'handwritingReveal', 'duration' => 1.5, 'timing' => 'ease-out'],
+            'ink_effect' => ['type' => 'inkDrip', 'duration' => 2, 'timing' => 'ease-in-out']
         ]
     ];
 
@@ -96,6 +106,8 @@ class Builder
         $this->animations = $this->config['animations'];
         $this->presets = $this->config['presets'];
         $this->initializeCustomAnimations();
+        $this->addDangleFallAnimations();
+        $this->addHandwritingAnimations();
     }
 
     /**
@@ -667,7 +679,7 @@ class Builder
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
     color: var(--text-primary);
-    max-width: 1var(--layout-min-height-xxl);
+    max-width: var(--layout-min-height-xxl);
     margin: 0 auto;
     padding: var(--font-size-xxxl);
 }
@@ -970,113 +982,96 @@ class Builder
 @keyframes quillWrite {
     0% {
         opacity: 0;
-        transform: translateX(-20px) rotate(-3deg) scale(0.8);
-        filter: blur(2px);
+        transform: translateX(-10px);
     }
-    20% {
-        opacity: 0.7;
-        transform: translateX(-10px) rotate(-2deg) scale(0.9);
-        filter: blur(1px);
+    10% {
+        opacity: 1;
+        transform: translateX(0);
     }
     100% {
         opacity: 1;
-        transform: translateX(0) rotate(-1deg) scale(1);
-        filter: blur(0);
+        transform: translateX(0);
     }
 }
 
 @keyframes quillFloat {
-    0% {
-        transform: translateX(-30px) translateY(-10px) rotate(-45deg);
-        opacity: 0;
+    0%, 100% {
+        transform: rotate(15deg) translateY(0px);
     }
-    20% {
-        transform: translateX(-15px) translateY(-5px) rotate(-30deg);
-        opacity: 0.8;
-    }
-    100% {
-        transform: translateX(0) translateY(0) rotate(-15deg);
-        opacity: 0.6;
+    50% {
+        transform: rotate(15deg) translateY(-2px);
     }
 }
 
 @keyframes inkFlow {
-    0% {
-        opacity: 0;
-        transform: scaleX(0);
+    0%, 100% {
+        opacity: 0.2;
+        transform: scaleX(0.8);
     }
     50% {
-        opacity: 0.8;
-        transform: scaleX(0.7);
-    }
-    100% {
         opacity: 0.4;
-        transform: scaleX(1);
+        transform: scaleX(1.1);
+    }
+}
+
+@keyframes typewriterBlink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
     }
 }
 
 @keyframes fountainWrite {
     0% {
         opacity: 0;
-        transform: translateX(-25px) rotate(-4deg) scale(0.7);
-        filter: blur(3px);
+        transform: translateX(-15px) scale(0.95);
     }
     15% {
-        opacity: 0.6;
-        transform: translateX(-15px) rotate(-3deg) scale(0.85);
-        filter: blur(2px);
-    }
-    35% {
-        opacity: 0.8;
-        transform: translateX(-5px) rotate(-2deg) scale(0.95);
-        filter: blur(1px);
+        opacity: 1;
+        transform: translateX(0) scale(1);
     }
     100% {
         opacity: 1;
-        transform: translateX(0) rotate(-1deg) scale(1);
-        filter: blur(0);
+        transform: translateX(0) scale(1);
     }
 }
 
-@keyframes fountainFloat {
-    0% {
-        transform: translateX(-35px) translateY(-15px) rotate(-50deg);
-        opacity: 0;
+@keyframes enhancedFountainPenFloat {
+    0%, 100% {
+        transform: rotate(15deg) translateY(0px) scale(1);
     }
-    15% {
-        transform: translateX(-25px) translateY(-10px) rotate(-40deg);
-        opacity: 0.6;
+    25% {
+        transform: rotate(12deg) translateY(-1px) scale(1.05);
     }
-    35% {
-        transform: translateX(-10px) translateY(-5px) rotate(-25deg);
-        opacity: 0.8;
+    50% {
+        transform: rotate(15deg) translateY(-2px) scale(1.1);
     }
-    100% {
-        transform: translateX(0) translateY(0) rotate(-10deg);
-        opacity: 0.7;
+    75% {
+        transform: rotate(18deg) translateY(-1px) scale(1.05);
     }
 }
 
-@keyframes fountainInk {
-    0% {
+@keyframes spencerianInk {
+    0%, 100% {
+        opacity: 0.15;
+        transform: scaleX(0.9) scaleY(0.8);
+    }
+    50% {
+        opacity: 0.25;
+        transform: scaleX(1.2) scaleY(1.2);
+    }
+}
+
+@keyframes spencerianSheen {
+    0%, 100% {
         opacity: 0;
-        transform: scaleX(0);
-        filter: blur(2px);
+        transform: translateX(-100%);
     }
-    30% {
-        opacity: 0.6;
-        transform: scaleX(0.5);
-        filter: blur(1px);
-    }
-    70% {
-        opacity: 0.8;
-        transform: scaleX(0.8);
-        filter: blur(0.5px);
-    }
-    100% {
-        opacity: 0.5;
-        transform: scaleX(1);
-        filter: blur(0);
+    50% {
+        opacity: 1;
+        transform: translateX(100%);
     }
 }
 
@@ -1118,321 +1113,293 @@ class Builder
         padding: var(--font-size-xxl);
     }
 }
-        ";
+";
     }
 
     /**
-     * Render JavaScript
+     * Add dangleFall animations collection
      * 
-     * @return string JavaScript code
+     * @return self
      */
-    public function renderScript(): string
+    public function addDangleFallAnimations(): self
     {
-        $jsFile = __DIR__ . '/../assets/js/animation-builder.js';
-        if (file_exists($jsFile)) {
-            return "<script>\n" . file_get_contents($jsFile) . "\n</script>\n";
-        }
-        
-        // Fallback inline script
-        return "<script>\n" . $this->getInlineScript() . "\n</script>\n";
+        // Basic dangleFall animation
+        $this->addCustomAnimation('dangleFall', [
+            'name' => 'Dangle Fall',
+            'keyframes' => '0% {
+                transform: rotate3d(0, 0, 1, 0deg) translateY(0);
+                opacity: 1;
+                animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+            15% {
+                transform: rotate3d(0, 0, 1, 25deg) translateY(50px);
+                animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            }
+            30% {
+                transform: rotate3d(0, 0, 1, -15deg) translateY(150px);
+                animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+            45% {
+                transform: rotate3d(0, 0, 1, 35deg) translateY(280px);
+                animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            }
+            60% {
+                transform: rotate3d(0, 0, 1, -25deg) translateY(420px);
+                animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+            75% {
+                transform: rotate3d(0, 0, 1, 20deg) translateY(570px);
+                opacity: 0.7;
+                animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            }
+            90% {
+                transform: rotate3d(0, 0, 1, -10deg) translateY(680px);
+                opacity: 0.3;
+                animation-timing-function: ease-out;
+            }
+            to {
+                transform: rotate3d(0, 0, 1, 5deg) translateY(750px);
+                opacity: 0;
+            }',
+            'defaultDuration' => 4.0,
+            'defaultTiming' => 'ease-in'
+        ]);
+
+        // Sideways falling animation
+        $this->addCustomAnimation('dangleFallSideways', [
+            'name' => 'Dangle Fall Sideways',
+            'keyframes' => '0% {
+                transform: rotate3d(0, 0, 1, 0deg) translate(0, 0);
+                opacity: 1;
+                animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+            20% {
+                transform: rotate3d(0, 0, 1, 45deg) translate(30px, 100px);
+                animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            }
+            40% {
+                transform: rotate3d(0, 0, 1, -30deg) translate(-20px, 250px);
+                animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+            60% {
+                transform: rotate3d(0, 0, 1, 60deg) translate(50px, 400px);
+                animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            }
+            80% {
+                transform: rotate3d(0, 0, 1, -40deg) translate(-30px, 600px);
+                opacity: 0.5;
+                animation-timing-function: ease-out;
+            }
+            to {
+                transform: rotate3d(0, 0, 1, 20deg) translate(10px, 750px);
+                opacity: 0;
+            }',
+            'defaultDuration' => 5.0,
+            'defaultTiming' => 'ease-in'
+        ]);
+
+        // Spiral falling animation
+        $this->addCustomAnimation('dangleFallSpiral', [
+            'name' => 'Dangle Fall Spiral',
+            'keyframes' => '0% {
+                transform: rotate3d(0, 0, 1, 0deg) translate(0, 0) scale(1);
+                opacity: 1;
+                animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+            25% {
+                transform: rotate3d(0, 0, 1, 90deg) translate(40px, 150px) scale(0.9);
+                animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            }
+            50% {
+                transform: rotate3d(0, 0, 1, 180deg) translate(0, 350px) scale(0.8);
+                animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+            75% {
+                transform: rotate3d(0, 0, 1, 270deg) translate(-40px, 550px) scale(0.6);
+                opacity: 0.6;
+                animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            }
+            to {
+                transform: rotate3d(0, 0, 1, 360deg) translate(0, 750px) scale(0.3);
+                opacity: 0;
+            }',
+            'defaultDuration' => 6.0,
+            'defaultTiming' => 'ease-in'
+        ]);
+
+        // Gentle leaf floating animation
+        $this->addCustomAnimation('leafFloat', [
+            'name' => 'Leaf Float',
+            'keyframes' => '0% {
+                transform: rotate3d(0, 0, 1, 0deg) translateY(0);
+                opacity: 1;
+                animation-timing-function: ease-in-out;
+            }
+            25% {
+                transform: rotate3d(0, 0, 1, 15deg) translateY(80px) translateX(20px);
+                animation-timing-function: ease-in-out;
+            }
+            50% {
+                transform: rotate3d(0, 0, 1, -10deg) translateY(180px) translateX(-15px);
+                animation-timing-function: ease-in-out;
+            }
+            75% {
+                transform: rotate3d(0, 0, 1, 20deg) translateY(300px) translateX(25px);
+                opacity: 0.8;
+                animation-timing-function: ease-in-out;
+            }
+            to {
+                transform: rotate3d(0, 0, 1, -5deg) translateY(400px) translateX(-10px);
+                opacity: 0;
+            }',
+            'defaultDuration' => 3.0,
+            'defaultTiming' => 'ease-in-out'
+        ]);
+
+        // Cascade falling animation
+        $this->addCustomAnimation('cascadeFall', [
+            'name' => 'Cascade Fall',
+            'keyframes' => '0% {
+                transform: rotate3d(0, 0, 1, 0deg) translateY(-50px);
+                opacity: 0;
+                animation-timing-function: ease-out;
+            }
+            10% {
+                opacity: 1;
+                animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+            30% {
+                transform: rotate3d(0, 0, 1, 30deg) translateY(150px);
+                animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            }
+            60% {
+                transform: rotate3d(0, 0, 1, -20deg) translateY(400px);
+                animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+            85% {
+                transform: rotate3d(0, 0, 1, 15deg) translateY(650px);
+                opacity: 0.4;
+                animation-timing-function: ease-out;
+            }
+            to {
+                transform: rotate3d(0, 0, 1, -5deg) translateY(750px);
+                opacity: 0;
+            }',
+            'defaultDuration' => 4.0,
+            'defaultTiming' => 'ease-in'
+        ]);
+
+        return $this;
     }
 
     /**
-     * Get inline script (fallback)
+     * Add sophisticated handwriting animations from Shogun Slogans
      * 
-     * @return string Inline JavaScript
+     * @return self
      */
-    private function getInlineScript(): string
+    public function addHandwritingAnimations(): self
     {
-        $animationsJson = json_encode($this->animations);
-        $presetsJson = json_encode($this->config['presets']);
-        $defaultsJson = json_encode($this->config['defaults']);
-        $customAnimationsJson = json_encode($this->customAnimations);
-        $cssPrefix = $this->config['cssPrefix'];
-        
-        return "
-// CSS Animation Builder JavaScript
-(function() {
-    const animations = {$animationsJson};
-    const presets = {$presetsJson};
-    const defaults = {$defaultsJson};
-    const customAnimations = {$customAnimationsJson};
-    const cssPrefix = '{$cssPrefix}';
-    
-    document.addEventListener('DOMContentLoaded', function() {
-        initializeAnimationBuilder();
-    });
-    
-    function initializeAnimationBuilder() {
-        // Tab functionality
-        const tabButtons = document.querySelectorAll('.tab-button');
-        const tabContents = document.querySelectorAll('.tab-content');
-        
-        tabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const tabId = button.dataset.tab;
-                
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                tabContents.forEach(content => content.classList.remove('active'));
-                
-                button.classList.add('active');
-                document.getElementById(tabId + '-tab').classList.add('active');
-            });
-        });
-        
-        // Output tab functionality
-        const outputTabs = document.querySelectorAll('.output-tab');
-        const outputContents = document.querySelectorAll('.output-content');
-        
-        outputTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const outputId = tab.dataset.output;
-                
-                outputTabs.forEach(t => t.classList.remove('active'));
-                outputContents.forEach(content => content.classList.remove('active'));
-                
-                tab.classList.add('active');
-                document.getElementById(outputId + '-output').classList.add('active');
-            });
-        });
-        
-        // Range input value display
-        const rangeInputs = document.querySelectorAll('input[type=\"range\"]');
-        rangeInputs.forEach(input => {
-            const valueDisplay = document.getElementById(input.id + '-value');
-            if (valueDisplay) {
-                input.addEventListener('input', () => {
-                    valueDisplay.textContent = input.value + (input.id === 'duration' || input.id === 'delay' ? 's' : '');
-                });
+        // Enhanced Quill Writing Animation - using the superior 15deg rotation
+        $this->addCustomAnimation('quillWriting', [
+            'name' => 'Quill Writing',
+            'keyframes' => '0% {
+                opacity: 0;
+                transform: translateX(-10px);
             }
-        });
-        
-        // Animation generator functionality
-        function generateCSS() {
-            const animationType = document.getElementById('animation-type').value;
-            const duration = document.getElementById('duration').value;
-            const delay = document.getElementById('delay').value;
-            const timingFunction = document.getElementById('timing-function').value;
-            const iterationCount = document.getElementById('iteration-count').value;
-            const transformOrigin = document.getElementById('transform-origin').value;
-            const direction = document.getElementById('direction').value;
-            const fillMode = document.getElementById('fill-mode').value;
-            
-            const className = cssPrefix + animationType.toLowerCase();
-            
-            let css = '/* Generated CSS Animation */\\n.' + className + ' {\\n    animation-name: ' + animationType + ';\\n    animation-duration: ' + duration + 's;\\n    animation-delay: ' + delay + 's;\\n    animation-timing-function: ' + timingFunction + ';\\n    animation-iteration-count: ' + iterationCount + ';\\n    animation-direction: ' + direction + ';\\n    animation-fill-mode: ' + fillMode + ';\\n    transform-origin: ' + transformOrigin + ';';
-    
-            // Add specific styles for typewriter and handwriting animations
-            if (animationType === 'typewriter') {
-                css += '\\n    overflow: hidden;\\n    white-space: nowrap;\\n    border-right: var(--border-width-medium) solid;\\n    font-family: \\'Courier New\\', monospace;';
-            } else if (['handwriting', 'drawLine', 'signatureDraw'].includes(animationType)) {
-                css += '\\n    font-family: \\'Caveat\\', \\'Dancing Script\\', cursive;\\n    position: relative;';
-                if (animationType === 'handwriting') {
-                    css += '\\n    transform: rotate(-1deg);\\n    letter-spacing: 0.02em;';
-                }
-            } else if (animationType === 'writeText') {
-                css += '\\n    overflow: hidden;\\n    white-space: nowrap;\\n    font-family: \\'Caveat\\', \\'Dancing Script\\', cursive;\\n    position: relative;';
+            10% {
+                opacity: 1;
+                transform: translateX(0);
             }
-            
-            css += '\\n}\\n\\n';
-            
-            // Add cursor animation for typewriter
-            if (animationType === 'typewriter') {
-                css += '.' + className + '::after {\\n    content: \\'\\';\\n    animation: typewriter-cursor var(--duration-slow) infinite;\\n}\\n\\n@keyframes typewriter-cursor {\\n    0%, 50% { border-right-color: transparent; }\\n    51%, var(--element-width-full) { border-right-color: currentColor; }\\n}\\n\\n';
-            }
-            
-            // Add underline effect for handwriting
-            if (animationType === 'handwriting') {
-                css += '.' + className + '::after {\\n    content: \\'\\';\\n    position: absolute;\\n    bottom: -var(--transform-translate-xs);\\n    left: var(--spacing-sm);\\n    right: var(--spacing-sm);\\n    height: var(--element-height-divider);\\n    background: linear-gradient(90deg, transparent, currentColor, transparent);\\n    border-radius: var(--border-width-medium);\\n    opacity: var(--opacity-transparent).7;\\n    animation: handwriting-underline ' + duration + 's ' + delay + 's ' + timingFunction + ' ' + iterationCount + ';\\n}\\n\\n@keyframes handwriting-underline {\\n    0% { width: 0; left: 50%; }\\n    var(--element-width-full) { width: var(--element-width-80); left: var(--spacing-sm); }\\n}\\n\\n';
-            }
-            
-            css += '/* Keyframes for ' + animationType + ' */\\n' + getKeyframes(animationType);
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }',
+            'defaultDuration' => 2.0,
+            'defaultTiming' => 'ease-out'
+        ]);
 
-            // Generate HTML based on animation type
-            let html = '<!-- HTML Example -->\\n<div class=\"' + className + '\">\\n';
-            
-            if (animationType === 'typewriter') {
-                html += '    <h2>Hello, I\\'m a typewriter!</h2>\\n    <p>This text will appear character by character...</p>\\n';
-            } else if (['handwriting', 'writeText'].includes(animationType)) {
-                html += '    <h2>Beautiful Handwriting</h2>\\n    <p>This text has an elegant, handwritten feel with smooth animations.</p>\\n';
-            } else if (animationType === 'signatureDraw') {
-                html += '    <h2>My Signature</h2>\\n    <p>Watch as this signature draws itself smoothly.</p>\\n';
-            } else if (animationType === 'drawLine') {
-                html += '    <h2>Drawing Lines</h2>\\n    <p>Perfect for underlines and decorative elements.</p>\\n';
-            } else {
-                html += '    <h2>Your Animated Content</h2>\\n    <p>This element will animate when the page loads.</p>\\n';
+        // Enhanced Fountain Pen Writing - using the better 15deg rotation style
+        $this->addCustomAnimation('fountainPenWriting', [
+            'name' => 'Fountain Pen Writing',
+            'keyframes' => '0% {
+                opacity: 0;
+                transform: translateX(-15px) scale(0.95);
             }
-            
-            html += '</div>';
+            15% {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }',
+            'defaultDuration' => 2.5,
+            'defaultTiming' => 'ease-out'
+        ]);
 
-            document.getElementById('css-code').textContent = css;
-            document.getElementById('html-code').textContent = html;
-            
-            return { css, html, className };
-        }
-        
-        function getKeyframes(animationType) {
-            if (customAnimations[animationType]) {
-                return '@keyframes ' + animationType + ' {\\n    ' + customAnimations[animationType].keyframes.replace(/\\n/g, '\\n    ') + '\\n}';
+        // Elegant Calligraphy Writing - combining best of both worlds
+        $this->addCustomAnimation('calligraphyWriting', [
+            'name' => 'Calligraphy Writing',
+            'keyframes' => '0% {
+                opacity: 0;
+                transform: translateX(-20px) scale(0.9);
             }
-            
-            // Use keyframes from the generated file
-            const keyframes = window.animationKeyframes || {};
-            const keyframeContent = keyframes[animationType] || '0% { opacity: var(--opacity-transparent); } var(--element-width-full) { opacity: var(--opacity-opaque); }';
-            
-            return '@keyframes ' + animationType + ' {\\n    ' + keyframeContent + '\\n}';
-        }
-        
-        function previewAnimation() {
-            const previewElement = document.getElementById('preview-element');
-            const { className } = generateCSS();
-            const animationType = document.getElementById('animation-type').value;
-            
-            // Reset classes
-            previewElement.className = 'preview-element';
-            
-            // Add animation-specific styling classes
-            if (animationType === 'typewriter') {
-                previewElement.classList.add('animated-typewriter');
-            } else if (animationType === 'handwriting') {
-                previewElement.classList.add('animated-handwriting');
-            } else if (animationType === 'writeText') {
-                previewElement.classList.add('animated-writetext');
-            } else if (animationType === 'signatureDraw') {
-                previewElement.classList.add('animated-signaturedraw');
-            } else if (animationType === 'drawLine') {
-                previewElement.classList.add('animated-drawline');
+            20% {
+                opacity: 1;
+                transform: translateX(0) scale(1);
             }
-            
-            // Force reflow
-            previewElement.offsetHeight;
-            
-            // Add animation class
-            previewElement.classList.add(className);
-            
-            // Update dynamic styles
-            if (!document.getElementById('preview-styles')) {
-                const style = document.createElement('style');
-                style.id = 'preview-styles';
-                document.head.appendChild(style);
-            }
-            
-            const styleSheet = document.getElementById('preview-styles');
-            const { css } = generateCSS();
-            styleSheet.textContent = css;
-        }
-        
-        // Event listeners
-        document.getElementById('preview-animation').addEventListener('click', previewAnimation);
-        document.getElementById('generate-css').addEventListener('click', generateCSS);
-        
-        document.getElementById('play-preview').addEventListener('click', () => {
-            const previewElement = document.getElementById('preview-element');
-            previewElement.style.animationPlayState = 'running';
-        });
-        
-        document.getElementById('pause-preview').addEventListener('click', () => {
-            const previewElement = document.getElementById('preview-element');
-            previewElement.style.animationPlayState = 'paused';
-        });
-        
-        document.getElementById('restart-preview').addEventListener('click', previewAnimation);
-        
-        // Copy functionality
-        document.getElementById('copy-css').addEventListener('click', () => {
-            const cssCode = document.getElementById('css-code').textContent;
-            navigator.clipboard.writeText(cssCode).then(() => {
-                const button = document.getElementById('copy-css');
-                const originalText = button.textContent;
-                button.textContent = 'Copied!';
-                setTimeout(() => {
-                    button.textContent = originalText;
-                }, 2000);
-            });
-        });
-        
-        document.getElementById('copy-html').addEventListener('click', () => {
-            const htmlCode = document.getElementById('html-code').textContent;
-            navigator.clipboard.writeText(htmlCode).then(() => {
-                const button = document.getElementById('copy-html');
-                const originalText = button.textContent;
-                button.textContent = 'Copied!';
-                setTimeout(() => {
-                    button.textContent = originalText;
-                }, 2000);
-            });
-        });
-        
-        // Preset functionality
-        const presetButtons = document.querySelectorAll('.preset-button');
-        presetButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const preset = button.dataset.preset;
-                applyPreset(preset);
-            });
-        });
-        
-        function applyPreset(preset) {
-            const config = presets[preset];
-            if (config) {
-                document.getElementById('animation-type').value = config.type;
-                document.getElementById('duration').value = config.duration;
-                document.getElementById('delay').value = config.delay || 0;
-                document.getElementById('timing-function').value = config.timing || 'ease';
-                document.getElementById('iteration-count').value = config.count || 1;
-                
-                // Update value displays
-                document.getElementById('duration-value').textContent = config.duration + 's';
-                document.getElementById('delay-value').textContent = (config.delay || 0) + 's';
-                
-                setTimeout(previewAnimation, 100);
-            }
-        }
-        
-        // Initialize
-        generateCSS();
-    }
-})();
-        ";
-    }
+            100% {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }',
+            'defaultDuration' => 3.0,
+            'defaultTiming' => 'ease-in-out'
+        ]);
 
-    /**
-     * Generate JavaScript keyframes file from CSS files
-     * 
-     * @return string JavaScript content
-     */
-    public function generateJavaScriptKeyframes(): string
-    {
-        $keyframeDir = __DIR__ . '/Keyframes/';
-        $jsContent = "// Auto-generated keyframes from CSS files\n";
-        $jsContent .= "const keyframes = {\n";
-        
-        $keyframeEntries = [];
-        
-        if (is_dir($keyframeDir)) {
-            $files = scandir($keyframeDir);
-            foreach ($files as $file) {
-                if (pathinfo($file, PATHINFO_EXTENSION) === 'css') {
-                    $animationName = pathinfo($file, PATHINFO_FILENAME);
-                    $keyframeContent = file_get_contents($keyframeDir . $file);
-                    $keyframeContent = trim($keyframeContent);
-                    // Escape for JavaScript string
-                    $keyframeContent = str_replace(["\n", "\r"], ['\\n    ', ''], $keyframeContent);
-                    $keyframeContent = str_replace("'", "\\'", $keyframeContent);
-                    $keyframeEntries[] = "    {$animationName}: '{$keyframeContent}'";
-                }
+        // Handwriting Reveal Animation - text appears as if being written
+        $this->addCustomAnimation('handwritingReveal', [
+            'name' => 'Handwriting Reveal',
+            'keyframes' => '0% {
+                opacity: 0;
+                transform: scale(0.8) rotate(-2deg);
+                filter: blur(2px);
             }
-        }
-        
-        $jsContent .= implode(",\n", $keyframeEntries);
-        $jsContent .= "\n};\n\n";
-        $jsContent .= "// Export for use in main script\n";
-        $jsContent .= "if (typeof window !== 'undefined') {\n";
-        $jsContent .= "    window.animationKeyframes = keyframes;\n";
-        $jsContent .= "} else if (typeof module !== 'undefined') {\n";
-        $jsContent .= "    module.exports = keyframes;\n";
-        $jsContent .= "}\n";
-        
-        return $jsContent;
+            30% {
+                opacity: 0.7;
+                transform: scale(0.95) rotate(-1deg);
+                filter: blur(1px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+                filter: blur(0px);
+            }',
+            'defaultDuration' => 1.5,
+            'defaultTiming' => 'ease-out'
+        ]);
+
+        // Ink Drip Animation - text appears with ink-like effect
+        $this->addCustomAnimation('inkDrip', [
+            'name' => 'Ink Drip',
+            'keyframes' => '0% {
+                opacity: 0;
+                transform: translateY(-20px);
+                filter: blur(3px);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translateY(0);
+                filter: blur(1px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+                filter: blur(0px);
+            }',
+            'defaultDuration' => 2.0,
+            'defaultTiming' => 'ease-in-out'
+        ]);
+
+        return $this;
     }
 }
