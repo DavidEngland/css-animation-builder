@@ -1,11 +1,6 @@
 # CSS Animation Builder 🎨
 
-[![Version](https://img- **🚀 5 New Handwriting Animations**:
-  - Quill Writing with ink trail effects
-  - Fountain Pen Writing with enhanced shadows
-  - Calligraphy Writing with letter-spacing animation
-  - Handwriting Reveal with blur-to-sharp transition
-  - Ink Drip with realistic ink flowds.io/badge/version-1.6.0-blue.svg)](https://github.com/DavidEngland/css-animation-builder)
+[![Version](https://img.shields.io/badge/version-1.6.0-blue.svg)](https://github.com/DavidEngland/css-animation-builder)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Build Status](https://github.com/DavidEngland/css-animation-builder/workflows/CI/badge.svg)](https://github.com/DavidEngland/css-animation-builder/actions)
 
@@ -16,61 +11,57 @@ A standalone, framework-agnostic CSS Animation Builder library that provides an 
 ## ✨ Features
 
 - 🎨 **Interactive Animation Builder** - Visual interface for creating animations
-- 🎭 **29+ Animation Types** - Fade, slide, zoom, bounce, rotate, shake, dangleFall effects, and sophisticated handwriting animations
-- ✍️ **Professional Handwriting Animations** - Advanced typewriter-style effects with authentic cursor positioning and ink trails
+- 🎭 **29+ Animation Types** - From basic fades to complex handwriting effects
 - ⚡ **Live Preview** - Real-time animation preview with controls
 - 📋 **Code Generation** - Generate clean CSS and HTML code
 - 🎯 **Framework Agnostic** - Works with any web framework or vanilla HTML
 - 📱 **Mobile Responsive** - Touch-friendly interface
 - 🔧 **Highly Configurable** - Extensive customization options
 - 🎪 **Animation Presets** - Quick-start templates for common use cases
-- 🌙 **Multiple Themes** - Default, dark, and minimal themes
 - ♿ **Accessibility** - ARIA attributes, high contrast, reduced motion support
 
-## 🖋️ New in v1.5.0: Enhanced Handwriting Integration
+## � Quick Start
 
-Experience sophisticated handwriting animations integrated from **Shogun Slogans** with superior cursor positioning:
+### Basic Animations (Start Here!)
 
-- **5 Professional Handwriting Styles**: Quill Writing, Fountain Pen, Calligraphy, Handwriting Reveal, Ink Drip
-- **Superior Cursor Positioning**: 15° rotation for optimal visual appeal (adopted from Quill Typewriter)
-- **Multi-stage Animation Progressions**: Complex keyframes with blur-to-sharp transitions
-- **Authentic Ink Trail Effects**: Progressive ink flows that follow text writing
-- **Enhanced Typography**: Google Fonts integration (Caveat, Dancing Script, Tangerine, Great Vibes)
-- **Live Typewriter Demos**: Interactive showcases with customizable text and timing
+The CSS Animation Builder includes these fundamental animations that work great for most projects:
 
-[View Handwriting Integration Demo](handwriting-integration-demo.html) | [Demo](demo.html)
+**Entrance Effects:**
+- `fadeIn` - Smooth fade in effect
+- `slideInLeft`, `slideInRight` - Slide from sides
+- `slideInUp`, `slideInDown` - Slide from top/bottom
+- `zoomIn` - Scale up entrance
+- `bounceIn` - Bouncy entrance
 
-## 🍂 DangleFall Animation Suite
+**Exit Effects:**
+- `fadeOut` - Smooth fade out
+- `slideOutLeft`, `slideOutRight` - Slide to sides
+- `zoomOut` - Scale down exit
 
-Professional physics-based falling animations:
+**Attention Effects:**
+- `pulse` - Gentle pulsing
+- `shake` - Attention shake
+- `wobble` - Playful wobble
 
-- **5 Realistic Fall Variants**: Standard, Spiral, Sideways, Cascade, Leaf Float
-- **Authentic Physics**: Gravity, rotation, and trajectory simulation
-- **Seasonal Effects**: Perfect for autumn themes and dynamic content transitions
+### Advanced Animation Suites
 
-### � Recent Updates
+**🍂 DangleFall Physics Suite** - Realistic falling effects:
+- `dangleFall` - Natural falling motion
+- `dangleFallSpiral` - Spiral descent
+- `cascadeFall` - Waterfall effect
+- Seasonal variants (maple leaves, snowflakes, petals)
 
-#### v1.5.0 - Enhanced Handwriting Integration (December 2024)
+**✍️ Handwriting Collection** - Professional typewriter effects:
+- `quillWriting` - Ink trail effects
+- `fountainPen` - Enhanced shadows
+- `calligraphy` - Letter-spacing animation
+- `handwritingReveal` - Blur-to-sharp transition
 
-- **✨ Shogun Slogans Integration**: Successfully integrated sophisticated handwriting animations from Shogun Slogans WordPress plugin
-- **🎯 Superior Cursor Positioning**: Adopted 15° rotation from Quill Typewriter for optimal visual appeal
-- **�🚀 5 New Handwriting Animations**: 
-  - Quill Writing with ink trail effects
-  - Fountain Pen Writing with enhanced shadows
-  - Calligraphy Writing with letter-spacing animation
-  - Handwriting Reveal with blur-to-sharp transition
-  - Ink Drip with realistic ink flow
-- **📊 Animation Library Expansion**: Total animations increased from 18+ to 29+
-- **🎨 Enhanced Demo**: Comprehensive integration showcase with live typewriter examples
+[View Handwriting Demo](handwriting-integration-demo.html) | [View Seasonal Demo](dangleFall-demo.html)
 
-#### v1.4.0 - DangleFall Animation Suite
+## 📦 Installation
 
-- **🍂 Physics-Based Animations**: 5 realistic falling animation variants
-- **🎪 Enhanced Presets**: Professional autumn and seasonal effects
-- **⚙️ Improved Builder**: Better animation management and organization
-
-
-### Via npm
+### NPM Package
 
 ```bash
 npm install @reia/css-animation-builder
@@ -85,7 +76,7 @@ const builder = new CSSAnimationBuilder({
 builder.init();
 ```
 
-### Via CDN
+### CDN (Quick Setup)
 
 ```html
 <link rel="stylesheet" href="https://unpkg.com/@reia/css-animation-builder/dist/css-animation-builder.css">
@@ -100,7 +91,7 @@ builder.init();
 </script>
 ```
 
-### Via Composer (PHP)
+### Composer (PHP)
 
 ```bash
 composer require reia/css-animation-builder
@@ -113,155 +104,32 @@ $builder = new Builder();
 echo $builder->render();
 ```
 
-## 📦 Installation Options
-
-### 1. NPM Package (Available Soon)
-
-The NPM package will be published by a collaborator. For now, you can:
-
-```bash
-# Clone and build locally
-git clone https://github.com/DavidEngland/css-animation-builder.git
-cd css-animation-builder
-npm install
-npm run build
-```
-
-### 2. Composer Package (Coming Soon)
-
-Will be available on Packagist:
-
-```bash
-# This will be available soon
-composer require davidengland/css-animation-builder
-```
-
-### 3. Standalone Usage
-
-Download the latest release files and include them in your HTML:
-
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" href="dist/css-animation-builder.css">
-</head>
-<body>
-    <div id="animation-builder"></div>
-    <script src="dist/css-animation-builder.js"></script>
-    <script>
-        const builder = new CSSAnimationBuilder({
-            container: '#animation-builder'
-        });
-        builder.init();
-    </script>
-</body>
-</html>
-```
-
-### 2. WordPress Plugin
+### WordPress Plugin
 
 1. Download the plugin files
 2. Upload to `/wp-content/plugins/css-animation-builder/`
 3. Activate the plugin
-4. Use the shortcode `[css-animation-builder]`
+4. Use shortcode: `[css-animation-builder]`
 
-### 3. Development Setup
+### Development Setup
 
 ```bash
-# Clone the repository
 git clone https://github.com/DavidEngland/css-animation-builder.git
 cd css-animation-builder
-
-# Install dependencies
-npm install
-composer install
-
-# Build the project
+npm install && composer install
 npm run build
-
-# Run tests
-npm test
-composer test
-
-# Start development
-npm run dev
-```
-
-## 🎯 Animation Types
-
-### Entrance Animations
-- `fadeIn` - Fade in with opacity
-- `slideInLeft` - Slide in from left
-- `slideInRight` - Slide in from right
-- `slideInUp` - Slide in from bottom
-- `slideInDown` - Slide in from top
-- `zoomIn` - Zoom in effect
-- `bounceIn` - Bouncy entrance
-- `rotateIn` - Rotate in effect
-
-### Exit Animations
-- `fadeOut` - Fade out
-- `slideOutLeft` - Slide out to left
-- `slideOutRight` - Slide out to right
-- `zoomOut` - Zoom out effect
-
-### Attention Animations
-- `pulse` - Pulsing effect
-- `shake` - Shaking effect
-- `wobble` - Wobbling effect
-- `swing` - Swinging effect
-
-### Handwriting Animations
-- `handwriting` - Typewriter-style handwriting effect
-- `quill` - Quill pen writing with ink trail
-- `fountain` - Fountain pen writing effect
-- `casual` - Casual script handwriting
-- `formal` - Formal script handwriting
-- `signature` - Signature-style writing
-
-### Handwriting Animation Usage
-
-```html
-<!-- Basic handwriting animation -->
-<div class="handwriting-quill">Coca-Cola</div>
-
-<!-- Fountain pen effect -->
-<div class="handwriting-fountain">Shakespeare</div>
-
-<!-- Signature animation -->
-<div class="handwriting-signature">William Shakespeare</div>
-```
-
-```css
-/* Include handwriting animations CSS */
-@import url('css/handwriting-animations.css');
-
-/* Or use the typewriter animation directly */
-.my-handwriting {
-    font-family: 'Dancing Script', cursive;
-    color: #8B4513;
-    position: relative;
-    overflow: hidden;
-    white-space: nowrap;
-    width: 0;
-    animation: typewriter 4s steps(40, end) forwards;
-}
 ```
 
 ## ⚙️ Configuration
 
-### Basic Configuration
+### Basic Setup
 
 ```javascript
 const builder = new CSSAnimationBuilder({
     container: '#animation-builder',
     theme: 'default',
     showPreview: true,
-    showCode: true,
-    animations: [
-        'fadeIn', 'slideInLeft', 'bounceIn', 'zoomIn'
-    ]
+    animations: ['fadeIn', 'slideInLeft', 'bounceIn']
 });
 ```
 
@@ -276,20 +144,12 @@ const builder = new CSSAnimationBuilder({
             name: 'Custom Bounce',
             keyframes: `
                 0% { transform: scale(0.3); opacity: 0; }
-                50% { transform: scale(1.05); opacity: 0.8; }
                 100% { transform: scale(1); opacity: 1; }
             `
         }
     },
-    defaults: {
-        duration: 1.0,
-        delay: 0.0,
-        timingFunction: 'ease',
-        iterationCount: 1
-    },
     callbacks: {
-        onAnimationChange: (animation) => console.log('Animation changed:', animation),
-        onCodeGenerated: (code) => console.log('Code generated:', code)
+        onAnimationChange: (animation) => console.log('Animation changed:', animation)
     }
 });
 ```
@@ -298,56 +158,52 @@ const builder = new CSSAnimationBuilder({
 
 ### JavaScript API
 
-#### Constructor Options
+```javascript
+const builder = new CSSAnimationBuilder(options);
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `container` | string | `'#animation-builder'` | CSS selector for container element |
-| `theme` | string | `'default'` | Theme name (`default`, `dark`, `minimal`) |
-| `showPreview` | boolean | `true` | Show live preview area |
-| `showCode` | boolean | `true` | Show generated code output |
-| `animations` | array | `[...]` | Available animation types |
-| `customAnimations` | object | `{}` | Custom animation definitions |
-| `callbacks` | object | `{}` | Event callbacks |
-
-#### Methods
-
-- `init()` - Initialize the builder
-- `destroy()` - Destroy the builder instance
-- `getAnimation()` - Get current animation settings
-- `setAnimation(settings)` - Set animation settings
-- `generateCSS()` - Generate CSS code
-- `preview()` - Preview animation
-- `reset()` - Reset to defaults
-
-#### Events
-
-- `animationChange` - Fired when animation settings change
-- `codeGenerated` - Fired when CSS code is generated
-- `previewStarted` - Fired when preview starts
-- `previewStopped` - Fired when preview stops
+// Methods
+builder.init()                    // Initialize builder
+builder.destroy()                 // Cleanup
+builder.getAnimation()            // Get current settings
+builder.setAnimation(settings)    // Set animation
+builder.generateCSS()             // Generate CSS code
+builder.preview()                 // Preview animation
+```
 
 ### PHP API
-
-#### Builder Class
 
 ```php
 use Reia\CSSAnimationBuilder\Builder;
 
 $builder = new Builder($config);
+echo $builder->render();          // Render HTML
+$builder->generateCSS($animation, $options);  // Generate CSS
 ```
 
-#### Methods
+## 📈 Changelog
 
-- `render()` - Render the complete HTML interface
-- `getAnimations()` - Get list of available animations
-- `generateCSS($animation, $options)` - Generate CSS for specific animation
-- `setTheme($theme)` - Set the UI theme
-- `addCustomAnimation($name, $keyframes)` - Add custom animation
+### v1.6.0 (Current)
+- ✨ Enhanced seasonal animations with 11 new effects
+- 🎨 Interactive seasonal theme controls
+- 🍂 Comprehensive dangleFall demo showcase
+- 📝 Complete animation possibilities documentation
+
+### v1.5.0 
+- ✍️ Professional handwriting animations integration
+- 🎯 Superior 15° cursor positioning 
+- 🖋️ 5 handwriting styles (Quill, Fountain Pen, Calligraphy, etc.)
+- 📊 Library expanded from 18+ to 29+ animations
+
+### v1.4.0
+- 🍂 DangleFall physics-based animation suite
+- 🌟 5 realistic falling animation variants
+- ⚙️ Enhanced animation builder interface
+
+[View Complete Changelog](CHANGELOG.md)
 
 ## 🏗️ Architecture
 
-The CSS Animation Builder uses a **file-based keyframes architecture** for maximum maintainability and scalability:
+Modern **file-based keyframes architecture** for maximum maintainability:
 
 ```
 src/
@@ -355,35 +211,24 @@ src/
 ├── Keyframes/               # Individual keyframe files
 │   ├── fadeIn.css
 │   ├── slideInLeft.css
-│   ├── bounceIn.css
-│   └── ... (19 animations)
-├── keyframes.js             # Auto-generated JavaScript keyframes
+│   └── ... (29+ animations)
 └── WordPressPlugin.php      # WordPress integration
 ```
 
-### Key Benefits:
+**Benefits:**
 - **Modular Design**: Each animation in its own file
 - **Easy Maintenance**: Modify animations without touching core code
 - **Scalable**: Add new animations by creating new files
-- **Build System**: Automatic JavaScript generation from CSS files
-
-To add a new animation:
-1. Create `src/Keyframes/newAnimation.css`
-2. Run `php build-keyframes.php` to update JavaScript
-3. Animation is automatically available in the builder
 
 ## 🎨 Customization
 
 ### Custom Themes
 
 ```css
-/* Custom theme example */
 .css-animation-builder.theme-custom {
     --primary-color: #your-color;
-    --secondary-color: #your-color;
     --background-color: #your-color;
     --text-color: #your-color;
-    --border-color: #your-color;
 }
 ```
 
@@ -394,35 +239,9 @@ builder.addCustomAnimation('myAnimation', {
     name: 'My Custom Animation',
     keyframes: `
         0% { transform: translateX(0); }
-        50% { transform: translateX(100px); }
-        100% { transform: translateX(0); }
-    `,
-    defaultDuration: 2.0
+        100% { transform: translateX(100px); }
+    `
 });
-```
-
-## 🔧 WordPress Integration
-
-### Shortcode Usage
-
-```php
-[css-animation-builder theme="dark" show-presets="true" show-advanced="false"]
-```
-
-### Theme Integration
-
-```php
-// In your theme's functions.php
-function my_theme_animation_builder() {
-    if (class_exists('Reia\CSSAnimationBuilder\Builder')) {
-        $builder = new Reia\CSSAnimationBuilder\Builder([
-            'theme' => 'my-theme',
-            'animations' => ['fadeIn', 'slideInLeft', 'bounceIn']
-        ]);
-        return $builder->render();
-    }
-    return '';
-}
 ```
 
 ## 🛠️ Development
@@ -431,397 +250,53 @@ function my_theme_animation_builder() {
 
 ```
 css-animation-builder/
-├── .github/workflows/       # GitHub Actions workflows
-├── assets/                  # Frontend source code
-│   ├── js/                 # JavaScript source files
-│   ├── css/                # CSS files
-│   └── scss/               # SCSS source files
-├── dist/                   # Built files (generated)
-├── src/                    # PHP source files
-├── tests/                  # Test files
-├── examples/               # Usage examples
-└── docs/                   # Documentation
+├── assets/                  # Frontend source
+├── src/                     # PHP source files
+├── tests/                   # Test files
+├── examples/                # Usage examples
+└── docs/                    # Documentation
 ```
 
 ### Building from Source
 
 ```bash
-# Install dependencies
-npm install
-composer install
-
-# Build assets
+npm install && composer install
 npm run build
-
-# Run tests
-npm test
-composer test
-
-# Generate documentation
-npm run docs
-
-# Start development server
-npm run dev
-```
-
-### Release Process
-
-The project includes an automated release preparation script that handles version bumping and preparation:
-
-```bash
-# Prepare a new release
-./release.sh
-
-# The script will:
-# 1. Show current version
-# 2. Suggest next version (auto-increment minor)
-# 3. Press Enter to use suggested version or type custom version
-# 4. Update all version references in files
-# 5. Run tests and build
-# 6. Show next steps for git operations
-```
-
-**Version Handling:**
-- **Smart defaults**: Script suggests next version (e.g., 1.3.0 → 1.4.0)
-- **Easy selection**: Press Enter to use suggested version
-- **Custom versions**: Type any version number if needed
-- **Comprehensive updates**: Updates package.json, composer.json, README.md, and all PHP files
-
-### Testing
-
-```bash
-# Run JavaScript tests
-npm test
-
-# Run PHP tests
-composer test
-
-# Run tests with coverage
-npm run test:coverage
+npm test && composer test
 ```
 
 ## 🤝 About REIA
 
-This project is developed by the **Real Estate Intelligence Agency (REIA)** full stack development team.
+Developed by **Real Estate Intelligence Agency (REIA)** full stack development team.
 
-### Team
-- **Senior Lead Developer**: [David England](https://github.com/DavidEngland) - DavidEngland@hotmail.com
-- **CEO & Chief Broker**: Mikko P. Jetsu - Mikko@RealEstate-Huntsville.com
+**Team:**
+- **Senior Lead Developer**: [David England](https://github.com/DavidEngland)
+- **CEO & Chief Broker**: Mikko P. Jetsu
 
-### Organization
+**Organization:**
 - **Website**: realestateintelligenceagency.com *(coming soon)*
 - **GitHub**: [github.com/DavidEngland/css-animation-builder](https://github.com/DavidEngland/css-animation-builder)
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
-
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes
-4. Add tests for new functionality
-5. Ensure all tests pass
-6. Commit your changes (`git commit -m 'Add amazing feature'`)
-7. Push to the branch (`git push origin feature/amazing-feature`)
-8. Open a Pull Request
+3. Make your changes and add tests
+4. Commit changes (`git commit -m 'Add amazing feature'`)
+5. Push to branch (`git push origin feature/amazing-feature`)
+6. Open a Pull Request
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+MIT License - see [LICENSE](LICENSE) file for details.
 
 ## 🔗 Links
 
 - **Documentation**: [Full Documentation](https://davidengland.github.io/css-animation-builder/)
 - **NPM Package**: [@reia/css-animation-builder](https://www.npmjs.com/package/@reia/css-animation-builder)
-- **Packagist**: [reia/css-animation-builder](https://packagist.org/packages/reia/css-animation-builder)
 - **Issues**: [GitHub Issues](https://github.com/DavidEngland/css-animation-builder/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/DavidEngland/css-animation-builder/discussions)
 
-## 📈 Changelog
-
-See [CHANGELOG.md](CHANGELOG.md) for a list of changes and releases.
-
-## 🙏 Acknowledgments
-
-- Inspired by modern animation libraries
-- Built with modern web standards
-- Community-driven development
-
 ---
 
-<p align="center">
-  <strong>Made with ❤️ by <a href="https://github.com/DavidEngland">David England</a></strong>
-</p>
-
-1. Download the plugin files
-2. Upload to `/wp-content/plugins/css-animation-builder/`
-3. Activate the plugin
-4. Use the shortcode `[css-animation-builder]` or the provided template
-
-### Standalone Usage
-
-1. Download the release files
-2. Include the CSS and JS files in your HTML
-3. Initialize the builder on your page
-
-## Quick Start
-
-### PHP/Composer Usage
-
-```php
-use Reia\CSSAnimationBuilder\Builder;
-
-$builder = new Builder();
-$html = $builder->render();
-echo $html;
-```
-
-### WordPress Shortcode
-
-```php
-[css-animation-builder]
-```
-
-### Standalone HTML
-
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" href="dist/css-animation-builder.css">
-</head>
-<body>
-    <div id="animation-builder"></div>
-    <script src="dist/css-animation-builder.js"></script>
-    <script>
-        const builder = new CSSAnimationBuilder({
-            container: '#animation-builder'
-        });
-        builder.init();
-    </script>
-</body>
-</html>
-```
-
-## Configuration
-
-### Basic Configuration
-
-```javascript
-const builder = new CSSAnimationBuilder({
-    container: '#animation-builder',
-    theme: 'default',
-    showPreview: true,
-    showCode: true,
-    animations: [
-        'fadeIn', 'slideInLeft', 'bounceIn', 'zoomIn'
-    ]
-});
-```
-
-### Advanced Configuration
-
-```javascript
-const builder = new CSSAnimationBuilder({
-    container: '#animation-builder',
-    theme: 'dark',
-    customAnimations: {
-        'customBounce': {
-            name: 'Custom Bounce',
-            keyframes: `
-                0% { transform: scale(0.3); opacity: 0; }
-                50% { transform: scale(1.05); opacity: 0.8; }
-                100% { transform: scale(1); opacity: 1; }
-            `
-        }
-    },
-    defaults: {
-        duration: 1.0,
-        delay: 0.0,
-        timingFunction: 'ease',
-        iterationCount: 1
-    },
-    callbacks: {
-        onAnimationChange: (animation) => console.log('Animation changed:', animation),
-        onCodeGenerated: (code) => console.log('Code generated:', code)
-    }
-});
-```
-
-## Animation Types
-
-### Entrance Animations
-- `fadeIn` - Fade in with opacity
-- `slideInLeft` - Slide in from left
-- `slideInRight` - Slide in from right
-- `slideInUp` - Slide in from bottom
-- `slideInDown` - Slide in from top
-- `zoomIn` - Zoom in effect
-- `bounceIn` - Bouncy entrance
-- `rotateIn` - Rotate in effect
-
-### Exit Animations
-- `fadeOut` - Fade out
-- `slideOutLeft` - Slide out to left
-- `slideOutRight` - Slide out to right
-- `zoomOut` - Zoom out effect
-
-### Attention Animations
-- `pulse` - Pulsing effect
-- `shake` - Shaking effect
-- `wobble` - Wobbling effect
-- `swing` - Swinging effect
-
-## API Reference
-
-### Builder Class
-
-```php
-use Reia\CSSAnimationBuilder\Builder;
-
-$builder = new Builder($config);
-```
-
-#### Methods
-
-- `render()` - Render the complete HTML interface
-- `getAnimations()` - Get list of available animations
-- `generateCSS($animation, $options)` - Generate CSS for specific animation
-- `setTheme($theme)` - Set the UI theme
-- `addCustomAnimation($name, $keyframes)` - Add custom animation
-
-### JavaScript API
-
-```javascript
-const builder = new CSSAnimationBuilder(config);
-```
-
-#### Methods
-
-- `init()` - Initialize the builder
-- `destroy()` - Destroy the builder instance
-- `getAnimation()` - Get current animation settings
-- `setAnimation(settings)` - Set animation settings
-- `generateCSS()` - Generate CSS code
-- `preview()` - Preview animation
-- `reset()` - Reset to defaults
-
-#### Events
-
-- `animationChange` - Fired when animation settings change
-- `codeGenerated` - Fired when CSS code is generated
-- `previewStarted` - Fired when preview starts
-- `previewStopped` - Fired when preview stops
-
-## Customization
-
-### Custom Themes
-
-```css
-/* Custom theme example */
-.css-animation-builder.theme-custom {
-    --primary-color: #your-color;
-    --secondary-color: #your-color;
-    --background-color: #your-color;
-    --text-color: #your-color;
-    --border-color: #your-color;
-}
-```
-
-### Custom Animations
-
-```javascript
-builder.addCustomAnimation('myAnimation', {
-    name: 'My Custom Animation',
-    keyframes: `
-        0% { transform: translateX(0); }
-        50% { transform: translateX(100px); }
-        100% { transform: translateX(0); }
-    `,
-    defaultDuration: 2.0
-});
-```
-
-## WordPress Integration
-
-### Shortcode Attributes
-
-```php
-[css-animation-builder theme="dark" show-presets="true" show-advanced="false"]
-```
-
-### Theme Integration
-
-```php
-// In your theme's functions.php
-function my_theme_animation_builder() {
-    if (class_exists('Reia\CSSAnimationBuilder\Builder')) {
-        $builder = new Reia\CSSAnimationBuilder\Builder([
-            'theme' => 'my-theme',
-            'animations' => ['fadeIn', 'slideInLeft', 'bounceIn']
-        ]);
-        return $builder->render();
-    }
-    return '';
-}
-```
-
-## Development
-
-### Building from Source
-
-```bash
-# Install dependencies
-composer install
-npm install
-
-# Build assets
-npm run build
-
-# Run tests
-composer test
-
-# Generate documentation
-npm run docs
-```
-
-### Testing
-
-```bash
-# Run PHP tests
-composer test
-
-# Run JavaScript tests
-npm test
-
-# Run all tests
-npm run test:all
-```
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests for new functionality
-5. Ensure all tests pass
-6. Submit a pull request
-
-## License
-
-MIT License - see LICENSE file for details
-
-## Support
-
-- **Documentation**: [Full documentation](https://docs.example.com)
-- **Issues**: [GitHub Issues](https://github.com/reia/css-animation-builder/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/reia/css-animation-builder/discussions)
-
-## Changelog
-
-### 1.0.0
-- Initial release
-- Core animation builder functionality
-- WordPress plugin support
-- Composer package support
-- Standalone HTML/JS support
+**Made with ❤️ by [David England](https://github.com/DavidEngland)**
